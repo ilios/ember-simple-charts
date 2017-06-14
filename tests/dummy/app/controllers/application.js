@@ -30,5 +30,23 @@ export default Controller.extend({
       label: 'So Cool',
       data: 500
     },
+  ],
+  barData: [
+    {
+      label: 'Totally Cool',
+      data: 300
+    },
+    {
+      label: 'Way Cool',
+      data: 200
+    },
+    {
+      label: 'Cucumber Cool',
+      data: 400
+    },
+    {
+      label: 'So Cool',
+      data: 500
+    },
   ]
 });
