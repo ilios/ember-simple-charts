@@ -108,5 +108,39 @@ export default Controller.extend({
       label: '70',
       data: 90
     }
+  ],
+  legendData: [
+    {
+      label: '1',
+      data: 6000
+    },
+    {
+      label: '2',
+      data: 5000
+    },
+    {
+      label: '3',
+      data: 8000
+    },
+    {
+      label: '4',
+      data: 4000
+    },
+    {
+      label: '5',
+      data: 9000
+    },
+    {
+      label: '6',
+      data: 1000
+    },
+    {
+      label: '7',
+      data: 3000
+    },
+    {
+      label: '8',
+      data: 10000
+    },
   ]
 });
