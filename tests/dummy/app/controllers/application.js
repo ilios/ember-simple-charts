@@ -111,7 +111,7 @@ export default Controller.extend({
   ],
   stackedData: [
     {
-      label: 'Englis',
+      label: 'English',
       data: 900,
       value1: 190,
       value2: 210,
