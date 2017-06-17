@@ -74,14 +74,14 @@ export default Component.extend({
       .attr("text-anchor", "end")
       .attr("fill", "#000");
     }
-    
+
     container.selectAll('.bar')
       .data(stack().keys(keys)(dataOrArray))
       .enter().append("g")
       .attr("class", "bar")
-      .attr("fill", function(d) { return z(d.key); })
+      .attr("fill", d => { return z(d.key); })
       .selectAll("rect")
-      .data(function(d) { return d; })
+      .data(d => { return d; })
         .enter().append("rect")
         .attr("x", d => { return x(d.data.label); })
         .attr("y", d => { return y(d[1]); })
