@@ -112,33 +112,33 @@ export default Controller.extend({
   stackedData: [
     {
       label: 'English',
-      data: 900,
-      value1: 190,
-      value2: 210,
-      value3: 320,
-      value4: 50,
-      value5: 430,
-      value6: 600
+      data: 600,
+      value0: 133,
+      value1: 39,
+      value2: 320,
+      value3: 86,
+      value4: 258,
+      value5: 79
     },
     {
       label: 'French',
-      data: 500,
-      value1: 100,
-      value2: 50,
-      value3: 150,
-      value4: 88,
-      value5: 52,
-      value6: 99
+      data: 400,
+      value0: 130,
+      value1: 50,
+      value2: 150,
+      value3: 84,
+      value4: 52,
+      value5: 99
     },
     {
       label: 'Spainish',
-      data: 500,
-      value1: 10,
-      value2: 40,
-      value3: 202,
-      value4: 90,
-      value5: 38,
-      value6: 49
+      data: 900,
+      value0: 77,
+      value1: 88,
+      value2: 202,
+      value3: 50,
+      value4: 38,
+      value5: 49
     },
   ],
   legendData: [
