@@ -109,10 +109,42 @@ export default Controller.extend({
       data: 90
     }
   ],
+  stackedData: [
+    {
+      label: 'Englis',
+      data: 900,
+      value1: 190,
+      value2: 210,
+      value3: 320,
+      value4: 50,
+      value5: 430,
+      value6: 600
+    },
+    {
+      label: 'French',
+      data: 500,
+      value1: 100,
+      value2: 50,
+      value3: 150,
+      value4: 88,
+      value5: 52,
+      value6: 99
+    },
+    {
+      label: 'Spainish',
+      data: 500,
+      value1: 10,
+      value2: 40,
+      value3: 202,
+      value4: 90,
+      value5: 38,
+      value6: 49
+    },
+  ],
   legendData: [
     {
       label: '1',
-      data: 6000
+      data: 6000,
     },
     {
       label: '2',
