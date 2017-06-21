@@ -34,7 +34,7 @@ export default Component.extend({
     const y = scaleLinear().range([chartHeight, 0]);
     const z = scaleOrdinal(schemeCategory10);
 
-    var keys = ['value1', 'value2', 'value3', 'value4', 'value5', 'value6'];
+    var keys = ['value0', 'value1', 'value2', 'value3', 'value4', 'value5'];
 
     if (dataOrArray.length === 0) {
       return;
