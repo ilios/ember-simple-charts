@@ -1,12 +1,14 @@
 {
   "name": "ember-simple-charts",
   "version": "0.3.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Simpel charts for ember.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "visualizations",
+    "d3"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "The Ilios Team (info@iliosproject.org)",
   "directories": {
     "doc": "doc",
     "test": "tests"
