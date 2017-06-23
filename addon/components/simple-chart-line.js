@@ -11,7 +11,7 @@ const { Component, run, get } = Ember;
 
 export default Component.extend({
   tagName: 'svg',
-  classNames: ['chart-line'],
+  classNames: ['simple-chart-line'],
   attributeBindings: ['width', 'height'],
   didReceiveAttrs() {
     // Anytime we get an update schedule a draw

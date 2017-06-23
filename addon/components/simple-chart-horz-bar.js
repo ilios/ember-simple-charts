@@ -9,7 +9,7 @@ const { Component, run, get } = Ember;
 
 export default Component.extend({
   tagName: 'svg',
-  classNames: ['chart-horz-bar'],
+  classNames: ['simple-chart-horz-bar'],
   attributeBindings: ['width', 'height'],
   didReceiveAttrs() {
     // Anytime we get an update schedule a draw
