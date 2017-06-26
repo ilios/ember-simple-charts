@@ -48,6 +48,14 @@ body {
   }
 }
 
+.large-panel {
+    //needed for the flex layout
+    flex: 1 1 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
 .panel {
   //needed for the flex layout
   flex: 1 1 30%;

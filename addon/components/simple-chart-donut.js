@@ -65,7 +65,7 @@ export default Component.extend({
       return p => createArc(i(p));
     }
 
-    chart.on("click", d => {
+    path.on('click', d => {
       svg.attr('style', 'panel')
         .transition()
         .duration(600)
