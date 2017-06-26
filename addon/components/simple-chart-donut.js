@@ -65,6 +65,15 @@ export default Component.extend({
       return p => createArc(i(p));
     }
 
+    chart.on("click", d => {
+      svg.attr('style', 'panel')
+        .transition()
+        .duration(600)
+        .attr('width', 500)
+        .attr('height', 500)
+        .attr("viewBox", "0 0 "+this.width+" "+this.height);
+    });
+
     path.on('mouseover', (d, index, items) => {
       hover(d.data, items[index], createLabelArc.centroid(d));
     });
