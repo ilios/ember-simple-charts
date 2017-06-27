@@ -66,11 +66,12 @@ export default Component.extend({
     }
 
     path.on('click', d => {
-      svg.attr('style', 'panel')
+      svg.attr('style', 'ember-simple-charts-wrapper')
+        .attr('display', 'inline-block')
         .transition()
         .duration(600)
-        .attr('width', 500)
-        .attr('height', 500)
+        .attr('width', 400)
+        .attr('height', 400)
         .attr("viewBox", "0 0 "+this.width+" "+this.height);
     });
 
