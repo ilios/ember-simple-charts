@@ -8,5 +8,5 @@ moduleForComponent('simple-chart-legend', 'Integration | Component | simple char
 test('it renders', function(assert) {
  this.render(hbs`{{simple-chart-legend}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '1');
 });

@@ -8,5 +8,5 @@ moduleForComponent('simple-chart-line', 'Integration | Component | simple chart 
 test('it renders', function(assert) {
  this.render(hbs`{{simple-chart-line}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '0.00.20.40.60.81.01.21.41.61.82.0');
 });

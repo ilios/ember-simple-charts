@@ -6,7 +6,7 @@ moduleForComponent('simple-chart', 'Integration | Component | simple chart', {
 });
 
 test('it renders', function(assert) {
- this.render(hbs`{{simple-chart}}`);
+ this.render(hbs`{{simple-chart name='donut'}}`);
 
   assert.equal(this.$().text().trim(), '');
 });
