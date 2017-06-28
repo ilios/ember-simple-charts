@@ -22,8 +22,6 @@ export default Component.extend({
     const svg = select(this.element);
     const width = get(this, 'width');
     const height = get(this, 'height');
-    const isIcon = width < 100 || height < 100;
-    const margin = isIcon ? {top: 0, right: 0, bottom: 0, left: 0} : {top: 10, right: 20, bottom: 30, left: 25};
     const legendRectSize = 18;
     const legendSpacing = 4;
     const color = scaleOrdinal(schemeCategory10);
