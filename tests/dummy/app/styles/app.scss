@@ -28,7 +28,7 @@ body {
 .ember-simple-charts-wrapper {
   display: grid;
   grid-auto-rows: minmax(30%, auto);
-  grid-gap: 10px;
+  grid-gap: 10px; // sass-lint:disable-line no-misspelled-properties
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   margin: 20px auto;
   max-width: 90%;
