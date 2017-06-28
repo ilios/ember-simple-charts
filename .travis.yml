@@ -23,14 +23,13 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn cache clear
   - yarn global add phantomjs-prebuilt
   - phantomjs --version
 
 install:
-  - yarn install --no-lockfile
+  - yarn install
+  # Woraround for https://github.com/sass/node-sass/issues/1804
+  - npm rebuild node-sass
 
 script:
   # Usually, it's ok to finish the test scenario without reverting
