@@ -6,20 +6,7 @@ moduleForComponent('simple-chart-legend', 'Integration | Component | simple char
 });
 
 test('it renders', function(assert) {
+ this.render(hbs`{{simple-chart-legend}}`);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{simple-chart-legend}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#simple-chart-legend}}
-      template block text
-    {{/simple-chart-legend}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '1');
 });

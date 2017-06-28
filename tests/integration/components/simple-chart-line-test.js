@@ -6,20 +6,7 @@ moduleForComponent('simple-chart-line', 'Integration | Component | simple chart 
 });
 
 test('it renders', function(assert) {
+ this.render(hbs`{{simple-chart-line}}`);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{simple-chart-line}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#simple-chart-line}}
-      template block text
-    {{/simple-chart-line}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '0.00.20.40.60.81.01.21.41.61.82.0');
 });
