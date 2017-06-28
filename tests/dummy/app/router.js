@@ -7,14 +7,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('simple-chart-donut');
-  this.route('simple-chart-pie');
-  this.route('simple-chart-line');
-  this.route('simple-chart-legend');
-  this.route('simple-chart-bar');
-  this.route('simple-chart-horz-bar');
-  this.route('simple-chart-stacked');
-  this.route('simple-chart-stacked-bar');
+  this.route('donut');
+  this.route('pie');
+  this.route('line');
+  this.route('legend');
+  this.route('bar');
+  this.route('horz-bar');
+  this.route('stacked-bar');
 });
 
 export default Router;
