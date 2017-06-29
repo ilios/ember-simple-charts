@@ -27,6 +27,7 @@ export default Component.extend({
     const width = get(this, 'width');
     const height = get(this, 'height');
     const hover = get(this, 'hover');
+    const click = get(this, 'click');
     const leave = get(this, 'leave');
     const radius = Math.min(width, height) / 2;
     const donutWidth = width * .2;
@@ -65,14 +66,8 @@ export default Component.extend({
       return p => createArc(i(p));
     }
 
-    path.on('click', d => {
-      svg.attr('style', 'ember-simple-charts-wrapper')
-        .attr('display', 'inline-block')
-        .transition()
-        .duration(600)
-        .attr('width', 400)
-        .attr('height', 400)
-        .attr("viewBox", "0 0 "+this.width+" "+this.height);
+    path.on('click', (d, index, items) => {
+      click(d.data, items[index], createLabelArc.centroid(d));
     });
 
     path.on('mouseover', (d, index, items) => {
