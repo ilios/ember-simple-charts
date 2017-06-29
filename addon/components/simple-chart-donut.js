@@ -70,6 +70,10 @@ export default Component.extend({
       hover(d.data, items[index], createLabelArc.centroid(d));
     });
 
+    path.on('click', (d, index, items) => {
+      click(d.data, items[index], createLabelArc.centroid(d));
+    });
+
     path.on('mouseout', () => {
       leave();
     });

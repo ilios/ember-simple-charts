@@ -34,6 +34,14 @@ export default Component.extend({
         this.set('tooltipLocation', tooltipLocation);
       }
     },
+    click(data, slice, tooltipLocation){
+      const click = get(this, 'click');
+      if (click) {
+        click(data);
+        this.set('tooltipSlice', slice);
+        this.set('tooltipLocation', tooltipLocation);
+      }
+    },
     leave(){
       const leave = get(this, 'leave');
       if (leave) {
