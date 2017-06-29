@@ -5,4 +5,10 @@
       line-height: $base-line-height;
     }
   }
+
+  .bar {
+    &:hover {
+      fill: $brown;
+    }
+  }
 }

@@ -27,6 +27,7 @@ export default Component.extend({
     const width = get(this, 'width');
     const height = get(this, 'height');
     const hover = get(this, 'hover');
+    const click = get(this, 'click');
     const leave = get(this, 'leave');
     const radius = Math.min(width, height) / 2;
     const donutWidth = width * .2;
@@ -67,6 +68,10 @@ export default Component.extend({
 
     path.on('mouseover', (d, index, items) => {
       hover(d.data, items[index], createLabelArc.centroid(d));
+    });
+
+    path.on('click', (d, index, items) => {
+      click(d.data, items[index], createLabelArc.centroid(d));
     });
 
     path.on('mouseout', () => {
