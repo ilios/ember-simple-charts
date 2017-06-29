@@ -66,10 +66,6 @@ export default Component.extend({
       return p => createArc(i(p));
     }
 
-    path.on('click', (d, index, items) => {
-      click(d.data, items[index], createLabelArc.centroid(d));
-    });
-
     path.on('mouseover', (d, index, items) => {
       hover(d.data, items[index], createLabelArc.centroid(d));
     });
