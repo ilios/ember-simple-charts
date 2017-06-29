@@ -7,13 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('donut');
-  this.route('pie');
-  this.route('line');
-  this.route('legend');
-  this.route('bar');
-  this.route('horz-bar');
-  this.route('stacked-bar');
 });
 
 export default Router;
