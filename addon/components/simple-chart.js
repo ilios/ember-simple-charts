@@ -1,28 +1,41 @@
 import Ember from 'ember';
 import layout from '../templates/components/simple-chart';
-const { Component, computed, get, String:EmberString } = Ember;
-const { htmlSafe } = EmberString;
+import ResizeAware from 'ember-resize/mixins/resize-aware';
+const { Component, computed, get } = Ember;
 
-export default Component.extend({
+export default Component.extend(ResizeAware, {
   layout,
-  attributeBindings: ['style'],
+  didInsertElement(){
+    this._super(...arguments);
+    const {height, width} = this.$()[0].getClientRects()[0];
+    this.setProperties({ height, width });
+  },
+  resizeWidthSensitive: true,
+  resizeHeightSensitive: true,
   classNames: ['simple-chart'],
-  tagName: 'span',
+  tagName: 'div',
   name: null,
-  width: null,
-  height: null,
+  width: 0,
+  height: 0,
+  svgWidth: computed('width', function(){
+    const width = this.get('width');
+
+    return width * .90;
+  }),
+  svgHeight: computed('height', function(){
+    const height = this.get('height');
+
+    return height * .90;
+  }),
   tooltip: null,
   tooltipSlice: null,
   tooltipLocation: null,
+  debouncedDidResize(width, height) {
+    this.setProperties({width, height});
+  },
   chartName: computed('type', function(){
     const name = this.get('name');
     return `simple-chart-${name}`;
-  }),
-  style: computed('width', 'heigth', 'tooltip', function(){
-    const height = get(this, 'height');
-    const width = get(this, 'width');
-
-    return htmlSafe(`width: ${width * 1.2}px; height: ${height * 1.2}px`);
   }),
 
   actions: {

@@ -5,27 +5,26 @@
 
 <div class='ember-simple-charts-wrapper'>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='donut' data=chartData.chart.donut}}
-
-    {{#link-to 'chart-donut'}}Detail{{/link-to}}
+    <h4>{{#link-to 'chart-donut'}}Donut{{/link-to}}</h4>
+    {{simple-chart height=250 width=250 name='donut' data=chartData.donut}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='pie' data=chartData.pie}}
+    {{simple-chart name='pie' data=chartData.pie}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='bar' data=chartData.bar}}
+    {{simple-chart name='bar' data=chartData.bar}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='horz-bar' data=chartData.horz}}
+    {{simple-chart name='horz-bar' data=chartData.horz}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='line' data=chartData.line}}
+    {{simple-chart name='line' data=chartData.line}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='stacked-bar' data=chartData.stacked}}
+    {{simple-chart name='stacked-bar' data=chartData.stacked}}
   </div>
   <div class="panel">
-    {{simple-chart height=250 width=250 name='legend' data=chartData.legend}}
+    {{simple-chart name='legend' data=chartData.legend}}
   </div>
 </div>
 
