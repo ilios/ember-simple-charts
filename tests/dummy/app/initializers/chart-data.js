@@ -41,19 +41,19 @@ const pie = [
 ];
 const bar = [
   {
-    label: 'Totally Cool',
+    label: '300',
     data: 300
   },
   {
-    label: 'Way Cool',
+    label: '200',
     data: 200
   },
   {
-    label: 'Cucumber Cool',
+    label: '400',
     data: 400
   },
   {
-    label: 'So Cool',
+    label: 'Long Label',
     data: 500
   },
 ];
@@ -71,7 +71,7 @@ const horz = [
     data: 300
   },
   {
-    label: 'Jeff',
+    label: 'Jeff Long Namerson',
     data: 350
   },
   {
@@ -81,10 +81,6 @@ const horz = [
   {
     label: 'Kelly',
     data: 200
-  },
-  {
-    label: 'Kathy',
-    data: 450
   },
   {
     label: 'Jason',
