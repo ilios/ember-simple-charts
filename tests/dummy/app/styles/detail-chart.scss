@@ -6,8 +6,8 @@
   }
 
   .icon-example {
-    height: 25px;
-    width: 25px;
+    height: 55px;
+    width: 55px;
   }
 
   .medium-example {
@@ -18,10 +18,21 @@
   .large-example {
     height: 500px;
     width: 500px;
-
+  }
     @media only screen and (max-width: 900px) {
-      height: 250px;
-      width: 250px;
+    .icon-example {
+      height: 25px;
+      width: 25px;
+    }
+
+    .medium-example {
+      height: 150px;
+      width: 150px;
+    }
+
+    .large-example {
+      height: 350px;
+      width: 350px;
     }
   }
 }
