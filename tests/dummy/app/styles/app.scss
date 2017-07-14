@@ -59,4 +59,18 @@ body {
     //needed for the flex layout
     flex: 1 1 100%;
   }
+
+  .simple-chart {
+    height: 250px;
+    width: 250px;
+  }
+
+  h4 {
+    a {
+      color: $charcoal;
+      text-decoration: none;;
+    }
+  }
 }
+
+@import './detail-chart';

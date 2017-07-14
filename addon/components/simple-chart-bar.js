@@ -13,7 +13,7 @@ export default Component.extend({
   attributeBindings: ['width', 'height'],
   didReceiveAttrs() {
     // Anytime we get an update schedule a draw
-    run.scheduleOnce('render', this, this.draw);
+    run.scheduleOnce('afterRender', this, this.draw);
   },
   data: null,
   width: null,

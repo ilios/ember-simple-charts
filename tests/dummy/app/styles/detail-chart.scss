@@ -1,0 +1,34 @@
+.detail-chart {
+  .example {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+  }
+
+  .icon-example {
+    height: 55px;
+    width: 55px;
+    @media only screen and (max-width: 900px) {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .medium-example {
+    height: 250px;
+    width: 250px;
+    @media only screen and (max-width: 900px) {
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  .large-example {
+    height: 500px;
+    width: 500px;
+    @media only screen and (max-width: 900px) {
+      height: 350px;
+      width: 350px;
+    }
+  }
+}
