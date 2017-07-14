@@ -8,29 +8,25 @@
   .icon-example {
     height: 55px;
     width: 55px;
+    @media only screen and (max-width: 900px) {
+      height: 30px;
+      width: 30px;
+    }
   }
 
   .medium-example {
     height: 250px;
     width: 250px;
+    @media only screen and (max-width: 900px) {
+      height: 150px;
+      width: 150px;
+    }
   }
 
   .large-example {
     height: 500px;
     width: 500px;
-  }
     @media only screen and (max-width: 900px) {
-    .icon-example {
-      height: 25px;
-      width: 25px;
-    }
-
-    .medium-example {
-      height: 150px;
-      width: 150px;
-    }
-
-    .large-example {
       height: 350px;
       width: 350px;
     }
