@@ -23,6 +23,10 @@ body {
   grid-column: 1 / -1;
   margin: 0;
   padding: 20px;
+
+  a {
+    color: $white;
+  }
 }
 
 .ember-simple-charts-wrapper {
