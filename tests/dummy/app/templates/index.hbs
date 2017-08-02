@@ -1,0 +1,25 @@
+<header class="header">
+  <h1>Ember Simple Charts</h1>
+  <p>Some simple charts you can use in your email app.</p>
+</header>
+
+<div class='ember-simple-charts-wrapper'>
+  <div class="panel">
+    <h4>{{#link-to 'chart-donut'}}Donut{{/link-to}}</h4>
+    {{simple-chart name='donut' data=chartData.donut}}
+  </div>
+  <div class="panel">
+    <h4>{{#link-to 'chart-pie'}}Pie{{/link-to}}</h4>
+    {{simple-chart name='pie' data=chartData.pie}}
+  </div>
+  <div class="panel">
+    <h4>{{#link-to 'chart-bar'}}Bar{{/link-to}}</h4>
+    {{simple-chart name='bar' data=chartData.bar}}
+  </div>
+  <div class="panel">
+    <h4>{{#link-to 'chart-horz-bar'}}Horizontal Bar{{/link-to}}</h4>
+    {{simple-chart name='horz-bar' data=chartData.bar}}
+  </div>
+</div>
+
+<footer class="footer"></footer>

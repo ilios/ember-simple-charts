@@ -1,28 +1,19 @@
 import Ember from 'ember';
 import layout from '../templates/components/simple-chart';
-const { Component, computed, get, String:EmberString } = Ember;
-const { htmlSafe } = EmberString;
+const { Component, computed, get } = Ember;
 
 export default Component.extend({
   layout,
-  attributeBindings: ['style'],
   classNames: ['simple-chart'],
-  tagName: 'span',
+  tagName: 'div',
   name: null,
-  width: null,
-  height: null,
+  isIcon: false,
   tooltip: null,
   tooltipSlice: null,
   tooltipLocation: null,
   chartName: computed('type', function(){
     const name = this.get('name');
     return `simple-chart-${name}`;
-  }),
-  style: computed('width', 'heigth', 'tooltip', function(){
-    const height = get(this, 'height');
-    const width = get(this, 'width');
-
-    return htmlSafe(`width: ${width * 1.2}px; height: ${height * 1.2}px`);
   }),
 
   actions: {

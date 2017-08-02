@@ -23,6 +23,10 @@ body {
   grid-column: 1 / -1;
   margin: 0;
   padding: 20px;
+
+  a {
+    color: $white;
+  }
 }
 
 .ember-simple-charts-wrapper {
@@ -59,4 +63,18 @@ body {
     //needed for the flex layout
     flex: 1 1 100%;
   }
+
+  .simple-chart {
+    height: 250px;
+    width: 250px;
+  }
+
+  h4 {
+    a {
+      color: $charcoal;
+      text-decoration: none;;
+    }
+  }
 }
+
+@import './detail-chart';

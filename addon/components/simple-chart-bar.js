@@ -1,96 +1,63 @@
 import Ember from 'ember';
+import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
 import { scaleOrdinal, scaleBand, scaleLinear, schemeCategory10 } from 'd3-scale';
-import { max } from 'd3-array';
-import { axisBottom, axisLeft } from 'd3-axis';
 
-const { Component, run, get } = Ember;
+const { Component, get } = Ember;
 
-export default Component.extend({
-  tagName: 'svg',
+export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-bar'],
-  attributeBindings: ['width', 'height'],
-  didReceiveAttrs() {
-    // Anytime we get an update schedule a draw
-    run.scheduleOnce('render', this, this.draw);
-  },
-  data: null,
-  width: null,
-  height: null,
   draw(){
     const data = get(this, 'data');
+    const isIcon = get(this, 'isIcon');
+    const hover = get(this, 'hover');
+    const leave = get(this, 'leave');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
-    const width = get(this, 'width');
-    const height = get(this, 'height');
-    const isIcon = width < 100 || height < 100;
-    const margin = isIcon ? {top: 0, right: 0, bottom: 0, left: 0} : {top: 10, right: 20, bottom: 30, left: 25};
-    const chartWidth = width - margin.left - margin.right;
     const color = scaleOrdinal(schemeCategory10);
 
-    const x = scaleBand().range([0, chartWidth]).padding(0.4);
-    x.domain(dataOrArray.map(d => d.label));
+    const yScale = scaleLinear()
+    .domain([0, Math.max(...dataOrArray.map(d => d.data))])
+    .range([0, isIcon?100:95]);
 
-    svg.attr('style', 'width:' + width +'px;height:' + height +'px;');
+    const xScale = scaleBand()
+      .domain(dataOrArray.map(d => d.label))
+      .range([0, isIcon?100:95])
+      .paddingInner(0.12);
 
-    if (dataOrArray.length === 0) {
-      return;
-    }
+    svg.selectAll('.bars').remove();
+    const bars = svg.append('g').attr('class', 'bars');
 
-    const container = svg.append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
-
-    let chartHeight = height;
-
-    if (!isIcon) {
-      const bottomScale = container.append("g");
-      const labels = bottomScale;
-      if (!isIcon) {
-        bottomScale.call(axisBottom(x))
-        .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 10)
-        .attr("dy", ".35em")
-        .attr("transform", "rotate(75)")
-        .style("text-anchor", "start");
-      }
-
-      // This loop will figure out the tallest bottom label height,
-      // so that it can be substracted to
-      // the available height for the chart.
-      let maxLabelHeight = 0;
-      labels.each(function(label, index, allLabels) {
-        const currentLabel = allLabels[index];
-        const labelDimensions = currentLabel.getBoundingClientRect();
-        maxLabelHeight = Math.max(maxLabelHeight, Math.ceil(labelDimensions.height));
-      });
-
-      chartHeight = height - margin.top - margin.bottom - maxLabelHeight;
-      bottomScale.attr("transform", "translate(0," + chartHeight + ")");
-    }
-
-    const y = scaleLinear().range([chartHeight, 0]);
-    y.domain([0, max(dataOrArray, d => d.data)]);
-
-    if (!isIcon) {
-      const leftScale = container.append("g");
-      leftScale.call(axisLeft(y))
-      .selectAll("text")
-      .attr("x", -8)
-      .attr("y", y(y.ticks(1).pop()) + 0.5)
-      .attr("dy", "0.35em")
-      .attr("text-anchor", "end")
-      .attr("fill", "#000");
-    }
-
-    container.selectAll('.bar').data(dataOrArray).enter()
+    const rect = bars.selectAll('rect').data(dataOrArray).enter()
       .append('rect')
-      .attr('class', 'bar')
-      .attr('x', d => x(d.label))
-      .attr('y', d => y(d.data))
-      .attr("width", x.bandwidth())
-      .attr('height', d => chartHeight - y(d.data))
+      .attr('width', `${xScale.bandwidth()}%`)
+      .attr('height', d => `${yScale(d.data)}%`)
+      .attr('x', d => `${xScale(d.label)}%`)
+      .attr('y', d => `${100 - yScale(d.data)}%`)
       .attr('fill', d =>  color(d.label));
 
+      if (!isIcon) {
+        rect.on('mouseover', (d, index, items) => {
+          if (hover) {
+            hover(d.data, items[index]);
+          }
+        });
+
+        rect.on('mouseout', () => {
+          if (leave) {
+            leave();
+          }
+        });
+
+        bars.selectAll('text').data(dataOrArray).enter()
+          .append("text")
+          .attr("fill", "#ffffff")
+          .style("font-size", ".8rem")
+          .attr("text-anchor", "middle")
+          .attr('x', d => `${xScale(d.label	) + xScale.bandwidth() / 2}%`)
+          .attr('y', d => `${110 - yScale(d.data)}%`)
+          .text(d => d.label);
+      }
   },
 });
