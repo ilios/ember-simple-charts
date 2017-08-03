@@ -15,6 +15,15 @@
   <div class='large-example example'>
     {{simple-chart name='donut' data=chartData.donut}}
   </div>
+  <div class='large-example example'>
+    {{#simple-chart name='donut' data=chartData.donut hover=(action (mut data)) as |chart|}}
+      {{#if data}}
+        {{#chart.tooltip title=(concat data.label ' (' data.data ')')}}
+          {{chartData.ipsum}}
+        {{/chart.tooltip}}
+      {{/if}}
+    {{/simple-chart}}
+  </div>
 </div>
 
 <footer class="footer"></footer>

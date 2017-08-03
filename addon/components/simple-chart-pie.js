@@ -18,8 +18,8 @@ export default Component.extend(ChartProperties, {
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
     const radius = Math.min(width, height) / 2;
-    const isIcon = get(this, 'isIcon');
     const hover = get(this, 'hover');
+    const isIcon = get(this, 'isIcon');
     const leave = get(this, 'leave');
     const color = scaleOrdinal(schemeCategory10);
 
@@ -50,13 +50,15 @@ export default Component.extend(ChartProperties, {
       });
 
     if (!isIcon) {
-      path.on('mouseover', (d, index, items) => {
+      path.on('mouseenter', ({data}) => {
         if (hover) {
-          hover(d.data, items[index], createLabelArc.centroid(d));
+          const slices = svg.selectAll('.slice');
+          const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
+          hover(data, selectedSlice.node());
         }
       });
 
-      path.on('mouseout', () => {
+      svg.on('mouseleave', () => {
         if (leave) {
           leave();
         }
@@ -71,5 +73,5 @@ export default Component.extend(ChartProperties, {
         .attr("text-anchor", "middle")
         .text(d => d.data.label);
     }
-  },
+  }
 });

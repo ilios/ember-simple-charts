@@ -51,13 +51,15 @@ export default Component.extend(ChartProperties, {
       });
 
     if (!isIcon) {
-      path.on('mouseover', (d, index, items) => {
+      path.on('mouseenter', ({data}) => {
         if (hover) {
-          hover(d.data, items[index], createLabelArc.centroid(d));
+          const slices = svg.selectAll('.slice');
+          const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
+          hover(data, selectedSlice.node());
         }
       });
 
-      path.on('mouseout', () => {
+      svg.on('mouseleave', () => {
         if (leave) {
           leave();
         }

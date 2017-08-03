@@ -13,7 +13,13 @@
   </div>
 
   <div class='large-example example'>
-    {{simple-chart name='bar' data=chartData.bar}}
+    {{#simple-chart name='bar' data=chartData.bar hover=(action (mut data)) as |chart|}}
+      {{#if data}}
+        {{#chart.tooltip title=(concat data.label ' (' data.data ')')}}
+          {{chartData.ipsum}}
+        {{/chart.tooltip}}
+      {{/if}}
+    {{/simple-chart}}
   </div>
 </div>
 

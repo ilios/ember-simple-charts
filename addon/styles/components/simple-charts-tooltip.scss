@@ -1,37 +1,20 @@
 .simple-chart-tooltip {
-  background: $background-grey;
-  border: 1px solid $dark-grey;
-  border-radius: 15px;
-  box-shadow: 4px 4px 12px $dark-grey;
-  color: $text-grey;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  margin: 0;
-  opacity: .9;
-  overflow: auto;
-  padding: 10px;
-  position: absolute;
-  width: 380px;
-
-  .header {
-    border-bottom: 1px solid $dark-grey;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-
-    .title {
-      font-weight: 500;
-    }
-
-    .attr {
-      font-style: italic;
-      left: 340px;
-      position: absolute;
-      top: 26px;
-    }
-  }
+  pointer-events: none;
 
   .content {
-    font-size: .9 * $base-font-size;
-    margin: 10px 0 0;
+    background: $background-grey;
+    border: 1px solid $dark-grey;
+    border-radius: 15px;
+    box-shadow: 4px 4px 12px $dark-grey;
+    color: $text-grey;
+    max-width: 80%;
+    padding: 1em;
+
+    .title {
+      border-bottom: 1px solid $dark-grey;
+      display: block;
+      margin-bottom: 1em;
+      width: 100%;
+    }
   }
 }

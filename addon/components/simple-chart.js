@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/simple-chart';
+import { task } from 'ember-concurrency';
+
 const { Component, computed, get } = Ember;
 
 export default Component.extend({
@@ -8,38 +10,30 @@ export default Component.extend({
   tagName: 'div',
   name: null,
   isIcon: false,
-  tooltip: null,
-  tooltipSlice: null,
-  tooltipLocation: null,
+  tooltipTarget: null,
   chartName: computed('type', function(){
     const name = this.get('name');
     return `simple-chart-${name}`;
   }),
-
-  actions: {
-    hover(data, slice, tooltipLocation){
-      const hover = get(this, 'hover');
-      if (hover) {
-        hover(data);
-        this.set('tooltipSlice', slice);
-        this.set('tooltipLocation', tooltipLocation);
-      }
-    },
-    click(data, slice, tooltipLocation){
-      const click = get(this, 'click');
-      if (click) {
-        click(data);
-        this.set('tooltipSlice', slice);
-        this.set('tooltipLocation', tooltipLocation);
-      }
-    },
-    leave(){
-      const leave = get(this, 'leave');
-      if (leave) {
-        leave();
-        this.set('tooltipSlice', null);
-        this.set('tooltipLocation', null);
-      }
-    },
-  }
+  handleHover: task(function * (data, tooltipTarget) {
+    const hover = get(this, 'hover');
+    if (hover) {
+      yield hover(data);
+      this.set('tooltipTarget', tooltipTarget);
+    }
+  }),
+  handleLeave: task(function * () {
+    const leave = get(this, 'leave');
+    if (leave) {
+      yield leave();
+    }
+    this.set('tooltipTarget', null);
+  }).drop(),
+  handleClick: task(function * (data) {
+    const click = get(this, 'click');
+    if (click) {
+      yield click(data);
+    }
+    this.set('tooltipTarget', null);
+  }),
 });
