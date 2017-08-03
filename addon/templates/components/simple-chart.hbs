@@ -3,11 +3,16 @@
   width=svgWidth
   height=svgHeight
   isIcon=isIcon
-  hover=(action 'hover')
-  click=(action 'click')
-  leave=(action 'leave')
+  hover=(perform handleHover)
+  click=(perform handleClick)
+  leave=(perform handleLeave)
 }}
 
-{{yield (hash
-  tooltip=(component 'simple-chart-tooltip' slice=tooltipSlice location=tooltipLocation)
-)}}
+{{#if tooltipTarget}}
+  {{yield (hash
+    tooltip=(component 'simple-chart-tooltip'
+      tetherTarget=tooltipTarget
+      title=null
+    )
+  )}}
+{{/if}}

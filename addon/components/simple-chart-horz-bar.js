@@ -38,13 +38,15 @@ export default Component.extend(ChartProperties, {
       .attr('fill', d =>  color(d.label));
 
       if (!isIcon) {
-        rect.on('mouseover', (d, index, items) => {
+        rect.on('mouseenter', data => {
           if (hover) {
-            hover(d.data, items[index]);
+            const rects = svg.selectAll('rect');
+            const selected = rects.filter(rectData => rectData.label === data.label);
+            hover(data, selected.node());
           }
         });
 
-        rect.on('mouseout', () => {
+        svg.on('mouseleave', () => {
           if (leave) {
             leave();
           }
