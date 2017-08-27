@@ -1,12 +1,18 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import ChartData from 'dummy/lib/chart-data';
+import { percySnapshot } from 'ember-percy';
 
 moduleForComponent('simple-chart-pie', 'Integration | Component | simple chart pie', {
   integration: true
 });
 
-test('it renders', function(assert) {
- this.render(hbs`{{simple-chart-pie}}`);
+test('it renders', function (assert) {
+  this.set('chartData', ChartData);
+  const svg = 'svg';
+  this.render(hbs`{{simple-chart-pie data=chartData.pie}}`);
+  percySnapshot(assert);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$(svg).attr('height'), '100%');
+  assert.equal(this.$(svg).attr('width'), '100%');
 });

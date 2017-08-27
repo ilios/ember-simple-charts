@@ -5,15 +5,15 @@
 
 <div class='detail-chart'>
   <div class='icon-example example'>
-    {{simple-chart isIcon=true name='bar' data=chartData.bar}}
+    {{simple-chart isIcon=true name='bar' data=model}}
   </div>
 
   <div class='medium-example example'>
-    {{simple-chart name='bar' data=chartData.bar}}
+    {{simple-chart name='bar' data=model}}
   </div>
 
   <div class='large-example example'>
-    {{#simple-chart name='bar' data=chartData.bar hover=(action (mut data)) as |chart|}}
+    {{#simple-chart name='bar' data=model hover=(action (mut data)) as |chart|}}
       {{#if data}}
         {{#chart.tooltip title=(concat data.label ' (' data.data ')')}}
           {{chartData.ipsum}}

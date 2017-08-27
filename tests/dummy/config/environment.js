@@ -41,6 +41,14 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.percy = {
+      breakpointsConfig: {
+        small: 400,
+        large: 700
+      },
+      defaultBreakpoints: ['small', 'large']
+    }
   }
 
   if (environment === 'production') {

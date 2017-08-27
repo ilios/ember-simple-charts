@@ -1,16 +1,5 @@
 import Ember from 'ember';
 
-export function initialize(application) {
-  let ChartData = Ember.Object.extend({ donut, pie, bar, horz, ipsum });
-  application.register('chart-data:main', ChartData);
-  application.inject('controller', 'chartData', 'chart-data:main');
-}
-
-export default {
-  name: 'chart-data',
-  initialize
-};
-
 const donut = [
   {
     label: 'Super Cool',
@@ -95,3 +84,5 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   Nullam consequat tortor ut leo bibendum viverra. Pellentesque purus arcu, pretium non consectetur in,
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
+
+export default Ember.Object.create({ donut, pie, bar, horz, ipsum });
