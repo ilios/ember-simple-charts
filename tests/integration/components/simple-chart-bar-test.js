@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
+import { percySnapshot } from 'ember-percy';
 
 moduleForComponent('simple-chart-bar', 'Integration | Component | simple chart bar', {
   integration: true
@@ -16,6 +17,7 @@ test('it renders', function (assert) {
   const rect4 = `${shapes}:eq(3)`;
 
   this.render(hbs`{{simple-chart-bar data=chartData.bar}}`);
+  percySnapshot(assert);
 
   assert.equal(this.$(svg).attr('height'), '100%');
   assert.equal(this.$(svg).attr('width'), '100%');
