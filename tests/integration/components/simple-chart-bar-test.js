@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import ChartData from '../../../tests/chart-data';
+import ChartData from 'dummy/lib/chart-data';
 
 moduleForComponent('simple-chart-bar', 'Integration | Component | simple chart bar', {
   integration: true

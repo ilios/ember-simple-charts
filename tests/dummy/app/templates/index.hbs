@@ -6,19 +6,19 @@
 <div class='ember-simple-charts-wrapper'>
   <div class="panel">
     <h4>{{#link-to 'chart-donut'}}Donut{{/link-to}}</h4>
-    {{simple-chart name='donut' data=chartData.donut}}
+    {{simple-chart name='donut' data=model.donut}}
   </div>
   <div class="panel">
     <h4>{{#link-to 'chart-pie'}}Pie{{/link-to}}</h4>
-    {{simple-chart name='pie' data=chartData.pie}}
+    {{simple-chart name='pie' data=model.pie}}
   </div>
   <div class="panel">
     <h4>{{#link-to 'chart-bar'}}Bar{{/link-to}}</h4>
-    {{simple-chart name='bar' data=chartData.bar}}
+    {{simple-chart name='bar' data=model.bar}}
   </div>
   <div class="panel">
     <h4>{{#link-to 'chart-horz-bar'}}Horizontal Bar{{/link-to}}</h4>
-    {{simple-chart name='horz-bar' data=chartData.bar}}
+    {{simple-chart name='horz-bar' data=model.bar}}
   </div>
 </div>
 
