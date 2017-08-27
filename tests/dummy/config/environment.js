@@ -45,7 +45,7 @@ module.exports = function(environment) {
     ENV.percy = {
       breakpointsConfig: {
         small: 400,
-        large: 700
+        large: 1000
       },
       defaultBreakpoints: ['small', 'large']
     }
