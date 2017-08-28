@@ -13,7 +13,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/ilios/ember-simple-charts",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
