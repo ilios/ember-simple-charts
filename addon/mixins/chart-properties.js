@@ -13,7 +13,7 @@ export default Ember.Mixin.create({
   resizeListener: null,
   didReceiveAttrs() {
     // Anytime we get an update schedule a draw
-    run.scheduleOnce('afterRender', this, this.resize);
+    run.scheduleOnce('afterRender', this, this.doDraw);
   },
   didInsertElement() {
     this.resizeListener = this.$(window).on('resize', run.bind(this, this.resize));
@@ -27,13 +27,17 @@ export default Ember.Mixin.create({
   resize() {
     const currentClientHeight = get(this, 'currentClientHeight');
     const currentClientWidth = get(this, 'currentClientWidth');
-    const newClientHeight = this.element.clientHeight;
-    const newClientWidth = this.element.clientWidth;
-
+    const newClientHeight = get(this.element, 'clientHeight');
+    const newClientWidth = get(this.element, 'clientWidth');
     if (currentClientHeight != newClientHeight || currentClientWidth != newClientWidth) {
-      this.draw(newClientHeight, newClientWidth);
-      this.set('currentClientHeight', newClientHeight);
-      this.set('currentClientWidth', newClientWidth);
+      this.doDraw();
     }
+  },
+  doDraw() {
+    const height = get(this.element, 'clientHeight');
+    const width = get(this.element, 'clientWidth');
+    this.draw(height, width);
+    this.set('currentClientHeight', height);
+    this.set('currentClientWidth', width);
   }
 });
