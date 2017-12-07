@@ -1,5 +1,7 @@
 # ember-simple-charts
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ilios/ember-simple-charts.svg)](https://greenkeeper.io/)
+
 Simple charts for ember apps:
 
 ## Example
