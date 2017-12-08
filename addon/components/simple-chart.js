@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/simple-chart';
-import { task } from 'ember-concurrency';
 
-const { Component, computed, get } = Ember;
+const { Component, computed, get, set } = Ember;
 
 export default Component.extend({
   layout,
@@ -15,25 +14,33 @@ export default Component.extend({
     const name = this.get('name');
     return `simple-chart-${name}`;
   }),
-  handleHover: task(function * (data, tooltipTarget) {
-    const hover = get(this, 'hover');
-    if (hover) {
-      yield hover(data);
-      this.set('tooltipTarget', tooltipTarget);
-    }
-  }),
-  handleLeave: task(function * () {
-    const leave = get(this, 'leave');
-    if (leave) {
-      yield leave();
-    }
-    this.set('tooltipTarget', null);
-  }).drop(),
-  handleClick: task(function * (data) {
-    const click = get(this, 'click');
-    if (click) {
-      yield click(data);
-    }
-    this.set('tooltipTarget', null);
-  }),
+  actions: {
+    async handleHover(data, tooltipTarget) {
+      const hover = get(this, 'hover');
+      if (hover) {
+        await hover(data);
+        if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
+          set(this, 'tooltipTarget', tooltipTarget);
+        }
+      }
+    },
+    async handleLeave() {
+      const leave = get(this, 'leave');
+      if (leave) {
+        await leave();
+      }
+      if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
+        set(this, 'tooltipTarget', null);
+      }
+    },
+    async handleClick(data) {
+      const click = get(this, 'click');
+      if (click) {
+        await click(data);
+      }
+      if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
+        set(this, 'tooltipTarget', null);
+      }
+    },
+  }
 });
