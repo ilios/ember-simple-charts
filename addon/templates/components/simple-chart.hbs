@@ -1,9 +1,9 @@
 {{component chartName
   data=data
   isIcon=isIcon
-  hover=(perform handleHover)
-  click=(perform handleClick)
-  leave=(perform handleLeave)
+  hover=(action 'handleHover')
+  click=(action 'handleClick')
+  leave=(action 'handleLeave')
 }}
 
 {{#if tooltipTarget}}
