@@ -1,18 +1,15 @@
 .simple-chart-tooltip {
+  background: $background-grey;
+  color: $text-grey;
   pointer-events: none;
 
   .content {
-    background: $background-grey;
-    border: 1px solid $dark-grey;
-    border-radius: 15px;
-    box-shadow: 4px 4px 12px $dark-grey;
-    color: $text-grey;
-    max-width: 80%;
-    padding: 1em;
+    padding: .5em;
 
     .title {
       border-bottom: 1px solid $dark-grey;
       display: block;
+      font-weight: bold;
       margin-bottom: 1em;
       width: 100%;
     }
