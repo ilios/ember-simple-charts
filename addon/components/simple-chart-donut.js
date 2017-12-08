@@ -53,7 +53,7 @@ export default Component.extend(ChartProperties, {
       });
 
     if (!isIcon) {
-      path.on('mouseenter', ({data}) => {
+      path.on('mouseenter', ({ data }) => {
         if (hover) {
           const slices = svg.selectAll('.slice');
           const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
