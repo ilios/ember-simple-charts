@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { get, run } = Ember;
+const { get, run, set } = Ember;
 export default Ember.Mixin.create({
   tagName: 'svg',
   attributeBindings: ['_width:width', '_height:height'],
@@ -27,17 +27,19 @@ export default Ember.Mixin.create({
   resize() {
     const currentClientHeight = get(this, 'currentClientHeight');
     const currentClientWidth = get(this, 'currentClientWidth');
-    const newClientHeight = get(this.element, 'clientHeight');
-    const newClientWidth = get(this.element, 'clientWidth');
+    const newClientHeight = this.element?get(this.element, 'clientHeight'):0;
+    const newClientWidth = this.element?get(this.element, 'clientWidth'):0;
     if (currentClientHeight != newClientHeight || currentClientWidth != newClientWidth) {
       this.doDraw();
     }
   },
   doDraw() {
-    const height = get(this.element, 'clientHeight');
-    const width = get(this.element, 'clientWidth');
+    const height = this.element?get(this.element, 'clientHeight'):0;
+    const width = this.element?get(this.element, 'clientWidth'):0;
     this.draw(height, width);
-    this.set('currentClientHeight', height);
-    this.set('currentClientWidth', width);
+    if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
+      set(this, 'currentClientHeight', height);
+      set(this, 'currentClientWidth', width);
+    }
   }
 });
