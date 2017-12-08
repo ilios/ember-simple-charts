@@ -23,8 +23,11 @@
     "ember-cli-babel": "^6.8.1",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.1.2",
+    "ember-concurrency": "^0.8.7",
+    "ember-d3": "^0.3.4",
     "ember-modal-dialog": "^2.4.1",
-    "ember-tether": "^0.4.0"
+    "ember-tether": "v1.0.0-beta.0",
+    "merge": "^1.2.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -39,8 +42,6 @@
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-concurrency": "^0.8.7",
-    "ember-d3": "^0.3.4",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
