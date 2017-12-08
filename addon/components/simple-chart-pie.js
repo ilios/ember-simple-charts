@@ -13,7 +13,9 @@ const { Component, get } = Ember;
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-pie'],
-  draw(height, width){
+  draw(passedHeight, passedWidth) {
+    const height = Math.min(passedHeight, passedWidth);
+    const width = Math.min(passedHeight, passedWidth);
     const data = get(this, 'data');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
