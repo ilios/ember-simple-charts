@@ -13,6 +13,7 @@ export default Component.extend(ChartProperties, {
     const isIcon = get(this, 'isIcon');
     const hover = get(this, 'hover');
     const leave = get(this, 'leave');
+    const click = get(this, 'click');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
     const color = scaleOrdinal(schemeCategory10);
@@ -49,6 +50,12 @@ export default Component.extend(ChartProperties, {
         svg.on('mouseleave', () => {
           if (leave) {
             leave();
+          }
+        });
+
+        rect.on('click', data => {
+          if (click) {
+            click(data);
           }
         });
 

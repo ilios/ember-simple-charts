@@ -23,6 +23,7 @@ export default Component.extend(ChartProperties, {
     const hover = get(this, 'hover');
     const isIcon = get(this, 'isIcon');
     const leave = get(this, 'leave');
+    const click = get(this, 'click');
     const color = scaleOrdinal(schemeCategory10);
 
     let createArc = arc().innerRadius(0).outerRadius(radius);
@@ -63,6 +64,12 @@ export default Component.extend(ChartProperties, {
       svg.on('mouseleave', () => {
         if (leave) {
           leave();
+        }
+      });
+
+      path.on('click', ({data}) => {
+        if (click) {
+          click(data);
         }
       });
 
