@@ -23,6 +23,7 @@ export default Component.extend(ChartProperties, {
     const isIcon = get(this, 'isIcon');
     const hover = get(this, 'hover');
     const leave = get(this, 'leave');
+    const click = get(this, 'click');
     const color = scaleOrdinal(schemeCategory10);
     const donutWidth = width * .2;
 
@@ -64,6 +65,12 @@ export default Component.extend(ChartProperties, {
       svg.on('mouseleave', () => {
         if (leave) {
           leave();
+        }
+      });
+
+      path.on('click', ({data}) => {
+        if (click) {
+          click(data);
         }
       });
 
