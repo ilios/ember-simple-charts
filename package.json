@@ -1,6 +1,6 @@
 {
   "name": "ember-simple-charts",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Simple charts for ember.",
   "keywords": [
     "ember-addon",
