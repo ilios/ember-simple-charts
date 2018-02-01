@@ -23,7 +23,7 @@
     "ember-cli-babel": "^6.8.1",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.1.2",
-    "ember-d3": "^0.3.4",
+    "ember-d3": "^0.4.1",
     "ember-modal-dialog": "^2.4.1",
     "ember-tether": "v0.4.1",
     "merge": "^1.2.0"
