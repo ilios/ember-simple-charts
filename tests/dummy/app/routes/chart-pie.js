@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import ChartData from 'dummy/lib/chart-data';
 
-export default Ember.Route.extend({
+export default Route.extend({
   model() {
     return ChartData.get('pie');
   }

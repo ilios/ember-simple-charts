@@ -1,7 +1,7 @@
-import Ember from 'ember';
-
-const { get, run, set } = Ember;
-export default Ember.Mixin.create({
+import Mixin from '@ember/object/mixin';
+import { run } from '@ember/runloop';
+import { set, get } from '@ember/object';
+export default Mixin.create({
   tagName: 'svg',
   attributeBindings: ['_width:width', '_height:height'],
   _width: '100%',

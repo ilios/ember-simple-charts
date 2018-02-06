@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get } from '@ember/object';
 import 'd3-transition';
 
 import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
@@ -8,8 +9,6 @@ import { scaleOrdinal, schemeCategory10 } from 'd3-scale';
 import { arc, pie } from 'd3-shape';
 import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
-
-const { Component, get } = Ember;
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-donut'],

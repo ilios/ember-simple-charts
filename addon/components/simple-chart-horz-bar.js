@@ -1,10 +1,14 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get } from '@ember/object';
 import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
-import { scaleOrdinal, scaleBand, scaleLinear, schemeCategory10 } from 'd3-scale';
-
-const { Component, get } = Ember;
+import {
+  scaleOrdinal,
+  scaleBand,
+  scaleLinear,
+  schemeCategory10
+} from 'd3-scale';
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-horz-bar'],
