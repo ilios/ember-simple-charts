@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 
 const donut = [
   {
@@ -85,4 +85,4 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default Ember.Object.create({ donut, pie, bar, horz, ipsum });
+export default EmberObject.create({ donut, pie, bar, horz, ipsum });

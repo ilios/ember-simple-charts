@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/simple-chart-tooltip';
-
-const { Component } = Ember;
 
 export default Component.extend({
   layout,
@@ -9,14 +7,19 @@ export default Component.extend({
   tetherTarget: null,
   title: null,
   content: null,
+  constraints: null,
   attachment: 'bottom left',
   targetAttachment: 'middle center',
 
-  constraints: [
-    {
-      to: 'scrollParent',
-      attachment: 'together',
-      pin: true
-    }
-  ],
+  init() {
+    this._super(...arguments);
+    this.set('constraints', [
+      {
+        to: 'scrollParent',
+        attachment: 'together',
+        pin: true
+      }
+    ]);
+  }
+
 });

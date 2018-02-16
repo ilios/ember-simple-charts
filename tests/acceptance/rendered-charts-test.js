@@ -1,9 +1,7 @@
-import Ember from 'ember';
+import { later } from '@ember/runloop';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import wait from 'ember-test-helpers/wait';
-
-const { later } = Ember.run;
 
 moduleForAcceptance('Acceptance | rendered charts');
 

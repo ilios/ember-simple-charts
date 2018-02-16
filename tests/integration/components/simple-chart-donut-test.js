@@ -1,11 +1,9 @@
-import Ember from 'ember';'ember';
+import { later } from '@ember/runloop';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 import wait from 'ember-test-helpers/wait';
-
-const { later } = Ember.run;
 
 moduleForComponent('simple-chart-donut', 'Integration | Component | simple chart donut', {
   integration: true
