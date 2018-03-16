@@ -25,7 +25,7 @@
     "ember-cli-babel": "^6.8.1",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.1.2",
-    "ember-d3": "^0.4.1",
+    "ember-d3": "^0.4.3",
     "ember-modal-dialog": "^2.4.1",
     "ember-tether": "v0.4.1",
     "merge": "^1.2.0"
@@ -48,6 +48,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-percy": "^1.2.22",
+    "ember-resize-aware": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.18.0",
     "eslint-plugin-ember": "^5.0.0",
