@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { set, get, computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
 import layout from '../templates/components/simple-chart';
 
 export default Component.extend({
@@ -12,6 +13,10 @@ export default Component.extend({
   chartName: computed('type', function(){
     const name = this.get('name');
     return `simple-chart-${name}`;
+  }),
+  isClickable: computed('click', function () {
+    const click = get(this, 'click');
+    return isPresent(click);
   }),
   actions: {
     async handleHover(data, tooltipTarget) {

@@ -23,6 +23,7 @@ export default Component.extend(ChartProperties, {
     const isIcon = get(this, 'isIcon');
     const leave = get(this, 'leave');
     const click = get(this, 'click');
+    const isClickable = get(this, 'isClickable');
     const color = scaleOrdinal(schemeCategory10);
 
     let createArc = arc().innerRadius(0).outerRadius(radius);
@@ -66,13 +67,7 @@ export default Component.extend(ChartProperties, {
         }
       });
 
-      path.on('click', ({data}) => {
-        if (click) {
-          click(data);
-        }
-      });
-
-      chart.selectAll('.slice')
+      const text = chart.selectAll('.slice')
         .append("text")
         .attr("fill", "#ffffff")
         .style("font-size", ".8rem")
@@ -80,6 +75,17 @@ export default Component.extend(ChartProperties, {
         .attr("dy", ".40rem")
         .attr("text-anchor", "middle")
         .text(d => d.data.label);
+
+      if (isClickable) {
+        path.on('click', data => {
+          click(data);
+        });
+        path.style("cursor", "pointer");
+        text.on('click', data => {
+          click(data);
+        });
+        text.style("cursor", "pointer");
+      }
     }
   }
 });

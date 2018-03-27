@@ -18,6 +18,7 @@ export default Component.extend(ChartProperties, {
     const hover = get(this, 'hover');
     const leave = get(this, 'leave');
     const click = get(this, 'click');
+    const isClickable = get(this, 'isClickable');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
     const color = scaleOrdinal(schemeCategory10);
@@ -57,13 +58,7 @@ export default Component.extend(ChartProperties, {
           }
         });
 
-        rect.on('click', data => {
-          if (click) {
-            click(data);
-          }
-        });
-
-        bars.selectAll('text').data(dataOrArray).enter()
+        const text = bars.selectAll('text').data(dataOrArray).enter()
           .append("text")
           .attr("fill", "#ffffff")
           .style("font-size", ".8rem")
@@ -71,6 +66,17 @@ export default Component.extend(ChartProperties, {
           .attr('x', d => `${xScale(d.label	) + xScale.bandwidth() / 2}%`)
           .attr('y', d => `${110 - yScale(d.data)}%`)
           .text(d => d.label);
+
+        if (isClickable) {
+          rect.on('click', data => {
+            click(data);
+          });
+          rect.style("cursor", "pointer");
+          text.on('click', data => {
+            click(data);
+          });
+          text.style("cursor", "pointer");
+        }
       }
   },
 });

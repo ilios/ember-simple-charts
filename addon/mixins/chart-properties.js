@@ -14,6 +14,7 @@ export default Mixin.create(ResizeAware, {
   data: null,
   isIcon: false,
   resizeListener: null,
+  isClickable: false,
   didReceiveAttrs() {
     // Anytime we get an update schedule a draw
     run.scheduleOnce('afterRender', this, this.doDraw);
