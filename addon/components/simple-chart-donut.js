@@ -78,11 +78,11 @@ export default Component.extend(ChartProperties, {
         .text(d => d.data.label);
 
       if (isClickable) {
-        path.on('click', data => {
+        path.on('click', ({ data }) => {
           click(data);
         });
         path.style("cursor", "pointer");
-        text.on('click', data => {
+        text.on('click', ({ data }) => {
           click(data);
         });
         text.style("cursor", "pointer");
