@@ -53,20 +53,6 @@ export default Component.extend(ChartProperties, {
       });
 
     if (!isIcon) {
-      path.on('mouseenter', ({data}) => {
-        if (hover) {
-          const slices = svg.selectAll('.slice');
-          const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
-          hover(data, selectedSlice.node());
-        }
-      });
-
-      svg.on('mouseleave', () => {
-        if (leave) {
-          leave();
-        }
-      });
-
       const text = chart.selectAll('.slice')
         .append("text")
         .attr("fill", "#ffffff")
@@ -75,6 +61,16 @@ export default Component.extend(ChartProperties, {
         .attr("dy", ".40rem")
         .attr("text-anchor", "middle")
         .text(d => d.data.label);
+
+      const handleHover = ({ data }) => {
+        const slices = svg.selectAll('.slice');
+          const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
+          hover(data, selectedSlice.node());
+      }
+      path.on('mouseenter', handleHover);
+      text.on('mouseenter', handleHover);
+      path.on('mouseleave', leave);
+      text.on('mouseleave', leave);
 
       if (isClickable) {
         path.on('click', ({ data }) => {
