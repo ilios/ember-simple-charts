@@ -44,20 +44,6 @@ export default Component.extend(ChartProperties, {
       .attr('fill', d =>  color(d.label));
 
       if (!isIcon) {
-        rect.on('mouseenter', data => {
-          if (hover) {
-            const rects = svg.selectAll('rect');
-            const selected = rects.filter(rectData => rectData.label === data.label);
-            hover(data, selected.node());
-          }
-        });
-
-        svg.on('mouseleave', () => {
-          if (leave) {
-            leave();
-          }
-        });
-
         const text = bars.selectAll('text').data(dataOrArray).enter()
           .append("text")
           .attr("fill", "#ffffff")
@@ -66,6 +52,16 @@ export default Component.extend(ChartProperties, {
           .attr('x', d => `${xScale(d.label	) + xScale.bandwidth() / 2}%`)
           .attr('y', d => `${110 - yScale(d.data)}%`)
           .text(d => d.label);
+
+        const handleHover = data => {
+          const rects = svg.selectAll('rect');
+          const selected = rects.filter(rectData => rectData.label === data.label);
+          hover(data, selected.node());
+        }
+        rect.on('mouseenter', handleHover);
+        text.on('mouseenter', handleHover);
+        rect.on('mouseleave', leave);
+        text.on('mouseleave', leave);
 
         if (isClickable) {
           rect.on('click', data => {
