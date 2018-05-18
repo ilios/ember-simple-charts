@@ -1,15 +1,16 @@
 import EmberObject from '@ember/object';
 
-const donut = [
-  {
-    label: 'Super Cool',
-    data: 100,
-  },
-  {
-    label: 'Very Cool',
-    data: 200
-  },
-];
+let donut = [];
+for (let i = 100; i < 1000; i += 50) {
+  donut.push({
+    label: i,
+    data: i
+  })
+}
+donut = donut
+  .map((a) => ({ sort: Math.random(), value: a }))
+  .sort((a, b) => a.sort - b.sort)
+  .map((a) => a.value);
 const pie = [
   {
     label: 'Totally Cool',
