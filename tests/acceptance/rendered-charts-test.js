@@ -1,83 +1,83 @@
 import { later } from '@ember/runloop';
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
-import wait from 'ember-test-helpers/wait';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { settled, click, findAll, currentURL, visit } from '@ember/test-helpers';
+import { percySnapshot } from 'ember-percy';
 
-moduleForAcceptance('Acceptance | rendered charts');
+module('Acceptance | rendered charts', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /', async function (assert) {
-  await visit('/');
-  const charts = '.ember-simple-charts-wrapper .panel';
-  assert.equal(currentURL(), '/');
-  assert.equal(find(charts).length, 4);
+  test('visiting /', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    assert.equal(currentURL(), '/');
+    assert.equal(findAll(charts).length, 4);
 
 
-  //let the chart animations finish
-  later(() => {
-    percySnapshot(assert);
-  }, 1000);
-});
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
 
-test('visiting donut chart', async function (assert) {
-  await visit('/');
-  const charts = '.ember-simple-charts-wrapper .panel';
-  const link = `${charts}:eq(0) a`;
+  test('visiting donut chart', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    const link = `${charts}:nth-of-type(1) a`;
 
-  await click(link);
-  assert.equal(currentURL(), '/chart-donut');
+    await click(link);
+    assert.equal(currentURL(), '/chart-donut');
 
-  //let the chart animations finish
-  later(() => {
-    percySnapshot(assert);
-  }, 1000);
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
 
-  await wait();
-});
+  test('visiting pie chart', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    const link = `${charts}:nth-of-type(2) a`;
 
-test('visiting pie chart', async function (assert) {
-  await visit('/');
-  const charts = '.ember-simple-charts-wrapper .panel';
-  const link = `${charts}:eq(1) a`;
+    await click(link);
+    assert.equal(currentURL(), '/chart-pie');
 
-  await click(link);
-  assert.equal(currentURL(), '/chart-pie');
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
 
-  //let the chart animations finish
-  later(() => {
-    percySnapshot(assert);
-  }, 1000);
+  test('visiting bar chart', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    const link = `${charts}:nth-of-type(3) a`;
 
-  await wait();
-});
+    await click(link);
+    assert.equal(currentURL(), '/chart-bar');
 
-test('visiting bar chart', async function (assert) {
-  await visit('/');
-  const charts = '.ember-simple-charts-wrapper .panel';
-  const link = `${charts}:eq(2) a`;
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
 
-  await click(link);
-  assert.equal(currentURL(), '/chart-bar');
+  test('visiting horz-bar chart', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    const link = `${charts}:nth-of-type(4) a`;
 
-  //let the chart animations finish
-  later(() => {
-    percySnapshot(assert);
-  }, 1000);
+    await click(link);
+    assert.equal(currentURL(), '/chart-horz-bar');
 
-  await wait();
-});
-
-test('visiting horz-bar chart', async function (assert) {
-  await visit('/');
-  const charts = '.ember-simple-charts-wrapper .panel';
-  const link = `${charts}:eq(3) a`;
-
-  await click(link);
-  assert.equal(currentURL(), '/chart-horz-bar');
-
-  //let the chart animations finish
-  later(() => {
-    percySnapshot(assert);
-  }, 1000);
-
-  await wait();
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
 });
