@@ -5,10 +5,12 @@ import 'd3-transition';
 import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
-import { scaleOrdinal, schemeCategory10 } from 'd3-scale';
+import { scaleSequential } from 'd3-scale';
+import { interpolateOranges } from 'd3-scale-chromatic';
 import { arc, pie } from 'd3-shape';
 import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
+import { A } from '@ember/array';
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-donut'],
@@ -24,7 +26,8 @@ export default Component.extend(ChartProperties, {
     const leave = get(this, 'leave');
     const click = get(this, 'click');
     const isClickable = get(this, 'isClickable');
-    const color = scaleOrdinal(schemeCategory10);
+    const values = A(dataOrArray).mapBy('data');
+    const color = scaleSequential(interpolateOranges).domain([0, Math.max(...values)]);
     const donutWidth = width * .2;
 
     let createArc = arc().innerRadius(radius - donutWidth).outerRadius(radius);
@@ -42,7 +45,7 @@ export default Component.extend(ChartProperties, {
       .attr('class', 'slicepath')
       .attr('d', createArc)
       .attr('stroke', '#FFFFFF')
-      .attr('fill', d =>  color(d.data.label));
+      .attr('fill', d =>  color(d.data.data));
 
     chart.selectAll('path.slicepath').transition()
       .ease(easeLinear)

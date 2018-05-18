@@ -4,11 +4,12 @@ import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
 import {
-  scaleOrdinal,
   scaleBand,
   scaleLinear,
-  schemeCategory10
+  scaleSequential
 } from 'd3-scale';
+import { interpolateOranges } from 'd3-scale-chromatic';
+import { A } from '@ember/array';
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-bar'],
@@ -21,7 +22,8 @@ export default Component.extend(ChartProperties, {
     const isClickable = get(this, 'isClickable');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
-    const color = scaleOrdinal(schemeCategory10);
+    const values = A(dataOrArray).mapBy('data');
+    const color = scaleSequential(interpolateOranges).domain([0, Math.max(...values)]);
 
     const yScale = scaleLinear()
     .domain([0, Math.max(...dataOrArray.map(d => d.data))])
@@ -51,7 +53,7 @@ export default Component.extend(ChartProperties, {
           .attr("text-anchor", "middle")
           .attr('x', d => `${xScale(d.label	) + xScale.bandwidth() / 2}%`)
           .attr('y', d => `${110 - yScale(d.data)}%`)
-          .text(d => d.label);
+          .text(d => d.data);
 
         const handleHover = data => {
           const rects = svg.selectAll('rect');

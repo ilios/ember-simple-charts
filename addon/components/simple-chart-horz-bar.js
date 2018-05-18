@@ -4,11 +4,12 @@ import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
 import {
-  scaleOrdinal,
   scaleBand,
   scaleLinear,
-  schemeCategory10
+  scaleSequential
 } from 'd3-scale';
+import { interpolateOranges } from 'd3-scale-chromatic';
+import { A } from '@ember/array';
 
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-horz-bar'],
@@ -21,7 +22,8 @@ export default Component.extend(ChartProperties, {
     const isClickable = get(this, 'isClickable');
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
-    const color = scaleOrdinal(schemeCategory10);
+    const values = A(dataOrArray).mapBy('data');
+    const color = scaleSequential(interpolateOranges).domain([0, Math.max(...values)]);
 
     const xScale = scaleLinear()
     .domain([0, Math.max(...dataOrArray.map(d => d.data))])
@@ -41,7 +43,7 @@ export default Component.extend(ChartProperties, {
       .attr('width', d => `${xScale(d.data)}%`)
       .attr('y', d => `${yScale(d.label)}%`)
       .attr('x', 0)
-      .attr('fill', d =>  color(d.label));
+      .attr('fill', d =>  color(d.data));
 
       if (!isIcon) {
         const text = bars.selectAll('text').data(dataOrArray).enter()
