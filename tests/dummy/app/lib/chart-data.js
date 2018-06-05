@@ -77,6 +77,55 @@ const horz = [
     data: 350
   }
 ];
+const cluster = {
+  name: 'Root',
+  children: [
+    {
+      name: 'first one',
+      children: [
+        {
+          name: 'first two one',
+          children: [
+
+          ]
+        },
+        {
+          name: 'first two two',
+          children: [
+
+          ]
+        },
+        {
+          name: 'first two three',
+          children: [
+
+          ]
+        }
+      ]
+    },
+    {
+      name: 'second one',
+      children: [
+        {
+          name: 'second two one',
+          children: [
+            {
+              name: 'second three one',
+              children: [
+                {
+                  name: 'second four one',
+                  children: [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
 
 const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nunc cursus,
   efficitur tortor in, varius lacus. Praesent odio tellus, sollicitudin tincidunt luctus sit amet, dignissim nec risus.
@@ -86,4 +135,4 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default EmberObject.create({ donut, pie, bar, horz, ipsum });
+export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster });
