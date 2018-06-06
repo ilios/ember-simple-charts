@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('chart-pie');
   this.route('chart-bar');
   this.route('chart-horz-bar');
+  this.route('chart-cluster');
 });
 
 export default Router;
