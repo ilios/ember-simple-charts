@@ -6,7 +6,7 @@ import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
-import { interpolateOranges } from 'd3-scale-chromatic';
+import { interpolateSinebow } from 'd3-scale-chromatic';
 import { arc, pie } from 'd3-shape';
 import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
@@ -27,7 +27,7 @@ export default Component.extend(ChartProperties, {
     const click = get(this, 'click');
     const isClickable = get(this, 'isClickable');
     const values = A(dataOrArray).mapBy('data');
-    const color = scaleSequential(interpolateOranges).domain([0, Math.max(...values)]);
+    const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
 
     let createArc = arc().innerRadius(0).outerRadius(radius);
     let createPie = pie().value(d => d.data).sort(null);

@@ -8,7 +8,7 @@ import {
   scaleLinear,
   scaleSequential
 } from 'd3-scale';
-import { interpolateOranges } from 'd3-scale-chromatic';
+import { interpolateSinebow } from 'd3-scale-chromatic';
 import { A } from '@ember/array';
 
 export default Component.extend(ChartProperties, {
@@ -23,7 +23,7 @@ export default Component.extend(ChartProperties, {
     const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
     const svg = select(this.element);
     const values = A(dataOrArray).mapBy('data');
-    const color = scaleSequential(interpolateOranges).domain([0, Math.max(...values)]);
+    const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
 
     const yScale = scaleLinear()
     .domain([0, Math.max(...dataOrArray.map(d => d.data))])
