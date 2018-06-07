@@ -6,7 +6,7 @@ import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
 
 import { select } from 'd3-selection';
 import { hierarchy, cluster } from 'd3-hierarchy';
-import { interpolateOranges } from 'd3-scale-chromatic';
+import { interpolateSinebow } from 'd3-scale-chromatic';
 import { scaleSequential } from 'd3-scale';
 export default Component.extend(ChartProperties, {
   classNames: ['simple-chart-cluster'],
@@ -25,7 +25,7 @@ export default Component.extend(ChartProperties, {
     const clusterLayout = cluster().size([height - 15, width - 15]);
     const root = hierarchy(data);
     clusterLayout(root);
-    const color = scaleSequential(interpolateOranges).domain([0, Math.max(root.height)]);
+    const color = scaleSequential(interpolateSinebow).domain([0, Math.max(root.height)]);
 
     svg.selectAll('.chart').remove();
     const chart = svg.append('g')
