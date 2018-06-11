@@ -11,7 +11,7 @@ module('Acceptance | rendered charts', function(hooks) {
     await visit('/');
     const charts = '.ember-simple-charts-wrapper .panel';
     assert.equal(currentURL(), '/');
-    assert.equal(findAll(charts).length, 5);
+    assert.equal(findAll(charts).length, 6);
 
 
     //let the chart animations finish
@@ -88,6 +88,21 @@ module('Acceptance | rendered charts', function(hooks) {
 
     await click(link);
     assert.equal(currentURL(), '/chart-cluster');
+
+    //let the chart animations finish
+    later(async () => {
+      await percySnapshot(assert);
+    }, 1000);
+    await settled();
+  });
+
+  test('visiting pack chart', async function (assert) {
+    await visit('/');
+    const charts = '.ember-simple-charts-wrapper .panel';
+    const link = `${charts}:nth-of-type(6) a`;
+
+    await click(link);
+    assert.equal(currentURL(), '/chart-pack');
 
     //let the chart animations finish
     later(async () => {
