@@ -126,6 +126,81 @@ const cluster = {
     }
   ]
 };
+const pack = {
+  label: 'Root',
+  children: [
+    {
+      label: 'first one',
+      children: [
+        {
+          label: 'first two one',
+          value: 8,
+          children: [
+
+          ]
+        },
+        {
+          label: 'first two two',
+          value: 1,
+          children: [
+
+          ]
+        },
+        {
+          label: 'first two three',
+          value: 2,
+          children: [
+
+          ]
+        }
+      ]
+    },
+    {
+      label: 'second one',
+      children: [
+        {
+          label: 'second two one',
+          value: 30,
+          children: [
+            {
+              label: 'second three one',
+              value: 20,
+              children: [
+                {
+                  label: 'second four one',
+                  value: 10,
+                  children: [
+
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'third one',
+      value: 133,
+      children: []
+    },
+    {
+      label: 'fourth one',
+      children: [
+        {
+          label: 'fourth two one',
+          value: 20,
+          children: []
+        },
+        {
+          label: 'fourth two two',
+          value: 13,
+          children: []
+        },
+      ]
+    }
+  ]
+};
 
 const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nunc cursus,
   efficitur tortor in, varius lacus. Praesent odio tellus, sollicitudin tincidunt luctus sit amet, dignissim nec risus.
@@ -135,4 +210,4 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster });
+export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster, pack });
