@@ -14,8 +14,9 @@ export default Component.extend(ChartProperties, {
     const height = Math.min(passedHeight, passedWidth);
     const width = Math.min(passedHeight, passedWidth);
     const data = get(this, 'data');
+    const dataOrEmptyObject = data ? data : {};
     const svg = select(this.element);
-    const radius = height / 50;
+    const radius = Math.min(5, height / 50);
     const isIcon = get(this, 'isIcon');
     const hover = get(this, 'hover');
     const leave = get(this, 'leave');
@@ -23,7 +24,7 @@ export default Component.extend(ChartProperties, {
     const isClickable = get(this, 'isClickable');
 
     const clusterLayout = cluster().size([height - 15, width - 15]);
-    const root = hierarchy(data);
+    const root = hierarchy(dataOrEmptyObject);
     clusterLayout(root);
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(root.height)]);
 

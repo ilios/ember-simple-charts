@@ -14,8 +14,8 @@ export default Component.extend(ChartProperties, {
     const height = Math.min(passedHeight, passedWidth);
     const width = Math.min(passedHeight, passedWidth);
     const data = get(this, 'data');
+    const dataOrEmptyObject = data ? data : {};
     const svg = select(this.element);
-    const radius = height / 50;
     const isIcon = get(this, 'isIcon');
     const hover = get(this, 'hover');
     const leave = get(this, 'leave');
@@ -23,7 +23,7 @@ export default Component.extend(ChartProperties, {
     const isClickable = get(this, 'isClickable');
 
     const packLayout = pack().size([height - 15, width - 15]).padding(10);
-    const rootNode = hierarchy(data);
+    const rootNode = hierarchy(dataOrEmptyObject);
     rootNode.sum(d => d.value );
     packLayout(rootNode);
     const color = scaleSequential(interpolateSinebow).domain([0, rootNode.value]);
@@ -31,7 +31,6 @@ export default Component.extend(ChartProperties, {
     svg.selectAll('.chart').remove();
     const chart = svg.append('g')
       .attr('class', 'chart');
-    chart.attr('transform', `translate(${radius}, ${radius})`);
 
     const nodes = chart.selectAll('circle')
       .data(rootNode.descendants())
