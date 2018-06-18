@@ -2909,9 +2909,9 @@ ember-source@~3.1.1:
     jquery "^3.3.1"
     resolve "^1.5.0"
 
-ember-tether@1.0.0-beta.3:
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/ember-tether/-/ember-tether-1.0.0-beta.3.tgz#444d846b62cba642e20b09ebb55305325a1d50c3"
+ember-tether@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-tether/-/ember-tether-1.0.0.tgz#6117ea7351927887cb74fa5d46097dd300280c2d"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-node-assets "^0.2.2"

@@ -6,13 +6,13 @@ import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 
-module('Integration | Component | simple chart pack', function(hooks) {
+module('Integration | Component | simple chart tree', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
-    await render(hbs`{{simple-chart-pack data=chartData.pack}}`);
+    await render(hbs`{{simple-chart-tree data=chartData.tree}}`);
     later(() => {
       percySnapshot(assert);
       assert.equal(find(svg).getAttribute('height'), '100%');

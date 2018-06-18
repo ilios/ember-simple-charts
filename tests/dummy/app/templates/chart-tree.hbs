@@ -1,0 +1,29 @@
+<header class="header">
+  <h1>Ember Simple Charts</h1>
+  <h2>Tree Chart</h2>
+</header>
+
+<div class='detail-chart'>
+  <div class='icon-example example'>
+    {{simple-chart isIcon=true name='tree' data=model}}
+  </div>
+
+  <div class='medium-example example'>
+    {{simple-chart name='tree' data=model}}
+  </div>
+
+  <div class='large-example example'>
+    {{simple-chart name='tree' data=model}}
+  </div>
+  <div class='large-example example'>
+    {{#simple-chart name='tree' data=model hover=(action (mut data)) as |chart|}}
+      {{#if data}}
+        {{#chart.tooltip title=(concat data.name ' (' data.children.length ')')}}
+          {{chartData.ipsum}}
+        {{/chart.tooltip}}
+      {{/if}}
+    {{/simple-chart}}
+  </div>
+</div>
+
+<footer class="footer"></footer>

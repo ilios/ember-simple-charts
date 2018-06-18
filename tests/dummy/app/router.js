@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('chart-horz-bar');
   this.route('chart-cluster');
   this.route('chart-pack');
+  this.route('chart-tree');
 });
 
 export default Router;
