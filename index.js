@@ -3,7 +3,7 @@
 const merge = require('merge');
 
 module.exports = {
-  name: 'ember-simple-charts',
+  name: require('./package').name,
   config: function(environment, appConfig) {
     let initialConfig = merge({}, appConfig);
     let updatedConfig = this.addons.reduce((config, addon) => {
