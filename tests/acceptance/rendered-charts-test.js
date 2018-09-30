@@ -1,7 +1,12 @@
 import { later } from '@ember/runloop';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import { settled, click, findAll, currentURL, visit } from '@ember/test-helpers';
+import {
+  settled,
+  click,
+  currentURL,
+  visit
+} from '@ember/test-helpers';
 import { percySnapshot } from 'ember-percy';
 
 module('Acceptance | rendered charts', function(hooks) {
@@ -11,7 +16,7 @@ module('Acceptance | rendered charts', function(hooks) {
     await visit('/');
     const charts = '.ember-simple-charts-wrapper .panel';
     assert.equal(currentURL(), '/');
-    assert.equal(findAll(charts).length, 7);
+    assert.dom(charts).exists({ count: 7 });
 
 
     //let the chart animations finish
