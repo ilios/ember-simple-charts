@@ -1,4 +1,5 @@
-{{component chartName
+{{component
+  chartName
   data=data
   isIcon=isIcon
   hover=(perform handleHover)
@@ -8,10 +9,12 @@
 }}
 
 {{#if tooltipTarget}}
-  {{yield (hash
-    tooltip=(component 'simple-chart-tooltip'
-      tetherTarget=tooltipTarget
-      title=null
+  {{yield
+    (hash
+      tooltip=(component "simple-chart-tooltip"
+        tetherTarget=tooltipTarget
+        title=null
+      )
     )
-  )}}
+  }}
 {{/if}}
