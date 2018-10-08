@@ -3,22 +3,22 @@
   <h2>Pack Chart</h2>
 </header>
 
-<div class='detail-chart'>
-  <div class='icon-example example'>
-    {{simple-chart isIcon=true name='pack' data=model}}
+<div class="detail-chart">
+  <div class="icon-example example">
+    {{simple-chart isIcon=true name="pack" data=model}}
   </div>
 
-  <div class='medium-example example'>
-    {{simple-chart name='pack' data=model}}
+  <div class="medium-example example">
+    {{simple-chart name="pack" data=model}}
   </div>
 
-  <div class='large-example example'>
-    {{simple-chart name='pack' data=model}}
+  <div class="large-example example">
+    {{simple-chart name="pack" data=model}}
   </div>
-  <div class='large-example example'>
-    {{#simple-chart name='pack' data=model hover=(action (mut data)) as |chart|}}
+  <div class="large-example example">
+    {{#simple-chart name="pack" data=model hover=(action (mut data)) as |chart|}}
       {{#if data}}
-        {{#chart.tooltip title=(concat data.label ' (' data.children.length ')')}}
+        {{#chart.tooltip title=(concat data.label " (" data.children.length ")")}}
           {{chartData.ipsum}}
         {{/chart.tooltip}}
       {{/if}}
