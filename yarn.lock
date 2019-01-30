@@ -4033,10 +4033,10 @@ ember-maybe-import-regenerator@^0.1.5, ember-maybe-import-regenerator@^0.1.6:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
-ember-modal-dialog@^2.4.1:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/ember-modal-dialog/-/ember-modal-dialog-2.4.4.tgz#d35d2a89af7fdd05038c9b5f31732edb8551a418"
-  integrity sha1-010qia9/3QUDjJtfMXMu24VRpBg=
+ember-modal-dialog@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ember-modal-dialog/-/ember-modal-dialog-3.0.0.tgz#44c119b0482c809ddf400293fd3d217f356ea036"
+  integrity sha1-RMEZsEgsgJ3fQAKT/T0hfzVuoDY=
   dependencies:
     ember-cli-babel "^6.8.2"
     ember-cli-htmlbars "^2.0.1"
