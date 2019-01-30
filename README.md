@@ -1,4 +1,4 @@
-ember-simple-charts [![Greenkeeper badge](https://badges.greenkeeper.io/ilios/ember-simple-charts.svg)](https://greenkeeper.io/)
+ember-simple-charts
 ==============================================================================
 
 Simple charts for ember apps
