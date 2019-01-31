@@ -3,6 +3,14 @@ ember-simple-charts
 
 Simple charts for ember apps
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
