@@ -38,7 +38,7 @@
     "ember-concurrency": "^0.8.21",
     "ember-modal-dialog": "^3.0.0",
     "ember-resize-aware": "^1.0.0",
-    "ember-tether": "^1.0.0",
+    "ember-tether": "yapplabs/ember-tether#98ad29da5455d1f892075651305059079a1dbab0",
     "merge": "^1.2.0"
   },
   "devDependencies": {
