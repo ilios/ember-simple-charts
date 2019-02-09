@@ -61,7 +61,7 @@ export default Component.extend(ChartProperties, {
           const rects = svg.selectAll('rect');
           const selected = rects.filter(rectData => rectData.label === data.label);
           hover(data, selected.node());
-        }
+        };
         rect.on('mouseenter', handleHover);
         text.on('mouseenter', handleHover);
         rect.on('mouseleave', leave);

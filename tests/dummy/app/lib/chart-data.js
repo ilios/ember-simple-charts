@@ -5,7 +5,7 @@ for (let i = 100; i < 1000; i += 50) {
   donut.push({
     label: i,
     data: i
-  })
+  });
 }
 donut = donut
   .map((a) => ({ sort: Math.random(), value: a }))

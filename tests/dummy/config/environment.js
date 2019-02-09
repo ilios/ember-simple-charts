@@ -48,7 +48,7 @@ module.exports = function(environment) {
         large: 1000
       },
       defaultBreakpoints: ['small', 'large']
-    }
+    };
   }
 
   if (environment === 'production') {
