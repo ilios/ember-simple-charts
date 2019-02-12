@@ -1,11 +1,7 @@
-{{#modal-dialog
-  tetherTarget=tetherTarget
-  attachment=attachment
-  targetAttachment=targetAttachment
-  constraints=constraints
-  animatable=false
-  containerClass="simple-chart-tooltip-container"
-  hasOverlay=false
+{{#ember-popper
+  class="simple-chart-tooltip"
+  placement="top"
+  popperTarget=target
 }}
   <div class="content">
     {{#if title}}
@@ -13,4 +9,4 @@
     {{/if}}
     <div class="body">{{yield}}</div>
   </div>
-{{/modal-dialog}}
+{{/ember-popper}}

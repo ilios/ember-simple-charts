@@ -6,9 +6,20 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | simple chart tooltip', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-   await render(hbs`{{simple-chart-tooltip}}`);
+  test('it renders', async function (assert) {
+    await render(hbs`
+      <div id="target"></div>
+      {{#if show}}
+        {{#simple-chart-tooltip target=target title=' the title'}}
+          template block text
+        {{/simple-chart-tooltip}}
+      {{/if}}
+    `);
+    this.set('target', document.getElementById('target'));
+    // Now with a target in the dom we can show the tooltip
+    this.set('show', true);
 
-    assert.dom('*').hasText('');
+    assert.dom('.title').hasText('the title');
+    assert.dom('.body').hasText('template block text');
   });
 });
