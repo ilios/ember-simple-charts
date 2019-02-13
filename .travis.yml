@@ -35,6 +35,7 @@ jobs:
       script:
         - yarn lint:hbs
         - yarn lint:js
+        - yarn lint:style
         - yarn test
 
     # we recommend new addons test the current and previous LTS
