@@ -49,6 +49,12 @@ Template:
 
 More examples can be found in this addons dummy application.
 
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
 License
 ------------------------------------------------------------------------------
 
