@@ -29,6 +29,8 @@ export default Component.extend(ChartProperties, {
     const values = A(dataOrArray).mapBy('data');
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
 
+    this.element.classList.add('loading');
+
     let createArc = arc().innerRadius(0).outerRadius(radius);
     let createPie = pie().value(d => d.data).sort(null);
     let createLabelArc = arc().outerRadius(radius - 32).innerRadius(radius - 32);
@@ -53,6 +55,10 @@ export default Component.extend(ChartProperties, {
         b.innerRadius = 0;
         const i = interpolate({startAngle: 0, endAngle: 0}, b);
         return (p) => createArc(i(p));
+      }).on('end', () => {
+        if (this.element) {
+          this.element.classList.replace('loading', 'loaded');
+        }
       });
 
     if (!isIcon) {
