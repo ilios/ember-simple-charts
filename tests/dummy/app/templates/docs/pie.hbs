@@ -1,0 +1,59 @@
+<header class="header">
+  <h1>Ember Simple Charts</h1>
+  <h2>Pie Chart</h2>
+</header>
+
+<div class="detail-chart">
+  {{#docs-demo as |demo|}}
+    <h3>As an Icon</h3>
+    {{#demo.example name="icon.hbs"}}
+      <div class="icon-example example">
+        {{simple-chart isIcon=true name="pie" data=chartData.pie}}
+      </div>
+    {{/demo.example}}
+
+    {{demo.snippet "icon.hbs"}}
+    {{demo.snippet "icon.css" label="CSS"}}
+    {{demo.snippet "chart-data.js" label="Data Service"}}
+
+  {{/docs-demo}}
+
+  {{#docs-demo as |demo|}}
+    <h3>Responsive to container size</h3>
+    {{#demo.example name="responsive.hbs"}}
+      <div class="medium-example example">
+        {{simple-chart name="pie" data=chartData.pie}}
+      </div>
+    {{/demo.example}}
+
+    {{demo.snippet "responsive.hbs"}}
+    {{demo.snippet "medium.css" label="CSS"}}
+    {{demo.snippet "chart-data.js" label="Data Service"}}
+
+  {{/docs-demo}}
+
+  {{#docs-demo as |demo|}}
+    <h3>With Tooltips</h3>
+    {{#demo.example name="tooltips.hbs"}}
+      <div class="large-example example">
+        {{#simple-chart
+          name="pie"
+          data=chartData.pie
+          hover=(action (mut data))
+          leave=(action (mut data) null)
+          as |chart|}}
+          {{#if data}}
+            {{#chart.tooltip title=(concat data.label " (" data.data ")")}}
+              {{chartData.ipsum}}
+            {{/chart.tooltip}}
+          {{/if}}
+        {{/simple-chart}}
+      </div>
+    {{/demo.example}}
+
+    {{demo.snippet "tooltips.hbs"}}
+    {{demo.snippet "large.css" label="CSS"}}
+    {{demo.snippet "chart-data.js" label="Data Service"}}
+
+  {{/docs-demo}}
+</div>

@@ -33,8 +33,8 @@ body {
   display: grid;
   grid-auto-rows: minmax(30%, auto);
   grid-gap: 10px; // sass-lint:disable-line no-misspelled-properties
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  margin: 20px auto;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  margin: 20px;
   max-width: 90%;
 
   > * {
@@ -74,6 +74,10 @@ body {
       color: $charcoal;
       text-decoration: none;
     }
+  }
+
+  .docs-demo__snippet-wrapper {
+    text-align: left;
   }
 }
 
