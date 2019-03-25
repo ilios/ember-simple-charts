@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
+    "@ilios/eslint-config-ember-addon": "^2.0.1",
     "broccoli-asset-rev": "^2.7.0",
     "ember-cli": "~3.8.1",
     "ember-cli-addon-docs": "^0.6.7",

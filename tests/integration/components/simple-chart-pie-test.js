@@ -15,7 +15,6 @@ module('Integration | Component | simple chart pie', function(hooks) {
     await render(hbs`{{simple-chart-pie data=chartData.pie}}`);
 
 
-
     //let the chart animations finish
     await waitUntil(() => {
       return findAll(loaded).length;
