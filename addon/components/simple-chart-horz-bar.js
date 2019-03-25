@@ -26,8 +26,8 @@ export default Component.extend(ChartProperties, {
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
 
     const xScale = scaleLinear()
-    .domain([0, Math.max(...dataOrArray.map(d => d.data))])
-    .range([0, isIcon?100:95]);
+      .domain([0, Math.max(...dataOrArray.map(d => d.data))])
+      .range([0, isIcon?100:95]);
 
     const yScale = scaleBand()
       .domain(dataOrArray.map(d => d.label))
@@ -45,38 +45,38 @@ export default Component.extend(ChartProperties, {
       .attr('x', 0)
       .attr('fill', d =>  color(d.data));
 
-      if (!isIcon) {
-        const text = bars.selectAll('text').data(dataOrArray).enter()
-          .append("text")
-          .attr("fill", "#ffffff")
-          .style("font-size", ".8rem")
-          .attr("text-anchor", "end")
-          .attr("text-align", "right")
-          .attr("alignment-baseline", "central")
-          .attr('y', d => `${yScale(d.label) + (yScale.bandwidth() / 2)}%`)
-          .attr('x', d => `${xScale(d.data) - 3}%`)
-          .text(d => d.label);
+    if (!isIcon) {
+      const text = bars.selectAll('text').data(dataOrArray).enter()
+        .append("text")
+        .attr("fill", "#ffffff")
+        .style("font-size", ".8rem")
+        .attr("text-anchor", "end")
+        .attr("text-align", "right")
+        .attr("alignment-baseline", "central")
+        .attr('y', d => `${yScale(d.label) + (yScale.bandwidth() / 2)}%`)
+        .attr('x', d => `${xScale(d.data) - 3}%`)
+        .text(d => d.label);
 
-        const handleHover = data => {
-          const rects = svg.selectAll('rect');
-          const selected = rects.filter(rectData => rectData.label === data.label);
-          hover(data, selected.node());
-        };
-        rect.on('mouseenter', handleHover);
-        text.on('mouseenter', handleHover);
-        rect.on('mouseleave', leave);
-        text.on('mouseleave', leave);
+      const handleHover = data => {
+        const rects = svg.selectAll('rect');
+        const selected = rects.filter(rectData => rectData.label === data.label);
+        hover(data, selected.node());
+      };
+      rect.on('mouseenter', handleHover);
+      text.on('mouseenter', handleHover);
+      rect.on('mouseleave', leave);
+      text.on('mouseleave', leave);
 
-        if (isClickable) {
-          rect.on('click', data => {
-            click(data);
-          });
-          rect.style("cursor", "pointer");
-          text.on('click', data => {
-            click(data);
-          });
-          text.style("cursor", "pointer");
-        }
+      if (isClickable) {
+        rect.on('click', data => {
+          click(data);
+        });
+        rect.style("cursor", "pointer");
+        text.on('click', data => {
+          click(data);
+        });
+        text.style("cursor", "pointer");
       }
+    }
   },
 });

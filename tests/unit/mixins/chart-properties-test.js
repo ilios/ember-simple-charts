@@ -1,3 +1,4 @@
+/* eslint ember/no-new-mixins:0 */
 import EmberObject from '@ember/object';
 import ChartPropertiesMixin from 'ember-simple-charts/mixins/chart-properties';
 import { module, test } from 'qunit';

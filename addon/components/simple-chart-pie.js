@@ -73,8 +73,8 @@ export default Component.extend(ChartProperties, {
 
       const handleHover = ({ data }) => {
         const slices = svg.selectAll('.slice');
-          const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
-          hover(data, selectedSlice.node());
+        const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
+        hover(data, selectedSlice.node());
       };
       path.on('mouseenter', handleHover);
       text.on('mouseenter', handleHover);

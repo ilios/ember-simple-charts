@@ -42,22 +42,22 @@ export default Component.extend(ChartProperties, {
       .attr('cy', d => d.y)
       .attr('r', d => d.r);
 
-      if (!isIcon) {
-        nodes.on('mouseenter', ({ data }) => {
-          const elements = chart.selectAll('circle.node');
-          const selectedElement = elements.filter(({ data: nodeData }) => {
-            return nodeData.name === data.name;
-          });
-          hover(data, selectedElement.node());
+    if (!isIcon) {
+      nodes.on('mouseenter', ({ data }) => {
+        const elements = chart.selectAll('circle.node');
+        const selectedElement = elements.filter(({ data: nodeData }) => {
+          return nodeData.name === data.name;
         });
-        nodes.on('mouseleave', leave);
+        hover(data, selectedElement.node());
+      });
+      nodes.on('mouseleave', leave);
 
-        if (isClickable) {
-          nodes.on('click', ({ data }) => {
-            click(data);
-          });
-          nodes.style("cursor", "pointer");
-        }
+      if (isClickable) {
+        nodes.on('click', ({ data }) => {
+          click(data);
+        });
+        nodes.style("cursor", "pointer");
       }
+    }
   },
 });
