@@ -13,11 +13,11 @@ import { percySnapshot } from 'ember-percy';
 module('Acceptance | rendered charts', function(hooks) {
   setupApplicationTest(hooks);
 
-  test('visiting /', async function (assert) {
-    await visit('/');
+  test('visiting /docs', async function (assert) {
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const loaded = '.loaded';
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/docs');
     assert.dom(charts).exists({ count: 7 });
 
     //let the chart animations finish
@@ -29,30 +29,30 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting donut chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const loaded = '.loaded';
     const link = `${charts}:nth-of-type(1) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-donut');
+    assert.equal(currentURL(), '/docs/donut');
 
     //let the chart animations finish
     await waitUntil(() => {
-      return findAll(loaded).length >= 4;
+      return findAll(loaded).length >= 3;
     });
     await percySnapshot(assert);
     await settled();
   });
 
   test('visiting pie chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const loaded = '.loaded';
     const link = `${charts}:nth-of-type(2) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-pie');
+    assert.equal(currentURL(), '/docs/pie');
 
     //let the chart animations finish
     await waitUntil(() => {
@@ -63,12 +63,12 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting bar chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(3) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-bar');
+    assert.equal(currentURL(), '/docs/bar');
 
     //let the chart animations finish
     await waitUntil(() => {
@@ -79,12 +79,12 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting horz-bar chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(4) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-horz-bar');
+    assert.equal(currentURL(), '/docs/horz-bar');
 
     //let the chart animations finish
     await waitUntil(() => {
@@ -95,12 +95,12 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting cluster chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(5) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-cluster');
+    assert.equal(currentURL(), '/docs/cluster');
 
     //let the chart animations finish
     await waitUntil(() => {
@@ -111,12 +111,12 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting pack chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(6) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-pack');
+    assert.equal(currentURL(), '/docs/pack');
 
     //let the chart animations finish
     await waitUntil(() => {
@@ -127,12 +127,12 @@ module('Acceptance | rendered charts', function(hooks) {
   });
 
   test('visiting tree chart', async function (assert) {
-    await visit('/');
+    await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(7) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/chart-tree');
+    assert.equal(currentURL(), '/docs/tree');
 
     //let the chart animations finish
     await waitUntil(() => {

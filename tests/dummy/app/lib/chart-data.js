@@ -1,16 +1,24 @@
+// BEGIN-SNIPPET chart-data.js
 import EmberObject from '@ember/object';
 
-let donut = [];
-for (let i = 100; i < 1000; i += 50) {
-  donut.push({
-    label: i,
-    data: i
-  });
-}
-donut = donut
-  .map((a) => ({ sort: Math.random(), value: a }))
-  .sort((a, b) => a.sort - b.sort)
-  .map((a) => a.value);
+const donut = [
+  {
+    label: 'Totally Cool',
+    data: 300
+  },
+  {
+    label: 'Way Cool',
+    data: 200
+  },
+  {
+    label: 'Cucumber Cool',
+    data: 400
+  },
+  {
+    label: 'So Cool',
+    data: 500
+  },
+];
 const pie = [
   {
     label: 'Totally Cool',
@@ -286,3 +294,4 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
 export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster, pack, tree });
+// END-SNIPPET

@@ -1,19 +1,22 @@
-import EmberRouter from '@ember/routing/router';
+import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
 import config from './config/environment';
 
-const Router = EmberRouter.extend({
+const Router = AddonDocsRouter.extend({
   location: config.locationType,
   rootURL: config.rootURL
 });
 
-Router.map(function() {
-  this.route('chart-donut');
-  this.route('chart-pie');
-  this.route('chart-bar');
-  this.route('chart-horz-bar');
-  this.route('chart-cluster');
-  this.route('chart-pack');
-  this.route('chart-tree');
+Router.map(function () {
+  docsRoute(this, function () {
+    this.route('donut');
+    this.route('pie');
+    this.route('bar');
+    this.route('horz-bar');
+    this.route('cluster');
+    this.route('pack');
+    this.route('tree');
+  });
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
