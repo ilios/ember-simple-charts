@@ -43,12 +43,23 @@ export default Component.extend(ChartProperties, {
       .attr('height', d => `${yScale(d.data)}%`)
       .attr('x', d => `${xScale(d.label)}%`)
       .attr('y', d => `${100 - yScale(d.data)}%`)
-      .attr('fill', d =>  color(d.label));
+      .attr('fill', d =>  color(d.data));
 
     if (!isIcon) {
       const text = bars.selectAll('text').data(dataOrArray).enter()
         .append("text")
-        .attr("fill", "#ffffff")
+        .style("color", d => {
+          const rgb = color(d.data);
+          //cut up rgb(1, 99, 245) into parts
+          const parts = rgb.substr(4).split(')')[0].split(',');
+          const r = parseInt(parts[0], 16);
+          const g = parseInt(parts[1], 16);
+          const b = parseInt(parts[2], 16);
+          //Thanks to https://24ways.org/2010/calculating-color-contrast for this formula
+          const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+
+          return (yiq >= 256) ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
+        })
         .style("font-size", ".8rem")
         .attr("text-anchor", "middle")
         .attr('x', d => `${xScale(d.label	) + xScale.bandwidth() / 2}%`)
