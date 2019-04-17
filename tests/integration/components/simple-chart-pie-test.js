@@ -1,6 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, find, findAll, waitUntil } from '@ember/test-helpers';
+import {
+  render,
+  settled,
+  findAll,
+  waitUntil
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
@@ -22,8 +27,8 @@ module('Integration | Component | simple chart pie', function(hooks) {
 
     percySnapshot(assert);
 
-    assert.equal(find(svg).getAttribute('height'), '100%');
-    assert.equal(find(svg).getAttribute('width'), '100%');
+    assert.dom(svg).hasAttribute('height', '100%');
+    assert.dom(svg).hasAttribute('width', '100%');
 
     await settled();
   });
