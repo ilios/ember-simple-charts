@@ -41,7 +41,7 @@
     "ember-modal-dialog": "^3.0.0",
     "ember-popper": "^0.10.0",
     "ember-resize-aware": "^1.0.0",
-    "eslint": "^5.13.0",
+    "eslint": "^6.0.1",
     "merge": "^1.2.0"
   },
   "devDependencies": {
