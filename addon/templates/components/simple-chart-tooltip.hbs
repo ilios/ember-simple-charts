@@ -1,11 +1,11 @@
 {{#ember-popper
   class="simple-chart-tooltip"
   placement="top"
-  popperTarget=target
+  popperTarget=@target
 }}
   <div class="content">
-    {{#if title}}
-      <div class="title">{{title}}</div>
+    {{#if @title}}
+      <div class="title">{{@title}}</div>
     {{/if}}
     <div class="body">{{yield}}</div>
   </div>
