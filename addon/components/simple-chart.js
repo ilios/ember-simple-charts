@@ -8,9 +8,6 @@ export default Component.extend({
   layout,
   classNames: ['simple-chart'],
   tagName: 'div',
-  name: null,
-  isIcon: false,
-  tooltipTarget: null,
   mouse: taskGroup().restartable(),
   chartName: computed('type', function () {
     const name = get(this, 'name');

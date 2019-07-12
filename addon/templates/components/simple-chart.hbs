@@ -1,18 +1,18 @@
 {{component
-  chartName
-  data=data
-  isIcon=isIcon
-  hover=(perform handleHover)
-  click=(perform handleClick)
-  leave=(perform handleLeave)
-  isClickable=isClickable
+  this.chartName
+  data=@data
+  isIcon=(or @isIcon false)
+  hover=(perform this.handleHover)
+  click=(perform this.handleClick)
+  leave=(perform this.handleLeave)
+  isClickable=this.isClickable
 }}
 
-{{#if tooltipTarget}}
+{{#if this.tooltipTarget}}
   {{yield
     (hash
       tooltip=(component "simple-chart-tooltip"
-        target=tooltipTarget
+        target=this.tooltipTarget
         title=null
       )
     )

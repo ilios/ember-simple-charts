@@ -3,7 +3,4 @@ import layout from '../templates/components/simple-chart-tooltip';
 
 export default Component.extend({
   layout,
-  target: null,
-  title: null,
-  content: null,
 });
