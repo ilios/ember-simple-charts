@@ -5,5 +5,6 @@ module.exports = {
   ],
   rules: {
     'sort-imports': 0,
+    'ember/no-jquery': 'error'
   },
 };
