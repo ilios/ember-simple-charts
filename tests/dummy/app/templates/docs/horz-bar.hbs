@@ -1,60 +1,72 @@
 {{! template-lint-disable no-bare-strings }}
 <header class="header">
-  <h1>Ember Simple Charts</h1>
-  <h2>Horizontal Bar Chart</h2>
+  <h1>
+    Ember Simple Charts
+  </h1>
+  <h2>
+    Horizontal Bar Chart
+  </h2>
 </header>
-
 <div class="detail-chart">
-  {{#docs-demo as |demo|}}
-    <h3>As an Icon</h3>
-    {{#demo.example name="icon.hbs"}}
+  <DocsDemo as |demo|>
+    <h3>
+      As an Icon
+    </h3>
+    {{#demo.example name="horz-bar-icon.hbs"}}
       <div class="icon-example example">
-        {{simple-chart isIcon=true name="horz-bar" data=this.chartData.horz}}
+        <SimpleChart
+          @isIcon={{true}}
+          @name="horz-bar"
+          @data={{this.chartData.horz}}
+        />
       </div>
     {{/demo.example}}
-
-    {{demo.snippet "icon.hbs"}}
-    {{demo.snippet "icon.css" label="CSS"}}
-    {{demo.snippet "chart-data.js" label="Data Service"}}
-
-  {{/docs-demo}}
-
-  {{#docs-demo as |demo|}}
-    <h3>Responsive to container size</h3>
-    {{#demo.example name="responsive.hbs"}}
+    <demo.snippet @name="horz-bar-icon.hbs" @label="Template" />
+    <demo.snippet @name="icon.css" @label="CSS" />
+    <demo.snippet @name="chart-data.js" @label="Data Service" />
+  </DocsDemo>
+  <DocsDemo as |demo|>
+    <h3>
+      Responsive to container size
+    </h3>
+    {{#demo.example name="horz-bar-responsive.hbs"}}
       <div class="medium-example example">
-        {{simple-chart name="horz-bar" data=this.chartData.horz}}
+        <SimpleChart @name="horz-bar" @data={{this.chartData.horz}} />
       </div>
     {{/demo.example}}
-
-    {{demo.snippet "responsive.hbs"}}
-    {{demo.snippet "medium.css" label="CSS"}}
-    {{demo.snippet "chart-data.js" label="Data Service"}}
-
-  {{/docs-demo}}
-
-  {{#docs-demo as |demo|}}
-    <h3>With Tooltips</h3>
+    <demo.snippet @name="horz-bar-responsive.hbs" @label="Template" />
+    <demo.snippet @name="medium.css" @label="CSS" />
+    <demo.snippet @name="chart-data.js" @label="Data Service" />
+  </DocsDemo>
+  <DocsDemo as |demo|>
+    <h3>
+      With Tooltips
+    </h3>
     {{#demo.example name="horz-bar-tooltips.hbs"}}
       <div class="large-example example">
-        {{#simple-chart
-          name="horz-bar"
-          data=this.chartData.horz
-          hover=(action (mut this.tooltipData))
-          leave=(action (mut this.tooltipData) null)
-          as |chart|}}
+        <SimpleChart
+          @name="horz-bar"
+          @data={{this.chartData.horz}}
+          @hover={{action (mut this.tooltipData)}}
+          @leave={{action (mut this.tooltipData) null}} as |chart|
+        >
           {{#if this.tooltipData}}
-            {{#chart.tooltip title=(concat this.tooltipData.label " (" this.tooltipData.data ")")}}
+            <chart.tooltip
+              @title={{concat
+                this.tooltipData.label
+                " ("
+                this.tooltipData.data
+                ")"
+              }}
+            >
               {{this.chartData.ipsum}}
-            {{/chart.tooltip}}
+            </chart.tooltip>
           {{/if}}
-        {{/simple-chart}}
+        </SimpleChart>
       </div>
     {{/demo.example}}
-
-    {{demo.snippet "horz-bar-tooltips.hbs"}}
-    {{demo.snippet "large.css" label="CSS"}}
-    {{demo.snippet "chart-data.js" label="Data Service"}}
-
-  {{/docs-demo}}
+    <demo.snippet @name="horz-bar-tooltips.hbs" @label="Template" />
+    <demo.snippet @name="large.css" @label="CSS" />
+    <demo.snippet @name="chart-data.js" @label="Data Service" />
+  </DocsDemo>
 </div>

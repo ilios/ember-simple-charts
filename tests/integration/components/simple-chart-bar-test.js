@@ -23,7 +23,7 @@ module('Integration | Component | simple chart bar', function(hooks) {
     const text3 = `${text}:nth-of-type(3)`;
     const text4 = `${text}:nth-of-type(4)`;
 
-    await render(hbs`{{simple-chart-bar data=chartData.bar}}`);
+    await render(hbs`<SimpleChartBar @data={{chartData.bar}} />`);
     percySnapshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');

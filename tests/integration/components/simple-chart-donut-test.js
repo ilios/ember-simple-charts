@@ -17,7 +17,7 @@ module('Integration | Component | simple chart donut', function(hooks) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const loaded = '.loaded';
-    await render(hbs`{{simple-chart-donut data=chartData.donut}}`);
+    await render(hbs`<SimpleChartDonut @data={{chartData.donut}} />`);
 
     //let the chart animations finish
     await waitUntil(() => {

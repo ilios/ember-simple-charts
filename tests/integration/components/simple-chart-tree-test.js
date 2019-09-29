@@ -12,7 +12,7 @@ module('Integration | Component | simple chart tree', function(hooks) {
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
-    await render(hbs`{{simple-chart-tree data=chartData.tree}}`);
+    await render(hbs`<SimpleChartTree @data={{chartData.tree}} />`);
     later(() => {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');

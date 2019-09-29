@@ -28,7 +28,7 @@ module('Integration | Component | simple chart horz bar', function(hooks) {
     const text6 = `${text}:nth-of-type(6)`;
     const text7 = `${text}:nth-of-type(7)`;
 
-    await render(hbs`{{simple-chart-horz-bar data=chartData.horz}}`);
+    await render(hbs`<SimpleChartHorzBar @data={{chartData.horz}} />`);
     percySnapshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');

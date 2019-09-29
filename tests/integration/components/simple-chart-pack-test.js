@@ -12,7 +12,7 @@ module('Integration | Component | simple chart pack', function(hooks) {
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
-    await render(hbs`{{simple-chart-pack data=chartData.pack}}`);
+    await render(hbs`<SimpleChartPack @data={{chartData.pack}} />`);
     later(() => {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');

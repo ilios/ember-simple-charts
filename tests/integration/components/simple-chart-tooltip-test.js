@@ -10,9 +10,9 @@ module('Integration | Component | simple chart tooltip', function(hooks) {
     await render(hbs`
       <div id="target"></div>
       {{#if show}}
-        {{#simple-chart-tooltip target=target title=' the title'}}
+        <SimpleChartTooltip @target={{target}} @title="the title">
           template block text
-        {{/simple-chart-tooltip}}
+        </SimpleChartTooltip>
       {{/if}}
     `);
     this.set('target', document.getElementById('target'));

@@ -7,14 +7,10 @@
   leave=(perform this.handleLeave)
   isClickable=this.isClickable
 }}
-
 {{#if this.tooltipTarget}}
   {{yield
     (hash
-      tooltip=(component "simple-chart-tooltip"
-        target=this.tooltipTarget
-        title=null
-      )
+      tooltip=(component "simple-chart-tooltip" target=this.tooltipTarget title=null)
     )
   }}
 {{/if}}

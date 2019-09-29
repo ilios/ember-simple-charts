@@ -1,31 +1,59 @@
 {{! template-lint-disable no-bare-strings }}
 <div class="ember-simple-charts-wrapper">
   <div class="panel">
-    <h4>{{#link-to "docs.donut"}}Donut{{/link-to}}</h4>
-    {{simple-chart name="donut" data=this.chartData.donut}}
+    <h4>
+      <LinkTo @route="docs.donut">
+        Donut
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="donut" @data={{this.chartData.donut}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.pie"}}Pie{{/link-to}}</h4>
-    {{simple-chart name="pie" data=this.chartData.pie}}
+    <h4>
+      <LinkTo @route="docs.pie">
+        Pie
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="pie" @data={{this.chartData.pie}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.bar"}}Bar{{/link-to}}</h4>
-    {{simple-chart name="bar" data=this.chartData.bar}}
+    <h4>
+      <LinkTo @route="docs.bar">
+        Bar
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="bar" @data={{this.chartData.bar}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.horz-bar"}}Horizontal Bar{{/link-to}}</h4>
-    {{simple-chart name="horz-bar" data=this.chartData.bar}}
+    <h4>
+      <LinkTo @route="docs.horz-bar">
+        Horizontal Bar
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="horz-bar" @data={{this.chartData.bar}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.cluster"}}Cluster{{/link-to}}</h4>
-    {{simple-chart name="cluster" data=this.chartData.cluster}}
+    <h4>
+      <LinkTo @route="docs.cluster">
+        Cluster
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="cluster" @data={{this.chartData.cluster}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.pack"}}Pack{{/link-to}}</h4>
-    {{simple-chart name="pack" data=this.chartData.pack}}
+    <h4>
+      <LinkTo @route="docs.pack">
+        Pack
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="pack" @data={{this.chartData.pack}} />
   </div>
   <div class="panel">
-    <h4>{{#link-to "docs.tree"}}Tree{{/link-to}}</h4>
-    {{simple-chart name="tree" data=this.chartData.tree}}
+    <h4>
+      <LinkTo @route="docs.tree">
+        Tree
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="tree" @data={{this.chartData.tree}} />
   </div>
 </div>
