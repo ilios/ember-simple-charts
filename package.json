@@ -44,6 +44,7 @@
     "merge": "^1.2.0"
   },
   "devDependencies": {
+    "@ember/edition-utils": "^1.1.1",
     "@ember/optional-features": "^1.0.0",
     "@ilios/ember-template-lint-plugin": "^1.0.1",
     "@ilios/eslint-config-ember-addon": "^2.0.1",
