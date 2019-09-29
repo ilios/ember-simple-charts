@@ -38,7 +38,6 @@
     "ember-cli-htmlbars": "^4.0.0",
     "ember-cli-sass": "^10.0.0",
     "ember-concurrency": "^1.0.0",
-    "ember-modal-dialog": "^3.0.0",
     "ember-popper": "^0.10.0",
     "ember-resize-aware": "^1.0.0",
     "eslint": "^6.0.1",
