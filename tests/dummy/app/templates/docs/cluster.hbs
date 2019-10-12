@@ -10,6 +10,20 @@
 <div class="detail-chart">
   <DocsDemo as |demo|>
     <h3>
+      Turn Data into a Cluster
+    </h3>
+    {{#demo.example name="cluster.hbs"}}
+      <div class="medium-example example">
+        <SimpleChart @name="cluster" @data={{this.chartData.cluster}} />
+      </div>
+    {{/demo.example}}
+    <demo.snippet @name="cluster.hbs" @label="Template" />
+    <demo.snippet @name="medium.css" @label="CSS" />
+    <demo.snippet @name="chart-data.js" @label="Data Service" />
+  </DocsDemo>
+
+  <DocsDemo as |demo|>
+    <h3>
       As an Icon
     </h3>
     {{#demo.example name="cluster-icon.hbs"}}
@@ -30,12 +44,12 @@
       Responsive to container size
     </h3>
     {{#demo.example name="cluster-responsive.hbs"}}
-      <div class="medium-example example">
+      <div class="large-example example">
         <SimpleChart @name="cluster" @data={{this.chartData.cluster}} />
       </div>
     {{/demo.example}}
     <demo.snippet @name="cluster-responsive.hbs" @label="Template" />
-    <demo.snippet @name="medium.css" @label="CSS" />
+    <demo.snippet @name="large.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
   </DocsDemo>
   <DocsDemo as |demo|>
@@ -43,7 +57,7 @@
       With Tooltips
     </h3>
     {{#demo.example name="cluster-tooltips.hbs"}}
-      <div class="large-example example">
+      <div class="medium-example example">
         <SimpleChart
           @name="cluster"
           @data={{this.chartData.cluster}}
@@ -66,7 +80,25 @@
       </div>
     {{/demo.example}}
     <demo.snippet @name="cluster-tooltips.hbs" @label="Template" />
-    <demo.snippet @name="large.css" @label="CSS" />
+    <demo.snippet @name="medium.css" @label="CSS" />
+    <demo.snippet @name="chart-data.js" @label="Data Service" />
+  </DocsDemo>
+  <DocsDemo as |demo|>
+    <h3>
+      Action on Click
+    </h3>
+    {{#demo.example name="cluster-click.hbs"}}
+      <div class="medium-example example">
+        <SimpleChart
+          @name="cluster"
+          @data={{this.chartData.cluster}}
+          @click={{action this.chartData.click}}
+        >
+        </SimpleChart>
+      </div>
+    {{/demo.example}}
+    <demo.snippet @name="cluster-click.hbs" @label="Template" />
+    <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
   </DocsDemo>
 </div>

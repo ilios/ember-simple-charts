@@ -1,0 +1,9 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  class="simple-chart-pack {{if this.loading "loading" "loaded"}}"
+  height={{@containerHeight}}
+  width={{@containerWidth}}
+  ...attributes
+  {{did-update this.draw @containerHeight @containerWidth}}
+  {{did-insert this.draw @containerHeight @containerWidth}}
+></svg>

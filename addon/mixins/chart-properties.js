@@ -7,9 +7,6 @@ import ResizeAware from 'ember-resize-aware/mixins/resize-aware';
 export default Mixin.create(ResizeAware, {
   tagName: 'svg',
   attributeBindings: ['_width:width', '_height:height', '_xmlns:xmlns'],
-  _width: '100%',
-  _height: '100%',
-  _xmlns: 'http://www.w3.org/2000/svg',
   currentClientHeight: null,
   currentClientWidth: null,
   data: null,

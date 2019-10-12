@@ -285,6 +285,10 @@ const tree = {
   ]
 };
 
+const click = function (data) {
+  alert(data.label || data.name);
+};
+
 const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nunc cursus,
   efficitur tortor in, varius lacus. Praesent odio tellus, sollicitudin tincidunt luctus sit amet, dignissim nec risus.
   Aenean pharetra laoreet blandit. Suspendisse consectetur justo eu elit vestibulum, a suscipit ante lacinia.
@@ -293,5 +297,5 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster, pack, tree });
+export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster, pack, tree, click });
 // END-SNIPPET

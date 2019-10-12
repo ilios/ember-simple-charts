@@ -1,27 +1,26 @@
-import Component from '@ember/component';
-import { get } from '@ember/object';
-import 'd3-transition';
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
-import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
+import 'd3-transition';
 
 import { select } from 'd3-selection';
 import { hierarchy, cluster } from 'd3-hierarchy';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { scaleSequential } from 'd3-scale';
-export default Component.extend(ChartProperties, {
-  classNames: ['simple-chart-cluster'],
-  draw(passedHeight, passedWidth) {
-    const height = Math.min(passedHeight, passedWidth);
-    const width = Math.min(passedHeight, passedWidth);
-    const data = get(this, 'data');
-    const dataOrEmptyObject = data ? data : {};
-    const svg = select(this.element);
+export default class SimpleChartDonut extends Component {
+  @tracked loading;
+
+  @action
+  draw(element, [elementHeight, elementWidth]) {
+    if (!elementHeight || !elementWidth) {
+      return;
+    }
+    const height = Math.min(elementHeight, elementWidth);
+    const width = Math.min(elementHeight, elementWidth);
+    const dataOrEmptyObject = this.args.data ? this.args.data : {};
+    const svg = select(element);
     const radius = Math.min(5, height / 50);
-    const isIcon = get(this, 'isIcon');
-    const hover = get(this, 'hover');
-    const leave = get(this, 'leave');
-    const click = get(this, 'click');
-    const isClickable = get(this, 'isClickable');
 
     const clusterLayout = cluster().size([height - 15, width - 15]);
     const root = hierarchy(dataOrEmptyObject);
@@ -61,22 +60,22 @@ export default Component.extend(ChartProperties, {
       .attr('cy', d => d.y)
       .attr('r', radius);
 
-    if (!isIcon) {
+    if (!this.args.isIcon) {
       nodes.on('mouseenter', ({ data }) => {
         const elements = svg.selectAll('circle.node');
         const selectedElement = elements.filter(({ data: nodeData }) => {
           return nodeData.name === data.name;
         });
-        hover(data, selectedElement.node());
+        this.args.hover(data, selectedElement.node());
       });
-      nodes.on('mouseleave', leave);
+      nodes.on('mouseleave', this.args.leave);
 
-      if (isClickable) {
+      if (this.args.isClickable) {
         nodes.on('click', ({ data }) => {
-          click(data);
+          this.args.click(data);
         });
         nodes.style("cursor", "pointer");
       }
     }
-  },
-});
+  }
+}
