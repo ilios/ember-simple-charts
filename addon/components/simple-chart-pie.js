@@ -19,8 +19,8 @@ export default class SimpleChartDonut extends Component {
     if (!elementHeight || !elementWidth) {
       return;
     }
-    const height = Math.min(elementHeight, elementWidth);
-    const width = Math.min(elementHeight, elementWidth);
+    const height = Math.min(elementHeight, elementWidth) || 0;
+    const width = Math.min(elementHeight, elementWidth) || 0;
     const dataOrArray = this.args.data ? this.args.data:[{data: 1, label: '', empty: true}];
     const svg = select(element);
     const radius = Math.min(width, height) / 2;
