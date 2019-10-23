@@ -77,7 +77,6 @@ export default class SimpleChartDonut extends Component {
         })
         .style("font-size", ".8rem")
         .attr('transform', d => "translate(" + createLabelArc.centroid(d) + ")")
-        .attr("dy", ".40rem")
         .attr("text-anchor", "middle")
         .text(d => d.data.label);
 
