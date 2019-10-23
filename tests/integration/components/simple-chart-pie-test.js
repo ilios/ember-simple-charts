@@ -17,7 +17,15 @@ module('Integration | Component | simple chart pie', function(hooks) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const loaded = '.loaded';
-    await render(hbs`<SimpleChartPie @data={{chartData.pie}} />`);
+    await render(hbs`<SimpleChartPie
+      @data={{chartData.pie}}
+      @isIcon={{false}}
+      @isClickable={{false}}
+      @hover={{fn this.nothing}}
+      @click={{fn this.nothing}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
 
 
     //let the chart animations finish
