@@ -1,61 +1,68 @@
-import Component from '@ember/component';
-import { set, get, computed } from '@ember/object';
-import { isPresent } from '@ember/utils';
-import { task, taskGroup, timeout } from 'ember-concurrency';
-import layout from '../templates/components/simple-chart';
+import Component from '@glimmer/component';
+import { timeout } from 'ember-concurrency';
+import { task, taskGroup } from 'ember-concurrency-decorators';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+
 const DEBOUNCE_MS = 100;
-export default Component.extend({
-  layout,
-  classNames: ['simple-chart'],
-  tagName: 'div',
-  mouse: taskGroup().restartable(),
-  chartName: computed('type', function () {
-    const name = get(this, 'name');
-    return `simple-chart-${name}`;
-  }),
-  isClickable: computed('click', function () {
-    const click = get(this, 'click');
-    return isPresent(click);
-  }),
-  handleHover: task(function* (data, tooltipTarget) {
-    const hover = get(this, 'hover');
+export default class SimpleChart extends Component {
+  @tracked height;
+  @tracked width;
+  @tracked tooltipTarget;
+  get chartName() {
+    return `simple-chart-${this.args.name}`;
+  }
+
+  get isClickable() {
+    return !!this.args.click;
+  }
+  @action
+  calculateSize(element) {
+    const rect = element.getBoundingClientRect();
+    const { height, width } = rect;
+    this.height = Math.floor(height);
+    this.width = Math.floor(width);
+  }
+  @taskGroup mouseGroup;
+  @task({ group: 'mouseGroup' })
+  *handleHover(data, tooltipTarget) {
     yield timeout(DEBOUNCE_MS);
-    if (hover) {
+    if (this.args.hover) {
       try {
-        yield hover(data);
-        if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
-          set(this, 'tooltipTarget', tooltipTarget);
+        yield this.args.hover(data);
+        if (!(this.isDestroyed || this.isDestroying)) {
+          this.tooltipTarget = tooltipTarget;
         }
       } catch (e) {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }).group('mouse'),
-  handleLeave: task(function* () {
+  }
+  @task({ group: 'mouseGroup' })
+  *handleLeave() {
     yield timeout(DEBOUNCE_MS);
-    const leave = get(this, 'leave');
-    if (leave) {
+    if (this.args.leave) {
       try {
-        yield leave();
-        if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
-          set(this, 'tooltipTarget', null);
+        yield this.args.leave();
+        if (!(this.isDestroyed || this.isDestroying)) {
+          this.tooltipTarget = null;
         }
       } catch (e) {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }).group('mouse'),
-  handleClick: task(function* (data) {
-    const click = get(this, 'click');
-    if (click) {
+  }
+  @task({ group: 'mouseGroup' })
+  *handleClick(data) {
+    if (this.args.click) {
       try {
-        yield click(data);
-        if ( !(get(this, 'isDestroyed') || get(this, 'isDestroying')) ) {
-          set(this, 'tooltipTarget', null);
+        yield this.args.click(data);
+        if (!(this.isDestroyed || this.isDestroying)) {
+          this.tooltipTarget = null;
         }
       } catch (e) {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }).group('mouse'),
-});
+  }
+}

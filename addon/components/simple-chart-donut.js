@@ -1,8 +1,7 @@
-import Component from '@ember/component';
-import { get } from '@ember/object';
 import 'd3-transition';
-
-import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
@@ -12,25 +11,24 @@ import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { A } from '@ember/array';
 
-export default Component.extend(ChartProperties, {
-  classNames: ['simple-chart-donut'],
-  draw(passedHeight, passedWidth) {
-    const height = Math.min(passedHeight, passedWidth);
-    const width = Math.min(passedHeight, passedWidth);
-    const data = get(this, 'data');
-    const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
-    const svg = select(this.element);
+export default class SimpleChartDonut extends Component {
+  @tracked loading;
+
+  @action
+  draw(element, [elementHeight, elementWidth]) {
+    if (!elementHeight || !elementWidth) {
+      return;
+    }
+    const height = Math.min(elementHeight, elementWidth) || 0;
+    const width = Math.min(elementHeight, elementWidth) || 0;
+    const dataOrArray = this.args.data?this.args.data:[{data: 1, label: '', empty: true}];
+    const svg = select(element);
     const radius = Math.min(width, height) / 2;
-    const isIcon = get(this, 'isIcon');
-    const hover = get(this, 'hover');
-    const leave = get(this, 'leave');
-    const click = get(this, 'click');
-    const isClickable = get(this, 'isClickable');
     const values = A(dataOrArray).mapBy('data');
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
     const donutWidth = width * .2;
 
-    this.element.classList.add('loading');
+    this.loading = true;
 
     let createArc = arc().innerRadius(radius - donutWidth).outerRadius(radius);
     let createPie = pie().value(d => d.data).sort(null);
@@ -57,12 +55,12 @@ export default Component.extend(ChartProperties, {
         const i = interpolate({startAngle: 0, endAngle: 0}, b);
         return (p) => createArc(i(p));
       }).on('end', () => {
-        if (this.element) {
-          this.element.classList.replace('loading', 'loaded');
+        if (!(this.isDestroyed || this.isDestroying)) {
+          this.loading = false;
         }
       });
 
-    if (!isIcon) {
+    if (!this.args.isIcon) {
       const text = chart.selectAll('.slice')
         .append("text")
         .style("color", d => {
@@ -79,30 +77,29 @@ export default Component.extend(ChartProperties, {
         })
         .style("font-size", ".8rem")
         .attr('transform', d => "translate(" + createLabelArc.centroid(d) + ")")
-        .attr("dy", ".40rem")
         .attr("text-anchor", "middle")
         .text(d => d.data.label);
 
       const handleHover = ({ data }) => {
         const slices = svg.selectAll('.slice');
         const selectedSlice = slices.filter(({data: sliceData}) => sliceData.label === data.label);
-        hover(data, selectedSlice.node());
+        this.args.hover(data, selectedSlice.node());
       };
       path.on('mouseenter', handleHover);
       text.on('mouseenter', handleHover);
-      path.on('mouseleave', leave);
-      text.on('mouseleave', leave);
+      path.on('mouseleave', this.args.leave);
+      text.on('mouseleave', this.args.leave);
 
-      if (isClickable) {
+      if (this.args.isClickable) {
         path.on('click', ({ data }) => {
-          click(data);
+          this.args.click(data);
         });
         path.style("cursor", "pointer");
         text.on('click', ({ data }) => {
-          click(data);
+          this.args.click(data);
         });
         text.style("cursor", "pointer");
       }
     }
-  },
-});
+  }
+}

@@ -12,7 +12,15 @@ module('Integration | Component | simple chart pack', function(hooks) {
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
-    await render(hbs`{{simple-chart-pack data=chartData.pack}}`);
+    await render(hbs`<SimpleChartPack
+      @data={{chartData.pack}}
+      @isIcon={{false}}
+      @isClickable={{false}}
+      @hover={{fn this.nothing}}
+      @click={{fn this.nothing}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
     later(() => {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');

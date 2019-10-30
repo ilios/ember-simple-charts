@@ -1,12 +1,16 @@
-{{#ember-popper
+<EmberPopper
   class="simple-chart-tooltip"
-  placement="top"
-  popperTarget=@target
-}}
+  @placement="top"
+  @popperTarget={{@target}}
+>
   <div class="content">
     {{#if @title}}
-      <div class="title">{{@title}}</div>
+      <div class="title">
+        {{@title}}
+      </div>
     {{/if}}
-    <div class="body">{{yield}}</div>
+    <div class="body">
+      {{yield}}
+    </div>
   </div>
-{{/ember-popper}}
+</EmberPopper>

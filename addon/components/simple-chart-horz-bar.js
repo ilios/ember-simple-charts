@@ -1,6 +1,6 @@
-import Component from '@ember/component';
-import { get } from '@ember/object';
-import ChartProperties from 'ember-simple-charts/mixins/chart-properties';
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 import { select } from 'd3-selection';
 import {
@@ -11,27 +11,26 @@ import {
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { A } from '@ember/array';
 
-export default Component.extend(ChartProperties, {
-  classNames: ['simple-chart-horz-bar'],
-  draw(){
-    const data = get(this, 'data');
-    const isIcon = get(this, 'isIcon');
-    const hover = get(this, 'hover');
-    const leave = get(this, 'leave');
-    const click = get(this, 'click');
-    const isClickable = get(this, 'isClickable');
-    const dataOrArray = data?data:[{data: 1, label: '', empty: true}];
-    const svg = select(this.element);
+export default class SimpleChartDonut extends Component {
+  @tracked loading;
+
+  @action
+  draw(element, [elementHeight, elementWidth]) {
+    if (!elementHeight || !elementWidth) {
+      return;
+    }
+    const dataOrArray = this.args.data ? this.args.data:[{data: 1, label: '', empty: true}];
+    const svg = select(element);
     const values = A(dataOrArray).mapBy('data');
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
 
     const xScale = scaleLinear()
       .domain([0, Math.max(...dataOrArray.map(d => d.data))])
-      .range([0, isIcon?100:95]);
+      .range([0, this.args.isIcon?100:95]);
 
     const yScale = scaleBand()
       .domain(dataOrArray.map(d => d.label))
-      .range([0, isIcon?100:95])
+      .range([0, this.args.isIcon?100:95])
       .paddingInner(0.12);
 
     svg.selectAll('.bars').remove();
@@ -45,7 +44,7 @@ export default Component.extend(ChartProperties, {
       .attr('x', 0)
       .attr('fill', d =>  color(d.data));
 
-    if (!isIcon) {
+    if (!this.args.isIcon) {
       const text = bars.selectAll('text').data(dataOrArray).enter()
         .append("text")
         .style("color", d => {
@@ -71,23 +70,23 @@ export default Component.extend(ChartProperties, {
       const handleHover = data => {
         const rects = svg.selectAll('rect');
         const selected = rects.filter(rectData => rectData.label === data.label);
-        hover(data, selected.node());
+        this.args.hover(data, selected.node());
       };
       rect.on('mouseenter', handleHover);
       text.on('mouseenter', handleHover);
-      rect.on('mouseleave', leave);
-      text.on('mouseleave', leave);
+      rect.on('mouseleave', this.args.leave);
+      text.on('mouseleave', this.args.leave);
 
-      if (isClickable) {
+      if (this.args.isClickable) {
         rect.on('click', data => {
-          click(data);
+          this.args.click(data);
         });
         rect.style("cursor", "pointer");
         text.on('click', data => {
-          click(data);
+          this.args.click(data);
         });
         text.style("cursor", "pointer");
       }
     }
-  },
-});
+  }
+}

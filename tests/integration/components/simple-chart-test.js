@@ -7,7 +7,7 @@ module('Integration | Component | simple chart', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    await render(hbs`{{simple-chart name='donut'}}`);
+    await render(hbs`<SimpleChart @name="donut" />`);
 
     assert.dom('*').hasText('');
   });
