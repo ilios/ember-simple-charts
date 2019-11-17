@@ -15,13 +15,13 @@ export default class SimpleChartDonut extends Component {
   @tracked loading;
 
   @action
-  draw(element, [elementHeight, elementWidth]) {
+  draw(element, [elementHeight, elementWidth, data]) {
     if (!elementHeight || !elementWidth) {
       return;
     }
     const height = Math.min(elementHeight, elementWidth) || 0;
     const width = Math.min(elementHeight, elementWidth) || 0;
-    const dataOrArray = this.args.data ? this.args.data:[{data: 1, label: '', empty: true}];
+    const dataOrArray = data ? data:[{data: 1, label: '', empty: true}];
     const svg = select(element);
     const radius = Math.min(width, height) / 2;
     const values = A(dataOrArray).mapBy('data');

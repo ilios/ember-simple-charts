@@ -15,11 +15,11 @@ export default class SimpleChartDonut extends Component {
   @tracked loading;
 
   @action
-  draw(element, [elementHeight, elementWidth]) {
+  draw(element, [elementHeight, elementWidth, data]) {
     if (!elementHeight || !elementWidth) {
       return;
     }
-    const dataOrArray = this.args.data ? this.args.data:[{data: 1, label: '', empty: true}];
+    const dataOrArray = data ? data:[{data: 1, label: '', empty: true}];
     const svg = select(element);
     const values = A(dataOrArray).mapBy('data');
     const color = scaleSequential(interpolateSinebow).domain([0, Math.max(...values)]);
