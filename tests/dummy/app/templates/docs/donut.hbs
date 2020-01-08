@@ -12,11 +12,11 @@
     <h3>
       Turn Data into a Donut
     </h3>
-    {{#demo.example name="donut.hbs"}}
+    <demo.example @name="donut.hbs">
       <div class="medium-example example">
         <SimpleChart @name="donut" @data={{this.chartData.donut}} />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="donut.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -26,7 +26,7 @@
     <h3>
       As an Icon
     </h3>
-    {{#demo.example name="donut-icon.hbs"}}
+    <demo.example @name="donut-icon.hbs">
       <div class="icon-example example">
         <SimpleChart
           @isIcon={{true}}
@@ -34,7 +34,7 @@
           @data={{this.chartData.donut}}
         />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="donut-icon.hbs" @label="Template" />
     <demo.snippet @name="icon.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -43,11 +43,11 @@
     <h3>
       Responsive to container size
     </h3>
-    {{#demo.example name="donut-responsive.hbs"}}
+    <demo.example @name="donut-responsive.hbs">
       <div class="large-example example">
         <SimpleChart @name="donut" @data={{this.chartData.donut}} />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="donut-responsive.hbs" @label="Template" />
     <demo.snippet @name="large.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -56,7 +56,7 @@
     <h3>
       With Tooltips
     </h3>
-    {{#demo.example name="donut-tooltips.hbs"}}
+    <demo.example @name="donut-tooltips.hbs">
       <div class="medium-example example">
         <SimpleChart
           @name="donut"
@@ -78,7 +78,7 @@
           {{/if}}
         </SimpleChart>
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="donut-tooltips.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -87,7 +87,7 @@
     <h3>
       Action on Click
     </h3>
-    {{#demo.example name="donut-click.hbs"}}
+    <demo.example @name="donut-click.hbs">
       <div class="medium-example example">
         <SimpleChart
           @name="donut"
@@ -96,7 +96,7 @@
         >
         </SimpleChart>
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="donut-click.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
