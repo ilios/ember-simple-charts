@@ -61,8 +61,8 @@
         <SimpleChart
           @name="horz-bar"
           @data={{this.chartData.horz}}
-          @hover={{action (mut this.tooltipData)}}
-          @leave={{action (mut this.tooltipData) null}} as |chart|
+          @hover={{fn (mut this.tooltipData)}}
+          @leave={{fn (mut this.tooltipData) null}} as |chart|
         >
           {{#if this.tooltipData}}
             <chart.tooltip
@@ -92,7 +92,7 @@
         <SimpleChart
           @name="horz-bar"
           @data={{this.chartData.horz}}
-          @click={{action this.chartData.click}}
+          @click={{this.chartData.click}}
         >
         </SimpleChart>
       </div>
