@@ -12,11 +12,11 @@
     <h3>
       Turn Data into a Pack
     </h3>
-    {{#demo.example name="pack.hbs"}}
+    <demo.example @name="pack.hbs">
       <div class="medium-example example">
         <SimpleChart @name="pack" @data={{this.chartData.pack}} />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="pack.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -26,7 +26,7 @@
     <h3>
       As an Icon
     </h3>
-    {{#demo.example name="pack-icon.hbs"}}
+    <demo.example @name="pack-icon.hbs">
       <div class="icon-example example">
         <SimpleChart
           @isIcon={{true}}
@@ -34,7 +34,7 @@
           @data={{this.chartData.pack}}
         />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="pack-icon.hbs" @label="Template" />
     <demo.snippet @name="icon.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -43,11 +43,11 @@
     <h3>
       Responsive to container size
     </h3>
-    {{#demo.example name="pack-responsive.hbs"}}
+    <demo.example @name="pack-responsive.hbs">
       <div class="large-example example">
         <SimpleChart @name="pack" @data={{this.chartData.pack}} />
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="pack-responsive.hbs" @label="Template" />
     <demo.snippet @name="large.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -56,13 +56,13 @@
     <h3>
       With Tooltips
     </h3>
-    {{#demo.example name="pack-tooltips.hbs"}}
+    <demo.example @name="pack-tooltips.hbs">
       <div class="medium-example example">
         <SimpleChart
           @name="pack"
           @data={{this.chartData.pack}}
-          @hover={{action (mut this.tooltipData)}}
-          @leave={{action (mut this.tooltipData) null}} as |chart|
+          @hover={{fn (mut this.tooltipData)}}
+          @leave={{fn (mut this.tooltipData) null}} as |chart|
         >
           {{#if this.tooltipData}}
             <chart.tooltip
@@ -78,7 +78,7 @@
           {{/if}}
         </SimpleChart>
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="pack-tooltips.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
@@ -87,16 +87,16 @@
     <h3>
       Action on Click
     </h3>
-    {{#demo.example name="pack-click.hbs"}}
+    <demo.example @name="pack-click.hbs">
       <div class="medium-example example">
         <SimpleChart
           @name="pack"
           @data={{this.chartData.pack}}
-          @click={{action this.chartData.click}}
+          @click={{this.chartData.click}}
         >
         </SimpleChart>
       </div>
-    {{/demo.example}}
+    </demo.example>
     <demo.snippet @name="pack-click.hbs" @label="Template" />
     <demo.snippet @name="medium.css" @label="CSS" />
     <demo.snippet @name="chart-data.js" @label="Data Service" />
