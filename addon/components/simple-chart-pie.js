@@ -29,9 +29,9 @@ export default class SimpleChartDonut extends Component {
 
     this.loading = true;
 
-    let createArc = arc().innerRadius(0).outerRadius(radius);
-    let createPie = pie().value(d => d.data).sort(null);
-    let createLabelArc = arc().outerRadius(radius - 32).innerRadius(radius - 32);
+    const createArc = arc().innerRadius(0).outerRadius(radius);
+    const createPie = pie().value(d => d.data).sort(null);
+    const createLabelArc = arc().outerRadius(radius - 32).innerRadius(radius - 32);
 
     svg.selectAll('.chart').remove();
     const chart = svg.append('g')
