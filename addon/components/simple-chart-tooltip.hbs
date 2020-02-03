@@ -1,0 +1,17 @@
+{{#in-element this.applicationElement insertBefore=null}}
+  <div
+    class="simple-chart-tooltip"
+    {{did-insert this.setup}}
+  >
+    <div class="content">
+      {{#if @title}}
+        <div class="title">
+          {{@title}}
+        </div>
+      {{/if}}
+      <div class="body">
+        {{yield}}
+      </div>
+    </div>
+  </div>
+{{/in-element}}
