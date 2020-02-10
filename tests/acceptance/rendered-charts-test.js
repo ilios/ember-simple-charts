@@ -37,6 +37,7 @@ module('Acceptance | rendered charts', function(hooks) {
 
     await click(link);
     assert.equal(currentURL(), '/docs/donut');
+    await chartsLoaded();
     await percySnapshot(assert);
     await settled();
   });
@@ -47,7 +48,8 @@ module('Acceptance | rendered charts', function(hooks) {
     const link = `${charts}:nth-of-type(2) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/pie');    await chartsLoaded();
+    assert.equal(currentURL(), '/docs/pie');
+    await chartsLoaded();
     await percySnapshot(assert);
     await settled();
   });
