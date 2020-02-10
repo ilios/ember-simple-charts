@@ -43,7 +43,7 @@
     "ember-concurrency": "^1.1.2",
     "ember-concurrency-decorators": "^1.0.0",
     "ember-did-resize-modifier": "^1.0.0",
-    "ember-in-element-polyfill": "^0.2.1",
+    "ember-in-element-polyfill": "^0.3.0",
     "eslint": "^6.0.1",
     "merge": "^1.2.0"
   },
