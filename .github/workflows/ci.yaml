@@ -27,7 +27,7 @@ jobs:
     - name: test
       run: npm test
       env:
-        PERCY_TOKEN: ${{secrets.percy_token}}
+        PERCY_TOKEN: 700b60c059079e8ff4431ae83c9406ed4b199bce7ab700ab26a77b5273a5d339
 
   test-floating:
     name: Floating Dependencies
