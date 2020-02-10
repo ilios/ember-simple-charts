@@ -1,4 +1,7 @@
 ember-simple-charts
+![Continuous Integration](https://github.com/ilios/ember-simple-charts/workflows/Continuous%20Integration/badge.svg)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ilios/ember-simple-charts)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/59cbbb8d-bce1-4513-9377-641e2182537f/deploy-status)](https://app.netlify.com/sites/ember-simple-charts/deploys)
 ==============================================================================
 
 Simple charts for ember apps
