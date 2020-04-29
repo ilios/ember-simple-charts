@@ -25,7 +25,7 @@ jobs:
     - name: lint hbs
       run: npm run lint:hbs
     - name: test
-      run: npm test
+      run: npm run test:ember
       env:
         PERCY_TOKEN: 700b60c059079e8ff4431ae83c9406ed4b199bce7ab700ab26a77b5273a5d339
 
@@ -44,4 +44,4 @@ jobs:
     - name: install dependencies
       run: npm install --no-package-lock
     - name: test
-      run: npm test
+      run: npm run test:ember
