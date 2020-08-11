@@ -57,7 +57,7 @@
     "@ilios/eslint-config-ember-addon": "^2.0.1",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.17.0",
-    "ember-cli-addon-docs": "^0.8.0",
+    "ember-cli-addon-docs": "^0.9.0",
     "ember-cli-addon-docs-esdoc": "^0.2.1",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-deploy": "^1.0.2",
