@@ -48,7 +48,7 @@
     "ember-did-resize-modifier": "^1.0.0",
     "ember-in-element-polyfill": "^1.0.0",
     "eslint": "^7.0.0",
-    "merge": "^1.2.0"
+    "merge": "^2.1.0"
   },
   "devDependencies": {
     "@ember/edition-utils": "^1.1.1",
