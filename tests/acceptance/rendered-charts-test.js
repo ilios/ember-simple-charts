@@ -6,11 +6,11 @@ import {
   currentURL,
   findAll,
   waitUntil,
-  visit
+  visit,
 } from '@ember/test-helpers';
 import { percySnapshot } from 'ember-percy';
 
-module('Acceptance | rendered charts', function(hooks) {
+module('Acceptance | rendered charts', function (hooks) {
   setupApplicationTest(hooks);
 
   async function chartsLoaded() {

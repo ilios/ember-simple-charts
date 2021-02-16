@@ -24,39 +24,43 @@ export default class SimpleChartDonut extends Component {
     const treeLayout = tree().size([height - 15, width - 15]);
     const root = hierarchy(dataOrEmptyObject);
     treeLayout(root);
-    const color = scaleSequential(interpolateSinebow).domain([0, Math.max(root.height)]);
+    const color = scaleSequential(interpolateSinebow).domain([
+      0,
+      Math.max(root.height),
+    ]);
 
     svg.selectAll('.chart').remove();
-    const chart = svg.append('g')
-      .attr('class', 'chart');
+    const chart = svg.append('g').attr('class', 'chart');
     chart.attr('transform', `translate(${radius}, ${radius})`);
     chart.append('g').classed('links', true);
     chart.append('g').classed('nodes', true);
 
     // Links
-    chart.select('.links')
+    chart
+      .select('.links')
       .selectAll('line.link')
       .data(root.links())
       .enter()
       .append('line')
       .classed('link', true)
-      .attr('stroke', d => color(d.source.depth))
+      .attr('stroke', (d) => color(d.source.depth))
       .attr('stroke-width', '1px')
-      .attr('x1', d => d.source.x)
-      .attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y);
+      .attr('x1', (d) => d.source.x)
+      .attr('y1', (d) => d.source.y)
+      .attr('x2', (d) => d.target.x)
+      .attr('y2', (d) => d.target.y);
 
     // Nodes
-    const nodes = chart.select('.nodes')
+    const nodes = chart
+      .select('.nodes')
       .selectAll('circle.node')
       .data(root.descendants())
       .enter()
       .append('circle')
       .classed('node', true)
-      .attr('fill', d => color(d.depth))
-      .attr('cx', d => d.x)
-      .attr('cy', d => d.y)
+      .attr('fill', (d) => color(d.depth))
+      .attr('cx', (d) => d.x)
+      .attr('cy', (d) => d.y)
       .attr('r', radius);
 
     if (!this.args.isIcon) {
@@ -73,7 +77,7 @@ export default class SimpleChartDonut extends Component {
         nodes.on('click', ({ data }) => {
           this.args.click(data);
         });
-        nodes.style("cursor", "pointer");
+        nodes.style('cursor', 'pointer');
       }
     }
   }

@@ -3,14 +3,14 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | simple chart tooltip', function(hooks) {
+module('Integration | Component | simple chart tooltip', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`
       <div id="target"></div>
-      {{#if show}}
-        <SimpleChartTooltip @target={{target}} @title="the title">
+      {{#if this.show}}
+        <SimpleChartTooltip @target={{this.target}} @title="the title">
           template block text
         </SimpleChartTooltip>
       {{/if}}
