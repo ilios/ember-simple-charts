@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-
 import { select } from 'd3-selection';
 import { hierarchy, pack } from 'd3-hierarchy';
 import { interpolateSinebow } from 'd3-scale-chromatic';
@@ -21,25 +20,30 @@ export default class SimpleChartDonut extends Component {
     const dataOrEmptyObject = data ? data : {};
     const svg = select(element);
 
-    const packLayout = pack().size([height - 15, width - 15]).padding(10);
+    const packLayout = pack()
+      .size([height - 15, width - 15])
+      .padding(10);
     const rootNode = hierarchy(dataOrEmptyObject);
-    rootNode.sum(d => d.value );
+    rootNode.sum((d) => d.value);
     packLayout(rootNode);
-    const color = scaleSequential(interpolateSinebow).domain([0, rootNode.value]);
+    const color = scaleSequential(interpolateSinebow).domain([
+      0,
+      rootNode.value,
+    ]);
 
     svg.selectAll('.chart').remove();
-    const chart = svg.append('g')
-      .attr('class', 'chart');
+    const chart = svg.append('g').attr('class', 'chart');
 
-    const nodes = chart.selectAll('circle')
+    const nodes = chart
+      .selectAll('circle')
       .data(rootNode.descendants())
       .enter()
       .append('circle')
       .classed('node', true)
-      .attr('fill', d => color(d.value))
-      .attr('cx', d => d.x)
-      .attr('cy', d => d.y)
-      .attr('r', d => d.r);
+      .attr('fill', (d) => color(d.value))
+      .attr('cx', (d) => d.x)
+      .attr('cy', (d) => d.y)
+      .attr('r', (d) => d.r);
 
     if (!this.args.isIcon) {
       nodes.on('mouseenter', ({ data }) => {
@@ -55,7 +59,7 @@ export default class SimpleChartDonut extends Component {
         nodes.on('click', ({ data }) => {
           this.args.click(data);
         });
-        nodes.style("cursor", "pointer");
+        nodes.style('cursor', 'pointer');
       }
     }
   }

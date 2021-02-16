@@ -5,10 +5,10 @@ import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 
-module('Integration | Component | simple chart horz bar', function(hooks) {
+module('Integration | Component | simple chart horz bar', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const shapes = `${svg} .bars rect`;
@@ -64,13 +64,26 @@ module('Integration | Component | simple chart horz bar', function(hooks) {
     assert.dom(text5).hasText('Joe');
     assert.dom(text6).hasText('Kelly');
     assert.dom(text7).hasText('Jason');
-    assert.ok(find(text1).getAttribute('style').includes('color: rgb(0, 0, 0)'));
-    assert.ok(find(text2).getAttribute('style').includes('color: rgb(255, 255, 255)'));
-    assert.ok(find(text3).getAttribute('style').includes('color: rgb(255, 255, 255)'));
-    assert.ok(find(text4).getAttribute('style').includes('color: rgb(255, 255, 255)'));
-    assert.ok(find(text5).getAttribute('style').includes('color: rgb(0, 0, 0)'));
-    assert.ok(find(text6).getAttribute('style').includes('color: rgb(255, 255, 255)'));
-    assert.ok(find(text7).getAttribute('style').includes('color: rgb(255, 255, 255)'));
-
+    assert.ok(
+      find(text1).getAttribute('style').includes('color: rgb(0, 0, 0)')
+    );
+    assert.ok(
+      find(text2).getAttribute('style').includes('color: rgb(255, 255, 255)')
+    );
+    assert.ok(
+      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255)')
+    );
+    assert.ok(
+      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255)')
+    );
+    assert.ok(
+      find(text5).getAttribute('style').includes('color: rgb(0, 0, 0)')
+    );
+    assert.ok(
+      find(text6).getAttribute('style').includes('color: rgb(255, 255, 255)')
+    );
+    assert.ok(
+      find(text7).getAttribute('style').includes('color: rgb(255, 255, 255)')
+    );
   });
 });

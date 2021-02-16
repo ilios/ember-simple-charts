@@ -10,8 +10,8 @@ module.exports = function (defaults) {
     'ember-cli-uglify': {
       uglify: {
         compress: {
-          collapse_vars: false
-        }
+          collapse_vars: false,
+        },
       },
     },
   });

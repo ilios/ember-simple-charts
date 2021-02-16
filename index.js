@@ -4,7 +4,7 @@ const merge = require('merge');
 
 module.exports = {
   name: require('./package').name,
-  config: function(environment, appConfig) {
+  config: function (environment, appConfig) {
     const initialConfig = merge({}, appConfig);
     const updatedConfig = this.addons.reduce((config, addon) => {
       if (addon.config) {
@@ -13,5 +13,5 @@ module.exports = {
       return config;
     }, initialConfig);
     return updatedConfig;
-  }
+  },
 };

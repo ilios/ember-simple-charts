@@ -1,16 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {
-  render,
-  settled,
-  findAll,
-  waitUntil
-} from '@ember/test-helpers';
+import { render, settled, findAll, waitUntil } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 
-module('Integration | Component | simple chart donut', function(hooks) {
+module('Integration | Component | simple chart donut', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

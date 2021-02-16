@@ -4,86 +4,86 @@ import EmberObject from '@ember/object';
 const donut = [
   {
     label: 'Totally Cool',
-    data: 300
+    data: 300,
   },
   {
     label: 'Way Cool',
-    data: 200
+    data: 200,
   },
   {
     label: 'Cucumber Cool',
-    data: 400
+    data: 400,
   },
   {
     label: 'So Cool',
-    data: 500
+    data: 500,
   },
 ];
 const pie = [
   {
     label: 'Totally Cool',
-    data: 300
+    data: 300,
   },
   {
     label: 'Way Cool',
-    data: 200
+    data: 200,
   },
   {
     label: 'Cucumber Cool',
-    data: 400
+    data: 400,
   },
   {
     label: 'So Cool',
-    data: 500
+    data: 500,
   },
 ];
 const bar = [
   {
     label: '300',
-    data: 300
+    data: 300,
   },
   {
     label: '200',
-    data: 200
+    data: 200,
   },
   {
     label: '400',
-    data: 400
+    data: 400,
   },
   {
     label: 'Long Label',
-    data: 500
+    data: 500,
   },
 ];
 const horz = [
   {
     label: 'Mark',
-    data: 150
+    data: 150,
   },
   {
     label: 'John',
-    data: 200
+    data: 200,
   },
   {
     label: 'Kathy',
-    data: 300
+    data: 300,
   },
   {
     label: 'Jeff Long Namerson',
-    data: 350
+    data: 350,
   },
   {
     label: 'Joe',
-    data: 100
+    data: 100,
   },
   {
     label: 'Kelly',
-    data: 200
+    data: 200,
   },
   {
     label: 'Jason',
-    data: 350
-  }
+    data: 350,
+  },
 ];
 const cluster = {
   name: 'Root',
@@ -93,23 +93,17 @@ const cluster = {
       children: [
         {
           name: 'first two one',
-          children: [
-
-          ]
+          children: [],
         },
         {
           name: 'first two two',
-          children: [
-
-          ]
+          children: [],
         },
         {
           name: 'first two three',
-          children: [
-
-          ]
-        }
-      ]
+          children: [],
+        },
+      ],
     },
     {
       name: 'second one',
@@ -122,17 +116,15 @@ const cluster = {
               children: [
                 {
                   name: 'second four one',
-                  children: [
-
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };
 const pack = {
   label: 'Root',
@@ -143,25 +135,19 @@ const pack = {
         {
           label: 'first two one',
           value: 8,
-          children: [
-
-          ]
+          children: [],
         },
         {
           label: 'first two two',
           value: 1,
-          children: [
-
-          ]
+          children: [],
         },
         {
           label: 'first two three',
           value: 2,
-          children: [
-
-          ]
-        }
-      ]
+          children: [],
+        },
+      ],
     },
     {
       label: 'second one',
@@ -177,20 +163,18 @@ const pack = {
                 {
                   label: 'second four one',
                   value: 10,
-                  children: [
-
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       label: 'third one',
       value: 133,
-      children: []
+      children: [],
     },
     {
       label: 'fourth one',
@@ -198,16 +182,16 @@ const pack = {
         {
           label: 'fourth two one',
           value: 20,
-          children: []
+          children: [],
         },
         {
           label: 'fourth two two',
           value: 13,
-          children: []
+          children: [],
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 const tree = {
   label: 'Root',
@@ -218,25 +202,19 @@ const tree = {
         {
           label: 'first two one',
           value: 8,
-          children: [
-
-          ]
+          children: [],
         },
         {
           label: 'first two two',
           value: 1,
-          children: [
-
-          ]
+          children: [],
         },
         {
           label: 'first two three',
           value: 2,
-          children: [
-
-          ]
-        }
-      ]
+          children: [],
+        },
+      ],
     },
     {
       label: 'second one',
@@ -252,20 +230,18 @@ const tree = {
                 {
                   label: 'second four one',
                   value: 10,
-                  children: [
-
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       label: 'third one',
       value: 133,
-      children: []
+      children: [],
     },
     {
       label: 'fourth one',
@@ -273,16 +249,16 @@ const tree = {
         {
           label: 'fourth two one',
           value: 20,
-          children: []
+          children: [],
         },
         {
           label: 'fourth two two',
           value: 13,
-          children: []
+          children: [],
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 const click = function (data) {
@@ -297,5 +273,15 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default EmberObject.create({ donut, pie, bar, horz, ipsum, cluster, pack, tree, click });
+export default EmberObject.create({
+  donut,
+  pie,
+  bar,
+  horz,
+  ipsum,
+  cluster,
+  pack,
+  tree,
+  click,
+});
 // END-SNIPPET

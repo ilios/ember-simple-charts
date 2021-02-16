@@ -5,14 +5,14 @@ import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 
-module('Integration | Component | simple chart bar', function(hooks) {
+module('Integration | Component | simple chart bar', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.nothing = () => { };
+    this.nothing = () => {};
   });
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const shapes = `${svg} .bars rect`;
@@ -55,9 +55,17 @@ module('Integration | Component | simple chart bar', function(hooks) {
     assert.dom(text2).hasText('200');
     assert.dom(text3).hasText('400');
     assert.dom(text4).hasText('500');
-    assert.ok(find(text1).getAttribute('style').includes('color: rgb(255, 255, 255);'));
-    assert.ok(find(text2).getAttribute('style').includes('color: rgb(0, 0, 0);'));
-    assert.ok(find(text3).getAttribute('style').includes('color: rgb(255, 255, 255);'));
-    assert.ok(find(text4).getAttribute('style').includes('color: rgb(255, 255, 255);'));
+    assert.ok(
+      find(text1).getAttribute('style').includes('color: rgb(255, 255, 255);')
+    );
+    assert.ok(
+      find(text2).getAttribute('style').includes('color: rgb(0, 0, 0);')
+    );
+    assert.ok(
+      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255);')
+    );
+    assert.ok(
+      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255);')
+    );
   });
 });

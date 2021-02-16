@@ -6,7 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
 
-module('Integration | Component | simple chart tree', function(hooks) {
+module('Integration | Component | simple chart tree', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
