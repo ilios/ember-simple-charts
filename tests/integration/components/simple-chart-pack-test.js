@@ -8,16 +8,15 @@ import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | simple chart pack', function (hooks) {
   setupRenderingTest(hooks);
-
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(hbs`<SimpleChartPack
-      @data={{chartData.pack}}
+      @data={{this.chartData.pack}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{fn this.nothing}}
-      @click={{fn this.nothing}}
+      @hover={{noop}}
+      @click={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);

@@ -8,16 +8,15 @@ import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | simple chart tree', function (hooks) {
   setupRenderingTest(hooks);
-
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(hbs`<SimpleChartTree
-      @data={{chartData.tree}}
+      @data={{this.chartData.tree}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{fn this.nothing}}
-      @click={{fn this.nothing}}
+      @hover={{noop}}
+      @click={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);

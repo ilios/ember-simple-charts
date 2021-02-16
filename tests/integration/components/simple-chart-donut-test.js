@@ -7,17 +7,16 @@ import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | simple chart donut', function (hooks) {
   setupRenderingTest(hooks);
-
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const loaded = '.loaded';
     await render(hbs`<SimpleChartDonut
-      @data={{chartData.donut}}
+      @data={{this.chartData.donut}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{fn this.nothing}}
-      @click={{fn this.nothing}}
+      @hover={{noop}}
+      @click={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);

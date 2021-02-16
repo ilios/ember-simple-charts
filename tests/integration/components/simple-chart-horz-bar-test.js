@@ -7,7 +7,6 @@ import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | simple chart horz bar', function (hooks) {
   setupRenderingTest(hooks);
-
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
@@ -29,11 +28,11 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     const text7 = `${text}:nth-of-type(7)`;
 
     await render(hbs`<SimpleChartHorzBar
-      @data={{chartData.horz}}
+      @data={{this.chartData.horz}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{fn this.nothing}}
-      @click={{fn this.nothing}}
+      @hover={{noop}}
+      @click={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);

@@ -7,17 +7,16 @@ import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | simple chart pie', function (hooks) {
   setupRenderingTest(hooks);
-
   test('it renders', async function (assert) {
     this.set('chartData', ChartData);
     const svg = 'svg';
     const loaded = '.loaded';
     await render(hbs`<SimpleChartPie
-      @data={{chartData.pie}}
+      @data={{this.chartData.pie}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{fn this.nothing}}
-      @click={{fn this.nothing}}
+      @hover={{noop}}
+      @click={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
