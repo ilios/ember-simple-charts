@@ -1,4 +1,11 @@
 import Service from '@ember/service';
 import ChartData from '../lib/chart-data';
 
-export default Service.extend(ChartData, {});
+export default class ChartDataService extends Service {
+  constructor() {
+    super(...arguments);
+    for (let [key, value] of Object.entries(ChartData)) {
+      this[key] = value;
+    }
+  }
+}

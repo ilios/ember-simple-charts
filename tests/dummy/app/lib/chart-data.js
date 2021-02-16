@@ -1,6 +1,4 @@
 // BEGIN-SNIPPET chart-data.js
-import EmberObject from '@ember/object';
-
 const donut = [
   {
     label: 'Totally Cool',
@@ -273,7 +271,7 @@ const ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
   tempus vel eros. Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
   Donec eget fringilla felis. Proin sit amet nisi turpis.`;
 
-export default EmberObject.create({
+export default {
   donut,
   pie,
   bar,
@@ -283,5 +281,5 @@ export default EmberObject.create({
   pack,
   tree,
   click,
-});
+};
 // END-SNIPPET
