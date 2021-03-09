@@ -2,14 +2,38 @@ import Component from '@glimmer/component';
 import { timeout, task, taskGroup } from 'ember-concurrency';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { assert } from '@ember/debug';
+import { ensureSafeComponent } from '@embroider/util';
+import SimpleChartBar from './simple-chart-bar';
+import SimpleChartCluster from './simple-chart-cluster';
+import SimpleChartDonut from './simple-chart-donut';
+import SimpleChartHorzBar from './simple-chart-horz-bar';
+import SimpleChartPack from './simple-chart-pack';
+import SimpleChartPie from './simple-chart-pie';
+import SimpleChartTree from './simple-chart-tree';
 
 const DEBOUNCE_MS = 100;
 export default class SimpleChart extends Component {
   @tracked height;
   @tracked width;
   @tracked tooltipTarget;
-  get chartName() {
-    return `simple-chart-${this.args.name}`;
+
+  get chartComponent() {
+    const charts = {
+      bar: SimpleChartBar,
+      cluster: SimpleChartCluster,
+      donut: SimpleChartDonut,
+      'horz-bar': SimpleChartHorzBar,
+      pack: SimpleChartPack,
+      pie: SimpleChartPie,
+      tree: SimpleChartTree,
+    };
+    assert(
+      `${this.args.name} is a valid chart`,
+      Object.keys(charts).includes(this.args.name)
+    );
+
+    return ensureSafeComponent(charts[this.args.name], this);
   }
   get isIcon() {
     return Boolean(this.args.isIcon);
