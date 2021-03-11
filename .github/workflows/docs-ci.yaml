@@ -14,13 +14,16 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     defaults:
-    run:
-      working-directory: docs
+      run:
+        working-directory: docs
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
-        node-version: 10
+        node-version: 14
+    - name: install addon dependencies
+      working-directory: .
+      run: npm ci
     - name: install dependencies
       run: npm ci
     - name: lint js
