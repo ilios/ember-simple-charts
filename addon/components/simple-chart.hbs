@@ -6,7 +6,7 @@
   {{#let (component this.chartName) as |Chart|}}
     <Chart
       @data={{@data}}
-      @isIcon={{or @isIcon false}}
+      @isIcon={{this.isIcon}}
       @hover={{perform this.handleHover}}
       @click={{perform this.handleClick}}
       @leave={{perform this.handleLeave}}

@@ -11,6 +11,9 @@ export default class SimpleChart extends Component {
   get chartName() {
     return `simple-chart-${this.args.name}`;
   }
+  get isIcon() {
+    return Boolean(this.args.isIcon);
+  }
 
   get isClickable() {
     return !!this.args.click;
