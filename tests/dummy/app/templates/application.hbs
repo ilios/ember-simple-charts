@@ -1,1 +1,18 @@
+{{!-- template-lint-disable no-bare-strings --}}
+<h1>Examples</h1>
+<div class="examples">
+  {{#each this.charts as |c|}}
+    <div class="example">
+      <h2>
+        <SimpleChart
+          @isIcon={{true}}
+          @name={{c.name}}
+          @data={{get this.chartData c.data}}
+        />
+        {{c.title}}
+      </h2>
+      <SimpleChart class="normal" @name={{c.name}} @data={{get this.chartData c.data}} />
+    </div>
+  {{/each}}
+</div>
 {{outlet}}
