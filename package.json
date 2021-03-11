@@ -47,8 +47,7 @@
     "ember-cli-htmlbars": "^5.3.1",
     "ember-concurrency": "^2.0.0",
     "ember-did-resize-modifier": "^1.0.0",
-    "ember-in-element-polyfill": "^1.0.0",
-    "merge": "^2.1.0"
+    "ember-in-element-polyfill": "^1.0.0"
   },
   "devDependencies": {
     "@ember/edition-utils": "^1.1.1",
