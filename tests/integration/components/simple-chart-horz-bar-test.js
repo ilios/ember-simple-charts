@@ -28,7 +28,7 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     const text7 = `${text}:nth-of-type(7)`;
 
     await render(hbs`<SimpleChartHorzBar
-      @data={{this.chartData.horz}}
+      @data={{this.chartData.horzBar}}
       @isIcon={{false}}
       @isClickable={{false}}
       @hover={{noop}}

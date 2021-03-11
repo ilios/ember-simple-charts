@@ -53,7 +53,7 @@ const bar = [
     data: 500,
   },
 ];
-const horzBar = [
+const horz = [
   {
     label: 'Mark',
     data: 150,
@@ -275,7 +275,7 @@ export default {
   donut,
   pie,
   bar,
-  horzBar,
+  horz,
   ipsum,
   cluster,
   pack,
