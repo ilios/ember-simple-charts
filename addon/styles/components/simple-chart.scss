@@ -4,6 +4,7 @@
   width: 100%;
 
   svg {
+    display: block;
     text {
       cursor: default;
       font-size: .8 * $base-font-size;
