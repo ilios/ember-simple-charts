@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
+import ChartData from 'dummy/lib/chart-data';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | simple chart tooltip', function (hooks) {
@@ -21,5 +22,22 @@ module('Integration | Component | simple chart tooltip', function (hooks) {
 
     assert.dom('.title').hasText('the title');
     assert.dom('.body').hasText('template block text');
+  });
+
+  test('click event fires', async function (assert) {
+    assert.expect(1);
+    this.set('chartData', ChartData);
+    this.set('onClick', () => {
+      assert.ok(true, 'event fired.');
+    });
+    this.set('target', document.getElementById('target'));
+    this.set('show', true);
+    await render(hbs`
+      <div id="target"></div>
+      {{#if this.show}}
+        <SimpleChartTooltip @target={{this.target}} @title="" @onClick={{this.onClick}}/>
+      {{/if}}
+    `);
+    await click('.simple-chart-tooltip');
   });
 });
