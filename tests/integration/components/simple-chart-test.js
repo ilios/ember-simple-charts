@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
+import ChartData from 'dummy/lib/chart-data';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | simple chart', function (hooks) {
@@ -10,5 +11,17 @@ module('Integration | Component | simple chart', function (hooks) {
     await render(hbs`<SimpleChart @name="donut" />`);
 
     assert.dom('*').hasText('');
+  });
+
+  test('click event fires', async function (assert) {
+    assert.expect(1);
+    this.set('chartData', ChartData);
+    this.set('onClick', () => {
+      assert.ok(true, 'event fired.');
+    });
+    await render(
+      hbs`<SimpleChart @name="donut" @data={{this.chartData.donut}} @onClick={{this.onClick}}/>`
+    );
+    await click('svg');
   });
 });

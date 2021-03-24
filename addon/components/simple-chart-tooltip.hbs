@@ -1,6 +1,8 @@
 {{#in-element this.applicationElement insertBefore=null}}
   <div
     class="simple-chart-tooltip"
+    role="{{if @onClick "button"}}"
+    {{on "click" (if @onClick @onClick (noop))}}
     {{did-insert this.setup}}
   >
     <div class="content">

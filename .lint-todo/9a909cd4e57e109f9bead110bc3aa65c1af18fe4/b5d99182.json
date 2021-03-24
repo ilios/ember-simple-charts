@@ -1,1 +1,0 @@
-{"engine":"ember-template-lint","filePath":"addon/components/simple-chart.hbs","ruleId":"no-passed-in-event-handlers","line":11,"column":6,"createdDate":1615190400000,"warnDate":1617778800000,"errorDate":1620370800000}

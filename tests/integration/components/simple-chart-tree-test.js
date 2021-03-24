@@ -16,7 +16,7 @@ module('Integration | Component | simple chart tree', function (hooks) {
       @isIcon={{false}}
       @isClickable={{false}}
       @hover={{noop}}
-      @click={{noop}}
+      @onClick={{noop}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);

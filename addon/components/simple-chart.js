@@ -40,7 +40,7 @@ export default class SimpleChart extends Component {
   }
 
   get isClickable() {
-    return !!this.args.click;
+    return !!this.args.onClick;
   }
   @action
   calculateSize(element) {
@@ -80,9 +80,9 @@ export default class SimpleChart extends Component {
   }
   @task({ group: 'mouseGroup' })
   *handleClick(data) {
-    if (this.args.click) {
+    if (this.args.onClick) {
       try {
-        yield this.args.click(data);
+        yield this.args.onClick(data);
         if (!(this.isDestroyed || this.isDestroying)) {
           this.tooltipTarget = null;
         }
