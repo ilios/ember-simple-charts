@@ -76,7 +76,7 @@ export default class SimpleChartDonut extends Component {
 
       if (this.args.isClickable) {
         nodes.on('click', ({ data }) => {
-          this.args.click(data);
+          this.args.onClick(data);
         });
         nodes.style('cursor', 'pointer');
       }
