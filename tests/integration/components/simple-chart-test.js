@@ -22,6 +22,6 @@ module('Integration | Component | simple chart', function (hooks) {
     await render(
       hbs`<SimpleChart @name="donut" @data={{this.chartData.donut}} @isClickable={{true}} @onClick={{this.onClick}}/>`
     );
-    await click('svg');
+    await click('svg .chart .slice:nth-of-type(1) .slicepath');
   });
 });

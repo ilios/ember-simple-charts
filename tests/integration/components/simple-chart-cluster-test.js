@@ -44,6 +44,6 @@ module('Integration | Component | simple chart cluster', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    await click('svg');
+    await click('svg .nodes circle.node:nth-of-type(1)');
   });
 });

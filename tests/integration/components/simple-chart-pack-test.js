@@ -44,6 +44,6 @@ module('Integration | Component | simple chart pack', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    await click('svg');
+    await click('svg .chart circle:nth-of-type(1)');
   });
 });

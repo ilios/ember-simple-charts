@@ -55,6 +55,6 @@ module('Integration | Component | simple chart pie', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    await click('svg');
+    await click('svg .chart .slice:nth-of-type(1) path');
   });
 });

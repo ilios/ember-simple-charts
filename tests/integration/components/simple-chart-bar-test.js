@@ -79,6 +79,6 @@ module('Integration | Component | simple chart bar', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    await click('svg');
+    await click('svg .bars rect:nth-of-type(1)');
   });
 });
