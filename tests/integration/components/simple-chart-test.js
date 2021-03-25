@@ -20,7 +20,7 @@ module('Integration | Component | simple chart', function (hooks) {
       assert.ok(true, 'event fired.');
     });
     await render(
-      hbs`<SimpleChart @name="donut" @data={{this.chartData.donut}} @onClick={{this.onClick}}/>`
+      hbs`<SimpleChart @name="donut" @data={{this.chartData.donut}} @isClickable={{true}} @onClick={{this.onClick}}/>`
     );
     await click('svg');
   });

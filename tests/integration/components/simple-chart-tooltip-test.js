@@ -35,7 +35,7 @@ module('Integration | Component | simple chart tooltip', function (hooks) {
     await render(hbs`
       <div id="target"></div>
       {{#if this.show}}
-        <SimpleChartTooltip @target={{this.target}} @title="" @onClick={{this.onClick}}/>
+        <SimpleChartTooltip @target={{this.target}} @title="" @isClickable={{true}} @onClick={{this.onClick}}/>
       {{/if}}
     `);
     await click('.simple-chart-tooltip');

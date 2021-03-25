@@ -1,19 +1,34 @@
 {{#in-element this.applicationElement insertBefore=null}}
-  <div
-    class="simple-chart-tooltip"
-    role="{{if @onClick "button"}}"
-    {{on "click" (if @onClick @onClick (noop))}}
-    {{did-insert this.setup}}
-  >
-    <div class="content">
-      {{#if @title}}
-        <div class="title">
-          {{@title}}
+  {{#if @isClickable}}
+    <div
+      class="simple-chart-tooltip"
+      role="button"
+      {{on "click" @onClick}}
+      {{did-insert this.setup}}
+    >
+      <div class="content">
+        {{#if @title}}
+          <div class="title">
+            {{@title}}
+          </div>
+        {{/if}}
+        <div class="body">
+          {{yield}}
         </div>
-      {{/if}}
-      <div class="body">
-        {{yield}}
       </div>
     </div>
-  </div>
+  {{else}}
+    <div class="simple-chart-tooltip" {{did-insert this.setup}}>
+      <div class="content">
+        {{#if @title}}
+          <div class="title">
+            {{@title}}
+          </div>
+        {{/if}}
+        <div class="body">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
 {{/in-element}}

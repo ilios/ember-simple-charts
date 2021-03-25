@@ -1,11 +1,23 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  class="simple-chart-tree {{if this.loading "loading" "loaded"}}"
-  height={{@containerHeight}}
-  role="{{if @onClick "button"}}"
-  width={{@containerWidth}}
-  {{on "click" (if @onClick @onClick (noop))}}
-  ...attributes
-  {{did-update this.draw @containerHeight @containerWidth @data}}
-  {{did-insert this.draw @containerHeight @containerWidth @data}}
-></svg>
+{{#if @isClickable}}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="simple-chart-tree {{if this.loading "loading" "loaded"}}"
+    height={{@containerHeight}}
+    role="button"
+    width={{@containerWidth}}
+    {{on "click" @onClick}}
+    {{did-update this.draw @containerHeight @containerWidth @data}}
+    {{did-insert this.draw @containerHeight @containerWidth @data}}
+    ...attributes
+  ></svg>
+{{else}}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="simple-chart-tree {{if this.loading "loading" "loaded"}}"
+    height={{@containerHeight}}
+    width={{@containerWidth}}
+    {{did-update this.draw @containerHeight @containerWidth @data}}
+    {{did-insert this.draw @containerHeight @containerWidth @data}}
+    ...attributes
+  ></svg>
+{{/if}}
