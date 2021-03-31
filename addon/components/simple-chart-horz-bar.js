@@ -72,7 +72,8 @@ export default class SimpleChartDonut extends Component {
         .attr('x', (d) => `${xScale(d.data) - 3}%`)
         .text((d) => d.label);
 
-      const handleHover = (data) => {
+      const handleHover = ({ target }) => {
+        const { data } = select(target).datum();
         const rects = svg.selectAll('rect');
         const selected = rects.filter(
           (rectData) => rectData.label === data.label

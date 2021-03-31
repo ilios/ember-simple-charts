@@ -70,7 +70,8 @@ export default class SimpleChartDonut extends Component {
         .attr('y', (d) => `${110 - yScale(d.data)}%`)
         .text((d) => d.data);
 
-      const handleHover = (data) => {
+      const handleHover = ({ target }) => {
+        const { data } = select(target).datum();
         const rects = svg.selectAll('rect');
         const selected = rects.filter(
           (rectData) => rectData.label === data.label
