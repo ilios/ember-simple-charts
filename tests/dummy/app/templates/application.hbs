@@ -11,7 +11,28 @@
         />
         {{c.title}}
       </h2>
-      <SimpleChart class="normal" @name={{c.name}} @data={{get this.chartData c.data}} />
+      <SimpleChart
+        class="normal"
+        @name={{c.name}}
+        @data={{get this.chartData c.data}}
+        @hover={{this.setToolTipData}}
+        @leave={{fn this.setToolTipData null}}
+        @onClick={{this.click}} as |chart|
+      >
+        {{#if this.tooltipData}}
+          <chart.tooltip
+            @title={{concat
+              this.tooltipData.label
+              " ("
+              this.tooltipData.data
+              ")"
+            }}
+          >
+            {{this.chartData.ipsum}}
+          </chart.tooltip>
+        {{/if}}
+      </SimpleChart>
+
     </div>
   {{/each}}
 </div>
