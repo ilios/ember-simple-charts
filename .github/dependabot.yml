@@ -1,0 +1,54 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "02:30"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.19.0
+    - 7.25.0
+  - dependency-name: eslint-plugin-ember
+    versions:
+    - 10.4.0
+  - dependency-name: ember-auto-import
+    versions:
+    - 1.11.0
+  - dependency-name: "@ember/test-helpers"
+    versions:
+    - 2.2.3
+    - 2.2.5
+  - dependency-name: qunit
+    versions:
+    - 2.14.1
+  - dependency-name: d3-shape
+    versions:
+    - 2.1.0
+  - dependency-name: ember-template-lint
+    versions:
+    - 2.20.0
+    - 3.0.0
+    - 3.0.1
+  - dependency-name: "@glimmer/component"
+    versions:
+    - 1.0.4
+  - dependency-name: "@glimmer/tracking"
+    versions:
+    - 1.0.4
+  - dependency-name: "@popperjs/core"
+    versions:
+    - 2.8.2
+  - dependency-name: ember-concurrency
+    versions:
+    - 2.0.2
+- package-ecosystem: npm
+  directory: "/docs"
+  schedule:
+    interval: weekly
+    time: "02:30"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
