@@ -17,7 +17,7 @@
         @data={{get this.chartData c.data}}
         @hover={{this.setToolTipData}}
         @leave={{fn this.setToolTipData null}}
-        @onClick={{this.click}} as |chart|
+        @onClick={{c.clickHandler}} as |chart|
       >
         {{#if this.tooltipData}}
           <chart.tooltip

@@ -65,7 +65,8 @@ export default class SimpleChartDonut extends Component {
       .attr('r', radius);
 
     if (!this.args.isIcon) {
-      nodes.on('mouseenter', ({ data }) => {
+      nodes.on('mouseenter', ({ target }) => {
+        const { data } = select(target).datum();
         const elements = svg.selectAll('circle.node');
         const selectedElement = elements.filter(({ data: nodeData }) => {
           return nodeData.name === data.name;
@@ -75,7 +76,8 @@ export default class SimpleChartDonut extends Component {
       nodes.on('mouseleave', this.args.leave);
 
       if (this.args.isClickable) {
-        nodes.on('click', ({ data }) => {
+        nodes.on('click', ({ target }) => {
+          const { data } = select(target).datum();
           this.args.onClick(data);
         });
         nodes.style('cursor', 'pointer');

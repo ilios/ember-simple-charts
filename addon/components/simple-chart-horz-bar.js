@@ -72,11 +72,10 @@ export default class SimpleChartDonut extends Component {
         .attr('x', (d) => `${xScale(d.data) - 3}%`)
         .text((d) => d.label);
 
-      const handleHover = (data) => {
+      const handleHover = ({ target }) => {
+        const { data } = select(target).datum();
         const rects = svg.selectAll('rect');
-        const selected = rects.filter(
-          (rectData) => rectData.label === data.label
-        );
+        const selected = rects.filter((rectData) => rectData.data === data);
         this.args.hover(data, selected.node());
       };
       rect.on('mouseenter', handleHover);
@@ -85,11 +84,13 @@ export default class SimpleChartDonut extends Component {
       text.on('mouseleave', this.args.leave);
 
       if (this.args.isClickable) {
-        rect.on('click', (data) => {
+        rect.on('click', ({ target }) => {
+          const { data } = select(target).datum();
           this.args.onClick(data);
         });
         rect.style('cursor', 'pointer');
-        text.on('click', (data) => {
+        text.on('click', ({ target }) => {
+          const { data } = select(target).datum();
           this.args.onClick(data);
         });
         text.style('cursor', 'pointer');
