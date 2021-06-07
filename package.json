@@ -39,7 +39,7 @@
     "d3-hierarchy": "^3.0.1",
     "d3-interpolate": "^2.0.1",
     "d3-scale": "^3.0.0",
-    "d3-scale-chromatic": "^2.0.0",
+    "d3-scale-chromatic": "^3.0.0",
     "d3-selection": "^2.0.0",
     "d3-shape": "^2.0.0",
     "d3-transition": "^2.0.0",
