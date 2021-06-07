@@ -43,7 +43,7 @@
     "ember-cli-terser": "^4.0.2",
     "ember-data": "~3.27.0",
     "ember-export-application-global": "^2.0.1",
-    "ember-fetch": "^8.0.4",
+    "ember-fetch": "^8.0.5",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-page-title": "^6.2.2",
@@ -52,7 +52,7 @@
     "ember-resolver": "^8.0.2",
     "ember-source": "~3.26.1",
     "ember-template-lint": "^3.4.2",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.4.2",
     "eslint-plugin-node": "^11.1.0",
@@ -62,7 +62,7 @@
     "prettier": "^2.3.0",
     "qunit": "^2.15.0",
     "qunit-dom": "^1.6.0",
-    "sass": "^1.34.0"
+    "sass": "^1.34.1"
   },
   "engines": {
     "node": "10.* || >= 12"
