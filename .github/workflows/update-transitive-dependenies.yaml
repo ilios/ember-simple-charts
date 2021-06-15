@@ -19,13 +19,6 @@ jobs:
       run: |
         rm package-lock.json
         npm install
-    - name: remove and re-create docs lock file
-      defaults:
-        run:
-          working-directory: docs
-      run: |
-        rm package-lock.json
-        npm install
     - name: Create Pull Request
       id: cpr
       uses: peter-evans/create-pull-request@v3
