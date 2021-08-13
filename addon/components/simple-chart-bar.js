@@ -71,10 +71,10 @@ export default class SimpleChartDonut extends Component {
         .text((d) => d.data);
 
       const handleHover = ({ target }) => {
-        const { label, data } = select(target).datum();
+        const { label, data, meta } = select(target).datum();
         const rects = svg.selectAll('rect');
         const selected = rects.filter((rectData) => rectData.data === data);
-        this.args.hover({ label, data }, selected.node());
+        this.args.hover({ label, data, meta }, selected.node());
       };
       rect.on('mouseenter', handleHover);
       text.on('mouseenter', handleHover);
