@@ -5,6 +5,7 @@ import {
   render,
   settled,
   findAll,
+  triggerEvent,
   waitUntil,
 } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
@@ -40,11 +41,12 @@ module('Integration | Component | simple chart donut', function (hooks) {
   });
 
   test('click event fires', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onClick', (obj) => {
       assert.equal(obj.label, 'Totally Cool');
       assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartDonut
       @data={{this.chartData.donut}}
@@ -56,5 +58,28 @@ module('Integration | Component | simple chart donut', function (hooks) {
       @containerWidth="100%"
     />`);
     await click('svg .chart .slice:nth-of-type(1) .slicepath');
+  });
+
+  test('hover event fires', async function (assert) {
+    assert.expect(3);
+    this.set('chartData', ChartData);
+    this.set('onHover', (obj) => {
+      assert.equal(obj.label, 'Totally Cool');
+      assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
+    });
+    await render(hbs`<SimpleChartDonut
+      @data={{this.chartData.donut}}
+      @isIcon={{false}}
+      @isClickable={{true}}
+      @hover={{this.onHover}}
+      @onClick={{noop}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
+    await triggerEvent(
+      'svg .chart .slice:nth-of-type(1) .slicepath',
+      'mouseenter'
+    );
   });
 });
