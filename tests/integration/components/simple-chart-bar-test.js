@@ -65,10 +65,11 @@ module('Integration | Component | simple chart bar', function (hooks) {
   });
 
   test('click event fires', async function (assert) {
-    assert.expect(1);
+    assert.expect(2);
     this.set('chartData', ChartData);
-    this.set('onClick', () => {
-      assert.ok(true, 'event fired.');
+    this.set('onClick', (obj) => {
+      assert.equal(obj.label, '300');
+      assert.equal(obj.data, 300);
     });
     await render(hbs`<SimpleChartBar
       @data={{this.chartData.bar}}

@@ -87,10 +87,11 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
   });
 
   test('click event fires', async function (assert) {
-    assert.expect(1);
+    assert.expect(2);
     this.set('chartData', ChartData);
-    this.set('onClick', () => {
-      assert.ok(true, 'event fired.');
+    this.set('onClick', (obj) => {
+      assert.equal(obj.label, 'Mark');
+      assert.equal(obj.data, 150);
     });
     await render(hbs`<SimpleChartHorzBar
       @data={{this.chartData.horzBar}}
