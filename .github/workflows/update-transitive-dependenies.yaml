@@ -20,9 +20,7 @@ jobs:
         rm package-lock.json
         npm install
     - name: remove and re-create docs lock file
-      defaults:
-        run:
-          working-directory: docs
+      working-directory: docs
       run: |
         rm package-lock.json
         npm install
