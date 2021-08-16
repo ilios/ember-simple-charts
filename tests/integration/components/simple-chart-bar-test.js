@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, find } from '@ember/test-helpers';
+import { click, render, find, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
 import { percySnapshot } from 'ember-percy';
@@ -65,10 +65,12 @@ module('Integration | Component | simple chart bar', function (hooks) {
   });
 
   test('click event fires', async function (assert) {
-    assert.expect(1);
+    assert.expect(3);
     this.set('chartData', ChartData);
-    this.set('onClick', () => {
-      assert.ok(true, 'event fired.');
+    this.set('onClick', (obj) => {
+      assert.equal(obj.label, '300');
+      assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartBar
       @data={{this.chartData.bar}}
@@ -80,5 +82,25 @@ module('Integration | Component | simple chart bar', function (hooks) {
       @containerWidth="100%"
     />`);
     await click('svg .bars rect:nth-of-type(1)');
+  });
+
+  test('hover event fires', async function (assert) {
+    assert.expect(3);
+    this.set('chartData', ChartData);
+    this.set('onHover', (obj) => {
+      assert.equal(obj.label, '300');
+      assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
+    });
+    await render(hbs`<SimpleChartBar
+      @data={{this.chartData.bar}}
+      @isIcon={{false}}
+      @isClickable={{true}}
+      @hover={{this.onHover}}
+      @onClick={{noop}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
+    await triggerEvent('svg .bars rect:nth-of-type(1)', 'mouseenter');
   });
 });

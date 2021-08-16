@@ -6,6 +6,7 @@ import {
   settled,
   findAll,
   waitUntil,
+  triggerEvent,
 } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'dummy/lib/chart-data';
@@ -41,10 +42,12 @@ module('Integration | Component | simple chart pie', function (hooks) {
   });
 
   test('click event fires', async function (assert) {
-    assert.expect(1);
+    assert.expect(3);
     this.set('chartData', ChartData);
-    this.set('onClick', () => {
-      assert.ok(true, 'event fired.');
+    this.set('onClick', (obj) => {
+      assert.equal(obj.label, 'Totally Cool');
+      assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartPie
       @data={{this.chartData.pie}}
@@ -56,5 +59,25 @@ module('Integration | Component | simple chart pie', function (hooks) {
       @containerWidth="100%"
     />`);
     await click('svg .chart .slice:nth-of-type(1) path');
+  });
+
+  test('hover event fires', async function (assert) {
+    assert.expect(3);
+    this.set('chartData', ChartData);
+    this.set('onHover', (obj) => {
+      assert.equal(obj.label, 'Totally Cool');
+      assert.equal(obj.data, 300);
+      assert.equal(obj.meta.id, 10);
+    });
+    await render(hbs`<SimpleChartPie
+      @data={{this.chartData.pie}}
+      @isIcon={{false}}
+      @isClickable={{true}}
+      @hover={{this.onHover}}
+      @onClick={{noop}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
+    await triggerEvent('svg .chart .slice:nth-of-type(1) path', 'mouseenter');
   });
 });

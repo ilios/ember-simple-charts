@@ -19,8 +19,8 @@ export default class ApplicationController extends Controller {
       };
     });
   }
-  barClick(data) {
-    alert(`Clicked "${data}"`);
+  barClick({ label, data }) {
+    alert(`Clicked "${label}: ${data}"`);
   }
   clusterClick({ name, children }) {
     alert(`Clicked "${name}: ${children.length}"`);
@@ -28,8 +28,8 @@ export default class ApplicationController extends Controller {
   donutClick({ label, data }) {
     alert(`Clicked "${label}: ${data}"`);
   }
-  horzBarClick(data) {
-    alert(`Clicked "${data}"`);
+  horzBarClick({ label, data }) {
+    alert(`Clicked "${label}: ${data}"`);
   }
   packClick({ label, children }) {
     alert(`Clicked "${label}: ${children.length}"`);

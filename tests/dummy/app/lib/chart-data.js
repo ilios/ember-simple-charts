@@ -3,84 +3,103 @@ const donut = [
   {
     label: 'Totally Cool',
     data: 300,
+    meta: { id: 10 },
   },
   {
     label: 'Way Cool',
     data: 200,
+    meta: { id: 20 },
   },
   {
     label: 'Cucumber Cool',
     data: 400,
+    meta: { id: 30 },
   },
   {
     label: 'So Cool',
     data: 500,
+    meta: { id: 40 },
   },
 ];
 const pie = [
   {
     label: 'Totally Cool',
     data: 300,
+    meta: { id: 10 },
   },
   {
     label: 'Way Cool',
     data: 200,
+    meta: { id: 20 },
   },
   {
     label: 'Cucumber Cool',
     data: 400,
+    meta: { id: 30 },
   },
   {
     label: 'So Cool',
     data: 500,
+    meta: { id: 40 },
   },
 ];
 const bar = [
   {
     label: '300',
     data: 300,
+    meta: { id: 10 },
   },
   {
     label: '200',
     data: 200,
+    meta: { id: 20 },
   },
   {
     label: '400',
     data: 400,
+    meta: { id: 30 },
   },
   {
     label: 'Long Label',
     data: 500,
+    meta: { id: 40 },
   },
 ];
 const horzBar = [
   {
     label: 'Mark',
     data: 150,
+    meta: { id: 10 },
   },
   {
     label: 'John',
     data: 200,
+    meta: { id: 20 },
   },
   {
     label: 'Kathy',
     data: 300,
+    meta: { id: 30 },
   },
   {
     label: 'Jeff Long Namerson',
     data: 350,
+    meta: { id: 40 },
   },
   {
     label: 'Joe',
     data: 100,
+    meta: { id: 10 },
   },
   {
     label: 'Kelly',
     data: 200,
+    meta: { id: 20 },
   },
   {
     label: 'Jason',
     data: 350,
+    meta: { id: 30 },
   },
 ];
 const cluster = {
