@@ -20,6 +20,7 @@ module('Acceptance | rendered charts', function (hooks) {
   }
 
   test('visiting examples', async function (assert) {
+    assert.expect(2);
     await visit('/');
     const charts = '.example';
     assert.equal(currentURL(), '/');
