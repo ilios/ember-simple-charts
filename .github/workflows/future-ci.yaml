@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x, 14.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -36,7 +36,8 @@ jobs:
     strategy:
       matrix:
         ember-try-scenario:
-         - ember-3.13
+         - ember-lts-3.20
+         - ember-lts-3.24
          - ember-release
          - ember-beta
          - ember-canary
