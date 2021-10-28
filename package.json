@@ -30,7 +30,7 @@
     "lint:style": "stylelint addon/styles tests/dummy/app/styles"
   },
   "dependencies": {
-    "@ember/render-modifiers": "^1.0.1",
+    "@ember/render-modifiers": "^2.0.0",
     "@embroider/util": "^0.47.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
