@@ -8,6 +8,7 @@ import { percySnapshot } from 'ember-percy';
 module('Integration | Component | simple chart horz bar', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
+    assert.expect(31);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const shapes = `${svg} .bars rect`;

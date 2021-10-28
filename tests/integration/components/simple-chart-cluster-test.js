@@ -9,6 +9,7 @@ import { percySnapshot } from 'ember-percy';
 module('Integration | Component | simple chart cluster', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
+    assert.expect(2);
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(hbs`<SimpleChartCluster

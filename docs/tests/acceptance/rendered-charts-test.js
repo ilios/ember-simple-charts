@@ -21,6 +21,7 @@ module('Acceptance | rendered charts', function (hooks) {
   }
 
   test('visiting /docs', async function (assert) {
+    assert.expect(2);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     assert.equal(currentURL(), '/docs');
@@ -31,6 +32,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting donut chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(1) a`;
@@ -43,6 +45,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting pie chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(2) a`;
@@ -55,6 +58,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting bar chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(3) a`;
@@ -67,6 +71,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting horz-bar chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(4) a`;
@@ -79,6 +84,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting cluster chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(5) a`;
@@ -91,6 +97,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting pack chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(6) a`;
@@ -103,6 +110,7 @@ module('Acceptance | rendered charts', function (hooks) {
   });
 
   test('visiting tree chart', async function (assert) {
+    assert.expect(1);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
     const link = `${charts}:nth-of-type(7) a`;
