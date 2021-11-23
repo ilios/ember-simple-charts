@@ -29,7 +29,7 @@
     "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.1.0",
+    "ember-auto-import": "^2.2.4",
     "ember-cli": "~3.28.3",
     "ember-cli-addon-docs": "^4.0.3",
     "ember-cli-addon-docs-esdoc": "^0.2.3",
@@ -64,7 +64,7 @@
     "qunit": "^2.16.0",
     "qunit-dom": "^1.6.0",
     "sass": "^1.41.1",
-    "webpack": "^5.56.1"
+    "webpack": "^5.64.2"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
