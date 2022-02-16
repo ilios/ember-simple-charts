@@ -24,7 +24,7 @@ module('Acceptance | rendered charts', function (hooks) {
     assert.expect(2);
     await visit('/docs');
     const charts = '.ember-simple-charts-wrapper .panel';
-    assert.equal(currentURL(), '/docs');
+    assert.strictEqual(currentURL(), '/docs');
     assert.dom(charts).exists({ count: 7 });
     await chartsLoaded();
     await percySnapshot(assert);
@@ -38,7 +38,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(1) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/donut');
+    assert.strictEqual(currentURL(), '/docs/donut');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -51,7 +51,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(2) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/pie');
+    assert.strictEqual(currentURL(), '/docs/pie');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -64,7 +64,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(3) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/bar');
+    assert.strictEqual(currentURL(), '/docs/bar');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -77,7 +77,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(4) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/horz-bar');
+    assert.strictEqual(currentURL(), '/docs/horz-bar');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -90,7 +90,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(5) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/cluster');
+    assert.strictEqual(currentURL(), '/docs/cluster');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -103,7 +103,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(6) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/pack');
+    assert.strictEqual(currentURL(), '/docs/pack');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -116,7 +116,7 @@ module('Acceptance | rendered charts', function (hooks) {
     const link = `${charts}:nth-of-type(7) a`;
 
     await click(link);
-    assert.equal(currentURL(), '/docs/tree');
+    assert.strictEqual(currentURL(), '/docs/tree');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
