@@ -69,9 +69,9 @@ module('Integration | Component | simple chart bar', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onClick', (obj) => {
-      assert.equal(obj.label, '300');
-      assert.equal(obj.data, 300);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, '300');
+      assert.strictEqual(obj.data, 300);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartBar
       @data={{this.chartData.bar}}
@@ -89,9 +89,9 @@ module('Integration | Component | simple chart bar', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onHover', (obj) => {
-      assert.equal(obj.label, '300');
-      assert.equal(obj.data, 300);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, '300');
+      assert.strictEqual(obj.data, 300);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartBar
       @data={{this.chartData.bar}}

@@ -46,9 +46,9 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onClick', (obj) => {
-      assert.equal(obj.label, 'Totally Cool');
-      assert.equal(obj.data, 300);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, 'Totally Cool');
+      assert.strictEqual(obj.data, 300);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartPie
       @data={{this.chartData.pie}}
@@ -66,9 +66,9 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onHover', (obj) => {
-      assert.equal(obj.label, 'Totally Cool');
-      assert.equal(obj.data, 300);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, 'Totally Cool');
+      assert.strictEqual(obj.data, 300);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartPie
       @data={{this.chartData.pie}}
