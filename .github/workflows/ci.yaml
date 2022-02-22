@@ -21,6 +21,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Update to npm@8 for github deps
+      run: npm install -g npm@8
     - name: install dependencies
       run: npm ci
     - name: lint js
@@ -63,6 +65,8 @@ jobs:
   #   - uses: actions/setup-node@v1
   #     with:
   #       node-version: 12
+  #   - name: Update to npm@8 for github deps
+  #     run: npm install -g npm@8
   #   - name: install dependencies
   #     run: npm ci
   #   - name: test
