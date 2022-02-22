@@ -12,8 +12,6 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14
-    - name: Update to npm@8 for github deps
-      run: npm install -g npm@8
     - name: install dependencies
       run: npm ci
     - name: test
@@ -28,8 +26,6 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - name: Update to npm@8 for github deps
-        run: npm install -g npm@8
       - name: install dependencies
         run: npm ci
       - name: publish
