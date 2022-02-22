@@ -23,7 +23,7 @@ module('Acceptance | rendered charts', function (hooks) {
     assert.expect(2);
     await visit('/');
     const charts = '.example';
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
     assert.dom(charts).exists({ count: 7 });
     await chartsLoaded();
     await percySnapshot(assert);

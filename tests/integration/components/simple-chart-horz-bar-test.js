@@ -91,9 +91,9 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onClick', (obj) => {
-      assert.equal(obj.label, 'Mark');
-      assert.equal(obj.data, 150);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, 'Mark');
+      assert.strictEqual(obj.data, 150);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartHorzBar
       @data={{this.chartData.horzBar}}
@@ -111,9 +111,9 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     this.set('onHover', (obj) => {
-      assert.equal(obj.label, 'Mark');
-      assert.equal(obj.data, 150);
-      assert.equal(obj.meta.id, 10);
+      assert.strictEqual(obj.label, 'Mark');
+      assert.strictEqual(obj.data, 150);
+      assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartHorzBar
       @data={{this.chartData.horzBar}}
