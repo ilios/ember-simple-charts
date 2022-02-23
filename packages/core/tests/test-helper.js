@@ -1,5 +1,5 @@
-import Application from '@ember-simple-charts/root/app';
-import config from '@ember-simple-charts/root/config/environment';
+import Application from 'dummy/app';
+import config from 'dummy/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

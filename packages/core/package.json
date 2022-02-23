@@ -1,8 +1,17 @@
 {
-  "name": "@ember-simple-charts/root",
+  "name": "@ember-simple-charts/core",
   "version": "10.0.0-alpha.0",
   "description": "Simple charts for ember.",
-  "repository": "https://github.com/ilios/ember-simple-charts",
+  "keywords": [
+    "ember-addon",
+    "visualizations",
+    "d3"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilios/ember-simple-charts",
+    "directory": "packages/core"
+  },
   "homepage": "https://ember-simple-charts.netlify.com/",
   "license": "MIT",
   "author": "The Ilios Team (info@iliosproject.org)",
@@ -10,9 +19,6 @@
     "doc": "doc",
     "test": "tests"
   },
-  "workspaces": [
-    "./packages/*"
-  ],
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
@@ -23,39 +29,59 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
-    "test:ember": "ember test"
+    "test:ember": "ember test",
+    "test:ember-compatibility": "ember try:each",
+    "lint:style": "stylelint addon/styles tests/dummy/app/styles"
+  },
+  "dependencies": {
+    "@ember/render-modifiers": "^2.0.0",
+    "@embroider/util": "^1.0.0",
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
+    "@popperjs/core": "^2.0.3",
+    "d3-ease": "^3.0.1",
+    "d3-hierarchy": "^3.0.1",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.0",
+    "d3-scale-chromatic": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.1",
+    "d3-transition": "^3.0.0",
+    "ember-auto-import": "^2.2.4",
+    "ember-cli-babel": "^7.26.6",
+    "ember-cli-htmlbars": "^6.0.0",
+    "ember-cli-sass": "^10.0.0",
+    "ember-concurrency": "^2.0.0",
+    "ember-did-resize-modifier": "^1.0.0",
+    "ember-in-element-polyfill": "^1.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-decorators": "^7.17.2",
+    "@ember/edition-utils": "^1.1.1",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.2",
-    "@ember-simple-charts/core": "10.0.0-alpha.0",
-    "@glimmer/component": "^1.0.4",
-    "@glimmer/tracking": "^1.0.4",
+    "@embroider/test-setup": "^1.0.0",
+    "@ilios/ember-template-lint-plugin": "^3.0.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.2.4",
     "ember-cli": "~3.28.3",
-    "ember-cli-addon-docs": "^4.2.2",
-    "ember-cli-addon-docs-yuidoc": "^1.0.0",
-    "ember-cli-app-version": "^5.0.0",
-    "ember-cli-babel": "^7.26.6",
     "ember-cli-dependency-checker": "^3.2.0",
-    "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-data": "~4.1.0",
+    "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.1",
-    "ember-fetch": "^8.1.1",
+    "ember-fetch": "^8.0.2",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^1.0.0",
     "ember-page-title": "^7.0.0",
-    "ember-percy": "^1.6.0",
+    "ember-percy": "^1.2.22",
     "ember-qunit": "^5.1.4",
     "ember-resolver": "^8.0.2",
     "ember-source": "~3.28.0",
+    "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^4.1.0",
+    "ember-try": "^2.0.0",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.4",
@@ -64,12 +90,14 @@
     "eslint-plugin-qunit": "^7.2.0",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
     "qunit-dom": "^2.0.0",
-    "sass": "^1.49.0",
-    "webpack": "^5.67.0"
+    "sass": "^1.13.2",
+    "stylelint": "^14.5.1",
+    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-scss": "^4.1.0",
+    "webpack": "^5.64.2"
   },
   "engines": {
     "node": ">= 16"
@@ -78,10 +106,7 @@
     "edition": "octane"
   },
   "ember-addon": {
-    "paths": []
+    "configPath": "tests/dummy/config"
   },
-  "pre-commit": [
-    "lint"
-  ],
-  "private": true
+  "private": false
 }

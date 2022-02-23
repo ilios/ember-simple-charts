@@ -21,5 +21,5 @@
 /bower.json.ember-try
 /package.json.ember-try
 
-# our docs have their own linting
-/docs
+# our packages have their own linting
+/packages

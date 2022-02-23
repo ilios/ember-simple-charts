@@ -1,65 +1,56 @@
-ember-simple-charts
-![Continuous Integration](https://github.com/ilios/ember-simple-charts/workflows/Continuous%20Integration/badge.svg)
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ilios/ember-simple-charts)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/59cbbb8d-bce1-4513-9377-641e2182537f/deploy-status)](https://app.netlify.com/sites/ember-simple-charts/deploys)
-==============================================================================
+# simple-charts-docs
 
-Simple charts for ember apps
+This README outlines the details of collaborating on this Ember application.
+A short introduction of this app could easily go here.
 
+## Prerequisites
 
-Compatibility
-------------------------------------------------------------------------------
+You will need the following things properly installed on your computer.
 
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
-* Node.js v12 or above
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with npm)
+* [Ember CLI](https://ember-cli.com/)
+* [Google Chrome](https://google.com/chrome/)
 
+## Installation
 
-Installation
-------------------------------------------------------------------------------
+* `git clone <repository-url>` this repository
+* `cd simple-charts-docs`
+* `npm install`
 
-```
-ember install ember-simple-charts
-```
+## Running / Development
 
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-Usage
-------------------------------------------------------------------------------
+### Code Generators
 
-Data Provider
-```javascript
-import Ember from 'ember';
+Make use of the many generators for code, try `ember help generate` for more details
 
-const { Controller } = Ember;
+### Running Tests
 
-export default Controller.extend({
-  donutData: [
-    {
-      label: 'Super Cool',
-      data: 100
-    },
-    {
-      label: 'Very Cool',
-      data: 200
-    },
-  ],
-});
-```
+* `ember test`
+* `ember test --server`
 
-Template:
-```handlebars
-  {{simple-chart height=250 width=250 name='donut' data=donutData}}
-```
+### Linting
 
-More examples can be found in this addons dummy application.
+* `npm run lint`
+* `npm run lint:fix`
 
-Contributing
-------------------------------------------------------------------------------
+### Building
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
+* `ember build` (development)
+* `ember build --environment production` (production)
 
+### Deploying
 
-License
-------------------------------------------------------------------------------
+Specify what it takes to deploy your app.
 
-This project is licensed under the [MIT License](LICENSE.md).
+## Further Reading / Useful Links
+
+* [ember.js](https://emberjs.com/)
+* [ember-cli](https://ember-cli.com/)
+* Development Browser Extensions
+  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
