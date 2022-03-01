@@ -43,9 +43,7 @@ export default class SimpleChart extends Component {
     return !!this.args.onClick;
   }
   @action
-  calculateSize(element) {
-    const rect = element.getBoundingClientRect();
-    const { height, width } = rect;
+  calculateSize({ contentRect: { width, height } }) {
     this.height = Math.floor(height);
     this.width = Math.floor(width);
   }
