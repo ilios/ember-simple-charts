@@ -1,6 +1,6 @@
 <div
   class="simple-chart"
-  {{on-resize this.calculateSize}}
+  {{on-resize (perform this.calculateSize)}}
 >
   <this.chartComponent
     @data={{@data}}
