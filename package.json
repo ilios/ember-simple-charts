@@ -27,6 +27,7 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
+    "percy-tests": "percy exec -- ember test",
     "lint:style": "stylelint addon/styles tests/dummy/app/styles"
   },
   "dependencies": {
