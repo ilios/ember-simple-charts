@@ -48,8 +48,9 @@
     "ember-cli-htmlbars": "^6.0.0",
     "ember-cli-sass": "^10.0.0",
     "ember-concurrency": "^2.0.0",
-    "ember-did-resize-modifier": "^1.0.0",
-    "ember-in-element-polyfill": "^1.0.0"
+    "ember-in-element-polyfill": "^1.0.0",
+    "ember-on-resize-modifier": "^1.0.0",
+    "ember-resize-observer-polyfill": "^0.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",

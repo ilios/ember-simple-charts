@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
-import { timeout, task, taskGroup } from 'ember-concurrency';
+import { timeout, task, taskGroup, restartableTask } from 'ember-concurrency';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 import { ensureSafeComponent } from '@embroider/util';
 import SimpleChartBar from './simple-chart-bar';
@@ -42,10 +41,11 @@ export default class SimpleChart extends Component {
   get isClickable() {
     return !!this.args.onClick;
   }
-  @action
-  calculateSize(element) {
-    const rect = element.getBoundingClientRect();
-    const { height, width } = rect;
+  @restartableTask
+  *calculateSize({ contentRect: { width, height } }) {
+    if (this.height && this.width) {
+      yield timeout(250);
+    }
     this.height = Math.floor(height);
     this.width = Math.floor(width);
   }

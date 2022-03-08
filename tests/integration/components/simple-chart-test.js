@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, findAll, waitUntil } from '@ember/test-helpers';
 import ChartData from 'dummy/lib/chart-data';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -19,9 +19,19 @@ module('Integration | Component | simple chart', function (hooks) {
     this.set('onClick', () => {
       assert.ok(true, 'event fired.');
     });
-    await render(
-      hbs`<SimpleChart @name="donut" @data={{this.chartData.donut}} @isClickable={{true}} @onClick={{this.onClick}}/>`
-    );
+    await render(hbs`<SimpleChart
+      @name="donut"
+      @data={{this.chartData.donut}}
+      @isClickable={{true}}
+      @onClick={{this.onClick}}/>
+    `);
+    //let the chart animations finish
+    await waitUntil(() => {
+      return (
+        findAll('.loaded').length &&
+        findAll('svg .chart .slice:nth-of-type(1) .slicepath').length
+      );
+    });
     await click('svg .chart .slice:nth-of-type(1) .slicepath');
   });
 });
