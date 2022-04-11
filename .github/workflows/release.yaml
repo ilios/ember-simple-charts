@@ -8,12 +8,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: 16
-    - name: Update to npm@8 for github deps
-      run: npm install -g npm@8
     - name: install dependencies
       run: npm ci
     - name: test
@@ -23,13 +21,11 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: Update to npm@8 for github deps
-        run: npm install -g npm@8
       - name: install dependencies
         run: npm ci
       - name: publish
