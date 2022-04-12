@@ -16,8 +16,8 @@ module('Integration | Component | simple chart cluster', function (hooks) {
       @data={{this.chartData.cluster}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{noop}}
-      @onClick={{noop}}
+      @hover={{(noop)}}
+      @onClick={{(noop)}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
@@ -40,7 +40,7 @@ module('Integration | Component | simple chart cluster', function (hooks) {
       @data={{this.chartData.cluster}}
       @isIcon={{false}}
       @isClickable={{true}}
-      @hover={{noop}}
+      @hover={{(noop)}}
       @onClick={{this.onClick}}
       @containerHeight="100%"
       @containerWidth="100%"

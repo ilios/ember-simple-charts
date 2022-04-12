@@ -27,8 +27,8 @@ module('Integration | Component | simple chart bar', function (hooks) {
       @data={{this.chartData.bar}}
       @isIcon={{false}}
       @isClickable={{false}}
-      @hover={{noop}}
-      @onClick={{noop}}
+      @hover={{(noop)}}
+      @onClick={{(noop)}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
@@ -77,7 +77,7 @@ module('Integration | Component | simple chart bar', function (hooks) {
       @data={{this.chartData.bar}}
       @isIcon={{false}}
       @isClickable={{true}}
-      @hover={{noop}}
+      @hover={{(noop)}}
       @onClick={{this.onClick}}
       @containerHeight="100%"
       @containerWidth="100%"
@@ -98,7 +98,7 @@ module('Integration | Component | simple chart bar', function (hooks) {
       @isIcon={{false}}
       @isClickable={{true}}
       @hover={{this.onHover}}
-      @onClick={{noop}}
+      @onClick={{(noop)}}
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
