@@ -13,16 +13,11 @@ jobs:
   test:
     name: Tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 12.x, 14.x, 16.x ]
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: Update to npm@8 for github deps
-      run: npm install -g npm@8
+        node-version: 16
     - name: install dependencies
       run: npm ci
     - name: lint js
@@ -37,15 +32,12 @@ jobs:
   test-floating:
     name: Floating Dependencies
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 12.x, 14.x, 16.x ]
     needs: test
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16
     - name: install dependencies
       run: npm install --no-package-lock
     - name: test
@@ -61,12 +53,10 @@ jobs:
   #        - embroider-safe
   #        - embroider-optimized
   #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: actions/setup-node@v1
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-node@v3
   #     with:
-  #       node-version: 12
-  #   - name: Update to npm@8 for github deps
-  #     run: npm install -g npm@8
+  #       node-version: 16
   #   - name: install dependencies
   #     run: npm ci
   #   - name: test
