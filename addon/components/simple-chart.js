@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { timeout, task, taskGroup, restartableTask } from 'ember-concurrency';
+import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { ensureSafeComponent } from '@embroider/util';
@@ -56,7 +57,7 @@ export default class SimpleChart extends Component {
     if (this.args.hover) {
       try {
         yield this.args.hover(data);
-        if (!(this.isDestroyed || this.isDestroying)) {
+        if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = tooltipTarget;
         }
       } catch (e) {
@@ -70,7 +71,7 @@ export default class SimpleChart extends Component {
     if (this.args.leave) {
       try {
         yield this.args.leave();
-        if (!(this.isDestroyed || this.isDestroying)) {
+        if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
       } catch (e) {
@@ -83,7 +84,7 @@ export default class SimpleChart extends Component {
     if (this.args.onClick) {
       try {
         yield this.args.onClick(data);
-        if (!(this.isDestroyed || this.isDestroying)) {
+        if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
       } catch (e) {

@@ -1,8 +1,8 @@
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { isDestroying, isDestroyed } from '@ember/destroyable';
 import 'd3-transition';
-
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
@@ -69,7 +69,7 @@ export default class SimpleChartDonut extends Component {
         return (p) => createArc(i(p));
       })
       .on('end', () => {
-        if (!(this.isDestroyed || this.isDestroying)) {
+        if (!(isDestroyed(this) || isDestroying(this))) {
           this.loading = false;
         }
       });
