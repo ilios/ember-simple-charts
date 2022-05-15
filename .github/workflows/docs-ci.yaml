@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   lint:
-    name: "Lint"
+    name: "Docs Lint"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -31,7 +31,7 @@ jobs:
         run: npm run lint
 
   test:
-    name: "Test"
+    name: "Docs Test"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -48,7 +48,7 @@ jobs:
       - name: Run Tests
         run: npm test
   percy:
-    name: Percy Visual Tests
+    name: Docs Percy Visual Tests
     runs-on: ubuntu-latest
     defaults:
       run:
