@@ -8,7 +8,7 @@ import {
   waitUntil,
   visit,
 } from '@ember/test-helpers';
-import { percySnapshot } from 'ember-percy';
+import percySnapshot from '@percy/ember';
 
 module('Acceptance | rendered charts', function (hooks) {
   setupApplicationTest(hooks);

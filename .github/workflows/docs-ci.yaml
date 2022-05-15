@@ -32,5 +32,18 @@ jobs:
       run: npm run lint:hbs
     - name: test
       run: npm run test:ember
+  percy:
+    name: Percy Visual Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: npm
+    - name: install dependencies
+      run: npm ci
+    - name: test
+      run: npm run percy-tests
       env:
         PERCY_TOKEN: 263d85e601745ed7aa8c86796e624ea4b0dea18f1405c5f852227af0492b135b
