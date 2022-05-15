@@ -41,6 +41,8 @@ jobs:
       with:
         node-version: 16
         cache: npm
+    - name: install dependencies
+      run: npm ci
     - name: test
       run: npm run percy-tests
       env:
