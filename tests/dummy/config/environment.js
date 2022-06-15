@@ -50,12 +50,5 @@ module.exports = function (environment) {
       defaultBreakpoints: ['small', 'large'],
     };
   }
-
-  if (environment === 'production') {
-    // Allow ember-cli-addon-docs to update the rootURL in compiled assets
-    ENV.rootURL = '';
-    // here you can enable a production-specific feature
-  }
-
   return ENV;
 };

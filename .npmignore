@@ -35,6 +35,3 @@
 /bower.json.ember-try
 /package.json.ember-try
 /config/addon-docs.js
-
-#our addon docs
-/docs
