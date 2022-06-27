@@ -8,8 +8,7 @@
   "scripts": {
     "test": "npm-run-all test:*",
     "lint": "npm-run-all lint:*",
-    "test:addon": "npm run -w ember-simple-charts test",
-    "lint:addon": "npm run -w ember-simple-charts test",
+    "lint:addon": "npm run -w ember-simple-charts lint",
     "start:test-app": "npm run -w test-app start",
     "test:test-app": "npm run -w test-app test",
     "lint:test-app": "npm run -w test-app lint",
