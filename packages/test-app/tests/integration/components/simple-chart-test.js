@@ -21,7 +21,7 @@ module('Integration | Component | simple chart', function (hooks) {
     });
     await render(hbs`<SimpleChart
       @name="donut"
-      @data={{this.chartData.donut}}
+      @data={{this.data}}
       @isClickable={{true}}
       @onClick={{this.onClick}}/>
     `);

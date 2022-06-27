@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <div class="panel">
+    <h4>
+      <LinkTo @route="donut">
+        Donut
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="donut" @data={{@model.donut}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="pie">
+        Pie
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="pie" @data={{@model.pie}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="bar">
+        Bar
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="bar" @data={{@model.bar}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="horz-bar">
+        Horizontal Bar
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="horz-bar" @data={{@model.bar}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="cluster">
+        Cluster
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="cluster" @data={{@model.cluster}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="pack">
+        Pack
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="pack" @data={{@model.pack}} />
+  </div>
+  <div class="panel">
+    <h4>
+      <LinkTo @route="tree">
+        Tree
+      </LinkTo>
+    </h4>
+    <SimpleChart @name="tree" @data={{@model.tree}} />
+  </div>
+</div>

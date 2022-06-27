@@ -20,7 +20,7 @@ module('Integration | Component | simple chart donut', function (hooks) {
     const svg = 'svg';
     const loaded = '.loaded';
     await render(hbs`<SimpleChartDonut
-      @data={{this.chartData.donut}}
+      @data={{this.data}}
       @isIcon={{false}}
       @isClickable={{false}}
       @hover={{(noop)}}
@@ -50,7 +50,7 @@ module('Integration | Component | simple chart donut', function (hooks) {
       assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartDonut
-      @data={{this.chartData.donut}}
+      @data={{this.data}}
       @isIcon={{false}}
       @isClickable={{true}}
       @hover={{(noop)}}
@@ -70,7 +70,7 @@ module('Integration | Component | simple chart donut', function (hooks) {
       assert.strictEqual(obj.meta.id, 10);
     });
     await render(hbs`<SimpleChartDonut
-      @data={{this.chartData.donut}}
+      @data={{this.data}}
       @isIcon={{false}}
       @isClickable={{true}}
       @hover={{this.onHover}}

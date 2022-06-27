@@ -1,0 +1,24 @@
+<div class="sample-code">
+  <nav>
+    <button type="button" {{on "click" this.displayHTML}}>HTML</button>
+    <button type="button" {{on "click" this.displayCSS}}>CSS</button>
+    <button type="button" {{on "click" this.displayData}}>Data</button>
+  </nav>
+  {{#if this.showHTML}}
+    <pre {{did-insert this.highlight}}>
+{{yield to="html"}}
+    </pre>
+  {{/if}}
+  {{#if this.showCSS}}
+    <pre {{did-insert this.highlight}}>
+{{yield to="css"}}
+    </pre>
+  {{/if}}
+  {{#if this.showData}}
+    <pre {{did-insert this.highlight}}>
+        <code class="language-javascript">
+{{yield to="data"}}
+        </code>
+    </pre>
+  {{/if}}
+</div>
