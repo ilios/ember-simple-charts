@@ -8,13 +8,16 @@
   "scripts": {
     "test": "npm-run-all test:*",
     "lint": "npm-run-all lint:*",
+    "percy-tests": "npm-run-all percy:*",
     "lint:addon": "npm run -w ember-simple-charts lint",
     "start:test-app": "npm run -w test-app start",
     "test:test-app": "npm run -w test-app test",
     "lint:test-app": "npm run -w test-app lint",
+    "percy:test-app": "percy exec -- npm run -w test-app test",
     "start:docs": "npm run -w docs start",
     "test:docs": "npm run -w docs test",
-    "lint:docs": "npm run -w docs lint"
+    "lint:docs": "npm run -w docs lint",
+    "percy:docs": "percy exec -- npm run -w docs test"
   },
   "devDependencies": {
     "npm-run-all": "4.1.5",
