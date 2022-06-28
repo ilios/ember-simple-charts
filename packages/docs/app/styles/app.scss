@@ -19,7 +19,7 @@ h1 {
 .wrapper {
   display: grid;
   grid-auto-rows: minmax(30%, auto);
-  grid-gap: 10px; // sass-lint:disable-line no-misspelled-properties
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
   margin: 20px;
   max-width: 90%;
@@ -58,10 +58,12 @@ h1 {
 }
 
 .chart {
-  .example {
-    margin: 1em;
-  }
+  margin: 1em;
   
+  .example {
+    border: 1px solid black;
+  }
+
   .icon-example {
     height: 25px;
     width: 25px;
@@ -79,6 +81,21 @@ h1 {
     @media only screen and (max-width: 900px) {
     height: 250px;
     width: 250px;
+    }
+  }
+}
+
+.sample-code {
+  border-top: 1px solid grey;
+  padding: 1rem 20%;
+  margin-bottom: 2rem;
+
+  button {
+    padding: .5rem .25rem;
+
+    &:disabled {
+      background-color: grey;
+      color: white;
     }
   }
 }
