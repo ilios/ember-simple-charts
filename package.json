@@ -18,6 +18,7 @@
     "start:docs": "npm run -w docs start",
     "test:docs": "npm run -w docs test",
     "lint:docs": "npm run -w docs lint",
+    "build:docs": "npm run -w docs build",
     "percy:docs": "percy exec -- npm run -w docs test"
   },
   "devDependencies": {
