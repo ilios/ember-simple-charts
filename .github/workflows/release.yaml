@@ -15,7 +15,7 @@ jobs:
     - name: install dependencies
       run: npm ci
     - name: test
-      run: npm run test:ember
+      run: npm run test
 
   publish-npm:
     needs: test
@@ -29,6 +29,6 @@ jobs:
       - name: install dependencies
         run: npm ci
       - name: publish
-        run: npm publish
+        run: npm publish -w ember-simple-charts
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

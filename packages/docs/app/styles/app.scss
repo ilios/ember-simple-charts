@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f5f6;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a,
+a:visited {
+  color: blue;
+}
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-auto-rows: minmax(30%, auto);
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  margin: 20px;
+  max-width: 90%;
+
+  > * {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-size: 150%;
+    margin-bottom: 10px;
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-auto-rows: minmax(100%, auto);
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+}
+
+.panel {
+  //needed for the flex layout
+  flex: 1 1 30%;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+
+  @media only screen and (max-width: 900px) {
+    //needed for the flex layout
+    flex: 1 1 100%;
+  }
+
+  .simple-chart {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+.chart {
+  margin: 1em;
+  
+  .example {
+    border: 1px solid black;
+  }
+
+  .icon-example {
+    height: 25px;
+    width: 25px;
+  }
+  
+  .medium-example {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .large-example {
+    height: 500px;
+    width: 500px;
+  
+    @media only screen and (max-width: 900px) {
+    height: 250px;
+    width: 250px;
+    }
+  }
+}
+
+.sample-code {
+  border-top: 1px solid grey;
+  padding: 1rem 20%;
+  margin-bottom: 2rem;
+
+  button {
+    padding: .5rem .25rem;
+
+    &:disabled {
+      background-color: grey;
+      color: white;
+    }
+  }
+}

@@ -9,32 +9,37 @@ on:
 env:
   CI: true
 
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
-    name: Tests
+    name: "Tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test
+  
+  percy:
+    name: Percy Visual Tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: 16
-    - name: install dependencies
-      run: npm ci
-    - name: lint js
-      run: npm run lint:js
-    - name: lint hbs
-      run: npm run lint:hbs
-    - name: test
-      run: npm run test:ember
-
-  percy:
-    name: Percy Visual Tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 16
+        node-version: 16.6
         cache: npm
     - name: install dependencies
       run: npm ci
@@ -43,37 +48,46 @@ jobs:
       env:
         PERCY_TOKEN: 700b60c059079e8ff4431ae83c9406ed4b199bce7ab700ab26a77b5273a5d339
 
-  test-floating:
-    name: Floating Dependencies
+  floating:
+    name: "Floating Dependencies"
     runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - name: install dependencies
-      run: npm install --no-package-lock
-    - name: test
-      run: npm run test:ember
 
-  # Waiting for until: https://github.com/embroider-build/embroider/issues/677
-  # ember-try-scenarios:
-  #   name: ember-try
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       ember-try-scenario:
-  #        - embroider-safe
-  #        - embroider-optimized
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 16
-  #   - name: install dependencies
-  #     run: npm ci
-  #   - name: test
-  #     env:
-  #       EMBER_TRY_SCENARIO: ${{ matrix.ember-try-scenario }}
-  #     run: node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - name: Install Dependencies
+        run: npm install --no-shrinkwrap
+      - name: Run Tests
+        run: npm run test
+
+  try-scenarios:
+    name: ${{ matrix.try-scenario }}
+    runs-on: ubuntu-latest
+    needs: "test"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        try-scenario:
+          - ember-lts-3.28
+          - ember-release
+          - ember-beta
+          - ember-canary
+          - ember-classic
+          - embroider-safe
+          - embroider-optimized
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm exec -w test-app ember try:one ${{ matrix.try-scenario }}
