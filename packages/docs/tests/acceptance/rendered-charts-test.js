@@ -25,7 +25,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await visit('/');
     const charts = '.wrapper .panel';
     assert.strictEqual(currentURL(), '/');
-    assert.dom(charts).exists({ count: 7 });
+    assert.dom(charts).exists({ count: 8 });
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();
@@ -117,6 +117,19 @@ module('Acceptance | rendered charts', function (hooks) {
 
     await click(link);
     assert.strictEqual(currentURL(), '/tree');
+    await chartsLoaded();
+    await percySnapshot(assert);
+    await settled();
+  });
+
+  test('visiting box chart', async function (assert) {
+    assert.expect(1);
+    await visit('/');
+    const charts = '.wrapper .panel';
+    const link = `${charts}:nth-of-type(8) a`;
+
+    await click(link);
+    assert.strictEqual(currentURL(), '/box');
     await chartsLoaded();
     await percySnapshot(assert);
     await settled();

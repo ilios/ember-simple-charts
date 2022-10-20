@@ -14,4 +14,5 @@ Router.map(function () {
   this.route('cluster');
   this.route('pack');
   this.route('tree');
+  this.route('box');
 });

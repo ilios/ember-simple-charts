@@ -7,7 +7,7 @@ import { select } from 'd3-selection';
 import { hierarchy, pack } from 'd3-hierarchy';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { scaleSequential } from 'd3-scale';
-export default class SimpleChartDonut extends Component {
+export default class SimpleChartPack extends Component {
   @tracked loading;
 
   @action

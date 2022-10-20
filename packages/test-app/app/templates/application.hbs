@@ -37,4 +37,41 @@
 
     </div>
   {{/each}}
+
+  <div class="example box-chart">
+    <h2>
+      <SimpleChart
+        @isIcon={{true}}
+        @name="box"
+        @data={{get this.chartData "box"}}
+      />
+      <SimpleChart
+        @isIcon={{true}}
+        @name="bar"
+        @data={{get this.chartData "bar"}}
+      />
+      Box that matches data color
+    </h2>
+    <SimpleChart
+      class="normal"
+      @name="box"
+      @data={{get this.chartData "box"}}
+      @hover={{this.setToolTipData}}
+      @leave={{fn this.setToolTipData null}}
+      as |chart|
+    >
+      {{#if this.tooltipData}}
+        <chart.tooltip
+          @title={{concat
+            this.tooltipData.label
+            " ("
+            this.tooltipData.data
+            ")"
+          }}
+        >
+          {{this.chartData.ipsum}}
+        </chart.tooltip>
+      {{/if}}
+    </SimpleChart>
+  </div>
 </div>

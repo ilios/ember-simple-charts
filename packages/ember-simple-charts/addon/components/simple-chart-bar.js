@@ -7,7 +7,7 @@ import { scaleBand, scaleLinear, scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { A } from '@ember/array';
 
-export default class SimpleChartDonut extends Component {
+export default class SimpleChartBar extends Component {
   @tracked loading;
 
   @action
