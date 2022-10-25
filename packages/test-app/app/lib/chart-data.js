@@ -1,4 +1,3 @@
-// BEGIN-SNIPPET chart-data.js
 const donut = [
   {
     label: 'Totally Cool',
@@ -278,6 +277,10 @@ const tree = {
   ],
 };
 
+const box = {
+  allData: bar,
+  boxData: bar[1],
+};
 const click = function (data) {
   alert(data.label || data.name);
 };
@@ -299,6 +302,6 @@ export default {
   cluster,
   pack,
   tree,
+  box,
   click,
 };
-// END-SNIPPET

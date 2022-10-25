@@ -277,7 +277,10 @@ const tree = {
     },
   ],
 };
-
+const box = {
+  allData: bar,
+  boxData: bar[1],
+};
 const click = function (data) {
   alert(data.label || data.name);
 };
@@ -300,5 +303,6 @@ export default {
   pack,
   tree,
   click,
+  box,
 };
 // END-SNIPPET

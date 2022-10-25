@@ -11,7 +11,7 @@ import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { A } from '@ember/array';
 
-export default class SimpleChartDonut extends Component {
+export default class SimpleChartPie extends Component {
   @tracked loading;
 
   @action

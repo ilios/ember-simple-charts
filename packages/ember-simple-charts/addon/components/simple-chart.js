@@ -11,6 +11,7 @@ import SimpleChartHorzBar from './simple-chart-horz-bar';
 import SimpleChartPack from './simple-chart-pack';
 import SimpleChartPie from './simple-chart-pie';
 import SimpleChartTree from './simple-chart-tree';
+import SimpleChartBox from './simple-chart-box';
 
 const DEBOUNCE_MS = 100;
 export default class SimpleChart extends Component {
@@ -27,6 +28,7 @@ export default class SimpleChart extends Component {
       pack: SimpleChartPack,
       pie: SimpleChartPie,
       tree: SimpleChartTree,
+      box: SimpleChartBox,
     };
     assert(
       `${this.args.name} is a valid chart`,
