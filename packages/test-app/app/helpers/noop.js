@@ -1,5 +1,3 @@
-import { helper } from '@ember/component/helper';
-
-export default helper(function noop() {
+export default function noop() {
   return () => {};
-});
+}
