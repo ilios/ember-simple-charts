@@ -2,6 +2,7 @@
   background: $background-grey;
   color: $text-grey;
   pointer-events: none;
+  z-index: 100;
 
   .content {
     padding: .5em;
