@@ -9,7 +9,7 @@ import percySnapshot from '@percy/ember';
 module('Integration | Component | simple chart tree', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(hbs`<SimpleChartTree
@@ -25,6 +25,7 @@ module('Integration | Component | simple chart tree', function (hooks) {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');
       assert.dom(svg).hasAttribute('width', '100%');
+      assert.dom(`${svg} g circle:nth-of-type(1) desc`).hasText('Root node.');
     }, 1000);
 
     await settled();

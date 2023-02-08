@@ -9,7 +9,7 @@ import percySnapshot from '@percy/ember';
 module('Integration | Component | simple chart pack', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(hbs`<SimpleChartPack
@@ -21,10 +21,14 @@ module('Integration | Component | simple chart pack', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
+    //await pauseTest();
     later(() => {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');
       assert.dom(svg).hasAttribute('width', '100%');
+      assert
+        .dom(`${svg} g circle:nth-of-type(1) desc`)
+        .hasText('this is the root.');
     }, 1000);
 
     await settled();
