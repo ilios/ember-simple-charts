@@ -101,6 +101,12 @@ export default class SimpleChartDonut extends Component {
         .attr('text-anchor', 'middle')
         .text((d) => d.data.label);
 
+      chart
+        .selectAll('.slice')
+        .filter((d) => d.data.description)
+        .append('desc')
+        .text((d) => d.data.description);
+
       const handleHover = ({ target }) => {
         const { data } = select(target).datum();
         const slices = svg.selectAll('.slice');

@@ -46,6 +46,12 @@ export default class SimpleChartPack extends Component {
       .attr('r', (d) => d.r);
 
     if (!this.args.isIcon) {
+      chart
+        .selectAll('circle')
+        .filter((d) => d.data.description)
+        .append('desc')
+        .text((d) => d.data.description);
+
       nodes.on('mouseenter', ({ target }) => {
         const { data } = select(target).datum();
         const elements = chart.selectAll('circle.node');

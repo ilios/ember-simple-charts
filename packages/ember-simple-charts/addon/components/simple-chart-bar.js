@@ -70,6 +70,12 @@ export default class SimpleChartBar extends Component {
         .attr('y', (d) => `${110 - yScale(d.data)}%`)
         .text((d) => d.data);
 
+      bars
+        .selectAll('rect')
+        .filter((d) => d.description)
+        .append('desc')
+        .text((d) => d.description);
+
       const handleHover = ({ target }) => {
         const { label, data, meta } = select(target).datum();
         const rects = svg.selectAll('rect');
