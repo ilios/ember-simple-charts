@@ -21,7 +21,7 @@ module('Integration | Component | simple chart pack', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    //await pauseTest();
+
     later(() => {
       percySnapshot(assert);
       assert.dom(svg).hasAttribute('height', '100%');
