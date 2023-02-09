@@ -72,6 +72,12 @@ export default class SimpleChartHorzBar extends Component {
         .attr('x', (d) => `${xScale(d.data) - 3}%`)
         .text((d) => d.label);
 
+      bars
+        .selectAll('rect')
+        .filter((d) => d.description)
+        .append('desc')
+        .text((d) => d.description);
+
       const handleHover = ({ target }) => {
         const { label, data, meta } = select(target).datum();
         const rects = svg.selectAll('rect');

@@ -8,7 +8,7 @@ import percySnapshot from '@percy/ember';
 module('Integration | Component | simple chart bar', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(20);
+    assert.expect(21);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const shapes = `${svg} .bars rect`;
@@ -63,6 +63,7 @@ module('Integration | Component | simple chart bar', function (hooks) {
     assert.ok(
       find(text4).getAttribute('style').includes('color: rgb(255, 255, 255);')
     );
+    assert.dom(`${rect1} desc`).hasText('The value is 300.');
   });
 
   test('click event fires', async function (assert) {

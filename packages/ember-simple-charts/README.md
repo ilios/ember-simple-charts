@@ -36,11 +36,13 @@ export default Controller.extend({
   donutData: [
     {
       label: 'Super Cool',
-      data: 100
+      data: 100,
+      description: 'Lorem Ipsum'
     },
     {
       label: 'Very Cool',
-      data: 200
+      data: 200,
+      description: 'Long text description here.'
     },
   ],
 });

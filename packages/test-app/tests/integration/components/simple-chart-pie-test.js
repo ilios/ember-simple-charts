@@ -15,7 +15,7 @@ import percySnapshot from '@percy/ember';
 module('Integration | Component | simple chart pie', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const loaded = '.loaded';
@@ -38,7 +38,7 @@ module('Integration | Component | simple chart pie', function (hooks) {
 
     assert.dom(svg).hasAttribute('height', '100%');
     assert.dom(svg).hasAttribute('width', '100%');
-
+    assert.dom(`${svg} g:nth-of-type(1) desc`).hasText('This is totally cool.');
     await settled();
   });
 

@@ -65,6 +65,13 @@ export default class SimpleChartCluster extends Component {
       .attr('r', radius);
 
     if (!this.args.isIcon) {
+      chart
+        .select('.nodes')
+        .selectAll('circle.node')
+        .filter((d) => d.data.description)
+        .append('desc')
+        .text((d) => d.data.description);
+
       nodes.on('mouseenter', ({ target }) => {
         const { data } = select(target).datum();
         const elements = svg.selectAll('circle.node');
