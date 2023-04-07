@@ -5,7 +5,6 @@ updates:
   schedule:
     interval: weekly
   ignore:
-  - dependency-name: broccoli-asset-rev
   - dependency-name: "@ember/optional-features"
   - dependency-name: "@ember/test-helpers"
   - dependency-name: "@embroider/test-setup"
@@ -51,7 +50,6 @@ updates:
   schedule:
     interval: weekly
   ignore:
-  - dependency-name: broccoli-asset-rev
   - dependency-name: "@ember/optional-features"
   - dependency-name: "@ember/test-helpers"
   - dependency-name: "@embroider/test-setup"
