@@ -26,8 +26,8 @@
     "pre-commit": "^1.2.2"
   },
   "engines": {
-    "node": ">= 16",
-    "npm": ">= 7"
+    "node": "16.* || >= 18",
+    "npm": ">= 8"
   },
   "pre-commit": [
     "lint"
