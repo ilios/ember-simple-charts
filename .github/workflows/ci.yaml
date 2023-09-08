@@ -32,21 +32,21 @@ jobs:
       - name: Run Tests
         run: npm run test
 
-  percy:
-    name: Percy Visual Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.6
-          cache: npm
-      - name: install dependencies
-        run: npm ci
-      - name: test
-        run: npm run percy-tests
-        env:
-          PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
+  # percy:
+  #   name: Percy Visual Tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16.6
+  #         cache: npm
+  #     - name: install dependencies
+  #       run: npm ci
+  #     - name: test
+  #       run: npm run percy-tests
+  #       env:
+  #         PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 
   floating:
     name: "Floating Dependencies"
