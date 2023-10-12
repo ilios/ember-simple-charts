@@ -21,7 +21,7 @@ jobs:
         git config user.name Zorgbort
         git config user.email info@iliosproject.org
     - name: Increment Version
-      run: npm version -w ember-simple-charts ${{ github.event.inputs.releaseType }}
+      run: pnpm version --filter ember-simple-charts ${{ github.event.inputs.releaseType }}
     - run: |
         NEW_TAG=`node -p "require('./packages/ember-simple-charts/package.json').version"`
         echo ${NEW_TAG}

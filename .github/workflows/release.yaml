@@ -9,11 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: wyvox/action-setup-pnpm@v2
       with:
         node-version: 16
-    - name: install dependencies
-      run: npm ci
     - name: test
       run: npm run test
 
@@ -22,13 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: wyvox/action-setup-pnpm@v2
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - name: install dependencies
-        run: npm ci
+          node-registry-url: https://registry.npmjs.org/
       - name: publish
-        run: npm publish -w ember-simple-charts
+        run: pnpm publish --filter ember-simple-charts
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
