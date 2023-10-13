@@ -4,8 +4,9 @@
   "license": "MIT",
   "author": "The Ilios Team (info@iliosproject.org)",
   "scripts": {
-    "lint": "pnpm run -r lint",
-    "test": "pnpm run -r --workspace-concurrency=1 test",
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "start:test-app": "pnpm run --filter test-app start",
     "test:test-app": "pnpm run --filter test-app test",
     "percy:test-app": "percy exec -- pnpm run --filter test-app test",
