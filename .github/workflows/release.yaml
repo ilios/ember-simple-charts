@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
     - uses: actions/setup-node@v3
       with:
         node-version: 16
         cache: pnpm
-    - uses: pnpm/action-setup@v2
     - run: pnpm install
     - name: test
       run: pnpm run test
@@ -23,12 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - uses: pnpm/action-setup@v2
       - run: pnpm install
       - name: publish
         run: pnpm publish --filter ember-simple-charts
