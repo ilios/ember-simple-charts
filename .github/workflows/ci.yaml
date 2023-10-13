@@ -44,7 +44,7 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - name: Run Percy Tests
-        run: pnpm run -r percy
+        run: pnpm run --workspace-concurrency=1 -r percy
         env:
           PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 
