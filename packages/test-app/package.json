@@ -22,6 +22,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\"",
+    "percy": "percy exec -- ember test",
     "test:ember": "ember test"
   },
   "devDependencies": {

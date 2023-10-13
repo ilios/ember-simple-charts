@@ -43,8 +43,8 @@ jobs:
           node-version: 16
           cache: pnpm
       - run: pnpm install
-      - name: test
-        run: percy exec -- pnpm run test
+      - name: Run Percy Tests
+        run: pnpm run -r percy
         env:
           PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 

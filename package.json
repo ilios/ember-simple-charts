@@ -9,9 +9,7 @@
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "start:test-app": "pnpm run --filter test-app start",
     "test:test-app": "pnpm run --filter test-app test",
-    "percy:test-app": "percy exec -- pnpm run --filter test-app test",
     "start:docs": "pnpm run --filter docs start",
-    "percy:docs": "percy exec -- pnpm run --filter docs test",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
