@@ -21,9 +21,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
       - name: Lint
         run: pnpm run lint
       - name: Run Tests
@@ -34,9 +37,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
       - name: test
         run: percy exec -- pnpm run test
         env:
@@ -49,10 +55,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          no-lockfile: true
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install --no-lockfile
       - name: Run Tests
         run: pnpm run test
 
@@ -75,9 +83,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
       - name: Run Tests
         working-directory: ./packages/test-app
         run: node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup

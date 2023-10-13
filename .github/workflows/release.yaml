@@ -9,21 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: wyvox/action-setup-pnpm@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: 16
+        cache: pnpm
+    - uses: pnpm/action-setup@v2
+    - run: pnpm install
     - name: test
-      run: npm run test
+      run: pnpm run test
 
   publish-npm:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          node-registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
       - name: publish
         run: pnpm publish --filter ember-simple-charts
         env:
