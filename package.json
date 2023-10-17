@@ -1,36 +1,27 @@
 {
   "name": "ember-simple-charts",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "license": "MIT",
   "author": "The Ilios Team (info@iliosproject.org)",
   "scripts": {
-    "test": "npm-run-all test:*",
-    "lint": "npm-run-all lint:*",
-    "percy-tests": "npm-run-all percy:*",
-    "lint:addon": "npm run -w ember-simple-charts lint",
-    "start:test-app": "npm run -w test-app start",
-    "test:test-app": "npm run -w test-app test",
-    "lint:test-app": "npm run -w test-app lint",
-    "percy:test-app": "percy exec -- npm run -w test-app test",
-    "start:docs": "npm run -w docs start",
-    "test:docs": "npm run -w docs test",
-    "lint:docs": "npm run -w docs lint",
-    "build:docs": "npm run -w docs build",
-    "percy:docs": "percy exec -- npm run -w docs test"
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "test": "pnpm --filter '*' --workspace-concurrency=1 test",
+    "start:test-app": "pnpm run --filter test-app start",
+    "test:test-app": "pnpm run --filter test-app test",
+    "start:docs": "pnpm run --filter docs start",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "npm-run-all": "4.1.5",
     "pre-commit": "^1.2.2"
   },
   "engines": {
     "node": "16.* || >= 18",
-    "npm": ">= 8"
+    "yarn": "use pnpm",
+    "npm": "use pnpm"
   },
+  "packageManager": "pnpm@8.6.12",
   "pre-commit": [
     "lint"
-  ],
-  "version": "1.0.0"
+  ]
 }

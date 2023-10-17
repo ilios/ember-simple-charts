@@ -14,6 +14,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
           token: ${{ secrets.ZORGBORT_TOKEN }}
+    - uses: pnpm/action-setup@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: pnpm
     - name: Validate releaseType
       run: npx in-string-list ${{ github.event.inputs.releaseType }} major,minor,patch
     - name: Setup Git
@@ -21,7 +26,7 @@ jobs:
         git config user.name Zorgbort
         git config user.email info@iliosproject.org
     - name: Increment Version
-      run: npm version -w ember-simple-charts ${{ github.event.inputs.releaseType }}
+      run: pnpm version --filter ember-simple-charts ${{ github.event.inputs.releaseType }}
     - run: |
         NEW_TAG=`node -p "require('./packages/ember-simple-charts/package.json').version"`
         echo ${NEW_TAG}

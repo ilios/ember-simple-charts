@@ -21,31 +21,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
+          cache: pnpm
+      - run: pnpm install
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
       - name: Run Tests
-        run: npm run test
+        run: pnpm run test
 
   percy:
     name: Percy Visual Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - name: install dependencies
-        run: npm ci
-      - name: test
-        run: npm run percy-tests
+          cache: pnpm
+      - run: pnpm install
+      - name: Run Percy Tests
+        run: pnpm run --workspace-concurrency=1 -r percy
         env:
           PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 
@@ -56,14 +55,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - name: Install Dependencies
-        run: npm install --no-shrinkwrap
+          cache: pnpm
+      - run: pnpm install --no-lockfile
       - name: Run Tests
-        run: npm run test
+        run: pnpm run test
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
@@ -84,12 +83,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
+          cache: pnpm
+      - run: pnpm install
       - name: Run Tests
-        run: npm exec -w test-app ember try:one ${{ matrix.try-scenario }}
+        working-directory: ./packages/test-app
+        run: node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup

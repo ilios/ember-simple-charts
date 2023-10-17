@@ -9,26 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-    - name: install dependencies
-      run: npm ci
+        cache: pnpm
+    - run: pnpm install
     - name: test
-      run: npm run test
+      run: pnpm run test
 
   publish-npm:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: install dependencies
-        run: npm ci
+          cache: pnpm
+      - run: pnpm install
       - name: publish
-        run: npm publish -w ember-simple-charts
+        run: pnpm publish --filter ember-simple-charts
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
