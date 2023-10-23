@@ -93,7 +93,7 @@ export default class SimpleChartPie extends Component {
         .style('font-size', '.8rem')
         .attr(
           'transform',
-          (d) => 'translate(' + createLabelArc.centroid(d) + ')'
+          (d) => 'translate(' + createLabelArc.centroid(d) + ')',
         )
         .attr('text-anchor', 'middle')
         .text((d) => d.data.label);
@@ -108,7 +108,7 @@ export default class SimpleChartPie extends Component {
         const { data } = select(target).datum();
         const slices = svg.selectAll('.slice');
         const selectedSlice = slices.filter(
-          ({ data: sliceData }) => sliceData.label === data.label
+          ({ data: sliceData }) => sliceData.label === data.label,
         );
         this.args.hover(data, selectedSlice.node());
       };

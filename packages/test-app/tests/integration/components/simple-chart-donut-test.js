@@ -80,7 +80,7 @@ module('Integration | Component | simple chart donut', function (hooks) {
     />`);
     await triggerEvent(
       'svg .chart .slice:nth-of-type(1) .slicepath',
-      'mouseenter'
+      'mouseenter',
     );
   });
 });
