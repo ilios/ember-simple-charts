@@ -78,7 +78,7 @@
     "loader.js": "^4.7.0",
     "prettier": "^3.0.3",
     "stylelint": "^15.10.3",
-    "stylelint-config-recommended-scss": "^13.0.0",
+    "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-prettier": "^4.0.2",
     "stylelint-scss": "^5.2.1",
     "webpack": "^5.88.2"
