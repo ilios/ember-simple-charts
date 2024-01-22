@@ -32,7 +32,7 @@ export default class SimpleChart extends Component {
     };
     assert(
       `${this.args.name} is a valid chart`,
-      Object.keys(charts).includes(this.args.name)
+      Object.keys(charts).includes(this.args.name),
     );
 
     return ensureSafeComponent(charts[this.args.name], this);

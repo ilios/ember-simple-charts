@@ -52,16 +52,16 @@ module('Integration | Component | simple chart bar', function (hooks) {
     assert.dom(text3).hasText('400');
     assert.dom(text4).hasText('500');
     assert.ok(
-      find(text1).getAttribute('style').includes('color: rgb(255, 255, 255);')
+      find(text1).getAttribute('style').includes('color: rgb(255, 255, 255);'),
     );
     assert.ok(
-      find(text2).getAttribute('style').includes('color: rgb(0, 0, 0);')
+      find(text2).getAttribute('style').includes('color: rgb(0, 0, 0);'),
     );
     assert.ok(
-      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255);')
+      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255);'),
     );
     assert.ok(
-      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255);')
+      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255);'),
     );
     assert.dom(`${rect1} desc`).hasText('The value is 300.');
   });

@@ -17,11 +17,11 @@ export default class SimpleChartBox extends Component {
     this.loading = true;
     assert(
       'Box Data contains "allData"',
-      Object.keys(data).includes('allData')
+      Object.keys(data).includes('allData'),
     );
     assert(
       'Box Data contains "boxData"',
-      Object.keys(data).includes('boxData')
+      Object.keys(data).includes('boxData'),
     );
     const svg = select(element);
     const values = data.allData.map((o) => o.data);

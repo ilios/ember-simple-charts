@@ -65,25 +65,25 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     assert.dom(text6).hasText('Kelly');
     assert.dom(text7).hasText('Jason');
     assert.ok(
-      find(text1).getAttribute('style').includes('color: rgb(0, 0, 0)')
+      find(text1).getAttribute('style').includes('color: rgb(0, 0, 0)'),
     );
     assert.ok(
-      find(text2).getAttribute('style').includes('color: rgb(255, 255, 255)')
+      find(text2).getAttribute('style').includes('color: rgb(255, 255, 255)'),
     );
     assert.ok(
-      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255)')
+      find(text3).getAttribute('style').includes('color: rgb(255, 255, 255)'),
     );
     assert.ok(
-      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255)')
+      find(text4).getAttribute('style').includes('color: rgb(255, 255, 255)'),
     );
     assert.ok(
-      find(text5).getAttribute('style').includes('color: rgb(0, 0, 0)')
+      find(text5).getAttribute('style').includes('color: rgb(0, 0, 0)'),
     );
     assert.ok(
-      find(text6).getAttribute('style').includes('color: rgb(255, 255, 255)')
+      find(text6).getAttribute('style').includes('color: rgb(255, 255, 255)'),
     );
     assert.ok(
-      find(text7).getAttribute('style').includes('color: rgb(255, 255, 255)')
+      find(text7).getAttribute('style').includes('color: rgb(255, 255, 255)'),
     );
     assert
       .dom(`${rect1} desc`)
