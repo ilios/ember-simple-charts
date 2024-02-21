@@ -14,8 +14,7 @@ import SimpleChartTree from './simple-chart-tree';
 import SimpleChartBox from './simple-chart-box';
 
 const DEBOUNCE_MS = 100;
-export default class SimpleChart extends Component
-{
+export default class SimpleChart extends Component {
   @tracked height;
   @tracked width;
   @tracked tooltipTarget;
