@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request: null
 
 env:
   CI: true
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    name: "Tests"
+    name: Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -49,7 +49,7 @@ jobs:
           PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 
   floating:
-    name: "Floating Dependencies"
+    name: Floating Dependencies
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -67,7 +67,7 @@ jobs:
   try-scenarios:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
-    needs: "test"
+    needs: test
     timeout-minutes: 10
 
     strategy:

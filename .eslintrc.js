@@ -57,5 +57,15 @@ module.exports = {
         'qunit/require-expect': [2, 'except-simple'],
       },
     },
+    {
+      // YAML files
+      files: [
+        './.github/dependabot.yml',
+        './.github/workflows/*.{yaml,yml}',
+        './packages/**/translations/*.{yaml,yml}',
+      ],
+      extends: ['plugin:yml/standard'],
+      parser: 'yaml-eslint-parser',
+    },
   ],
 };
