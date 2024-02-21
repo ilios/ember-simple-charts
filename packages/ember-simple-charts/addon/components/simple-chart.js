@@ -44,21 +44,24 @@ export default class SimpleChart extends Component {
   get isClickable() {
     return !!this.args.onClick;
   }
-  @restartableTask
-  *calculateSize({ contentRect: { width, height } }) {
-    if (this.height && this.width) {
-      yield timeout(250);
-    }
-    this.height = Math.floor(height);
-    this.width = Math.floor(width);
-  }
+
+  calculateSize = restartableTask(
+    async ({ contentRect: { width, height } }) => {
+      if (this.height && this.width) {
+        await timeout(250);
+      }
+      this.height = Math.floor(height);
+      this.width = Math.floor(width);
+    },
+  );
+
   @taskGroup mouseGroup;
-  @task({ group: 'mouseGroup' })
-  *handleHover(data, tooltipTarget) {
-    yield timeout(DEBOUNCE_MS);
+
+  handleHover = task({ group: 'mouseGroup' }, async (data, tooltipTarget) => {
+    await timeout(DEBOUNCE_MS);
     if (this.args.hover) {
       try {
-        yield this.args.hover(data);
+        await this.args.hover(data);
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = tooltipTarget;
         }
@@ -66,13 +69,13 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }
-  @task({ group: 'mouseGroup' })
-  *handleLeave() {
-    yield timeout(DEBOUNCE_MS);
+  });
+
+  handleLeave = task({ group: 'mouseGroup' }, async () => {
+    await timeout(DEBOUNCE_MS);
     if (this.args.leave) {
       try {
-        yield this.args.leave();
+        await this.args.leave();
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
@@ -80,12 +83,12 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }
-  @task({ group: 'mouseGroup' })
-  *handleClick(data) {
+  });
+
+  handleClick = task({ group: 'mouseGroup' }, async (data) => {
     if (this.args.onClick) {
       try {
-        yield this.args.onClick(data);
+        await this.args.onClick(data);
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
@@ -93,5 +96,5 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  }
+  });
 }
