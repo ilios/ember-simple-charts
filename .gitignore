@@ -4,5 +4,7 @@
 /node_modules
 
 # misc
-/.env*
-npm-debug.log*
+.env*
+.eslintcache
+.pnp*
+.pnpm-debug.log
