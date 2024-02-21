@@ -15,16 +15,6 @@
     "doc": "doc",
     "test": "tests"
   },
-  "scripts": {
-    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.scss\"",
-    "lint:css:fix": "concurrently \"pnpm:lint:css -- --fix\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
-    "lint:hbs": "ember-template-lint .",
-    "lint:hbs:fix": "ember-template-lint . --fix",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix"
-  },
   "dependencies": {
     "@babel/core": "^7.22.20",
     "@ember/render-modifiers": "^2.0.0",
