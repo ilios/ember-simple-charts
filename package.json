@@ -11,10 +11,10 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "test": "pnpm --filter '*' --workspace-concurrency=1 test",
-    "start:test-app": "pnpm run --filter test-app start",
-    "test:test-app": "pnpm run --filter test-app test",
     "start:docs": "pnpm run --filter docs start",
+    "start:test-app": "pnpm run --filter test-app start",
+    "test:docs": "pnpm run --filter docs test",
+    "test:test-app": "pnpm run --filter test-app test",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
