@@ -22,7 +22,9 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    'ember/no-runloop': 0,
+  },
   overrides: [
     // node files
     {
@@ -31,12 +33,12 @@ module.exports = {
         './.prettierrc.js',
         './.stylelintrc.js',
         './.template-lintrc.js',
-        './ember-cli-build.js',
-        './testem.js',
-        './blueprints/*/index.js',
-        './config/**/*.js',
-        './lib/*/index.js',
-        './server/**/*.js',
+        './packages/*/blueprints/*/index.js',
+        './packages/*/config/**/*.js',
+        './packages/*/ember-cli-build.js',
+        './packages/*/index.js',
+        './packages/*/testem.js',
+        './packages/*/tests/dummy/config/**/*.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -49,7 +51,7 @@ module.exports = {
     },
     {
       // test files
-      files: ['tests/**/*-test.{js,ts}'],
+      files: ['packages/**/tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
       rules: {
         'qunit/require-expect': [2, 'except-simple'],

@@ -13,7 +13,23 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "pre-commit": "^1.2.2"
+    "@babel/eslint-parser": "7.23.10",
+    "@babel/plugin-proposal-decorators": "^7.23.9",
+    "pre-commit": "^1.2.2",
+    "concurrently": "^8.2.2",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.0.2",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-qunit": "^8.1.1",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.1.0"
   },
   "engines": {
     "node": "16.* || >= 18",
