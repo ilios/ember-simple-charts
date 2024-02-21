@@ -29,7 +29,6 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-qunit": "^8.1.1",
     "eslint-plugin-yml": "^1.12.2",
-    "pre-commit": "^1.2.2",
     "prettier": "^3.2.5",
     "stylelint": "^16.2.1",
     "stylelint-config-recommended-scss": "^14.0.0",
@@ -42,8 +41,5 @@
     "yarn": "use pnpm",
     "npm": "use pnpm"
   },
-  "packageManager": "pnpm@8.6.12",
-  "pre-commit": [
-    "lint"
-  ]
+  "packageManager": "pnpm@8.6.12"
 }
