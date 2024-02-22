@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request: null
 
 env:
   CI: true
@@ -14,23 +14,49 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: "Tests"
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
-      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
           cache: pnpm
-      - run: pnpm install
+      - name: Install Dependencies
+        run: pnpm install
       - name: Lint
         run: pnpm run lint
+
+  test:
+    name: ${{matrix.workspace}} Test (${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      matrix:
+        node-version: [20]
+        workspace:
+          - docs
+          - test-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - name: Install Dependencies
+        run: pnpm install
       - name: Run Tests
-        run: pnpm run test
+        run: pnpm --filter ${{matrix.workspace}} exec ember test
 
   percy:
     name: Percy Visual Tests
@@ -49,7 +75,7 @@ jobs:
           PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
 
   floating:
-    name: "Floating Dependencies"
+    name: Floating Dependencies
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -62,12 +88,12 @@ jobs:
           cache: pnpm
       - run: pnpm install --no-lockfile
       - name: Run Tests
-        run: pnpm run test
+        run: pnpm --filter test-app exec ember test
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
-    needs: "test"
+    needs: test
     timeout-minutes: 10
 
     strategy:

@@ -8,15 +8,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: pnpm
-    - run: pnpm install
-    - name: test
-      run: pnpm run test
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - run: pnpm install
+      - name: test
+        run: pnpm run test
 
   publish-npm:
     needs: test
