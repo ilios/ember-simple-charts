@@ -298,7 +298,7 @@ importers:
         specifier: ^3.2.0
         version: 3.3.0(ember-source@5.3.0)(webpack@5.90.3)
       '@embroider/test-setup':
-        specifier: ^3.0.0
+        specifier: ^3.0.3
         version: 3.0.3
       '@glimmer/component':
         specifier: ^1.1.2
