@@ -201,8 +201,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       d3-scale:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.2
+        version: 4.0.2
       d3-scale-chromatic:
         specifier: ^3.0.0
         version: 3.0.0
@@ -6386,8 +6386,8 @@ packages:
       d3-interpolate: 3.0.1
     dev: false
 
-  /d3-scale@4.0.0:
-    resolution: {integrity: sha512-foHQYKpWQcyndH1CGoHdUC4PECxTxonzwwBXGT8qu+Drb1FIc6ON6dG2P5f4hRRMkLiIKeWK7iFtdznDUrnuPQ==}
+  /d3-scale@4.0.2:
+    resolution: {integrity: sha512-GZW464g1SH7ag3Y7hXjf8RoUuAFIqklOAq3MRl4OaWabTFJY9PN/E1YklhXLh+OQ3fM9yS2nOkCoS+WLZ6kvxQ==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.2.4
