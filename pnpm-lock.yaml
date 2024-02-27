@@ -231,8 +231,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(@babel/core@7.22.20)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.3.0)
       ember-in-element-polyfill:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       ember-on-resize-modifier:
         specifier: ^2.0.2
         version: 2.0.2(@glint/template@1.3.0)(ember-source@5.3.0)(webpack@5.88.2)
@@ -7432,13 +7432,13 @@ packages:
       - supports-color
     dev: true
 
-  /ember-in-element-polyfill@1.0.0:
-    resolution: {integrity: sha512-0eSfWWgkOMvj7lcjo20VX8uX4HYxSOxm6MY3bAzqW5RpnHcpcrRf6o4y80xLGh5pp9z8FobiUfFwubphACP8mQ==}
+  /ember-in-element-polyfill@1.0.1:
+    resolution: {integrity: sha512-eHs+7D7PuQr8a1DPqsJTsEyo3FZ1XuH6WEZaEBPDa9s0xLlwByCNKl8hi1EbXOgvgEZNHHi9Rh0vjxyfakrlgg==}
     engines: {node: 10.* || >= 12}
     dependencies:
       debug: 4.3.4
       ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 4.5.0
+      ember-cli-htmlbars: 5.7.2
       ember-cli-version-checker: 5.1.2
     transitivePeerDependencies:
       - supports-color
