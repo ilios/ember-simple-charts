@@ -195,8 +195,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       d3-hierarchy:
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^3.1.2
+        version: 3.1.2
       d3-interpolate:
         specifier: ^3.0.1
         version: 3.0.1
@@ -6375,8 +6375,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /d3-hierarchy@3.0.1:
-    resolution: {integrity: sha512-RlLTaofEoOrMK1JoXYIGhKTkJFI/6rFrYPgxy6QlZo2BcVc4HGTqEU0rPpzuMq5T/5XcMtAzv1XiLA3zRTfygw==}
+  /d3-hierarchy@3.1.2:
+    resolution: {integrity: sha512-FX/9frcub54beBdugHjDCdikxThEqjnR93Qt7PvQTOHxyiNCAlvMrHhclk3cD5VeAaq9fxmfRp+CnWw9rEMBuA==}
     engines: {node: '>=12'}
     dev: false
 
