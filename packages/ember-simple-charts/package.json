@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/core": "^7.23.9",
     "@ember/render-modifiers": "^2.1.0",
-    "@embroider/util": "^1.0.0",
+    "@embroider/util": "^1.12.1",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@popperjs/core": "^2.0.3",
