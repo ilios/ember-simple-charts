@@ -189,8 +189,8 @@ importers:
         specifier: ^1.0.4
         version: 1.1.2
       '@popperjs/core':
-        specifier: ^2.0.3
-        version: 2.0.3
+        specifier: ^2.11.8
+        version: 2.11.8
       d3-ease:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2593,8 +2593,8 @@ packages:
       find-up: 5.0.0
     dev: true
 
-  /@popperjs/core@2.0.3:
-    resolution: {integrity: sha512-LruFy9VJw+RdsvWXUCmqmCFBb5Q0YrbJ8qMDnjoXxTuOSwsmDgXw3sIgEIy0eRnKpdHMV8UOPnRRJNDRcidlCA==}
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
   /@simple-dom/document@1.4.0:
