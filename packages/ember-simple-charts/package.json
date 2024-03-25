@@ -34,7 +34,7 @@
     "ember-cli-babel": "^8.0.0",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-cli-sass": "^11.0.1",
-    "ember-concurrency": "^4.0.1",
+    "ember-concurrency": "^4.0.2",
     "ember-in-element-polyfill": "^1.0.1",
     "ember-on-resize-modifier": "^2.0.2",
     "ember-resize-observer-polyfill": "^0.0.1"
