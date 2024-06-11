@@ -162,8 +162,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       sass:
-        specifier: ^1.75.0
-        version: 1.75.0
+        specifier: ^1.77.4
+        version: 1.77.4
       tracked-built-ins:
         specifier: ^3.2.0
         version: 3.2.0
@@ -397,8 +397,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       sass:
-        specifier: ^1.75.0
-        version: 1.75.0
+        specifier: ^1.77.4
+        version: 1.77.4
       tracked-built-ins:
         specifier: ^3.2.0
         version: 3.2.0
@@ -11582,8 +11582,8 @@ packages:
       walker: 1.0.8
     dev: true
 
-  /sass@1.75.0:
-    resolution: {integrity: sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==}
+  /sass@1.77.4:
+    resolution: {integrity: sha512-vcF3Ckow6g939GMA4PeU7b2K/9FALXk2KF9J87txdHzXbUF9XRQRwSxcAs/fGaTnJeBFd7UoV22j3lzMLdM0Pw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
