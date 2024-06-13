@@ -6,14 +6,11 @@ ember-simple-charts
 
 Simple charts for ember apps
 
+## Compatibility
 
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v4.8 or above
-* Ember CLI v4.4 or above
-* Node.js v16 or above
-
+- Ember.js v4.12 or above
+- Ember CLI v4.12 or above
+- Node.js v18 or above
 
 Installation
 ------------------------------------------------------------------------------
@@ -22,9 +19,7 @@ Installation
 ember install ember-simple-charts
 ```
 
-
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 Data Provider
 ```javascript
@@ -55,13 +50,10 @@ Template:
 
 More examples can be found in this addons dummy application.
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
-
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
