@@ -15,7 +15,8 @@
     "start:test-app": "pnpm run --filter test-app start",
     "test:docs": "pnpm run --filter docs test",
     "test:test-app": "pnpm run --filter test-app test",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.23.10",
