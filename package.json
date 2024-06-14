@@ -15,7 +15,8 @@
     "start:test-app": "pnpm run --filter test-app start",
     "test:docs": "pnpm run --filter docs test",
     "test:test-app": "pnpm run --filter test-app test",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.23.10",
@@ -29,6 +30,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-qunit": "^8.1.1",
     "eslint-plugin-yml": "^1.12.2",
+    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "stylelint": "^16.2.1",
     "stylelint-config-recommended-scss": "^14.0.0",
