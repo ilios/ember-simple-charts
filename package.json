@@ -40,6 +40,5 @@
     "node": "16.* || >= 18",
     "yarn": "use pnpm",
     "npm": "use pnpm"
-  },
-  "packageManager": "pnpm@8.6.12"
+  }
 }
