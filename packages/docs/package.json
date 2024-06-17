@@ -51,7 +51,7 @@
     "loader.js": "^4.7.0",
     "qunit": "^2.21.0",
     "qunit-dom": "^2.0.0",
-    "sass": "^1.75.0",
+    "sass": "^1.77.5",
     "tracked-built-ins": "^3.3.0",
     "webpack": "^5.91.0"
   },
