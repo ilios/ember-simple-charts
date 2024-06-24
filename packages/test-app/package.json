@@ -25,7 +25,7 @@
     "@embroider/test-setup": "^3.0.3",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@percy/cli": "^1.28.7",
+    "@percy/cli": "^1.28.8",
     "@percy/ember": "^4.2.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.7.3",
