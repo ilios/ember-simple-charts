@@ -1,0 +1,1 @@
+packages/ember-simple-charts/CONTRIBUTING.md
