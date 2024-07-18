@@ -1,8 +1,8 @@
-ember-simple-charts
+# ember-simple-charts
+
 ![Continuous Integration](https://github.com/ilios/ember-simple-charts/workflows/Continuous%20Integration/badge.svg)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ilios/ember-simple-charts)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/59cbbb8d-bce1-4513-9377-641e2182537f/deploy-status)](https://app.netlify.com/sites/ember-simple-charts/deploys)
-==============================================================================
 
 Simple charts for ember apps
 
@@ -12,16 +12,16 @@ Simple charts for ember apps
 - Ember CLI v4.12 or above
 - Node.js v18 or above
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
-```
+```shell
 ember install ember-simple-charts
 ```
 
 ## Usage
 
 Data Provider
+
 ```javascript
 import Ember from 'ember';
 
@@ -44,6 +44,7 @@ export default Controller.extend({
 ```
 
 Template:
+
 ```handlebars
   {{simple-chart height=250 width=250 name='donut' data=donutData}}
 ```
