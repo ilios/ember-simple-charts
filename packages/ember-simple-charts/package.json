@@ -16,7 +16,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "@babel/core": "^7.24.8",
+    "@babel/core": "^7.24.9",
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/util": "^1.13.2",
     "@glimmer/component": "^1.0.4",
