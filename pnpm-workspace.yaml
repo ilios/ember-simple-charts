@@ -1,4 +1,4 @@
 packages:
-  - "packages/ember-simple-charts"
-  - "packages/docs"
-  - "packages/test-app"
+  - 'ember-simple-charts'
+  - 'docs'
+  - 'test-app'
