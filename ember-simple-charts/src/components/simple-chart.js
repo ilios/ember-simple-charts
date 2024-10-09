@@ -4,14 +4,14 @@ import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { ensureSafeComponent } from '@embroider/util';
-import SimpleChartBar from './simple-chart-bar';
-import SimpleChartCluster from './simple-chart-cluster';
-import SimpleChartDonut from './simple-chart-donut';
-import SimpleChartHorzBar from './simple-chart-horz-bar';
-import SimpleChartPack from './simple-chart-pack';
-import SimpleChartPie from './simple-chart-pie';
-import SimpleChartTree from './simple-chart-tree';
-import SimpleChartBox from './simple-chart-box';
+import SimpleChartBar from './simple-chart-bar.js';
+import SimpleChartCluster from './simple-chart-cluster.js';
+import SimpleChartDonut from './simple-chart-donut.js';
+import SimpleChartHorzBar from './simple-chart-horz-bar.js';
+import SimpleChartPack from './simple-chart-pack.js';
+import SimpleChartPie from './simple-chart-pie.js';
+import SimpleChartTree from './simple-chart-tree.js';
+import SimpleChartBox from './simple-chart-box.js';
 
 import './simple-chart.css';
 
