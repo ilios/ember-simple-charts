@@ -12,8 +12,8 @@
     "start:addon": "pnpm --filter ember-simple-charts start --no-watch.clearScreen",
     "start:docs": "pnpm --filter docs start --port=4201",
     "start:test-app": "pnpm --filter test-app start --port=4200",
-    "test": "pnpm --filter '*' test",
-    "test:ember": "pnpm --filter '*' test:ember"
+    "test": "pnpm --filter '*' --workspace-concurrency=1 test",
+    "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
