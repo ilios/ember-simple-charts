@@ -31,7 +31,7 @@ jobs:
       - name: Lint
         run: pnpm lint
       - name: Run Tests
-        run: pnpm test
+        run: pnpm test:ember
 
   floating:
     name: "Floating Dependencies"
@@ -55,6 +55,8 @@ jobs:
   percy:
     name: Percy Visual Tests
     runs-on: ubuntu-latest
+    needs: 'test'
+    timeout-minutes: 10
     env:
       PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
     steps:
