@@ -61,8 +61,10 @@ jobs:
   percy:
     name: Percy Visual Tests
     runs-on: ubuntu-latest
+    env:
+      PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -71,10 +73,12 @@ jobs:
           node-version: 18
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Run Percy Tests
-        run: pnpm run --workspace-concurrency=1 -r percy
-        env:
-          PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
+      - name: Start the Percy Server
+        run: pnpm --filter test-app exec percy exec:start &
+      - run: pnpm --filter test-app run test:ember
+      - run: pnpm --filter docs run test:ember
+      - name: Stop Percy and Finalize Tests
+        run: pnpm --filter test-app exec percy exec:stop
 
   floating:
     name: Floating Dependencies
