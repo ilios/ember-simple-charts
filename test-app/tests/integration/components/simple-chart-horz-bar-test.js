@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupRenderingTest, chartsLoaded } from 'test-app/tests/helpers';
 import { click, render, find, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'test-app/lib/chart-data';
@@ -37,6 +37,7 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
+    await chartsLoaded();
     percySnapshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');

@@ -1,13 +1,6 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import {
-  click,
-  render,
-  settled,
-  findAll,
-  waitUntil,
-  triggerEvent,
-} from '@ember/test-helpers';
+import { setupRenderingTest, chartsLoaded } from 'test-app/tests/helpers';
+import { click, render, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'test-app/lib/chart-data';
 import percySnapshot from '@percy/ember';
@@ -18,7 +11,6 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.expect(3);
     this.set('chartData', ChartData);
     const svg = 'svg';
-    const loaded = '.loaded';
     await render(hbs`<SimpleChartPie
       @data={{this.chartData.pie}}
       @isIcon={{false}}
@@ -28,18 +20,12 @@ module('Integration | Component | simple chart pie', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-
-    //let the chart animations finish
-    await waitUntil(() => {
-      return findAll(loaded).length;
-    });
-
+    await chartsLoaded();
     percySnapshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');
     assert.dom(svg).hasAttribute('width', '100%');
     assert.dom(`${svg} g:nth-of-type(1) desc`).hasText('This is totally cool.');
-    await settled();
   });
 
   test('click event fires', async function (assert) {

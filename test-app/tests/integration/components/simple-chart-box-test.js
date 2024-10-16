@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupRenderingTest, chartsLoaded } from 'test-app/tests/helpers';
 import { click, render, triggerEvent, waitFor } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'test-app/lib/chart-data';
@@ -22,6 +22,7 @@ module('Integration | Component | simple chart box', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
+    await chartsLoaded();
     percySnapshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');
@@ -91,6 +92,7 @@ module('Integration | Component | simple chart box', function (hooks) {
         @isIcon={{true}}
       />
     `);
+    await chartsLoaded();
     await waitFor('.simple-chart-donut .slice:nth-of-type(4) path');
     await waitFor('.simple-chart-box rect');
     percySnapshot(assert);
@@ -122,6 +124,7 @@ module('Integration | Component | simple chart box', function (hooks) {
         @isIcon={{true}}
       />
     `);
+    await chartsLoaded();
     await waitFor('.simple-chart-pie .slice:nth-of-type(4) path');
     await waitFor('.simple-chart-box rect');
     percySnapshot(assert);
@@ -153,6 +156,7 @@ module('Integration | Component | simple chart box', function (hooks) {
         @isIcon={{true}}
       />
     `);
+    await chartsLoaded();
     await waitFor('.simple-chart-bar rect');
     await waitFor('.simple-chart-box rect');
     percySnapshot(assert);
@@ -184,6 +188,7 @@ module('Integration | Component | simple chart box', function (hooks) {
         @isIcon={{true}}
       />
     `);
+    await chartsLoaded();
     await waitFor('.simple-chart-horz-bar rect');
     await waitFor('.simple-chart-box rect');
     percySnapshot(assert);

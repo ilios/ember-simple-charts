@@ -1,7 +1,6 @@
-import { later } from '@ember/runloop';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { click, render, settled } from '@ember/test-helpers';
+import { setupRenderingTest, chartsLoaded } from 'test-app/tests/helpers';
+import { click, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'test-app/lib/chart-data';
 import percySnapshot from '@percy/ember';
@@ -21,14 +20,11 @@ module('Integration | Component | simple chart tree', function (hooks) {
       @containerHeight="100%"
       @containerWidth="100%"
     />`);
-    later(() => {
-      percySnapshot(assert);
-      assert.dom(svg).hasAttribute('height', '100%');
-      assert.dom(svg).hasAttribute('width', '100%');
-      assert.dom(`${svg} g circle:nth-of-type(1) desc`).hasText('Root node.');
-    }, 1000);
-
-    await settled();
+    await chartsLoaded();
+    percySnapshot(assert);
+    assert.dom(svg).hasAttribute('height', '100%');
+    assert.dom(svg).hasAttribute('width', '100%');
+    assert.dom(`${svg} g circle:nth-of-type(1) desc`).hasText('Root node.');
   });
 
   test('click event fires', async function (assert) {
