@@ -1,6 +1,0 @@
-{
-  "ignore_dirs": [
-    "packages/docs/dist",
-    "packages/test-app/dist"
-  ]
-}

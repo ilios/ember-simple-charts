@@ -1,46 +1,24 @@
 {
-  "name": "ember-simple-charts",
   "private": true,
+  "repository": "",
   "license": "MIT",
   "author": "The Ilios Team (info@iliosproject.org)",
   "scripts": {
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.scss\"",
-    "lint:css:fix": "stylelint \"**/*.scss\" --fix",
-    "lint:hbs": "ember-template-lint .",
-    "lint:hbs:fix": "ember-template-lint . --fix",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
-    "start:docs": "pnpm run --filter docs start",
-    "start:test-app": "pnpm run --filter test-app start",
-    "test:docs": "pnpm run --filter docs test",
-    "test:test-app": "pnpm run --filter test-app test",
-    "preinstall": "npx only-allow pnpm",
-    "prepare": "husky"
+    "build": "pnpm --filter ember-simple-charts build",
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "prepare": "husky && pnpm build",
+    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start:addon": "pnpm --filter ember-simple-charts start --no-watch.clearScreen",
+    "start:docs": "pnpm --filter docs start --port=4201",
+    "start:test-app": "pnpm --filter test-app start --port=4200",
+    "test": "pnpm --filter '*' --workspace-concurrency=1 test",
+    "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.23.10",
-    "@babel/plugin-proposal-decorators": "^7.23.9",
-    "concurrently": "^8.2.2",
-    "ember-template-lint": "^5.13.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-ember": "^12.0.2",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-qunit": "^8.1.1",
-    "eslint-plugin-yml": "^1.12.2",
+    "concurrently": "^8.2.0",
     "husky": "^9.1.6",
-    "prettier": "^3.2.5",
-    "stylelint": "^16.2.1",
-    "stylelint-config-recommended-scss": "^14.1.0",
-    "stylelint-config-standard": "^36.0.0",
-    "stylelint-prettier": "^5.0.0",
-    "stylelint-scss": "^6.7.0"
-  },
-  "engines": {
-    "node": ">= 18",
-    "yarn": "use pnpm",
-    "npm": "use pnpm"
+    "prettier": "^3.0.3",
+    "prettier-plugin-ember-template-tag": "^2.0.2"
   }
 }
