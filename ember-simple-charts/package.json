@@ -8,7 +8,7 @@
     "d3"
   ],
   "repository": "https://github.com/ilios/ember-simple-charts",
-  "homepage": "https://ember-simple-charts.netlify.com/",
+  "homepage": "https://ember-simple-charts.netlify.app/",
   "license": "MIT",
   "author": "The Ilios Team (info@iliosproject.org)",
   "directories": {
