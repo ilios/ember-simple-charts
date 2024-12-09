@@ -23,12 +23,10 @@ ember install ember-simple-charts
 Data Provider
 
 ```javascript
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
-const { Controller } = Ember;
-
-export default Controller.extend({
-  donutData: [
+export default class ChartController extends Controller {
+  donutData = [
     {
       label: 'Super Cool',
       data: 100,
@@ -39,14 +37,14 @@ export default Controller.extend({
       data: 200,
       description: 'Long text description here.'
     },
-  ],
-});
+  ];
+};
 ```
 
 Template:
 
 ```handlebars
-  {{simple-chart height=250 width=250 name='donut' data=donutData}}
+  <SimpleChart @name='donut' @data={{this.donutData}} />
 ```
 
 More examples can be found in this addons dummy application.
