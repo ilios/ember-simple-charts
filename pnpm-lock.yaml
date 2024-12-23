@@ -178,13 +178,13 @@ importers:
     dependencies:
       '@ember/render-modifiers':
         specifier: ^2.1.0
-        version: 2.1.0(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))
+        version: 2.1.0(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))
       '@embroider/addon-shim':
         specifier: ^1.8.9
         version: 1.9.0
       '@embroider/util':
         specifier: ^1.13.2
-        version: 1.13.2(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))
+        version: 1.13.2(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -217,13 +217,13 @@ importers:
         version: 2.3.0(@babel/core@7.26.0)
       ember-concurrency:
         specifier: ^4.0.2
-        version: 4.0.2(@babel/core@7.26.0)(@glimmer/tracking@1.1.2)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))
+        version: 4.0.2(@babel/core@7.26.0)(@glimmer/tracking@1.1.2)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))
       ember-in-element-polyfill:
         specifier: ^1.0.1
         version: 1.0.1
       ember-on-resize-modifier:
         specifier: ^2.0.2
-        version: 2.0.2(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))
+        version: 2.0.2(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))(webpack@5.97.1)
       ember-resize-observer-polyfill:
         specifier: ^0.0.1
         version: 0.0.1
@@ -285,6 +285,9 @@ importers:
       rollup-plugin-copy:
         specifier: ^3.5.0
         version: 3.5.0
+      webpack:
+        specifier: ^5.95.0
+        version: 5.97.1
 
   test-app:
     devDependencies:
@@ -8493,7 +8496,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ember/render-modifiers@2.1.0(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))':
+  '@ember/render-modifiers@2.1.0(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))':
     dependencies:
       '@embroider/macros': 1.16.10
       ember-cli-babel: 7.26.11
@@ -8638,7 +8641,7 @@ snapshots:
     optionalDependencies:
       '@embroider/core': 3.4.20
 
-  '@embroider/util@1.13.2(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5))':
+  '@embroider/util@1.13.2(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))':
     dependencies:
       '@embroider/macros': 1.16.10
       broccoli-funnel: 3.0.8
@@ -11991,7 +11994,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-concurrency@4.0.2(@babel/core@7.26.0)(@glimmer/tracking@1.1.2)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)):
+  ember-concurrency@4.0.2(@babel/core@7.26.0)(@glimmer/tracking@1.1.2)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1)):
     dependencies:
       '@babel/helper-plugin-utils': 7.25.9
       '@babel/types': 7.26.3
@@ -12074,7 +12077,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-on-resize-modifier@2.0.2(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)):
+  ember-on-resize-modifier@2.0.2(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))(webpack@5.97.1):
     dependencies:
       ember-auto-import: 2.10.0(webpack@5.97.1)
       ember-cli-babel: 7.26.11
