@@ -221,6 +221,9 @@ importers:
       ember-in-element-polyfill:
         specifier: ^1.0.1
         version: 1.0.1
+      ember-modifier:
+        specifier: ^4.2.0
+        version: 4.2.0(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))
       ember-on-resize-modifier:
         specifier: ^2.0.2
         version: 2.0.2(@babel/core@7.26.0)(ember-source@6.0.1(@glimmer/component@1.1.2(@babel/core@7.26.0))(rsvp@4.8.5)(webpack@5.97.1))(webpack@5.97.1)
