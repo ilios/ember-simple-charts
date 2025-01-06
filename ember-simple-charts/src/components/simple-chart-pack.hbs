@@ -3,7 +3,7 @@
   class='simple-chart-pack{{if this.loading " loading" " loaded"}}'
   height={{@containerHeight}}
   width={{@containerWidth}}
-  {{did-update this.draw @containerHeight @containerWidth @data}}
-  {{did-insert this.draw @containerHeight @containerWidth @data}}
+  data-painted={{this.isPainted}}
+  {{set-element this}}
   ...attributes
 ></svg>

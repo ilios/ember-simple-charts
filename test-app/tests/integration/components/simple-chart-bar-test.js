@@ -106,4 +106,69 @@ module('Integration | Component | simple chart bar', function (hooks) {
     />`);
     await triggerEvent('svg .bars rect:nth-of-type(1)', 'mouseenter');
   });
+
+  test('it responds to changing data', async function (assert) {
+    assert.expect(16);
+    this.set('data', [
+      {
+        label: '100',
+        data: 100,
+      },
+      {
+        label: '50',
+        data: 50,
+      },
+    ]);
+    const svg = 'svg';
+    const shapes = `${svg} .bars rect`;
+    const rect1 = `${shapes}:nth-of-type(1)`;
+    const rect2 = `${shapes}:nth-of-type(2)`;
+    const text = `${svg} .bars text`;
+    const text1 = `${text}:nth-of-type(1)`;
+    const text2 = `${text}:nth-of-type(2)`;
+
+    await render(hbs`<SimpleChartBar
+      @data={{this.data}}
+      @isIcon={{false}}
+      @isClickable={{false}}
+      @hover={{(noop)}}
+      @onClick={{(noop)}}
+      @containerHeight="100%"
+      @containerWidth="100%"
+    />`);
+    await chartsLoaded();
+
+    assert.dom(svg).hasAttribute('height', '100%');
+    assert.dom(svg).hasAttribute('width', '100%');
+    assert.dom(shapes).exists({ count: 2 });
+    assert.dom(rect1).hasAttribute('y', '5%');
+    assert.dom(rect2).hasAttribute('y', '52.5%');
+
+    assert.dom(text).exists({ count: 2 });
+    assert.dom(text1).hasText('100');
+    assert.dom(text2).hasText('50');
+
+    this.set('data', [
+      {
+        label: '25',
+        data: 25,
+      },
+      {
+        label: '50',
+        data: 50,
+      },
+    ]);
+
+    await chartsLoaded();
+
+    assert.dom(svg).hasAttribute('height', '100%');
+    assert.dom(svg).hasAttribute('width', '100%');
+    assert.dom(shapes).exists({ count: 2 });
+    assert.dom(rect1).hasAttribute('y', '52.5%');
+    assert.dom(rect2).hasAttribute('y', '5%');
+
+    assert.dom(text).exists({ count: 2 });
+    assert.dom(text1).hasText('25');
+    assert.dom(text2).hasText('50');
+  });
 });

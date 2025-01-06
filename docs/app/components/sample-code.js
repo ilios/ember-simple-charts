@@ -5,6 +5,7 @@ import hljs from 'highlight.js/lib/core';
 import css from 'highlight.js/lib/languages/css';
 import handlebars from 'highlight.js/lib/languages/handlebars';
 import javascript from 'highlight.js/lib/languages/javascript';
+import { modifier } from 'ember-modifier';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage('handlebars', handlebars);
@@ -35,8 +36,7 @@ export default class SampleCodeComponent extends Component {
     this.showData = true;
   }
 
-  @action
-  highlight(el) {
-    hljs.highlightBlock(el);
-  }
+  highlight = modifier((el) => {
+    hljs.highlightElement(el);
+  });
 }

@@ -38,7 +38,6 @@
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
   },
   "dependencies": {
-    "@ember/render-modifiers": "^2.1.0",
     "@embroider/addon-shim": "^1.8.9",
     "@embroider/util": "^1.13.2",
     "@popperjs/core": "^2.11.8",
@@ -53,6 +52,7 @@
     "decorator-transforms": "^2.2.2",
     "ember-concurrency": "^4.0.2",
     "ember-in-element-polyfill": "^1.0.1",
+    "ember-modifier": "^4.2.0",
     "ember-on-resize-modifier": "^2.0.2",
     "ember-resize-observer-polyfill": "^0.0.1"
   },
@@ -98,7 +98,8 @@
       "./components/simple-chart-pie.js": "./dist/_app_/components/simple-chart-pie.js",
       "./components/simple-chart-tooltip.js": "./dist/_app_/components/simple-chart-tooltip.js",
       "./components/simple-chart-tree.js": "./dist/_app_/components/simple-chart-tree.js",
-      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js"
+      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js",
+      "./modifiers/set-element.js": "./dist/_app_/modifiers/set-element.js"
     }
   }
 }
