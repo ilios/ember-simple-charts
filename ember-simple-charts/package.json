@@ -99,7 +99,8 @@
       "./components/simple-chart-pie.js": "./dist/_app_/components/simple-chart-pie.js",
       "./components/simple-chart-tooltip.js": "./dist/_app_/components/simple-chart-tooltip.js",
       "./components/simple-chart-tree.js": "./dist/_app_/components/simple-chart-tree.js",
-      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js"
+      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js",
+      "./modifiers/set-element.js": "./dist/_app_/modifiers/set-element.js"
     }
   }
 }
