@@ -200,4 +200,83 @@ module('Integration | Component | simple chart box', function (hooks) {
       .dom('.simple-chart-box rect')
       .hasAttribute('fill', 'rgb(255, 64, 64)');
   });
+
+  test('it responds to changing data', async function (assert) {
+    assert.expect(45);
+    const data = [
+      {
+        label: '100',
+        data: 100,
+      },
+      {
+        label: '50',
+        data: 50,
+      },
+    ];
+    this.set('data', {
+      allData: data,
+      boxData: data[0],
+    });
+    this.set('isIcon', false);
+    this.set('hover', () => {});
+    this.set('onClick', () => {});
+    this.set('containerHeight', '100%');
+    this.set('containerWidth', '100%');
+    await render(hbs`<SimpleChartBox
+      @data={{this.data}}
+      @isIcon={{this.isIcon}}
+      @isClickable={{true}}
+      @hover={{this.hover}}
+      @onClick={{this.onClick}}
+      @containerHeight={{this.containerHeight}}
+      @containerWidth={{this.containerWidth}}
+    />`);
+
+    const check = async (height, width, x, y, fill) => {
+      await chartsLoaded();
+      const svg = 'svg';
+      const box = `${svg} .box rect`;
+      assert.dom(svg).hasAttribute('height', height);
+      assert.dom(svg).hasAttribute('width', width);
+      assert.dom(box).exists({ count: 1 });
+      assert.dom(box).hasAttribute('x', x);
+      assert.dom(box).hasAttribute('y', y);
+      assert.dom(box).hasAttribute('fill', fill);
+      await click(box);
+      await triggerEvent(box, 'mouseenter');
+    };
+    await check('100%', '100%', '0', '0', 'rgb(255, 64, 64)');
+
+    this.set('data', {
+      allData: data,
+      boxData: data[1],
+    });
+
+    await check('100%', '100%', '0', '0', 'rgb(0, 191, 191)');
+
+    this.set('containerHeight', '50%');
+    await check('50%', '100%', '0', '0', 'rgb(0, 191, 191)');
+
+    this.set('containerWidth', '50%');
+    await check('50%', '50%', '0', '0', 'rgb(0, 191, 191)');
+
+    this.set('onClick', (obj) => {
+      assert.ok(obj, 'click should be called');
+    });
+    await check('50%', '50%', '0', '0', 'rgb(0, 191, 191)');
+
+    this.set('hover', (obj) => {
+      assert.ok(obj, 'hover should be called');
+    });
+    await check('50%', '50%', '0', '0', 'rgb(0, 191, 191)');
+
+    this.set('isIcon', true);
+    this.set('onClick', () => {
+      assert.false(true, 'onClick should not be called');
+    });
+    this.set('hover', () => {
+      assert.false(true, 'hover should not be called');
+    });
+    await check('50%', '50%', '0', '0', 'rgb(0, 191, 191)');
+  });
 });

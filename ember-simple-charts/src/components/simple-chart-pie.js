@@ -8,11 +8,10 @@ import { arc, pie } from 'd3-shape';
 import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { TrackedAsyncData } from 'ember-async-data';
-import { timeout, restartableTask } from 'ember-concurrency';
+import { modifier } from 'ember-modifier';
 
 export default class SimpleChartPie extends Component {
   @tracked loadingPromise;
-  @tracked element = null;
 
   @cached
   get loadingData() {
@@ -27,40 +26,20 @@ export default class SimpleChartPie extends Component {
     return this.args.data ?? [{ data: 1, label: '', empty: true }];
   }
 
-  /**
-   * We use isPainted to trigger a re-render of the chart
-   * Passing all the values we need to render through this getter
-   * so it will re-fire if these values change
-   */
-  @cached
-  get isPainted() {
-    this.paint.perform(
-      this.element,
-      this.dataOrArray,
-      this.args.containerHeight,
-      this.args.containerWidth,
-      this.args.isIcon,
-      this.args.isClickable,
-      this.args.hover,
-      this.args.leave,
-      this.args.onClick,
-    );
-    return true;
-  }
-
-  paint = restartableTask(
-    async (
+  paint = modifier(
+    (
       element,
-      data,
-      containerHeight,
-      containerWidth,
-      isIcon,
-      isClickable,
-      hover,
-      leave,
-      onClick,
+      [
+        data,
+        isIcon,
+        isClickable,
+        hover,
+        leave,
+        onClick,
+        containerHeight,
+        containerWidth,
+      ],
     ) => {
-      await timeout(1); //wait a beat to let the loading value settle
       this.loadingPromise = null;
       const height = Math.min(containerHeight, containerWidth) || 0;
       const width = Math.min(containerHeight, containerWidth) || 0;

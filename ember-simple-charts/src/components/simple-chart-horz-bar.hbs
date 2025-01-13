@@ -3,7 +3,6 @@
   class='simple-chart-horz-bar{{if this.loading " loading" " loaded"}}'
   height={{@containerHeight}}
   width={{@containerWidth}}
-  data-painted={{this.isPainted}}
-  {{set-element this}}
+  {{this.paint this.dataOrArray @isIcon @isClickable @hover @leave @onClick}}
   ...attributes
 ></svg>

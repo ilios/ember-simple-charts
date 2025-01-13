@@ -144,4 +144,114 @@ module('Integration | Component | simple chart pie', function (hooks) {
     />`);
     await triggerEvent('svg .chart .slice:nth-of-type(1) path', 'mouseenter');
   });
+
+  test('it responds to changing data', async function (assert) {
+    assert.expect(51);
+    this.set('data', [
+      {
+        label: 'One',
+        data: 100,
+      },
+      {
+        label: 'Two',
+        data: 200,
+      },
+    ]);
+    this.set('isIcon', false);
+    this.set('hover', () => {});
+    this.set('onClick', () => {});
+    this.set('containerHeight', 200);
+    this.set('containerWidth', 200);
+    await render(hbs`<SimpleChartPie
+        @data={{this.data}}
+        @isIcon={{this.isIcon}}
+        @isClickable={{true}}
+        @hover={{this.hover}}
+        @onClick={{this.onClick}}
+        @containerHeight={{this.containerHeight}}
+        @containerWidth={{this.containerWidth}}
+      />`);
+
+    const check = async (height, width, fills) => {
+      await chartsLoaded();
+      const svg = 'svg';
+      const chart = `${svg} .chart`;
+      const sections = `${chart} .slice`;
+      assert.dom(svg).hasAttribute('height', `${height}`);
+      assert.dom(svg).hasAttribute('width', `${width}`);
+      assert.dom(chart).exists();
+      assert.dom(sections).exists({ count: fills.length });
+      for (let i = 0; i < fills.length; i++) {
+        assert
+          .dom(`${sections}:nth-of-type(${i + 1}) path`)
+          .hasAttribute('fill', fills[i]);
+      }
+      await click(`${sections}:nth-of-type(1) .slicepath`);
+      await triggerEvent(`${sections}:nth-of-type(2) .slicepath`, 'mouseenter');
+    };
+    await check(200, 200, ['rgb(0, 191, 191)', 'rgb(255, 64, 64)']);
+    this.set('data', [
+      {
+        label: 'One',
+        data: 1,
+      },
+      {
+        label: 'Two',
+        data: 1,
+      },
+      {
+        label: 'Three',
+        data: 1,
+      },
+    ]);
+    await check(200, 200, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+
+    this.set('containerHeight', 24);
+    await check(24, 200, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+    this.set('containerWidth', 42);
+    await check(24, 42, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+
+    this.set('onClick', (obj) => {
+      assert.ok(obj, 'click should be called');
+    });
+    await check(24, 42, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+
+    this.set('hover', (obj) => {
+      assert.ok(obj, 'hover should be called');
+    });
+    await check(24, 42, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+
+    this.set('isIcon', true);
+    this.set('onClick', () => {
+      assert.false(true, 'onClick should not be called');
+    });
+    this.set('hover', () => {
+      assert.false(true, 'hover should not be called');
+    });
+    await check(24, 42, [
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+      'rgb(255, 64, 64)',
+    ]);
+  });
 });

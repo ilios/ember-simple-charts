@@ -3,7 +3,6 @@
   class='simple-chart-cluster{{if this.loading " loading" " loaded"}}'
   height={{@containerHeight}}
   width={{@containerWidth}}
-  data-painted={{this.isPainted}}
-  {{set-element this}}
+  {{this.paint @data @isIcon @isClickable @hover @leave @onClick @containerHeight @containerWidth}}
   ...attributes
 ></svg>

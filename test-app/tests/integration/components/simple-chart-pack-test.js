@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest, chartsLoaded } from 'test-app/tests/helpers';
-import { click, render } from '@ember/test-helpers';
+import { click, render, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import ChartData from 'test-app/lib/chart-data';
 import percySnapshot from '@percy/ember';
@@ -150,5 +150,97 @@ module('Integration | Component | simple chart pack', function (hooks) {
       @containerWidth={{200}}
     />`);
     await click('svg .chart circle:nth-of-type(1)');
+  });
+
+  test('hover event fires', async function (assert) {
+    assert.expect(1);
+    this.set('chartData', ChartData);
+    this.set('onHover', (obj) => {
+      assert.strictEqual(obj.label, 'Root');
+    });
+    await render(hbs`<SimpleChartPack
+      @data={{this.chartData.pack}}
+      @isIcon={{false}}
+      @isClickable={{true}}
+      @hover={{this.onHover}}
+      @onClick={{(noop)}}
+      @containerHeight={{200}}
+      @containerWidth={{200}}
+    />`);
+    await triggerEvent('svg .chart circle:nth-of-type(1)', 'mouseenter');
+  });
+
+  test('it responds to changing data', async function (assert) {
+    assert.expect(28);
+    this.set('data', {
+      label: 'Root',
+      value: 100,
+      children: [
+        {
+          label: 'child',
+          value: 50,
+          children: [],
+        },
+      ],
+    });
+    this.set('isIcon', false);
+    this.set('hover', () => {});
+    this.set('onClick', () => {});
+    this.set('containerHeight', 200);
+    this.set('containerWidth', 200);
+    await render(hbs`<SimpleChartPack
+      @data={{this.data}}
+      @isIcon={{this.isIcon}}
+      @isClickable={{true}}
+      @hover={{this.hover}}
+      @onClick={{this.onClick}}
+      @containerHeight={{this.containerHeight}}
+      @containerWidth={{this.containerWidth}}
+    />`);
+
+    const check = async (height, width, fills) => {
+      await chartsLoaded();
+      const svg = 'svg';
+      const circles = `${svg} .chart circle`;
+      assert.dom(svg).hasAttribute('height', height);
+      assert.dom(svg).hasAttribute('width', width);
+      assert.dom(circles).exists({ count: fills.length });
+      for (let i = 0; i < fills.length; i++) {
+        assert
+          .dom(`${circles}:nth-of-type(${i + 1})`)
+          .hasAttribute('fill', fills[i]);
+      }
+      await click(`${circles}:nth-of-type(1)`);
+      await triggerEvent(`${circles}:nth-of-type(1)`, 'mouseenter');
+    };
+    await check('200', '200', ['rgb(255, 64, 64)', 'rgb(64, 255, 64)']);
+
+    this.set('data', {
+      label: 'Root',
+      value: 33,
+      children: [],
+    });
+    await check('200', '200', ['rgb(255, 64, 64)']);
+
+    this.set('containerHeight', 100);
+    await check('100', '200', ['rgb(255, 64, 64)']);
+    this.set('containerWidth', 100);
+    await check('100', '100', ['rgb(255, 64, 64)']);
+    this.set('onClick', () => {
+      assert.ok(true);
+    });
+    await check('100', '100', ['rgb(255, 64, 64)']);
+    this.set('hover', () => {
+      assert.ok(true);
+    });
+    await check('100', '100', ['rgb(255, 64, 64)']);
+
+    this.set('isIcon', true);
+    this.set('onClick', () => {
+      assert.false(true, 'onClick should not be called');
+    });
+    this.set('hover', () => {
+      assert.false(true, 'hover should not be called');
+    });
   });
 });
