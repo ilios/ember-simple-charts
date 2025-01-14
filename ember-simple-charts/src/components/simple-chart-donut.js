@@ -61,6 +61,7 @@ export default class SimpleChartDonut extends Component {
       .attr('stroke', '#FFFFFF')
       .attr('fill', (d) => color(d.data.data));
 
+    let runningTransitions = 0;
     chart
       .selectAll('path.slicepath')
       .transition()
@@ -71,8 +72,14 @@ export default class SimpleChartDonut extends Component {
         const i = interpolate({ startAngle: 0, endAngle: 0 }, b);
         return (p) => createArc(i(p));
       })
+      .on('start', () => {
+        //as each segment is animated record it
+        runningTransitions++;
+      })
       .on('end', () => {
-        if (!(isDestroyed(this) || isDestroying(this))) {
+        // end runs once for each segment as it finishs
+        runningTransitions--;
+        if (!runningTransitions && !(isDestroyed(this) || isDestroying(this))) {
           this.loading = false;
         }
       });
