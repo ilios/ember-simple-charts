@@ -1,6 +1,6 @@
 <svg
   xmlns='http://www.w3.org/2000/svg'
-  class='simple-chart-donut{{if this.loading " loading" " loaded"}}'
+  class='simple-chart-donut{{if this.isLoading " loading" " loaded"}}'
   height={{@containerHeight}}
   width={{@containerWidth}}
   {{did-update this.draw @containerHeight @containerWidth @data}}
