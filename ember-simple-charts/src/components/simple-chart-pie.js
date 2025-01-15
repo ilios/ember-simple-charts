@@ -1,7 +1,6 @@
-import { tracked } from '@glimmer/tracking';
+import { cached, tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { isDestroying, isDestroyed } from '@ember/destroyable';
 import 'd3-transition';
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
@@ -10,12 +9,24 @@ import { arc, pie } from 'd3-shape';
 import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { A } from '@ember/array';
+import { TrackedAsyncData } from 'ember-async-data';
 
 export default class SimpleChartPie extends Component {
   @tracked loading;
+  @tracked loadingPromise;
+
+  @cached
+  get loadingData() {
+    return new TrackedAsyncData(this.loadingPromise);
+  }
+
+  get isLoading() {
+    return !this.loadingPromise || this.loadingData.isPending;
+  }
 
   @action
   draw(element, [elementHeight, elementWidth, data]) {
+    this.loadingPromise = null;
     if (!elementHeight || !elementWidth) {
       return;
     }
@@ -58,8 +69,7 @@ export default class SimpleChartPie extends Component {
       .attr('stroke', '#FFFFFF')
       .attr('fill', (d) => color(d.data.data));
 
-    let runningTransitions = 0;
-    chart
+    this.loadingPromise = chart
       .selectAll('path.slicepath')
       .transition()
       .ease(easeLinear)
@@ -69,17 +79,7 @@ export default class SimpleChartPie extends Component {
         const i = interpolate({ startAngle: 0, endAngle: 0 }, b);
         return (p) => createArc(i(p));
       })
-      .on('start', () => {
-        //as each segment is animated record it
-        runningTransitions++;
-      })
-      .on('end', () => {
-        // end runs once for each segment as it finishs
-        runningTransitions--;
-        if (!runningTransitions && !(isDestroyed(this) || isDestroying(this))) {
-          this.loading = false;
-        }
-      });
+      .end();
 
     if (!this.args.isIcon) {
       const text = chart
