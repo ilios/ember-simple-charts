@@ -44,6 +44,9 @@ export default class SimpleChartPie extends Component {
         containerWidth,
       ],
     ) => {
+      if (!containerHeight || !containerWidth) {
+        return;
+      }
       this.loadingPromise = null;
       const height = Math.min(containerHeight, containerWidth) || 0;
       const width = Math.min(containerHeight, containerWidth) || 0;

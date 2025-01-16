@@ -25,6 +25,9 @@ export default class SimpleChartPack extends Component {
         containerWidth,
       ],
     ) => {
+      if (!containerHeight || !containerWidth) {
+        return;
+      }
       this.loading = true;
       const height = Math.min(containerHeight, containerWidth) || 0;
       const width = Math.min(containerHeight, containerWidth) || 0;
