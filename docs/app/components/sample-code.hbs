@@ -23,17 +23,17 @@
     </button>
   </nav>
   {{#if this.showHTML}}
-    <pre {{did-insert this.highlight}}>
+    <pre {{this.highlight}}>
 {{yield to="html"}}
     </pre>
   {{/if}}
   {{#if this.showCSS}}
-    <pre {{did-insert this.highlight}}>
+    <pre {{this.highlight}}>
 {{yield to="css"}}
     </pre>
   {{/if}}
   {{#if this.showData}}
-    <pre {{did-insert this.highlight}}>
+    <pre {{this.highlight}}>
         <code class="language-javascript">
 {{yield to="data"}}
         </code>
