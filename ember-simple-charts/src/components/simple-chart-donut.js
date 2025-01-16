@@ -19,6 +19,10 @@ export default class SimpleChartDonut extends Component {
   }
 
   get isLoading() {
+    if (this.args.isIcon) {
+      return false;
+    }
+
     return !this.loadingPromise || this.loadingData.isPending;
   }
 
@@ -80,19 +84,19 @@ export default class SimpleChartDonut extends Component {
         .attr('stroke', '#FFFFFF')
         .attr('fill', (d) => color(d.data.data));
 
-      this.loadingPromise = chart
-        .selectAll('path.slicepath')
-        .transition()
-        .ease(easeLinear)
-        .duration(500)
-        .attrTween('d', (b) => {
-          b.innerRadius = 0;
-          const i = interpolate({ startAngle: 0, endAngle: 0 }, b);
-          return (p) => createArc(i(p));
-        })
-        .end();
-
       if (!isIcon) {
+        this.loadingPromise = chart
+          .selectAll('path.slicepath')
+          .transition()
+          .ease(easeLinear)
+          .duration(500)
+          .attrTween('d', (b) => {
+            b.innerRadius = 0;
+            const i = interpolate({ startAngle: 0, endAngle: 0 }, b);
+            return (p) => createArc(i(p));
+          })
+          .end();
+
         const text = chart
           .selectAll('.slice')
           .append('text')
