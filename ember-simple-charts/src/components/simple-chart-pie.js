@@ -9,6 +9,7 @@ import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { TrackedAsyncData } from 'ember-async-data';
 import { modifier } from 'ember-modifier';
+import sliceColor from '../helpers/slice-color.js';
 
 export default class SimpleChartPie extends Component {
   @tracked loadingPromise;
@@ -100,18 +101,7 @@ export default class SimpleChartPie extends Component {
         const text = chart
           .selectAll('.slice')
           .append('text')
-          .style('color', (d) => {
-            const rgb = color(d.data.data);
-            //cut up rgb(1, 99, 245) into parts
-            const parts = rgb.substr(4).split(')')[0].split(',');
-            const r = parseInt(parts[0], 16);
-            const g = parseInt(parts[1], 16);
-            const b = parseInt(parts[2], 16);
-            //Thanks to https://24ways.org/2010/calculating-color-contrast for this formula
-            const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-
-            return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
-          })
+          .style('color', (d) => sliceColor.compute([d.data.data, color]))
           .style('font-size', '.8rem')
           .attr(
             'transform',
