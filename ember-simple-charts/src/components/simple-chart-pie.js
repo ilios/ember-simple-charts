@@ -9,7 +9,7 @@ import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { TrackedAsyncData } from 'ember-async-data';
 import { modifier } from 'ember-modifier';
-import sliceColor from '../helpers/slice-color.js';
+import sliceColor from '../utils/slice-color.js';
 
 export default class SimpleChartPie extends Component {
   @tracked loadingPromise;
@@ -101,7 +101,7 @@ export default class SimpleChartPie extends Component {
         const text = chart
           .selectAll('.slice')
           .append('text')
-          .style('color', (d) => sliceColor.compute([d.data.data, color]))
+          .style('color', (d) => sliceColor(d.data.data, color))
           .style('font-size', '.8rem')
           .attr(
             'transform',

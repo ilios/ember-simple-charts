@@ -5,7 +5,7 @@ import { select } from 'd3-selection';
 import { scaleBand, scaleLinear, scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { modifier } from 'ember-modifier';
-import sliceColor from '../helpers/slice-color.js';
+import sliceColor from '../utils/slice-color.js';
 
 export default class SimpleChartHorzBar extends Component {
   @tracked loading = true;
@@ -53,7 +53,7 @@ export default class SimpleChartHorzBar extends Component {
           .data(data)
           .enter()
           .append('text')
-          .style('color', (d) => sliceColor.compute([d.data, color]))
+          .style('color', (d) => sliceColor(d.data, color))
           .style('font-size', '.8rem')
           .attr('text-anchor', 'end')
           .attr('text-align', 'right')

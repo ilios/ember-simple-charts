@@ -1,6 +1,4 @@
-import { helper } from '@ember/component/helper';
-
-export default helper(function sliceColor([data, color]) {
+export default function sliceColor(data, color) {
   const rgb = color(data);
   const parts = rgb.substr(4).split(')')[0].split(',');
   const r = parseInt(parts[0], 16);
@@ -10,4 +8,4 @@ export default helper(function sliceColor([data, color]) {
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 
   return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
-});
+}
