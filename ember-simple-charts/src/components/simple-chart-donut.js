@@ -9,6 +9,7 @@ import { easeLinear } from 'd3-ease';
 import { interpolate } from 'd3-interpolate';
 import { TrackedAsyncData } from 'ember-async-data';
 import { modifier } from 'ember-modifier';
+import sliceColor from '../utils/slice-color.js';
 
 export default class SimpleChartDonut extends Component {
   @tracked loadingPromise;
@@ -70,11 +71,13 @@ export default class SimpleChartDonut extends Component {
         .innerRadius(radius - 32);
 
       svg.selectAll('.chart').remove();
+
       const chart = svg
         .append('g')
         .attr('class', 'chart')
         //move the donut into the center of the chart
         .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
       const path = chart
         .selectAll('.slice')
         .data(createPie(data))
@@ -103,18 +106,7 @@ export default class SimpleChartDonut extends Component {
         const text = chart
           .selectAll('.slice')
           .append('text')
-          .style('color', (d) => {
-            const rgb = color(d.data.data);
-            //cut up rgb(1, 99, 245) into parts
-            const parts = rgb.substr(4).split(')')[0].split(',');
-            const r = parseInt(parts[0], 16);
-            const g = parseInt(parts[1], 16);
-            const b = parseInt(parts[2], 16);
-            //Thanks to https://24ways.org/2010/calculating-color-contrast for this formula
-            const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-
-            return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
-          })
+          .style('color', (d) => sliceColor(d.data.data, color))
           .style('font-size', '.8rem')
           .attr(
             'transform',

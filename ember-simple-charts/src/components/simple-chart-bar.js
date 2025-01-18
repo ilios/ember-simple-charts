@@ -4,6 +4,7 @@ import { select } from 'd3-selection';
 import { scaleBand, scaleLinear, scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { modifier } from 'ember-modifier';
+import sliceColor from '../utils/slice-color.js';
 
 export default class SimpleChartBar extends Component {
   @tracked loading = true;
@@ -51,18 +52,7 @@ export default class SimpleChartBar extends Component {
           .data(data)
           .enter()
           .append('text')
-          .style('color', (d) => {
-            const rgb = color(d.data);
-            //cut up rgb(1, 99, 245) into parts
-            const parts = rgb.substr(4).split(')')[0].split(',');
-            const r = parseInt(parts[0], 16);
-            const g = parseInt(parts[1], 16);
-            const b = parseInt(parts[2], 16);
-            //Thanks to https://24ways.org/2010/calculating-color-contrast for this formula
-            const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-
-            return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
-          })
+          .style('color', (d) => sliceColor(d.data, color))
           .style('font-size', '.8rem')
           .attr('text-anchor', 'middle')
           .attr('x', (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`)
