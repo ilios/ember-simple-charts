@@ -4,24 +4,36 @@ const donut = [
     data: 300,
     description: 'This is totally cool.',
     meta: { id: 10 },
+    textForeground: 'rgb(62, 0, 0)',
+    textBackground: 'rgba(209, 209, 209, 0.75)',
   },
   {
     label: 'Way Cool',
     data: 200,
     description: 'This is way cool.',
     meta: { id: 20 },
+    textForeground: 'rgb(227, 189, 189)',
+    textBackground: 'rgb(150, 77, 0)',
   },
   {
     label: 'Cucumber Cool',
     data: 400,
     description: 'This is cool as cucumber.',
     meta: { id: 30 },
+    textBackground: 'rgb(201, 255, 201)',
   },
   {
     label: 'So Cool',
     data: 500,
     description: 'This is so cool.',
     meta: { id: 40 },
+    textForeground: 'rgb(164, 216, 255)',
+  },
+  {
+    label: 'Mega Cool',
+    data: 200,
+    description: 'Incredibly mega cool.',
+    meta: { id: 50 },
   },
 ];
 const pie = [

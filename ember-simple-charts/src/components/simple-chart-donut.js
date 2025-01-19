@@ -70,6 +70,15 @@ export default class SimpleChartDonut extends Component {
         .outerRadius(radius - 32)
         .innerRadius(radius - 32);
 
+      const handleHover = ({ target }) => {
+        const { data } = select(target).datum();
+        const slices = svg.selectAll('.slice');
+        const selectedSlice = slices.filter(
+          ({ data: sliceData }) => sliceData.label === data.label,
+        );
+        hover(data, selectedSlice.node());
+      };
+
       svg.selectAll('.chart').remove();
 
       const chart = svg
@@ -83,7 +92,9 @@ export default class SimpleChartDonut extends Component {
         .data(createPie(data))
         .enter()
         .append('g')
-        .attr('class', 'slice')
+        .attr('class', 'slice');
+
+      path
         .append('path')
         .attr('class', 'slicepath')
         .attr('d', createArc)
@@ -103,17 +114,45 @@ export default class SimpleChartDonut extends Component {
           })
           .end();
 
-        const text = chart
-          .selectAll('.slice')
-          .append('text')
-          .style('color', (d) => sliceColor(d.data.data, color))
-          .style('font-size', '.8rem')
-          .attr(
-            'transform',
-            (d) => 'translate(' + createLabelArc.centroid(d) + ')',
-          )
-          .attr('text-anchor', 'middle')
-          .text((d) => d.data.label);
+        path.each(function (d) {
+          const sliceGroup = select(this);
+
+          const text = sliceGroup
+            .append('text')
+            .style('fill', (d) => {
+              return d.data.textForeground ?? 'rgb(0, 0, 0)';
+            })
+            .style('font-size', '.8rem')
+            .style('color', (d) => sliceColor(d.data.data, color))
+            .attr('text-anchor', 'middle')
+            .attr('transform', `translate(${createLabelArc.centroid(d)})`)
+            .text((d) => d.data.label);
+
+          text.on('mouseenter', handleHover);
+          text.on('mouseleave', leave);
+
+          if (isClickable) {
+            text.on('click', ({ target }) => {
+              const { data } = select(target).datum();
+              onClick(data);
+            });
+            text.style('cursor', 'pointer');
+          }
+
+          const bbox = text.node().getBBox();
+
+          // Add a rectangle behind the text
+          sliceGroup
+            .insert('rect', 'text')
+            .attr('x', bbox.x - 4)
+            .attr('y', bbox.y - 2)
+            .attr('width', bbox.width + 8)
+            .attr('height', bbox.height + 4)
+            .attr('fill', (d) => {
+              return d.data.textBackground ?? 'rgba(255, 255, 255, 0)';
+            })
+            .attr('transform', `translate(${createLabelArc.centroid(d)})`);
+        });
 
         chart
           .selectAll('.slice')
@@ -121,18 +160,8 @@ export default class SimpleChartDonut extends Component {
           .append('desc')
           .text((d) => d.data.description);
 
-        const handleHover = ({ target }) => {
-          const { data } = select(target).datum();
-          const slices = svg.selectAll('.slice');
-          const selectedSlice = slices.filter(
-            ({ data: sliceData }) => sliceData.label === data.label,
-          );
-          hover(data, selectedSlice.node());
-        };
         path.on('mouseenter', handleHover);
-        text.on('mouseenter', handleHover);
         path.on('mouseleave', leave);
-        text.on('mouseleave', leave);
 
         if (isClickable) {
           path.on('click', ({ target }) => {
@@ -140,11 +169,6 @@ export default class SimpleChartDonut extends Component {
             onClick(data);
           });
           path.style('cursor', 'pointer');
-          text.on('click', ({ target }) => {
-            const { data } = select(target).datum();
-            onClick(data);
-          });
-          text.style('cursor', 'pointer');
         }
       }
     },
