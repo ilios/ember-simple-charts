@@ -106,7 +106,7 @@ export default class SimpleChartDonut extends Component {
         const text = chart
           .selectAll('.slice')
           .append('text')
-          .style('color', (d) => sliceColor(d.data.data, color))
+          .style('fill', (d) => sliceColor(d.data.data, color))
           .style('font-size', '.8rem')
           .attr(
             'transform',

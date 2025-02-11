@@ -52,7 +52,7 @@ export default class SimpleChartBar extends Component {
           .data(data)
           .enter()
           .append('text')
-          .style('color', (d) => sliceColor(d.data, color))
+          .style('fill', (d) => sliceColor(d.data, color))
           .style('font-size', '.8rem')
           .attr('text-anchor', 'middle')
           .attr('x', (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`)
