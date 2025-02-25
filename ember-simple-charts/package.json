@@ -58,7 +58,7 @@
     "ember-resize-observer-polyfill": "^0.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.26.9",
     "@babel/eslint-parser": "^7.25.1",
     "@babel/runtime": "^7.25.6",
     "@embroider/addon-dev": "^6.0.1",
