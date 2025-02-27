@@ -47,7 +47,7 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.dom(`${section1} text`).hasAttribute('text-anchor', 'middle');
     assert
       .dom(`${section1} text`)
-      .hasAttribute('style', 'color: rgb(255, 255, 255); font-size: 0.8rem;');
+      .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
     assert.dom(`${section1} text`).hasText('Totally Cool');
     assert.dom(`${section1} desc`).hasText('This is totally cool.');
 
@@ -65,7 +65,7 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.dom(`${section2} text`).hasAttribute('text-anchor', 'middle');
     assert
       .dom(`${section2} text`)
-      .hasAttribute('style', 'color: rgb(0, 0, 0); font-size: 0.8rem;');
+      .hasAttribute('style', 'fill: rgb(0, 0, 0); font-size: 0.8rem;');
     assert.dom(`${section2} text`).hasText('Way Cool');
     assert.dom(`${section2} desc`).hasText('This is way cool.');
 
@@ -80,7 +80,7 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.dom(`${section3} text`).hasAttribute('text-anchor', 'middle');
     assert
       .dom(`${section3} text`)
-      .hasAttribute('style', 'color: rgb(255, 255, 255); font-size: 0.8rem;');
+      .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
     assert.dom(`${section3} text`).hasText('Cucumber Cool');
     assert.dom(`${section3} desc`).hasText('This is cool as cucumber.');
 
@@ -98,7 +98,7 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert.dom(`${section4} text`).hasAttribute('text-anchor', 'middle');
     assert
       .dom(`${section4} text`)
-      .hasAttribute('style', 'color: rgb(255, 255, 255); font-size: 0.8rem;');
+      .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
     assert.dom(`${section4} text`).hasText('So Cool');
     assert.dom(`${section4} desc`).hasText('This is so cool.');
   });

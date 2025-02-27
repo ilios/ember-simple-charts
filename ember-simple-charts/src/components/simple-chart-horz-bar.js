@@ -53,7 +53,7 @@ export default class SimpleChartHorzBar extends Component {
           .data(data)
           .enter()
           .append('text')
-          .style('color', (d) => sliceColor(d.data, color))
+          .style('fill', (d) => sliceColor(d.data, color))
           .style('font-size', '.8rem')
           .attr('text-anchor', 'end')
           .attr('text-align', 'right')
