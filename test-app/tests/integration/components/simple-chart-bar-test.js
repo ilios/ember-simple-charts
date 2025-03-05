@@ -48,10 +48,10 @@ module('Integration | Component | simple chart bar', function (hooks) {
     assert.dom(rect4).hasAttribute('fill', 'rgb(255, 64, 64)');
 
     assert.dom(text).exists({ count: 4 });
-    assert.dom(text1).hasText('300');
-    assert.dom(text2).hasText('200');
-    assert.dom(text3).hasText('400');
-    assert.dom(text4).hasText('500');
+    assert.dom(text1).includesText('300');
+    assert.dom(text2).includesText('200');
+    assert.dom(text3).includesText('400');
+    assert.dom(text4).includesText('500');
     assert.ok(
       find(text1).getAttribute('style').includes('fill: rgb(255, 255, 255);'),
     );
@@ -149,7 +149,7 @@ module('Integration | Component | simple chart bar', function (hooks) {
       }
       assert.dom(text).exists({ count: texts.length });
       for (let i = 0; i < texts.length; i++) {
-        assert.dom(`${text}:nth-of-type(${i + 1})`).hasText(texts[i]);
+        assert.dom(`${text}:nth-of-type(${i + 1})`).includesText(texts[i]);
       }
       await click(`${boxes}:nth-of-type(1)`);
       await triggerEvent(`${boxes}:nth-of-type(1)`, 'mouseenter');
