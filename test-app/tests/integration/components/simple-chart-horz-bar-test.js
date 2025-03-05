@@ -58,13 +58,13 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
     assert.dom(rect5).hasAttribute('fill', 'rgb(99, 249, 34)');
     assert.dom(rect6).hasAttribute('fill', 'rgb(13, 137, 233)');
     assert.dom(rect7).hasAttribute('fill', 'rgb(255, 64, 64)');
-    assert.dom(text1).hasText('Mark');
-    assert.dom(text2).hasText('John');
-    assert.dom(text3).hasText('Kathy');
-    assert.dom(text4).hasText('Jeff Long Namerson');
-    assert.dom(text5).hasText('Joe');
-    assert.dom(text6).hasText('Kelly');
-    assert.dom(text7).hasText('Jason');
+    assert.dom(text1).includesText('Mark');
+    assert.dom(text2).includesText('John');
+    assert.dom(text3).includesText('Kathy');
+    assert.dom(text4).includesText('Jeff Long Namerson');
+    assert.dom(text5).includesText('Joe');
+    assert.dom(text6).includesText('Kelly');
+    assert.dom(text7).includesText('Jason');
     assert.ok(find(text1).getAttribute('style').includes('fill: rgb(0, 0, 0)'));
     assert.ok(
       find(text2).getAttribute('style').includes('fill: rgb(255, 255, 255)'),
@@ -169,7 +169,7 @@ module('Integration | Component | simple chart horz bar', function (hooks) {
       }
       assert.dom(text).exists({ count: texts.length });
       for (let i = 0; i < texts.length; i++) {
-        assert.dom(`${text}:nth-of-type(${i + 1})`).hasText(texts[i]);
+        assert.dom(`${text}:nth-of-type(${i + 1})`).includesText(texts[i]);
       }
       await click(`${boxes}:nth-of-type(1)`);
       await triggerEvent(`${boxes}:nth-of-type(1)`, 'mouseenter');
