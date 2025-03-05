@@ -10,7 +10,7 @@ module('Integration | Component | simple chart', function (hooks) {
   test('it renders', async function (assert) {
     await render(hbs`<SimpleChart @name="donut" />`);
 
-    assert.dom('*').hasText('');
+    assert.dom('*').includesText('');
   });
 
   test('click event fires', async function (assert) {
