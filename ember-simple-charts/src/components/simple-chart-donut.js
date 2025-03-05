@@ -43,7 +43,7 @@ export default class SimpleChartDonut extends Component {
         onClick,
         containerHeight,
         containerWidth,
-        textIsOutlined,
+        textIsNotOutlined,
       ],
     ) => {
       if (!containerHeight || !containerWidth) {
@@ -115,7 +115,7 @@ export default class SimpleChartDonut extends Component {
           )
           .attr('text-anchor', 'middle')
           .each(function () {
-            if (textIsOutlined) {
+            if (!textIsNotOutlined) {
               select(this)
                 .append('tspan')
                 .attr('class', 'text-outline')
