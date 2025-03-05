@@ -121,7 +121,7 @@ export default class SimpleChartDonut extends Component {
                 .attr('class', 'text-outline')
                 .attr('fill', (d) => sliceColor(d.data.data, color, true))
                 .attr('stroke', (d) => sliceColor(d.data.data, color, true))
-                .attr('stroke-width', '2px')
+                .attr('stroke-width', '3px')
                 .attr('stroke-linejoin', 'round')
                 .text((d) => d.data.label)
                 .append('tspan')
