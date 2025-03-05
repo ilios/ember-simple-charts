@@ -14,7 +14,10 @@ export default class SimpleChartBar extends Component {
   }
 
   paint = modifier(
-    (element, [data, isIcon, isClickable, hover, leave, onClick]) => {
+    (
+      element,
+      [data, isIcon, isClickable, hover, leave, onClick, textIsNotOutlined],
+    ) => {
       this.loading = true;
       const svg = select(element);
       const values = data.map((d) => d.data);
@@ -57,7 +60,28 @@ export default class SimpleChartBar extends Component {
           .attr('text-anchor', 'middle')
           .attr('x', (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`)
           .attr('y', (d) => `${110 - yScale(d.data)}%`)
-          .text((d) => d.data);
+          .each(function () {
+            if (!textIsNotOutlined) {
+              select(this)
+                .append('tspan')
+                .attr('class', 'text-outline')
+                .attr('fill', (d) => sliceColor(d.data, color, true))
+                .attr('stroke', (d) => sliceColor(d.data, color, true))
+                .attr('stroke-width', '3px')
+                .attr('stroke-linejoin', 'round')
+                .text((d) => d.data)
+                .append('tspan')
+                .attr(
+                  'x',
+                  (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`,
+                )
+                .attr('y', (d) => `${110 - yScale(d.data)}%`)
+                .attr('dy', '0')
+                .text('\u200b');
+            }
+
+            select(this).append((d) => document.createTextNode(d.data));
+          });
 
         bars
           .selectAll('rect')
