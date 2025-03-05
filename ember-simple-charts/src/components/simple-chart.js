@@ -39,12 +39,17 @@ export default class SimpleChart extends Component {
 
     return ensureSafeComponent(charts[this.args.name], this);
   }
+
   get isIcon() {
     return Boolean(this.args.isIcon);
   }
 
   get isClickable() {
     return !!this.args.onClick;
+  }
+
+  get textIsNotOutlined() {
+    return this.args.textIsNotOutlined ?? false;
   }
 
   calculateSize = restartableTask(
