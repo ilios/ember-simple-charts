@@ -15,6 +15,11 @@ a:visited {
 h1 {
   text-align: center;
 }
+pre {
+  &.hljs {
+    white-space: break-spaces;
+  }
+}
 
 .wrapper {
   display: grid;
