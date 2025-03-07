@@ -43,6 +43,7 @@ export default class SimpleChartDonut extends Component {
         onClick,
         containerHeight,
         containerWidth,
+        textIsNotOutlined,
       ],
     ) => {
       if (!containerHeight || !containerWidth) {
@@ -113,7 +114,24 @@ export default class SimpleChartDonut extends Component {
             (d) => 'translate(' + createLabelArc.centroid(d) + ')',
           )
           .attr('text-anchor', 'middle')
-          .text((d) => d.data.label);
+          .each(function () {
+            if (!textIsNotOutlined) {
+              select(this)
+                .append('tspan')
+                .attr('class', 'text-outline')
+                .attr('fill', (d) => sliceColor(d.data.data, color, true))
+                .attr('stroke', (d) => sliceColor(d.data.data, color, true))
+                .attr('stroke-width', '3px')
+                .attr('stroke-linejoin', 'round')
+                .text((d) => d.data.label)
+                .append('tspan')
+                .attr('x', '0')
+                .attr('dy', '0')
+                .text('\u200b');
+            }
+
+            select(this).append((d) => document.createTextNode(d.data.label));
+          });
 
         chart
           .selectAll('.slice')
