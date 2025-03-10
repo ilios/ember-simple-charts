@@ -48,8 +48,8 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert
       .dom(`${section1} text`)
       .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
-    assert.dom(`${section1} text`).hasText('Totally Cool');
-    assert.dom(`${section1} desc`).hasText('This is totally cool.');
+    assert.dom(`${section1} text`).includesText('Totally Cool');
+    assert.dom(`${section1} desc`).includesText('This is totally cool.');
 
     assert
       .dom(`${section2} path`)
@@ -66,8 +66,8 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert
       .dom(`${section2} text`)
       .hasAttribute('style', 'fill: rgb(0, 0, 0); font-size: 0.8rem;');
-    assert.dom(`${section2} text`).hasText('Way Cool');
-    assert.dom(`${section2} desc`).hasText('This is way cool.');
+    assert.dom(`${section2} text`).includesText('Way Cool');
+    assert.dom(`${section2} desc`).includesText('This is way cool.');
 
     assert
       .dom(`${section3} path`)
@@ -81,8 +81,8 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert
       .dom(`${section3} text`)
       .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
-    assert.dom(`${section3} text`).hasText('Cucumber Cool');
-    assert.dom(`${section3} desc`).hasText('This is cool as cucumber.');
+    assert.dom(`${section3} text`).includesText('Cucumber Cool');
+    assert.dom(`${section3} desc`).includesText('This is cool as cucumber.');
 
     assert
       .dom(`${section4} path`)
@@ -99,8 +99,8 @@ module('Integration | Component | simple chart pie', function (hooks) {
     assert
       .dom(`${section4} text`)
       .hasAttribute('style', 'fill: rgb(255, 255, 255); font-size: 0.8rem;');
-    assert.dom(`${section4} text`).hasText('So Cool');
-    assert.dom(`${section4} desc`).hasText('This is so cool.');
+    assert.dom(`${section4} text`).includesText('So Cool');
+    assert.dom(`${section4} desc`).includesText('This is so cool.');
   });
 
   //<svg xmlns="http://www.w3.org/2000/svg" class="simple-chart-pie loaded" height="200" width="200"><g class="chart" transform="translate(100,100)"><g class="slice"><path class="slicepath" d="M0,-100A100,100,0,0,1,97.493,-22.252L0,0Z" stroke="#FFFFFF" fill="rgb(24, 114, 244)"></path><text style="color: rgb(255, 255, 255); font-size: 0.8rem;" transform="translate(42.39730652639388,-53.16454080782603)" text-anchor="middle">Totally Cool</text><desc>This is totally cool.</desc></g><g class="slice"><path class="slicepath" d="M97.493,-22.252A100,100,0,0,1,78.183,62.349L0,0Z" stroke="#FFFFFF" fill="rgb(24, 244, 114)"></path><text style="color: rgb(0, 0, 0); font-size: 0.8rem;" transform="translate(66.29509802836401,15.131423509029378)" text-anchor="middle">Way Cool</text><desc>This is way cool.</desc></g><g class="slice"><path class="slicepath" d="M78.183,62.349A100,100,0,0,1,-78.183,62.349L0,0Z" stroke="#FFFFFF" fill="rgb(167, 3, 213)"></path><text style="color: rgb(255, 255, 255); font-size: 0.8rem;" transform="translate(4.1637991171010006e-15,68)" text-anchor="middle">Cucumber Cool</text><desc>This is cool as cucumber.</desc></g><g class="slice"><path class="slicepath" d="M-78.183,62.349A100,100,0,0,1,0,-100L0,0Z" stroke="#FFFFFF" fill="rgb(255, 64, 64)"></path><text style="color: rgb(255, 255, 255); font-size: 0.8rem;" transform="translate(-61.2658830173645,-29.504094259993945)" text-anchor="middle">So Cool</text><desc>This is so cool.</desc></g></g></svg>

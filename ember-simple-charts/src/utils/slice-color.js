@@ -1,4 +1,4 @@
-export default function sliceColor(data, color) {
+export default function sliceColor(data, color, reverse = false) {
   const rgb = color(data);
   const parts = rgb.substr(4).split(')')[0].split(',');
   const r = parseInt(parts[0], 16);
@@ -7,5 +7,9 @@ export default function sliceColor(data, color) {
   // Thanks to https://24ways.org/2010/calculating-color-contrast for this formula
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 
-  return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
+  if (reverse) {
+    return yiq >= 256 ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
+  } else {
+    return yiq >= 256 ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)';
+  }
 }
