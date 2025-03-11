@@ -74,19 +74,21 @@ export default class SimpleChartHorzBar extends Component {
                 .attr('stroke-linejoin', 'round')
                 .attr(
                   'y',
-                  (d) => `${yScale(d.label) + yScale.bandwidth() / 2 + 2}%`,
+                  (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
                 )
-                .text((d) => d.label)
+                .attr('dy', '4.5')
+                .text((d) => d.data)
                 .append('tspan')
                 .attr(
                   'y',
                   (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
                 )
                 .attr('x', (d) => `${xScale(d.data) - 3}%`)
+                .attr('dy', '0')
                 .text('\u200b');
             }
 
-            select(this).append((d) => document.createTextNode(d.label));
+            select(this).append((d) => document.createTextNode(d.data));
           });
 
         bars
