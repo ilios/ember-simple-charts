@@ -77,7 +77,7 @@ export default class SimpleChartHorzBar extends Component {
                   (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
                 )
                 .attr('dy', '4.5')
-                .text((d) => d.data)
+                .text((d) => d.label)
                 .append('tspan')
                 .attr(
                   'y',
@@ -88,7 +88,7 @@ export default class SimpleChartHorzBar extends Component {
                 .text('\u200b');
             }
 
-            select(this).append((d) => document.createTextNode(d.data));
+            select(this).append((d) => document.createTextNode(d.label));
           });
 
         bars
