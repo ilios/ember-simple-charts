@@ -21,5 +21,10 @@
     "husky": "^9.1.6",
     "prettier": "^3.0.3",
     "prettier-plugin-ember-template-tag": "^2.0.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "fsevents"
+    ]
   }
 }
