@@ -1,7 +1,4 @@
-<div
-  class="simple-chart"
-  {{on-resize (perform this.calculateSize)}}
->
+<div class="simple-chart" {{on-resize (perform this.calculateSize)}}>
   <this.chartComponent
     @data={{@data}}
     @isIcon={{this.isIcon}}
@@ -15,7 +12,9 @@
   {{#if this.tooltipTarget}}
     {{yield
       (hash
-        tooltip=(component "simple-chart-tooltip" target=this.tooltipTarget title=null)
+        tooltip=(component
+          "simple-chart-tooltip" target=this.tooltipTarget title=null
+        )
       )
     }}
   {{/if}}

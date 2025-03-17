@@ -67,7 +67,7 @@ export default class SimpleChart extends Component {
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = tooltipTarget;
         }
-      } catch (e) {
+      } catch {
         //we will just ignore errors here since the mouse state is transient
       }
     }
@@ -81,7 +81,7 @@ export default class SimpleChart extends Component {
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
-      } catch (e) {
+      } catch {
         //we will just ignore errors here since the mouse state is transient
       }
     }
@@ -94,7 +94,7 @@ export default class SimpleChart extends Component {
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
-      } catch (e) {
+      } catch {
         //we will just ignore errors here since the mouse state is transient
       }
     }

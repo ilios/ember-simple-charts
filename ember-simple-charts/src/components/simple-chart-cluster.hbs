@@ -1,8 +1,17 @@
 <svg
-  xmlns='http://www.w3.org/2000/svg'
-  class='simple-chart-cluster{{if this.loading " loading" " loaded"}}'
+  xmlns="http://www.w3.org/2000/svg"
+  class="simple-chart-cluster{{if this.loading ' loading' ' loaded'}}"
   height={{@containerHeight}}
   width={{@containerWidth}}
-  {{this.paint @data @isIcon @isClickable @hover @leave @onClick @containerHeight @containerWidth}}
+  {{this.paint
+    @data
+    @isIcon
+    @isClickable
+    @hover
+    @leave
+    @onClick
+    @containerHeight
+    @containerWidth
+  }}
   ...attributes
 ></svg>
