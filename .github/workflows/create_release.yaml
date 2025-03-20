@@ -3,7 +3,7 @@ name: Release Notes
 on:
   push:
     tags:
-      - "*"
+      - '*'
 
 jobs:
   notes:
@@ -37,3 +37,10 @@ jobs:
         with:
           body: ${{steps.notes.outputs.releaseNotes}}
           token: ${{ secrets.ZORGBORT_TOKEN }}
+      - uses: act10ns/slack@v2
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_ILIOS_DEPLOYMENT_WEBHOOK_URL }}
+        with:
+          status: ${{ job.status }}
+          message: Create Release Failed {{ env.GITHUB_SERVER_URL }}/{{ env.GITHUB_REPOSITORY }}/actions/runs/{{ env.GITHUB_RUN_ID }}
