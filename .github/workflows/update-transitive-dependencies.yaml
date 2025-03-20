@@ -2,7 +2,7 @@ name: Update Transitive Dependencies
 
 on:
   schedule:
-    - cron: "15 11 * * 0" # weekly, on Sunday morning (UTC)
+    - cron: '15 11 * * 0' # weekly, on Sunday morning (UTC)
   workflow_dispatch: null
 
 jobs:
@@ -13,8 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 18
