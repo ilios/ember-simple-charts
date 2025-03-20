@@ -2,7 +2,7 @@ name: Update Transitive Dependencies
 
 on:
   schedule:
-    - cron: "15 11 * * 0" # weekly, on Sunday morning (UTC)
+    - cron: '15 11 * * 0' # weekly, on Sunday morning (UTC)
   workflow_dispatch: null
 
 jobs:
@@ -43,3 +43,10 @@ jobs:
         run: gh pr merge --merge --auto ${{ steps.cpr.outputs.pull-request-number }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: act10ns/slack@v2
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_ILIOS_DEPLOYMENT_WEBHOOK_URL }}
+        with:
+          status: ${{ job.status }}
+          message: Update Transitive Dependencies Failed {{ env.GITHUB_SERVER_URL }}/{{ env.GITHUB_REPOSITORY }}/actions/runs/{{ env.GITHUB_RUN_ID }}
