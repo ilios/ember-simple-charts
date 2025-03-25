@@ -60,7 +60,7 @@ export default class SimpleChartHorzBar extends Component {
           .attr('alignment-baseline', 'central')
           .attr('y', (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`)
           .attr('x', (d) => `${xScale(d.data) - 3}%`)
-          .text((d) => d.data);
+          .text((d) => d.label);
         // Adding outline to horiz-bar text has incorrect vertical-alignment cross-browser, so turned off for now
         // .each(function () {
         //   if (!textIsNotOutlined) {
