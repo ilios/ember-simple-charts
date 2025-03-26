@@ -61,6 +61,34 @@ export default class SimpleChartHorzBar extends Component {
           .attr('y', (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`)
           .attr('x', (d) => `${xScale(d.data) - 3}%`)
           .text((d) => d.label);
+        // Adding outline to horiz-bar text has incorrect vertical-alignment cross-browser, so turned off for now
+        // .each(function () {
+        //   if (!textIsNotOutlined) {
+        //     select(this)
+        //       .append('tspan')
+        //       .attr('class', 'text-outline')
+        //       .attr('fill', (d) => sliceColor(d.data, color, true))
+        //       .attr('stroke', (d) => sliceColor(d.data, color, true))
+        //       .attr('stroke-width', '3px')
+        //       .attr('stroke-linejoin', 'round')
+        //       .attr(
+        //         'y',
+        //         (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
+        //       )
+        //       .attr('dy', '4.5')
+        //       .text((d) => d.label)
+        //       .append('tspan')
+        //       .attr(
+        //         'y',
+        //         (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
+        //       )
+        //       .attr('x', (d) => `${xScale(d.data) - 3}%`)
+        //       .attr('dy', '0')
+        //       .text('\u200b');
+
+        //     select(this).append((d) => document.createTextNode(d.label));
+        //   }
+        // });
 
         bars
           .selectAll('rect')
