@@ -57,7 +57,7 @@ export default class SimpleChartHorzBar extends Component {
           .style('font-size', '.8rem')
           .attr('text-anchor', 'end')
           .attr('text-align', 'right')
-          .attr('alignment-baseline', 'central')
+          .attr('dominant-baseline', 'central')
           .attr('y', (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`)
           .attr('x', (d) => `${xScale(d.data) - 3}%`)
           .text((d) => d.label);
