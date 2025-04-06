@@ -144,8 +144,8 @@ importers:
         specifier: ^8.1.2
         version: 8.1.2(eslint@9.24.0)
       globals:
-        specifier: ^15.14.0
-        version: 15.15.0
+        specifier: ^16.0.0
+        version: 16.0.0
       highlight.js:
         specifier: ^11.10.0
         version: 11.11.1
@@ -295,8 +295,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0(eslint@9.24.0))(eslint@9.24.0)(prettier@3.5.3)
       globals:
-        specifier: ^15.14.0
-        version: 15.15.0
+        specifier: ^16.0.0
+        version: 16.0.0
       prettier:
         specifier: ^3.4.2
         version: 3.5.3
@@ -445,8 +445,8 @@ importers:
         specifier: ^8.1.2
         version: 8.1.2(eslint@9.24.0)
       globals:
-        specifier: ^15.14.0
-        version: 15.15.0
+        specifier: ^16.0.0
+        version: 16.0.0
       loader.js:
         specifier: ^4.7.0
         version: 4.7.0
@@ -4667,6 +4667,10 @@ packages:
 
   globals@15.15.0:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globals@9.18.0:
@@ -13738,6 +13742,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.15.0: {}
+
+  globals@16.0.0: {}
 
   globals@9.18.0: {}
 
