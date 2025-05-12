@@ -1,0 +1,108 @@
+{
+  "name": "ember-simple-charts",
+  "version": "12.2.0",
+  "description": "Simple charts for ember.",
+  "keywords": [
+    "ember-addon",
+    "visualizations",
+    "d3"
+  ],
+  "repository": "https://github.com/ilios/ember-simple-charts",
+  "homepage": "https://ember-simple-charts.netlify.app/",
+  "license": "MIT",
+  "author": "The Ilios Team (info@iliosproject.org)",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js",
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "start": "rollup --config --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.9",
+    "@embroider/util": "^1.13.2",
+    "@popperjs/core": "^2.11.8",
+    "d3-ease": "^3.0.1",
+    "d3-hierarchy": "^3.1.2",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.2.0",
+    "d3-transition": "^3.0.1",
+    "decorator-transforms": "^2.2.2",
+    "ember-async-data": "^2.0.0",
+    "ember-concurrency": "^4.0.3",
+    "ember-in-element-polyfill": "^1.0.1",
+    "ember-modifier": "^4.2.0",
+    "ember-on-resize-modifier": "^2.0.2",
+    "ember-resize-observer-polyfill": "^0.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/runtime": "^7.26.9",
+    "@embroider/addon-dev": "^8.0.1",
+    "@eslint/js": "^9.17.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "babel-plugin-ember-template-compilation": "^2.2.5",
+    "concurrently": "^9.0.1",
+    "ember-source": "^6.0.0",
+    "ember-template-lint": "^6.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint": "^9.17.0",
+    "globals": "^16.0.0",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
+    "prettier": "^3.4.2",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup": "^4.40.1",
+    "webpack": "^5.95.0"
+  },
+  "peerDependencies": {
+    "ember-source": ">= 4.12.0"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/simple-chart-bar.js": "./dist/_app_/components/simple-chart-bar.js",
+      "./components/simple-chart-box.js": "./dist/_app_/components/simple-chart-box.js",
+      "./components/simple-chart-cluster.js": "./dist/_app_/components/simple-chart-cluster.js",
+      "./components/simple-chart-donut.js": "./dist/_app_/components/simple-chart-donut.js",
+      "./components/simple-chart-horz-bar.js": "./dist/_app_/components/simple-chart-horz-bar.js",
+      "./components/simple-chart-pack.js": "./dist/_app_/components/simple-chart-pack.js",
+      "./components/simple-chart-pie.js": "./dist/_app_/components/simple-chart-pie.js",
+      "./components/simple-chart-tooltip.js": "./dist/_app_/components/simple-chart-tooltip.js",
+      "./components/simple-chart-tree.js": "./dist/_app_/components/simple-chart-tree.js",
+      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js"
+    }
+  }
+}
