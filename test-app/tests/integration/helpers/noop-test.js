@@ -8,7 +8,10 @@ module('Integration | Helper | noop', function (hooks) {
 
   test('nothing happens when invoked', async function (assert) {
     assert.expect(0);
-    await render(hbs`<button type="button" {{on "click" (noop)}}></button>`);
+    this.set('label', 'label');
+    await render(
+      hbs`<button type="button" aria-label={{this.label}} {{on "click" (noop)}}></button>`,
+    );
     await click('button');
   });
 });
