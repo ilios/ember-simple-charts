@@ -56,6 +56,9 @@ importers:
       concurrently:
         specifier: ^9.1.2
         version: 9.2.0
+      ember-a11y-testing:
+        specifier: ^7.0.0
+        version: 7.1.2(@ember/test-helpers@4.0.5(@babel/core@7.28.0)(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.28.0))(rsvp@4.8.5)(webpack@5.100.1)))(qunit@2.24.1)(webpack@5.100.1)
       ember-auto-import:
         specifier: ^2.10.0
         version: 2.10.0(webpack@5.100.2)

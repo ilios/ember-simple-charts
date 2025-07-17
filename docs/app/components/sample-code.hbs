@@ -1,7 +1,9 @@
 <div class="sample-code">
-  <nav>
+  <nav id={{concat @exampleType "-example-menu"}} aria-label={{concat @exampleType "-example-menu"}}>
     <button
       type="button"
+      id={{concat @exampleType "-example-html"}}
+      aria-label={{concat @exampleType "-example-html"}}
       disabled={{this.showHTML}}
       {{on "click" this.displayHTML}}
       >
@@ -9,6 +11,8 @@
       </button>
     <button
       type="button"
+      id={{concat @exampleType "-example-css"}}
+      aria-label={{concat @exampleType "-example-css"}}
       disabled={{this.showCSS}}
       {{on "click" this.displayCSS}}
     >
@@ -16,6 +20,8 @@
     </button>
     <button
       type="button"
+      id={{concat @exampleType "-example-data"}}
+      aria-label={{concat @exampleType "-example-data"}}
       disabled={{this.showData}}
       {{on "click" this.displayData}}
     >
