@@ -23,8 +23,8 @@ pre {
 
 .wrapper {
   display: grid;
+  gap: 10px;
   grid-auto-rows: minmax(30%, auto);
-  grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
   margin: 20px;
   max-width: 90%;
