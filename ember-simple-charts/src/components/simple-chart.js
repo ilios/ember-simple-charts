@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { timeout, task, taskGroup, restartableTask } from 'ember-concurrency';
+import { timeout, task, restartableTask } from 'ember-concurrency';
 import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
@@ -62,9 +62,7 @@ export default class SimpleChart extends Component {
     },
   );
 
-  @taskGroup mouseGroup;
-
-  handleHover = task({ group: 'mouseGroup' }, async (data, tooltipTarget) => {
+  handleHover = task(async (data, tooltipTarget) => {
     await timeout(DEBOUNCE_MS);
     if (this.args.hover) {
       try {
@@ -78,7 +76,7 @@ export default class SimpleChart extends Component {
     }
   });
 
-  handleLeave = task({ group: 'mouseGroup' }, async () => {
+  handleLeave = task(async () => {
     await timeout(DEBOUNCE_MS);
     if (this.args.leave) {
       try {
@@ -92,7 +90,7 @@ export default class SimpleChart extends Component {
     }
   });
 
-  handleClick = task({ group: 'mouseGroup' }, async (data) => {
+  handleClick = task(async (data) => {
     if (this.args.onClick) {
       try {
         await this.args.onClick(data);
