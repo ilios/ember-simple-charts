@@ -14,18 +14,21 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.ZORGBORT_TOKEN }}
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v5
         with:
-          node-version: 18
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install
       - name: Validate releaseType
-        run: npx in-string-list ${{ github.event.inputs.releaseType }} major,minor,patch
+        run: pnpx in-string-list ${{ github.event.inputs.releaseType }} major,minor,patch
       - name: Setup Git
         run: |
           git config user.name Zorgbort
           git config user.email info@iliosproject.org
       - name: Increment Version
         working-directory: ./ember-simple-charts
-        run: npx versionup --level ${{ github.event.inputs.releaseType }}
+        run: pnpx versionup --level ${{ github.event.inputs.releaseType }}
       - run: |
           NEW_TAG=`node -p "require('./ember-simple-charts/package.json').version"`
           echo ${NEW_TAG}
