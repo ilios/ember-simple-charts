@@ -29,13 +29,16 @@ jobs:
       - name: Increment Version
         working-directory: ./ember-simple-charts
         run: pnpx versionup --level ${{ github.event.inputs.releaseType }}
+      - name: Format Package JSON
+        run: pnpm format
       - run: |
           NEW_TAG=`node -p "require('./ember-simple-charts/package.json').version"`
           echo ${NEW_TAG}
           echo "new_tag=${NEW_TAG}" >> $GITHUB_ENV
       - name: Tag Version
         run: |
-          git commit -a -m "${{env.new_tag}}"
+          git add ember-simple-charts/package.json
+          git commit -m "${{env.new_tag}}"
           git tag v${{env.new_tag}} -m "Tagging the v${{env.new_tag}} ${{ github.event.inputs.releaseType }} release"
       - name: Push Changes
         run: git push --follow-tags
