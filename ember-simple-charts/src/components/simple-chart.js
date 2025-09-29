@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { timeout, task, restartableTask } from 'ember-concurrency';
+import { timeout, task } from 'ember-concurrency';
 import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
@@ -51,8 +51,8 @@ export default class SimpleChart extends Component {
   get textIsNotOutlined() {
     return this.args.textIsNotOutlined ?? false;
   }
-
-  calculateSize = restartableTask(
+  calculateSize = task(
+    { restartable: true },
     async ({ contentRect: { width, height } }) => {
       if (this.height && this.width) {
         await timeout(250);
