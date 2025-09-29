@@ -12,35 +12,14 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Get Previous Tag
-        id: previousTag
-        run: |
-          PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
-          echo ${PREVIOUS_TAG}
-          echo ::set-output name=tag::${PREVIOUS_TAG}
-      - name: Get New Tag
-        id: nextTag
-        run: |
-          NEW_TAG=${GITHUB_REF#refs/tags/}
-          echo ${NEW_TAG}
-          echo ::set-output name=tag::${NEW_TAG}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v5
         with:
           node-version: 22
-          cache: pnpm
-      - name: Generate Release Notes
-        id: notes
-        run: |
-          NOTES=$(pnpx generate-github-release-notes ilios ember-simple-charts ${{ steps.previousTag.outputs.tag }} ${{steps.nextTag.outputs.tag}})
-          echo ${NOTES}
-          # remove line breaks from notes so they can be passed around
-          NOTES="${NOTES//$'\n'/'%0A'}"
-          echo "::set-output name=releaseNotes::$NOTES"
       - uses: ncipollo/release-action@v1
         with:
-          body: ${{steps.notes.outputs.releaseNotes}}
           token: ${{ secrets.ZORGBORT_TOKEN }}
+          generateReleaseNotes: true
       - uses: act10ns/slack@v2
         if: failure()
         env:
