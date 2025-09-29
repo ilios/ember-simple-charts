@@ -16,7 +16,7 @@
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.17.1",
   "devDependencies": {
     "concurrently": "^9.1.2",
     "husky": "^9.1.6",
