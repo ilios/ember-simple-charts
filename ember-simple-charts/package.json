@@ -65,7 +65,7 @@
     "@babel/runtime": "^7.26.9",
     "@embroider/addon-dev": "^8.1.0",
     "@eslint/js": "^9.17.0",
-    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-babel": "^6.1.0",
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^9.0.1",
     "ember-source": "^6.0.0",
