@@ -22,7 +22,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 22
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -41,7 +41,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 22
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --no-lockfile
@@ -60,7 +60,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Start the Percy Server
@@ -93,7 +93,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 22
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile

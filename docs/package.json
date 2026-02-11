@@ -84,8 +84,8 @@
     "webpack": "^5.97.1"
   },
   "engines": {
-    "node": ">= 18",
-    "pnpm": ">= 8"
+    "node": ">= 22",
+    "pnpm": ">= 10"
   },
   "ember": {
     "edition": "octane"
