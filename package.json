@@ -12,7 +12,7 @@
     "prepare": "husky && pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
     "start:addon": "pnpm --filter ember-simple-charts start",
-    "start:docs": "pnpm --filter docs start --port=4201",
+    "start:docs": "pnpm --filter ember-simple-charts exec rollup --config --watch & pnpm --filter docs start --port=4201",
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
