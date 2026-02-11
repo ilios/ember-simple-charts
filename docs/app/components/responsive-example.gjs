@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import SimpleChart from 'ember-simple-charts/components/simple-chart';
-import SampleCode from './sample-code.js';
+import SampleCode from './sample-code';
 
 export default class ResponsiveExampleComponent extends Component {
   @service chartData;

@@ -1,9 +1,9 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
-import Example from '../components/example.js';
-import IconExample from '../components/icon-example.js';
-import ResponsiveExample from '../components/responsive-example.js';
-import TooltipExample from '../components/tooltip-example.js';
-import ClickExample from '../components/click-example.js';
+import Example from '../components/example';
+import IconExample from '../components/icon-example';
+import ResponsiveExample from '../components/responsive-example';
+import TooltipExample from '../components/tooltip-example';
+import ClickExample from '../components/click-example';
 <template>
   {{pageTitle "Cluster"}}
   <div class="chart">

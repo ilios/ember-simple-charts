@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import SimpleChart from 'ember-simple-charts/components/simple-chart';
 import { fn, concat } from '@ember/helper';
-import SampleCode from './sample-code.js';
+import SampleCode from './sample-code';
 
 export default class TooltipExampleComponent extends Component {
   @tracked tooltipData;
