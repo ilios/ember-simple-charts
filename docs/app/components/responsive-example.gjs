@@ -1,3 +1,18 @@
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+
+export default class ResponsiveExampleComponent extends Component {
+  @service chartData;
+
+  get data() {
+    return this.chartData[this.args.name];
+  }
+
+  get sampleData() {
+    return JSON.stringify(this.data, null, 2);
+  }
+}
+
 <div class="example">
   <h3>Responsive to container size</h3>
   <div class="large-example">

@@ -1,3 +1,18 @@
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+
+export default class IconExampleComponent extends Component {
+  @service chartData;
+
+  get data() {
+    return this.chartData[this.args.name];
+  }
+
+  get sampleData() {
+    return JSON.stringify(this.data, null, 2);
+  }
+}
+
 <div class="example">
   <h3>As an icon</h3>
   <div class="icon-example">
