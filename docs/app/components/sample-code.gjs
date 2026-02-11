@@ -6,6 +6,8 @@ import css from 'highlight.js/lib/languages/css';
 import handlebars from 'highlight.js/lib/languages/handlebars';
 import javascript from 'highlight.js/lib/languages/javascript';
 import { modifier } from 'ember-modifier';
+import { concat } from '@ember/helper';
+import { on } from '@ember/modifier';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage('handlebars', handlebars);
@@ -39,47 +41,51 @@ export default class SampleCodeComponent extends Component {
   highlight = modifier((el) => {
     hljs.highlightElement(el);
   });
-}
-
-<div class="sample-code">
-  <nav id={{concat @exampleType "-example-menu"}} aria-label={{concat @exampleType "-example-menu"}}>
-    <button
-      type="button"
-      disabled={{this.showHTML}}
-      {{on "click" this.displayHTML}}
+  <template>
+    <div class="sample-code">
+      <nav
+        id={{concat @exampleType "-example-menu"}}
+        aria-label={{concat @exampleType "-example-menu"}}
       >
-        HTML
-      </button>
-    <button
-      type="button"
-      disabled={{this.showCSS}}
-      {{on "click" this.displayCSS}}
-    >
-      CSS
-    </button>
-    <button
-      type="button"
-      disabled={{this.showData}}
-      {{on "click" this.displayData}}
-    >
-      Data
-    </button>
-  </nav>
-  {{#if this.showHTML}}
-    <pre {{this.highlight}}>
+        <button
+          type="button"
+          disabled={{this.showHTML}}
+          {{on "click" this.displayHTML}}
+        >
+          HTML
+        </button>
+        <button
+          type="button"
+          disabled={{this.showCSS}}
+          {{on "click" this.displayCSS}}
+        >
+          CSS
+        </button>
+        <button
+          type="button"
+          disabled={{this.showData}}
+          {{on "click" this.displayData}}
+        >
+          Data
+        </button>
+      </nav>
+      {{#if this.showHTML}}
+        <pre {{this.highlight}}>
 {{yield to="html"}}
     </pre>
-  {{/if}}
-  {{#if this.showCSS}}
-    <pre {{this.highlight}}>
+      {{/if}}
+      {{#if this.showCSS}}
+        <pre {{this.highlight}}>
 {{yield to="css"}}
     </pre>
-  {{/if}}
-  {{#if this.showData}}
-    <pre {{this.highlight}}>
+      {{/if}}
+      {{#if this.showData}}
+        <pre {{this.highlight}}>
         <code class="language-javascript">
-{{yield to="data"}}
-        </code>
+            {{yield to="data"}}
+          </code>
     </pre>
-  {{/if}}
-</div>
+      {{/if}}
+    </div>
+  </template>
+}
