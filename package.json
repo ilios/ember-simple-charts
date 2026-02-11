@@ -11,9 +11,8 @@
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "husky && pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
-    "start:addon": "pnpm --filter ember-simple-charts start --no-watch.clearScreen",
+    "start:addon": "pnpm --filter ember-simple-charts start",
     "start:docs": "pnpm --filter docs start --port=4201",
-    "start:test-app": "pnpm --filter test-app start --port=4200",
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
