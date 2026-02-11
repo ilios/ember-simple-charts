@@ -21,4 +21,20 @@ export default class SimpleChartTooltip extends Component {
   get applicationElement() {
     return document.querySelector('.ember-application');
   }
+  <template>
+    {{#in-element this.applicationElement insertBefore=null}}
+      <div class="simple-chart-tooltip" {{this.setup}}>
+        <div class="content">
+          {{#if @title}}
+            <div class="title">
+              {{@title}}
+            </div>
+          {{/if}}
+          <div class="body">
+            {{yield}}
+          </div>
+        </div>
+      </div>
+    {{/in-element}}
+  </template>
 }

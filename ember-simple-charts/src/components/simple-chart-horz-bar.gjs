@@ -1,12 +1,12 @@
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { select } from 'd3-selection';
 import { scaleBand, scaleLinear, scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
 import { modifier } from 'ember-modifier';
 import sliceColor from '../utils/slice-color.js';
 
-export default class SimpleChartBar extends Component {
+export default class SimpleChartHorzBar extends Component {
   @tracked loading = true;
 
   get dataOrArray() {
@@ -26,11 +26,11 @@ export default class SimpleChartBar extends Component {
         Math.max(...values),
       ]);
 
-      const yScale = scaleLinear()
+      const xScale = scaleLinear()
         .domain([0, Math.max(...data.map((d) => d.data))])
         .range([0, isIcon ? 100 : 95]);
 
-      const xScale = scaleBand()
+      const yScale = scaleBand()
         .domain(data.map((d) => d.label))
         .range([0, isIcon ? 100 : 95])
         .paddingInner(0.12);
@@ -43,10 +43,10 @@ export default class SimpleChartBar extends Component {
         .data(data)
         .enter()
         .append('rect')
-        .attr('width', `${xScale.bandwidth()}%`)
-        .attr('height', (d) => `${yScale(d.data)}%`)
-        .attr('x', (d) => `${xScale(d.label)}%`)
-        .attr('y', (d) => `${100 - yScale(d.data)}%`)
+        .attr('height', `${yScale.bandwidth()}%`)
+        .attr('width', (d) => `${xScale(d.data)}%`)
+        .attr('y', (d) => `${yScale(d.label)}%`)
+        .attr('x', 0)
         .attr('fill', (d) => color(d.data));
 
       if (!isIcon) {
@@ -57,9 +57,11 @@ export default class SimpleChartBar extends Component {
           .append('text')
           .style('fill', (d) => sliceColor(d.data, color))
           .style('font-size', '.8rem')
-          .attr('text-anchor', 'middle')
-          .attr('x', (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`)
-          .attr('y', (d) => `${110 - yScale(d.data)}%`)
+          .attr('text-anchor', 'end')
+          .attr('text-align', 'right')
+          .attr('dominant-baseline', 'central')
+          .attr('y', (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`)
+          .attr('x', (d) => `${xScale(d.data) - 3}%`)
           .each(function () {
             if (!textIsNotOutlined) {
               select(this)
@@ -69,18 +71,25 @@ export default class SimpleChartBar extends Component {
                 .attr('stroke', (d) => sliceColor(d.data, color, true))
                 .attr('stroke-width', '3px')
                 .attr('stroke-linejoin', 'round')
-                .text((d) => d.data)
+                .attr(
+                  'y',
+                  (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
+                )
+                .attr('dy', '0')
+                .attr('dominant-baseline', 'central')
+                .text((d) => d.label)
                 .append('tspan')
                 .attr(
-                  'x',
-                  (d) => `${xScale(d.label) + xScale.bandwidth() / 2}%`,
+                  'y',
+                  (d) => `${yScale(d.label) + yScale.bandwidth() / 2}%`,
                 )
-                .attr('y', (d) => `${110 - yScale(d.data)}%`)
+                .attr('x', (d) => `${xScale(d.data) - 3}%`)
                 .attr('dy', '0')
+                .attr('dominant-baseline', 'central')
                 .text('\u200b');
-            }
 
-            select(this).append((d) => document.createTextNode(d.data));
+              select(this).append((d) => document.createTextNode(d.label));
+            }
           });
 
         bars
@@ -116,4 +125,22 @@ export default class SimpleChartBar extends Component {
       this.loading = false;
     },
   );
+  <template>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="simple-chart-horz-bar{{if this.loading ' loading' ' loaded'}}"
+      height={{@containerHeight}}
+      width={{@containerWidth}}
+      {{this.paint
+        this.dataOrArray
+        @isIcon
+        @isClickable
+        @hover
+        @leave
+        @onClick
+        @textIsNotOutlined
+      }}
+      ...attributes
+    ></svg>
+  </template>
 }

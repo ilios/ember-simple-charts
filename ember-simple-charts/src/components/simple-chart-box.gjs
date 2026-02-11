@@ -1,5 +1,5 @@
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
@@ -62,4 +62,14 @@ export default class SimpleChartBox extends Component {
       this.loading = false;
     },
   );
+  <template>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="simple-chart-box{{if this.loading ' loading' ' loaded'}}"
+      height={{@containerHeight}}
+      width={{@containerWidth}}
+      {{this.paint @data @isIcon @isClickable @hover @leave @onClick}}
+      ...attributes
+    ></svg>
+  </template>
 }

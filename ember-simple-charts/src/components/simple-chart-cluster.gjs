@@ -1,6 +1,5 @@
-import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
-
+import { tracked } from '@glimmer/tracking';
 import 'd3-transition';
 import { select } from 'd3-selection';
 import { hierarchy, cluster } from 'd3-hierarchy';
@@ -106,4 +105,23 @@ export default class SimpleChartCluster extends Component {
       this.loading = false;
     },
   );
+  <template>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="simple-chart-cluster{{if this.loading ' loading' ' loaded'}}"
+      height={{@containerHeight}}
+      width={{@containerWidth}}
+      {{this.paint
+        @data
+        @isIcon
+        @isClickable
+        @hover
+        @leave
+        @onClick
+        @containerHeight
+        @containerWidth
+      }}
+      ...attributes
+    ></svg>
+  </template>
 }

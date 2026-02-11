@@ -1,6 +1,6 @@
-import 'd3-transition';
-import { cached, tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
+import { cached, tracked } from '@glimmer/tracking';
+import 'd3-transition';
 import { select } from 'd3-selection';
 import { scaleSequential } from 'd3-scale';
 import { interpolateSinebow } from 'd3-scale-chromatic';
@@ -11,7 +11,7 @@ import { TrackedAsyncData } from 'ember-async-data';
 import { modifier } from 'ember-modifier';
 import sliceColor from '../utils/slice-color.js';
 
-export default class SimpleChartDonut extends Component {
+export default class SimpleChartPie extends Component {
   @tracked loadingPromise;
 
   @cached
@@ -59,11 +59,8 @@ export default class SimpleChartDonut extends Component {
         0,
         Math.max(...values),
       ]);
-      const donutWidth = width * 0.2;
 
-      const createArc = arc()
-        .innerRadius(radius - donutWidth)
-        .outerRadius(radius);
+      const createArc = arc().innerRadius(0).outerRadius(radius);
       const createPie = pie()
         .value((d) => d.data)
         .sort(null);
@@ -72,13 +69,11 @@ export default class SimpleChartDonut extends Component {
         .innerRadius(radius - 32);
 
       svg.selectAll('.chart').remove();
-
       const chart = svg
         .append('g')
         .attr('class', 'chart')
-        //move the donut into the center of the chart
+        //move the pie into the center of the chart
         .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
-
       const path = chart
         .selectAll('.slice')
         .data(createPie(data))
@@ -167,4 +162,24 @@ export default class SimpleChartDonut extends Component {
       }
     },
   );
+  <template>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="simple-chart-pie{{if this.isLoading ' loading' ' loaded'}}"
+      height={{@containerHeight}}
+      width={{@containerWidth}}
+      {{this.paint
+        this.dataOrArray
+        @isIcon
+        @isClickable
+        @hover
+        @leave
+        @onClick
+        @containerHeight
+        @containerWidth
+        @textIsNotOutlined
+      }}
+      ...attributes
+    ></svg>
+  </template>
 }

@@ -1,21 +1,25 @@
 import Component from '@glimmer/component';
 import { timeout, task } from 'ember-concurrency';
+import perform from 'ember-concurrency/helpers/perform';
 import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
+import { hash } from '@ember/helper';
 import { assert } from '@ember/debug';
-import { ensureSafeComponent } from '@embroider/util';
-import SimpleChartBar from './simple-chart-bar.js';
-import SimpleChartCluster from './simple-chart-cluster.js';
-import SimpleChartDonut from './simple-chart-donut.js';
-import SimpleChartHorzBar from './simple-chart-horz-bar.js';
-import SimpleChartPack from './simple-chart-pack.js';
-import SimpleChartPie from './simple-chart-pie.js';
-import SimpleChartTree from './simple-chart-tree.js';
-import SimpleChartBox from './simple-chart-box.js';
+import SimpleChartBar from './simple-chart-bar.gjs';
+import SimpleChartCluster from './simple-chart-cluster.gjs';
+import SimpleChartDonut from './simple-chart-donut.gjs';
+import SimpleChartHorzBar from './simple-chart-horz-bar.gjs';
+import SimpleChartPack from './simple-chart-pack.gjs';
+import SimpleChartPie from './simple-chart-pie.gjs';
+import SimpleChartTree from './simple-chart-tree.gjs';
+import SimpleChartBox from './simple-chart-box.gjs';
+import SimpleChartTooltip from './simple-chart-tooltip.gjs';
 
 import './simple-chart.css';
 
 const DEBOUNCE_MS = 100;
+import { onResize } from 'ember-primitives/on-resize';
+
 export default class SimpleChart extends Component {
   @tracked height;
   @tracked width;
@@ -37,7 +41,7 @@ export default class SimpleChart extends Component {
       Object.keys(charts).includes(this.args.name),
     );
 
-    return ensureSafeComponent(charts[this.args.name], this);
+    return charts[this.args.name];
   }
 
   get isIcon() {
@@ -102,4 +106,29 @@ export default class SimpleChart extends Component {
       }
     }
   });
+
+  <template>
+    <div class="simple-chart" {{onResize (perform this.calculateSize)}}>
+      <this.chartComponent
+        @data={{@data}}
+        @isIcon={{this.isIcon}}
+        @hover={{perform this.handleHover}}
+        @onClick={{perform this.handleClick}}
+        @leave={{perform this.handleLeave}}
+        @isClickable={{this.isClickable}}
+        @containerHeight={{this.height}}
+        @containerWidth={{this.width}}
+        @textIsNotOutlined={{this.textIsNotOutlined}}
+      />
+      {{#if this.tooltipTarget}}
+        {{yield
+          (hash
+            tooltip=(component
+              SimpleChartTooltip target=this.tooltipTarget title=null
+            )
+          )
+        }}
+      {{/if}}
+    </div>
+  </template>
 }
