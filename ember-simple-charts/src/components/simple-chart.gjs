@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-import { timeout, task } from 'ember-concurrency';
-import perform from 'ember-concurrency/helpers/perform';
 import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { hash } from '@ember/helper';
@@ -14,6 +12,7 @@ import SimpleChartPie from './simple-chart-pie.gjs';
 import SimpleChartTree from './simple-chart-tree.gjs';
 import SimpleChartBox from './simple-chart-box.gjs';
 import SimpleChartTooltip from './simple-chart-tooltip.gjs';
+import timeout from '../utils/timeout.js';
 
 import './simple-chart.css';
 
@@ -55,19 +54,19 @@ export default class SimpleChart extends Component {
   get textIsNotOutlined() {
     return this.args.textIsNotOutlined ?? false;
   }
-  calculateSize = task(
-    { restartable: true },
-    async ({ contentRect: { width, height } }) => {
-      if (this.height && this.width) {
-        await timeout(250);
-      }
+
+  calculateSize = async ({ contentRect: { width, height } }) => {
+    if (this.height && this.width) {
+      await timeout(DEBOUNCE_MS, this);
+    }
+    if (!(isDestroyed(this) || isDestroying(this))) {
       this.height = Math.floor(height);
       this.width = Math.floor(width);
-    },
-  );
+    }
+  };
 
-  handleHover = task(async (data, tooltipTarget) => {
-    await timeout(DEBOUNCE_MS);
+  handleHover = async (data, tooltipTarget) => {
+    await timeout(DEBOUNCE_MS, this);
     if (this.args.hover) {
       try {
         await this.args.hover(data);
@@ -78,10 +77,10 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  });
+  };
 
-  handleLeave = task(async () => {
-    await timeout(DEBOUNCE_MS);
+  handleLeave = async () => {
+    await timeout(DEBOUNCE_MS, this);
     if (this.args.leave) {
       try {
         await this.args.leave();
@@ -92,9 +91,10 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  });
+  };
 
-  handleClick = task(async (data) => {
+  handleClick = async (data) => {
+    await timeout(DEBOUNCE_MS, this);
     if (this.args.onClick) {
       try {
         await this.args.onClick(data);
@@ -105,16 +105,16 @@ export default class SimpleChart extends Component {
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  });
+  };
 
   <template>
-    <div class="simple-chart" {{onResize (perform this.calculateSize)}}>
+    <div class="simple-chart" {{onResize this.calculateSize}}>
       <this.chartComponent
         @data={{@data}}
         @isIcon={{this.isIcon}}
-        @hover={{perform this.handleHover}}
-        @onClick={{perform this.handleClick}}
-        @leave={{perform this.handleLeave}}
+        @hover={{this.handleHover}}
+        @onClick={{this.handleClick}}
+        @leave={{this.handleLeave}}
         @isClickable={{this.isClickable}}
         @containerHeight={{this.height}}
         @containerWidth={{this.width}}
