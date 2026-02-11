@@ -4,7 +4,7 @@
 
 body {
   background-color: #f2f5f6;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   margin: 0;
 }
 
@@ -12,9 +12,11 @@ a,
 a:visited {
   color: blue;
 }
+
 h1 {
   text-align: center;
 }
+
 pre {
   &.hljs {
     white-space: break-spaces;
@@ -38,21 +40,19 @@ pre {
     padding: 20px;
   }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (width <= 900px) {
     grid-auto-rows: minmax(100%, auto);
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
 }
 
 .panel {
-  //needed for the flex layout
   flex: 1 1 30%;
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
 
-  @media only screen and (max-width: 900px) {
-    //needed for the flex layout
+  @media only screen and (width <= 900px) {
     flex: 1 1 100%;
   }
 
@@ -83,7 +83,7 @@ pre {
     height: 500px;
     width: 500px;
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (width <= 900px) {
       height: 250px;
       width: 250px;
     }
