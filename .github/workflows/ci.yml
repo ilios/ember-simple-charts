@@ -86,11 +86,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Start the Percy Server
-        run: pnpm --filter test-app exec percy exec:start &
-      - run: pnpm --filter test-app run test:ember
+        run: pnpm --filter docs exec percy exec:start &
       - run: pnpm --filter docs run test:ember
       - name: Stop Percy and Finalize Tests
-        run: pnpm --filter test-app exec percy exec:stop
+        run: pnpm --filter docs exec percy exec:stop
 
   try-scenarios:
     name: ${{ matrix.name }}
