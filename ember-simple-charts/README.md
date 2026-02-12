@@ -8,8 +8,8 @@ Simple charts for ember apps
 
 ## Compatibility
 
-- Ember.js v4.12 or above
-- Ember CLI v4.12 or above
+- Ember.js v6.4 or above
+- Embroider or ember-auto-import v2
 - Node.js v22 or above
 
 ## Installation
@@ -23,19 +23,19 @@ ember install ember-simple-charts
 Data Provider
 
 ```javascript
-import Controller from '@ember/controller';
+import Controller from "@ember/controller";
 
 export default class ChartController extends Controller {
   donutData = [
     {
-      label: 'Super Cool',
+      label: "Super Cool",
       data: 100,
-      description: 'Lorem Ipsum',
+      description: "Lorem Ipsum",
     },
     {
-      label: 'Very Cool',
+      label: "Very Cool",
       data: 200,
-      description: 'Long text description here.',
+      description: "Long text description here.",
     },
   ];
 }
@@ -44,7 +44,7 @@ export default class ChartController extends Controller {
 Template:
 
 ```handlebars
-<SimpleChart @name='donut' @data={{this.donutData}} />
+<SimpleChart @name="donut" @data={{this.donutData}} />
 ```
 
 More examples can be found in this addons dummy application.
