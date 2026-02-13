@@ -1,11 +1,15 @@
 import { babel } from '@rollup/plugin-babel';
-import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { fileURLToPath } from 'node:url';
+import { resolve, dirname } from 'node:path';
 
 const addon = new Addon({
   srcDir: 'src',
   destDir: 'dist',
 });
+
+const rootDirectory = dirname(fileURLToPath(import.meta.url));
+const babelConfig = resolve(rootDirectory, './babel.publish.config.cjs');
 
 export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
@@ -46,6 +50,7 @@ export default {
     babel({
       extensions: ['.js', '.gjs'],
       babelHelpers: 'bundled',
+      configFile: babelConfig,
     }),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
@@ -60,13 +65,5 @@ export default {
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
-
-    // Copy Readme and License into published package
-    copy({
-      targets: [
-        { src: '../README.md', dest: '.' },
-        { src: '../LICENSE.md', dest: '.' },
-      ],
-    }),
   ],
 };

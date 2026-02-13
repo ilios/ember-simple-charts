@@ -5,15 +5,14 @@
   "author": "The Ilios Team (info@iliosproject.org)",
   "scripts": {
     "build": "pnpm --filter ember-simple-charts build",
-    "build:docs": "pnpm --filter docs build",
+    "build:docs": "pnpm --filter ember-simple-charts exec rollup --config ; pnpm --filter docs build",
     "format": "pnpm run --parallel format",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "husky && pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
-    "start:addon": "pnpm --filter ember-simple-charts start --no-watch.clearScreen",
-    "start:docs": "pnpm --filter docs start --port=4201",
-    "start:test-app": "pnpm --filter test-app start --port=4200",
+    "start:addon": "pnpm --filter ember-simple-charts start",
+    "start:docs": "pnpm --filter ember-simple-charts exec rollup --config --watch & pnpm --filter docs start --port=4201",
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
