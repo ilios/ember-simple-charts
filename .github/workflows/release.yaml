@@ -22,3 +22,5 @@ jobs:
       - run: pnpm install --ignore-scripts
       - name: publish
         run: pnpm publish --filter ember-simple-charts --no-git-checks --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
