@@ -20,7 +20,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: pnpm
       - run: pnpm install --ignore-scripts
+      - run: pnpm build
       - name: publish
-        run: pnpm publish --filter ember-simple-charts --no-git-checks --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter ember-simple-charts publish --no-git-checks --provenance --loglevel verbose
