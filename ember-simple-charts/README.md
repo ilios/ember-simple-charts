@@ -10,7 +10,7 @@ Simple charts for ember apps
 
 - Ember.js v6.4 or above
 - Embroider or ember-auto-import v2
-- Node.js v22 or above
+- Node.js v24 or above
 
 ## Installation
 
