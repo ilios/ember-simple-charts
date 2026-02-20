@@ -244,8 +244,8 @@ importers:
         specifier: ^7.25.6
         version: 7.28.6
       '@ember/app-tsconfig':
-        specifier: ^1.0.0
-        version: 1.0.3
+        specifier: ^2.0.0
+        version: 2.0.0
       '@ember/library-tsconfig':
         specifier: ^2.0.0
         version: 2.0.0
@@ -998,8 +998,8 @@ packages:
   '@ember/app-blueprint@6.10.4':
     resolution: {integrity: sha512-9MrxcopYDau1s7icCoQJxPGYg+x0g86PPMqr4YzKKyzLYl33PbyH2zFwZahGOiUNVfc9itdB1TfXdIU64fBnqQ==}
 
-  '@ember/app-tsconfig@1.0.3':
-    resolution: {integrity: sha512-dw+/F68xvBw8JYLpyFmAcnF5d/vZqlP6GkEde+XIuPPPn6PIakrh0jtP0/tPxBw8tVuc6eD+H+8CWSsSFrGuiA==}
+  '@ember/app-tsconfig@2.0.0':
+    resolution: {integrity: sha512-NmD1OZFtCF49k4WDaPdhGP4OKoRbPaXpTBO3AsJe0okIJeCVUiEiC8YUpfTJmld9EJOEa9mW/p0tJQS70GktOA==}
 
   '@ember/edition-utils@1.2.0':
     resolution: {integrity: sha512-VmVq/8saCaPdesQmftPqbFtxJWrzxNGSQ+e8x8LLe3Hjm36pJ04Q8LeORGZkAeOhldoUX9seLGmSaHeXkIqoog==}
@@ -7870,7 +7870,7 @@ snapshots:
       sort-package-json: 3.6.1
       walk-sync: 3.0.0
 
-  '@ember/app-tsconfig@1.0.3': {}
+  '@ember/app-tsconfig@2.0.0': {}
 
   '@ember/edition-utils@1.2.0': {}
 
