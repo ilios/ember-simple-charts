@@ -1,0 +1,18 @@
+.simple-chart-tooltip {
+  background: #fbfbfb;
+  color: #333333;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.simple-chart-tooltip .content {
+  padding: 0.5em;
+}
+
+.simple-chart-tooltip .content .title {
+  border-bottom: 1px solid #aaaaaa;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1em;
+  width: 100%;
+}

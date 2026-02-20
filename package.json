@@ -1,0 +1,123 @@
+{
+  "name": "ember-simple-charts",
+  "version": "13.0.3",
+  "description": "Simple charts for ember.",
+  "keywords": [
+    "ember-addon",
+    "visualizations",
+    "d3"
+  ],
+  "repository": "https://github.com/ilios/ember-simple-charts",
+  "homepage": "https://ember-simple-charts.netlify.app/",
+  "license": "MIT",
+  "author": "The Ilios Team (info@iliosproject.org)",
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "exports": {
+    ".": {
+      "default": "./dist/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./*.css": "./dist/*.css",
+    "./*": {
+      "default": "./dist/*.js"
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:publish": "pnpm build && publint run --level error",
+    "start": "vite dev",
+    "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.9",
+    "@popperjs/core": "^2.11.8",
+    "d3-ease": "^3.0.1",
+    "d3-hierarchy": "^3.1.2",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.2.0",
+    "d3-transition": "^3.0.1",
+    "decorator-transforms": "^2.2.2",
+    "ember-async-data": "^2.0.0",
+    "ember-in-element-polyfill": "^1.0.1",
+    "ember-modifier": "^4.2.0",
+    "ember-primitives": "^0.53.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/runtime": "^7.25.6",
+    "@ember/app-tsconfig": "^2.0.0",
+    "@ember/library-tsconfig": "^2.0.0",
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.2.1",
+    "@ember/test-waiters": "^4.1.1",
+    "@embroider/addon-dev": "^8.1.0",
+    "@embroider/compat": "^4.1.0",
+    "@embroider/core": "^4.1.0",
+    "@embroider/macros": "^1.18.0",
+    "@embroider/vite": "^1.1.5",
+    "@eslint/js": "^9.17.0",
+    "@glimmer/component": "^2.0.0",
+    "@rollup/plugin-babel": "^6.1.0",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
+    "concurrently": "^9.0.1",
+    "ember-page-title": "^9.0.3",
+    "ember-qunit": "^9.0.2",
+    "ember-source": "^6.7.0",
+    "ember-strict-application-resolver": "^0.1.0",
+    "ember-template-lint": "^7.9.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "globals": "^17.3.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
+    "publint": "^0.3.16",
+    "qunit": "^2.24.1",
+    "qunit-dom": "^3.4.0",
+    "rollup": "^4.22.5",
+    "testem": "^3.15.1",
+    "vite": "^7.1.9"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/simple-chart-bar.js": "./dist/_app_/components/simple-chart-bar.js",
+      "./components/simple-chart-box.js": "./dist/_app_/components/simple-chart-box.js",
+      "./components/simple-chart-cluster.js": "./dist/_app_/components/simple-chart-cluster.js",
+      "./components/simple-chart-donut.js": "./dist/_app_/components/simple-chart-donut.js",
+      "./components/simple-chart-horz-bar.js": "./dist/_app_/components/simple-chart-horz-bar.js",
+      "./components/simple-chart-pack.js": "./dist/_app_/components/simple-chart-pack.js",
+      "./components/simple-chart-pie.js": "./dist/_app_/components/simple-chart-pie.js",
+      "./components/simple-chart-tooltip.js": "./dist/_app_/components/simple-chart-tooltip.js",
+      "./components/simple-chart-tree.js": "./dist/_app_/components/simple-chart-tree.js",
+      "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js"
+    }
+  }
+}
