@@ -4,6 +4,7 @@ import {
   isDestroyed,
 } from '@ember/destroyable';
 import { assert } from '@ember/debug';
+import { waitForPromise } from '@ember/test-waiters';
 
 /**
  * Replacemnet for ember-concurrency timeout
@@ -17,20 +18,22 @@ export default function timeout(timeoutMs, owner) {
   );
   assert('The passed owner must be an object', typeof owner === 'object');
 
-  return new Promise((resolve) => {
-    if (isDestroying(owner) || isDestroyed(owner)) {
-      resolve(); //resolve imediatly if we're already destroyed
-    }
+  return waitForPromise(
+    new Promise((resolve) => {
+      if (isDestroying(owner) || isDestroyed(owner)) {
+        resolve(); //resolve imediatly if we're already destroyed
+      }
 
-    const id = setTimeout(() => {
-      resolve();
-    }, timeoutMs);
-
-    registerDestructor(owner, () => {
-      clearTimeout(id);
-      Promise.resolve().then(() => {
+      const id = setTimeout(() => {
         resolve();
+      }, timeoutMs);
+
+      registerDestructor(owner, () => {
+        clearTimeout(id);
+        Promise.resolve().then(() => {
+          resolve();
+        });
       });
-    });
-  });
+    }),
+  );
 }
