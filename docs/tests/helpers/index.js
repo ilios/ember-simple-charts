@@ -46,5 +46,5 @@ async function chartsLoaded() {
     return findAll('.loading').length === 0;
   });
 }
-
+export { takeScreenshot, takeComponentScreenshot } from './take-screenshot';
 export { setupApplicationTest, setupRenderingTest, setupTest, chartsLoaded };

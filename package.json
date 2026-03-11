@@ -13,6 +13,7 @@
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
     "start:addon": "pnpm --filter ember-simple-charts start",
     "start:docs": "pnpm --filter ember-simple-charts exec rollup --config --watch & pnpm --filter docs start --port=4201",
+    "test:docs:screenshots": "pnpm --filter ember-simple-charts exec rollup --config ; pnpm --filter docs exec ember test --config-file=testem.screenshots.js",
     "test": "pnpm --filter '*' --workspace-concurrency=1 test",
     "test:ember": "pnpm --filter '*' --workspace-concurrency=1  test:ember"
   },
