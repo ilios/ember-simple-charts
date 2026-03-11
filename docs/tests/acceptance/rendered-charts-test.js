@@ -1,7 +1,10 @@
 import { module, test } from 'qunit';
-import { setupApplicationTest, chartsLoaded } from 'docs/tests/helpers';
+import {
+  setupApplicationTest,
+  chartsLoaded,
+  takeScreenshot,
+} from 'docs/tests/helpers';
 import { click, currentURL, visit } from '@ember/test-helpers';
-import percySnapshot from '@percy/ember';
 
 module('Acceptance | rendered charts', function (hooks) {
   setupApplicationTest(hooks);
@@ -12,7 +15,7 @@ module('Acceptance | rendered charts', function (hooks) {
     assert.strictEqual(currentURL(), '/');
     assert.dom(charts).exists({ count: 8 });
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting donut chart', async function (assert) {
@@ -23,7 +26,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/donut');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting pie chart', async function (assert) {
@@ -34,7 +37,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/pie');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting bar chart', async function (assert) {
@@ -45,7 +48,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/bar');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting horz-bar chart', async function (assert) {
@@ -56,7 +59,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/horz-bar');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting cluster chart', async function (assert) {
@@ -67,7 +70,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/cluster');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting pack chart', async function (assert) {
@@ -78,7 +81,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/pack');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting tree chart', async function (assert) {
@@ -89,7 +92,7 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/tree');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 
   test('visiting box chart', async function (assert) {
@@ -100,6 +103,6 @@ module('Acceptance | rendered charts', function (hooks) {
     await click(link);
     assert.strictEqual(currentURL(), '/box');
     await chartsLoaded();
-    await percySnapshot(assert);
+    await takeScreenshot(assert);
   });
 });

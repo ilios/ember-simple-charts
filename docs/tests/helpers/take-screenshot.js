@@ -1,0 +1,67 @@
+import '@zumer/snapdom';
+import { waitForPromise } from '@ember/test-waiters';
+import { settled } from '@ember/test-helpers';
+
+let shouldTakeScreenshotsCache;
+
+export const takeScreenshot = async (assert, description = '') => {
+  if (!shouldTakeScreenshots()) {
+    return;
+  }
+  const element = document.getElementById('simple-docs');
+  const filename = getUniqueName(assert, description);
+  return snap(element, filename);
+};
+
+export const takeComponentScreenshot = async (assert, description = '') => {
+  if (!shouldTakeScreenshots()) {
+    return;
+  }
+  const filename = getUniqueName(assert, description);
+  const testing = document.getElementById('ember-testing');
+  const element = testing.firstChild;
+  return snap(element, filename, {
+    backgroundColor: 'hsl(0, 0%, 98%)',
+  });
+};
+
+async function snap(element, filename, options) {
+  const snapOptions = Object.assign(
+    {
+      placeholders: false,
+      embedFonts: true,
+      height: 1000,
+      exclude: ['.ilios-logo picture', '.ilios-footer .version'],
+    },
+    options,
+  );
+  await settled();
+  const result = await window.snapdom(element, snapOptions);
+
+  return waitForPromise(result.download({ format: 'png', filename }));
+}
+
+function shouldTakeScreenshots() {
+  if (shouldTakeScreenshotsCache) {
+    return true;
+  }
+  if (shouldTakeScreenshotsCache === false) {
+    return false;
+  }
+
+  const url = new URL(window.location.href, document.baseURI);
+
+  shouldTakeScreenshotsCache = url.searchParams.get('takeScreenshots') !== null;
+
+  if (!shouldTakeScreenshotsCache) {
+    console.info('Screenshots Disabled');
+  }
+
+  return shouldTakeScreenshotsCache;
+}
+
+function getUniqueName(assert, description) {
+  return (
+    assert.test.module.name + ' | ' + assert.test.testName + ' | ' + description
+  );
+}
