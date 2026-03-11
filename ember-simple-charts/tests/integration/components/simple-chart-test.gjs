@@ -34,4 +34,36 @@ module('Integration | Component | SimpleChart', function (hooks) {
     await chartsLoaded();
     await click('svg .chart .slice:nth-of-type(1) .slicepath');
   });
+
+  test('click waits for promise', async function (assert) {
+    assert.expect(2);
+    this.set('chartData', ChartData);
+    this.set('onClick', async () => {
+      console.log('promise');
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          console.log('resolve');
+          resolve();
+        }, 1000),
+      );
+      assert.ok(true, 'event fired.');
+      return true;
+    });
+    await render(
+      <template>
+        <SimpleChart
+          @name="donut"
+          @data={{this.data}}
+          @isClickable={{true}}
+          @onClick={{this.onClick}}
+        />
+      </template>,
+    );
+    await chartsLoaded();
+    const start = Date.now();
+    await click('svg .chart .slice:nth-of-type(1) .slicepath');
+    const end = Date.now();
+    const time = end - start;
+    assert.closeTo(time, 1100, 100);
+  });
 });

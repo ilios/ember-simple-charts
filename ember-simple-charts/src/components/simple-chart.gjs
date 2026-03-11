@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
-import { isDestroying, isDestroyed } from '@ember/destroyable';
 import { tracked } from '@glimmer/tracking';
 import { hash } from '@ember/helper';
 import { assert } from '@ember/debug';
+import { task, timeout } from 'ember-concurrency';
 import SimpleChartBar from './simple-chart-bar.gjs';
 import SimpleChartCluster from './simple-chart-cluster.gjs';
 import SimpleChartDonut from './simple-chart-donut.gjs';
@@ -12,7 +12,6 @@ import SimpleChartPie from './simple-chart-pie.gjs';
 import SimpleChartTree from './simple-chart-tree.gjs';
 import SimpleChartBox from './simple-chart-box.gjs';
 import SimpleChartTooltip from './simple-chart-tooltip.gjs';
-import timeout from '../utils/timeout.js';
 
 import './simple-chart.css';
 
@@ -55,66 +54,76 @@ export default class SimpleChart extends Component {
     return this.args.textIsNotOutlined ?? false;
   }
 
-  calculateSize = async ({ contentRect: { width, height } }) => {
+  calculateSize = task(async ({ contentRect: { width, height } }) => {
     if (this.height && this.width) {
-      await timeout(DEBOUNCE_MS, this);
+      await timeout(DEBOUNCE_MS);
     }
-    if (!(isDestroyed(this) || isDestroying(this))) {
-      this.height = Math.floor(height);
-      this.width = Math.floor(width);
-    }
-  };
+    this.height = Math.floor(height);
+    this.width = Math.floor(width);
+  });
 
-  handleHover = async (data, tooltipTarget) => {
-    await timeout(DEBOUNCE_MS, this);
+  handleHover = task(async (data, tooltipTarget) => {
+    await timeout(DEBOUNCE_MS);
     if (this.args.hover) {
+      assert(
+        '@hover must be a function',
+        typeof this.args.hover === 'function',
+      );
       try {
         await this.args.hover(data);
-        if (!(isDestroyed(this) || isDestroying(this))) {
-          this.tooltipTarget = tooltipTarget;
-        }
-      } catch {
+        this.tooltipTarget = tooltipTarget;
+      } catch (e) {
+        console.error(e);
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  };
+  });
 
-  handleLeave = async () => {
-    await timeout(DEBOUNCE_MS, this);
+  handleLeave = task(async () => {
+    await timeout(DEBOUNCE_MS);
     if (this.args.leave) {
+      assert(
+        '@leave must be a function',
+        typeof this.args.leave === 'function',
+      );
       try {
         await this.args.leave();
-        if (!(isDestroyed(this) || isDestroying(this))) {
-          this.tooltipTarget = null;
-        }
-      } catch {
+        this.tooltipTarget = null;
+      } catch (e) {
+        console.error(e);
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  };
+  });
 
-  handleClick = async (data) => {
-    await timeout(DEBOUNCE_MS, this);
+  handleClick = task(async (data) => {
+    await timeout(5000);
     if (this.args.onClick) {
+      assert(
+        '@onClick must be a function',
+        typeof this.args.onClick === 'function',
+      );
       try {
+        console.log(this.args.onClick);
         await this.args.onClick(data);
-        if (!(isDestroyed(this) || isDestroying(this))) {
-          this.tooltipTarget = null;
-        }
-      } catch {
+        console.log('done');
+
+        this.tooltipTarget = null;
+      } catch (e) {
+        console.error(e);
         //we will just ignore errors here since the mouse state is transient
       }
     }
-  };
+  });
 
   <template>
-    <div class="simple-chart" {{onResize this.calculateSize}}>
+    <div class="simple-chart" {{onResize this.calculateSize.perform}}>
       <this.chartComponent
         @data={{@data}}
         @isIcon={{this.isIcon}}
-        @hover={{this.handleHover}}
-        @onClick={{this.handleClick}}
-        @leave={{this.handleLeave}}
+        @hover={{this.handleHover.perform}}
+        @onClick={{this.handleClick.perform}}
+        @leave={{this.handleLeave.perform}}
         @isClickable={{this.isClickable}}
         @containerHeight={{this.height}}
         @containerWidth={{this.width}}

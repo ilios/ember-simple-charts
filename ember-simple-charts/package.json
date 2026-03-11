@@ -58,6 +58,7 @@
     "d3-transition": "^3.0.1",
     "decorator-transforms": "^2.2.2",
     "ember-async-data": "^2.0.0",
+    "ember-concurrency": "^5.2.0",
     "ember-in-element-polyfill": "^1.0.1",
     "ember-modifier": "^4.2.0",
     "ember-primitives": "^0.53.0"
