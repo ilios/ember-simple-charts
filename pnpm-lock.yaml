@@ -188,6 +188,9 @@ importers:
 
   ember-simple-charts:
     dependencies:
+      '@ember/test-waiters':
+        specifier: ^4.1.1
+        version: 4.1.1(@babel/core@7.29.0)
       '@embroider/addon-shim':
         specifier: ^1.8.9
         version: 1.10.2
@@ -255,9 +258,6 @@ importers:
       '@ember/test-helpers':
         specifier: ^5.2.1
         version: 5.4.1(@babel/core@7.29.0)
-      '@ember/test-waiters':
-        specifier: ^4.1.1
-        version: 4.1.1(@babel/core@7.29.0)
       '@embroider/addon-dev':
         specifier: ^8.1.0
         version: 8.3.0(rollup@4.59.0)
