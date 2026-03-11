@@ -13,6 +13,7 @@ import SimpleChartTree from './simple-chart-tree.gjs';
 import SimpleChartBox from './simple-chart-box.gjs';
 import SimpleChartTooltip from './simple-chart-tooltip.gjs';
 import timeout from '../utils/timeout.js';
+import { waitForPromise } from '@ember/test-waiters';
 
 import './simple-chart.css';
 
@@ -68,8 +69,12 @@ export default class SimpleChart extends Component {
   handleHover = async (data, tooltipTarget) => {
     await timeout(DEBOUNCE_MS, this);
     if (this.args.hover) {
+      assert(
+        '@hover must be a function',
+        typeof this.args.hover === 'function',
+      );
       try {
-        await this.args.hover(data);
+        await waitForPromise(Promise.try(this.args.hover, data));
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = tooltipTarget;
         }
@@ -82,8 +87,12 @@ export default class SimpleChart extends Component {
   handleLeave = async () => {
     await timeout(DEBOUNCE_MS, this);
     if (this.args.leave) {
+      assert(
+        '@leave must be a function',
+        typeof this.args.leave === 'function',
+      );
       try {
-        await this.args.leave();
+        await waitForPromise(Promise.try(this.args.leave));
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
@@ -96,8 +105,13 @@ export default class SimpleChart extends Component {
   handleClick = async (data) => {
     await timeout(DEBOUNCE_MS, this);
     if (this.args.onClick) {
+      assert(
+        '@onClick must be a function',
+        typeof this.args.onClick === 'function',
+      );
       try {
-        await this.args.onClick(data);
+        await waitForPromise(Promise.try(this.args.onClick, data));
+
         if (!(isDestroyed(this) || isDestroying(this))) {
           this.tooltipTarget = null;
         }
