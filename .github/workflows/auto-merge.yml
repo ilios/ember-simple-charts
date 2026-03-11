@@ -9,10 +9,8 @@ jobs:
     strategy:
       matrix:
         safe-dependency:
-          - "@embroider/test-setup"
-          - "@embroider/util"
-          - "@percy/cli"
-          - "@percy/ember"
+          - '@embroider/test-setup'
+          - '@embroider/util'
           - ember-cli-dependency-checker
           - ember-cli-deprecation-workflow
           - ember-template-lint
@@ -24,7 +22,7 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v2.5.0
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
       - uses: actions/checkout@v6
         if: ${{contains(steps.metadata.outputs.dependency-names, matrix.safe-dependency) && (steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch') }}
       - name: Enable auto-merge for Dependabot PRs
