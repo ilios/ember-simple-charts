@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import SimpleChart from 'ember-simple-charts/components/simple-chart';
 import SampleCode from './sample-code';
 
@@ -17,10 +16,15 @@ export default class TooltipExampleComponent extends Component {
     return JSON.stringify(this.data, null, 2);
   }
 
-  @action
-  click(data) {
+  click = async (data) => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
     alert(data.label);
-  }
+  };
+
   <template>
     <div class="example">
       <h3>Action on Click</h3>
@@ -29,6 +33,7 @@ export default class TooltipExampleComponent extends Component {
           @name={{@name}}
           @data={{this.data}}
           @onClick={{this.click}}
+          data-test-click-example
         />
       </div>
       <SampleCode @exampleType="click">

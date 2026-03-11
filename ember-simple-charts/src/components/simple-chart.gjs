@@ -119,6 +119,7 @@ export default class SimpleChart extends Component {
         @containerHeight={{this.height}}
         @containerWidth={{this.width}}
         @textIsNotOutlined={{this.textIsNotOutlined}}
+        ...attributes
       />
       {{#if this.tooltipTarget}}
         {{yield
