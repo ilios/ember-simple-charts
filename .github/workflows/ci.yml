@@ -70,27 +70,6 @@ jobs:
       - name: Run Tests
         run: pnpm test
 
-  percy:
-    name: Percy Visual Tests
-    runs-on: ubuntu-latest
-    needs: 'test'
-    timeout-minutes: 10
-    env:
-      PERCY_TOKEN: web_6187ea321b25c1a82793dc19185fba93eb49336654f2284e4e08e9794e7d66c6
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v5
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - name: Start the Percy Server
-        run: pnpm --filter docs exec percy exec:start &
-      - run: pnpm --filter docs run test:ember
-      - name: Stop Percy and Finalize Tests
-        run: pnpm --filter docs exec percy exec:stop
-
   try-scenarios:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest

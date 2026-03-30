@@ -1,7 +1,6 @@
 # ember-simple-charts
 
 ![Continuous Integration](https://github.com/ilios/ember-simple-charts/workflows/Continuous%20Integration/badge.svg)
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ilios/ember-simple-charts)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/59cbbb8d-bce1-4513-9377-641e2182537f/deploy-status)](https://app.netlify.com/sites/ember-simple-charts/deploys)
 
 Simple charts for ember apps
@@ -23,19 +22,19 @@ ember install ember-simple-charts
 Data Provider
 
 ```javascript
-import Controller from "@ember/controller";
+import Controller from '@ember/controller';
 
 export default class ChartController extends Controller {
   donutData = [
     {
-      label: "Super Cool",
+      label: 'Super Cool',
       data: 100,
-      description: "Lorem Ipsum",
+      description: 'Lorem Ipsum',
     },
     {
-      label: "Very Cool",
+      label: 'Very Cool',
       data: 200,
-      description: "Long text description here.",
+      description: 'Long text description here.',
     },
   ];
 }
@@ -44,7 +43,7 @@ export default class ChartController extends Controller {
 Template:
 
 ```handlebars
-<SimpleChart @name="donut" @data={{this.donutData}} />
+<SimpleChart @name='donut' @data={{this.donutData}} />
 ```
 
 More examples can be found in this addons dummy application.

@@ -24,8 +24,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\" --prefixColors auto",
-    "test:ember": "ember test",
-    "percy": "percy exec -- ember test"
+    "test:ember": "ember test"
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
@@ -37,8 +36,7 @@
     "@eslint/js": "^9.39.2",
     "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
-    "@percy/cli": "^1.30.7",
-    "@percy/ember": "^5.0.0",
+    "@zumer/snapdom": "^2.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.1",
     "ember-a11y-testing": "^7.0.0",
