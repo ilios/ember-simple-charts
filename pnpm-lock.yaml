@@ -60,8 +60,8 @@ importers:
         specifier: ^9.2.1
         version: 9.2.1
       ember-a11y-testing:
-        specifier: ^7.0.0
-        version: 7.1.3(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0))(qunit@2.25.0)(webpack@5.105.4)
+        specifier: ^8.0.0
+        version: 8.0.0(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0))(@ember/test-waiters@4.1.1(@babel/core@7.29.0))(qunit@2.25.0)
       ember-auto-import:
         specifier: ^2.12.0
         version: 2.13.0(webpack@5.105.4)
@@ -1869,10 +1869,6 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@scalvert/ember-setup-middleware-reporter@0.1.1':
-    resolution: {integrity: sha512-C5DHU6YlKaISB5utGQ+jpsMB57ZtY0uZ8UkD29j855BjqG6eJ98lhA2h/BoJbyPw89RKLP1EEXroy9+5JPoyVw==}
-    engines: {node: 12.* || >= 14}
-
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
@@ -1913,9 +1909,6 @@ packages:
 
   '@types/fs-extra@5.1.0':
     resolution: {integrity: sha512-AInn5+UBFIK9FK5xc9yP5e3TQSPNNgjHByqYcj9g5elVBnDQcQL7PlO1CIRy2gWlbwK7UPYqi7vRvFA44dCmYQ==}
-
-  '@types/fs-extra@9.0.13':
-    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
 
   '@types/glob@9.0.0':
     resolution: {integrity: sha512-00UxlRaIUvYm4R4W9WYkN8/J+kV8fmOQ7okeH6YFtGWFMt3odD45tpG5yA5wnL7HE6lLgjaTW5n14ju2hl2NNA==}
@@ -2114,11 +2107,6 @@ packages:
     resolution: {integrity: sha512-4Dj6M28JB+oAH8kFkTLUo+a2jwOFkuqb3yucU0CANcRRUbxS0cP0nZYCGjcc3BNXwRIsUVmDGgzawme7zvJHvg==}
     engines: {node: '>=12'}
 
-  ansi-to-html@0.6.15:
-    resolution: {integrity: sha512-28ijx2aHJGdzbs+O5SNQF65r6rrKYnkuwTYm8lZlChuoJ9P1vVzIpWO20sQTqTPDXYp6NFwk326vApTtLVFXpQ==}
-    engines: {node: '>=8.0.0'}
-    hasBin: true
-
   ansicolors@0.2.1:
     resolution: {integrity: sha512-tOIuy1/SK/dr94ZA0ckDohKXNeBNqZ4us6PjMVLs5h1w2GBB6uPtOknp2+VF4F/zcy9LI70W+Z+pE2Soajky1w==}
 
@@ -2225,10 +2213,6 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
-
-  axe-core@4.11.1:
-    resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
-    engines: {node: '>=4'}
 
   babel-import-util@0.2.0:
     resolution: {integrity: sha512-CtWYYHU/MgK88rxMrLfkD356dApswtR/kWZ/c6JifG1m10e7tBBrs/366dFzWMAoqYmG5/JSh+94tUSpIwh+ag==}
@@ -3424,11 +3408,13 @@ packages:
   electron-to-chromium@1.5.328:
     resolution: {integrity: sha512-QNQ5l45DzYytThO21403XN3FvK0hOkWDG8viNf6jqS42msJ8I4tGDSpBCgvDRRPnkffafiwAym2X2eHeGD2V0w==}
 
-  ember-a11y-testing@7.1.3:
-    resolution: {integrity: sha512-3d4oqSGRBqYbX6nqcruLzfQrQSoLpRd5iinITusefylk1aQd7HJdoJLkL+En8YLqTt3DsUfImnX3svT0flMhsw==}
-    engines: {node: 16.* || >= 18}
+  ember-a11y-testing@8.0.0:
+    resolution: {integrity: sha512-eKUzRPpMRliMqsWMl8MExKjCyAqgJUk6IlLKsyFKGf2dvDJwMH495MDY/XRw0Y9HhG+GXMw756YNtup01cLu9Q==}
+    engines: {node: '>= 18', pnpm: '>= 10'}
     peerDependencies:
       '@ember/test-helpers': ^3.0.3 || ^4.0.2 || ^5.0.0
+      '@ember/test-waiters': ^2.4.3 || ^3.0.0 || ^4.0.0
+      axe-core: ^4.0.0
       qunit: '>= 2'
     peerDependenciesMeta:
       qunit:
@@ -3523,10 +3509,6 @@ packages:
 
   ember-cli-typescript-blueprint-polyfill@0.1.0:
     resolution: {integrity: sha512-g0weUTOnHmPGqVZzkQTl3Nbk9fzEdFkEXydCs5mT1qBjXh8eQ6VlmjjGD5/998UXKuA0pLSCVVMbSp/linLzGA==}
-
-  ember-cli-typescript@4.2.1:
-    resolution: {integrity: sha512-0iKTZ+/wH6UB/VTWKvGuXlmwiE8HSIGcxHamwNhEC5x1mN3z8RfvsFZdQWYUzIWFN2Tek0gmepGRPTwWdBYl/A==}
-    engines: {node: 10.* || >= 12.*}
 
   ember-cli-version-checker@2.2.0:
     resolution: {integrity: sha512-G+KtYIVlSOWGcNaTFHk76xR4GdzDLzAS4uxZUKdASuFX0KJE43C6DaqL+y3VTpUFLI2FIkAS6HZ4I1YBi+S3hg==}
@@ -3697,9 +3679,6 @@ packages:
   ensure-posix-path@1.1.1:
     resolution: {integrity: sha512-VWU0/zXzVbeJNXvME/5EmLuEj2TauvoaTz6aFYK1Z92JCBlDlZ3Gu0tuGR42kpW1754ywTs+QB0g5TP0oj9Zaw==}
 
-  entities@2.2.0:
-    resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
-
   entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
@@ -3721,10 +3700,6 @@ packages:
 
   error@7.2.1:
     resolution: {integrity: sha512-fo9HBvWnx3NGUKMvMwB/CBCMMrfEJgbDTVDEkPygA3Bdd3lM1OyCd+rbQ8BwnpF6GdVeOLDNmyL4N5Bg80ZvdA==}
-
-  errorhandler@1.5.2:
-    resolution: {integrity: sha512-kNAL7hESndBCrWwS72QyV3IVOTrVmj9D062FV5BQswNL5zEdeRmz/WJFyh6Aj/plvvSOrzddkxW57HgkZcR9Fw==}
-    engines: {node: '>= 0.8'}
 
   es-abstract@1.24.1:
     resolution: {integrity: sha512-zHXBLhP+QehSSbsS9Pt23Gg964240DPd6QCf8WpkqEXxQ7fhdZzYsocOr5u7apWonsS5EjZDmTF+/slGMyasvw==}
@@ -6280,10 +6255,6 @@ packages:
     resolution: {integrity: sha512-DQIMWCAr/M7phwo+d3bEfXwSBEwuaJL+SJx9cuqt1Ty7K96ZFoHpYnSbhrQZEr0+0/GtmpKECP8X/R4RyeTAfw==}
     engines: {node: '>= 0.10.4'}
 
-  stagehand@1.0.1:
-    resolution: {integrity: sha512-GqXBq2SPWv9hTXDFKS8WrKK1aISB0aKGHZzH+uD4ShAgs+Fz20ZfoerLOm8U+f62iRWLrw6nimOY/uYuTcVhvg==}
-    engines: {node: 6.* || 8.* || >= 10.*}
-
   statuses@1.5.0:
     resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
     engines: {node: '>= 0.6'}
@@ -6745,10 +6716,6 @@ packages:
 
   validate-peer-dependencies@1.2.0:
     resolution: {integrity: sha512-nd2HUpKc6RWblPZQ2GDuI65sxJ2n/UqZwSBVtj64xlWjMx0m7ZB2m9b2JS3v1f+n9VWH/dd1CMhkHfP6pIdckA==}
-
-  validate-peer-dependencies@2.2.0:
-    resolution: {integrity: sha512-8X1OWlERjiUY6P6tdeU9E0EwO8RA3bahoOVG7ulOZT5MqgNDUO/BQoVjYiHPcNe+v8glsboZRIw9iToMAA2zAA==}
-    engines: {node: '>= 12'}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -8792,15 +8759,6 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@scalvert/ember-setup-middleware-reporter@0.1.1':
-    dependencies:
-      '@types/fs-extra': 9.0.13
-      body-parser: 1.20.4
-      errorhandler: 1.5.2
-      fs-extra: 10.1.0
-    transitivePeerDependencies:
-      - supports-color
-
   '@sec-ant/readable-stream@0.4.1': {}
 
   '@simple-dom/document@1.4.0':
@@ -8839,10 +8797,6 @@ snapshots:
   '@types/estree@1.0.8': {}
 
   '@types/fs-extra@5.1.0':
-    dependencies:
-      '@types/node': 25.5.0
-
-  '@types/fs-extra@9.0.13':
     dependencies:
       '@types/node': 25.5.0
 
@@ -9045,10 +8999,6 @@ snapshots:
 
   ansi-styles@6.2.3: {}
 
-  ansi-to-html@0.6.15:
-    dependencies:
-      entities: 2.2.0
-
   ansicolors@0.2.1: {}
 
   anymatch@3.1.3:
@@ -9186,8 +9136,6 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
-
-  axe-core@4.11.1: {}
 
   babel-import-util@0.2.0: {}
 
@@ -10321,28 +10269,17 @@ snapshots:
 
   electron-to-chromium@1.5.328: {}
 
-  ember-a11y-testing@7.1.3(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0))(qunit@2.25.0)(webpack@5.105.4):
+  ember-a11y-testing@8.0.0(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0))(@ember/test-waiters@4.1.1(@babel/core@7.29.0))(qunit@2.25.0):
     dependencies:
       '@ember/test-helpers': 5.4.1(@babel/core@7.29.0)
       '@ember/test-waiters': 4.1.1(@babel/core@7.29.0)
-      '@glimmer/env': 0.1.7
-      '@scalvert/ember-setup-middleware-reporter': 0.1.1
-      axe-core: 4.11.1
-      broccoli-persistent-filter: 3.1.3
-      ember-auto-import: 2.13.0(webpack@5.105.4)
-      ember-cli-babel: 8.3.1(@babel/core@7.29.0)
-      ember-cli-htmlbars: 6.3.0
-      ember-cli-typescript: 4.2.1
-      ember-cli-version-checker: 5.1.2
-      fs-extra: 11.3.4
-      validate-peer-dependencies: 2.2.0
+      '@embroider/addon-shim': 1.10.2
+      decorator-transforms: 2.3.1(@babel/core@7.29.0)
     optionalDependencies:
       qunit: 2.25.0
     transitivePeerDependencies:
       - '@babel/core'
-      - '@glint/template'
       - supports-color
-      - webpack
 
   ember-async-data@2.0.1(@babel/core@7.29.0):
     dependencies:
@@ -10602,21 +10539,6 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       remove-types: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  ember-cli-typescript@4.2.1:
-    dependencies:
-      ansi-to-html: 0.6.15
-      broccoli-stew: 3.0.0
-      debug: 4.4.3
-      execa: 4.1.0
-      fs-extra: 9.1.0
-      resolve: 1.22.11
-      rsvp: 4.8.5
-      semver: 7.7.4
-      stagehand: 1.0.1
-      walk-sync: 2.2.0
     transitivePeerDependencies:
       - supports-color
 
@@ -11077,8 +10999,6 @@ snapshots:
 
   ensure-posix-path@1.1.1: {}
 
-  entities@2.2.0: {}
-
   entities@4.5.0: {}
 
   entities@6.0.1: {}
@@ -11094,11 +11014,6 @@ snapshots:
   error@7.2.1:
     dependencies:
       string-template: 0.2.1
-
-  errorhandler@1.5.2:
-    dependencies:
-      accepts: 1.3.8
-      escape-html: 1.0.3
 
   es-abstract@1.24.1:
     dependencies:
@@ -14054,12 +13969,6 @@ snapshots:
 
   sri-toolbox@0.2.0: {}
 
-  stagehand@1.0.1:
-    dependencies:
-      debug: 4.4.3
-    transitivePeerDependencies:
-      - supports-color
-
   statuses@1.5.0: {}
 
   statuses@2.0.1: {}
@@ -14758,11 +14667,6 @@ snapshots:
   validate-peer-dependencies@1.2.0:
     dependencies:
       resolve-package-path: 3.1.0
-      semver: 7.7.4
-
-  validate-peer-dependencies@2.2.0:
-    dependencies:
-      resolve-package-path: 4.0.3
       semver: 7.7.4
 
   vary@1.1.2: {}
