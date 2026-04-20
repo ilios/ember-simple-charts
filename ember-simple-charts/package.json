@@ -75,7 +75,7 @@
     "@embroider/compat": "^4.1.0",
     "@embroider/core": "^4.1.0",
     "@embroider/macros": "^1.18.0",
-    "@embroider/vite": "^1.1.5",
+    "@embroider/vite": "^1.7.2",
     "@eslint/js": "^9.17.0",
     "@glimmer/component": "^2.0.0",
     "@rollup/plugin-babel": "^7.0.0",
