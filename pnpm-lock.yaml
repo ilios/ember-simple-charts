@@ -231,8 +231,8 @@ importers:
         specifier: ^4.2.0
         version: 4.3.0(@babel/core@7.29.7)
       ember-primitives:
-        specifier: ^0.57.0
-        version: 0.57.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.2(@babel/core@7.29.7))(@ember/test-waiters@4.1.1(@babel/core@7.29.7))(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.7(@babel/core@7.29.7)(@glimmer/component@2.1.1))
+        specifier: ^0.59.1
+        version: 0.59.1(@babel/core@7.29.7)(@ember/test-helpers@5.4.2(@babel/core@7.29.7))(@ember/test-waiters@4.1.1(@babel/core@7.29.7))(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.7(@babel/core@7.29.7)(@glimmer/component@2.1.1))
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -3361,8 +3361,8 @@ packages:
     resolution: {integrity: sha512-fedRHUsvq8tIZgOii8jTrfAyeq+la/9H5eAzhNNwEyzo7nDMmqK2SxsyBUGXprd8fOacsPabLlzlucMi/4mUpA==}
     engines: {node: 16.* || >= 18}
 
-  ember-primitives@0.57.0:
-    resolution: {integrity: sha512-bZIQLhTHEBI7/v/5GA8k3MqrR89Vo0AE1IXXuGMEW9Xy8AK3Ia8zwyd7Scezn1AwLJmtQbucjp1Xc/eP2vwlQw==}
+  ember-primitives@0.59.1:
+    resolution: {integrity: sha512-4iQeSfl4BCXcvW9MdizBDTNE0hDrJcbhzS6Qf41P8XQ7rl1QUM6/6aNIRlAzLXLaECA4fLt38gm2ZNxRiViNNA==}
     hasBin: true
     peerDependencies:
       '@ember/test-helpers': '>= 3.2.0'
@@ -10456,7 +10456,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-primitives@0.57.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.2(@babel/core@7.29.7))(@ember/test-waiters@4.1.1(@babel/core@7.29.7))(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.7(@babel/core@7.29.7)(@glimmer/component@2.1.1)):
+  ember-primitives@0.59.1(@babel/core@7.29.7)(@ember/test-helpers@5.4.2(@babel/core@7.29.7))(@ember/test-waiters@4.1.1(@babel/core@7.29.7))(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.7(@babel/core@7.29.7)(@glimmer/component@2.1.1)):
     dependencies:
       '@babel/runtime': 7.29.7
       '@ember/test-waiters': 4.1.1(@babel/core@7.29.7)
