@@ -5,6 +5,9 @@
 # (configurable via the "branch" option below)
 name: Push dist
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
