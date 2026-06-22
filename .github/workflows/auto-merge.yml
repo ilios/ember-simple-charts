@@ -1,11 +1,15 @@
 name: Dependabot auto-merge
 on: pull_request_target
+
 permissions:
-  pull-requests: write
-  contents: write
+  contents: read
+
 jobs:
   dependabot:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     strategy:
       matrix:
         safe-dependency:
