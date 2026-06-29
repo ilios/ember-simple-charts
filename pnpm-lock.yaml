@@ -39,8 +39,8 @@ importers:
         specifier: ^5.4.1
         version: 5.4.3(@babel/core@7.29.7)
       '@embroider/macros':
-        specifier: ^1.19.6
-        version: 1.20.4(@babel/core@7.29.7)
+        specifier: ^1.20.5
+        version: 1.20.5(@babel/core@7.29.7)
       '@eslint/js':
         specifier: ^9.39.2
         version: 9.39.4
@@ -265,8 +265,8 @@ importers:
         specifier: ^4.1.0
         version: 4.6.1
       '@embroider/macros':
-        specifier: ^1.18.0
-        version: 1.20.4(@babel/core@7.29.7)
+        specifier: ^1.20.5
+        version: 1.20.5(@babel/core@7.29.7)
       '@embroider/vite':
         specifier: ^1.1.5
         version: 1.7.7(@embroider/core@4.6.1)(vite@7.3.5(@types/node@26.0.0)(sass@1.101.0)(terser@5.48.0)(yaml@2.9.0))
@@ -1071,6 +1071,15 @@ packages:
 
   '@embroider/macros@1.20.4':
     resolution: {integrity: sha512-R83kUvMXRNPtFSCyplyBEF6FFYCCclQf4epT3mPBo/GfmchxtChOSNYz/skyhpbhnD47WIW1A+aROXBQPlKI8A==}
+    engines: {node: 12.* || 14.* || >= 16}
+    peerDependencies:
+      '@glint/template': ^1.0.0
+    peerDependenciesMeta:
+      '@glint/template':
+        optional: true
+
+  '@embroider/macros@1.20.5':
+    resolution: {integrity: sha512-JjIynmob1HbOwVG5uvwrOWecf48Vf9dltKL5C9x5Q6gEoLZJln6iG8D9YBM9EO24Oi8Ftw+oS7IJjA7TFvMLCA==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
       '@glint/template': ^1.0.0
@@ -7733,6 +7742,20 @@ snapshots:
       - '@babel/core'
       - supports-color
 
+  '@embroider/macros@1.20.5(@babel/core@7.29.7)':
+    dependencies:
+      '@embroider/shared-internals': 3.1.1
+      assert-never: 1.4.0
+      babel-import-util: 3.0.1
+      ember-cli-babel: 8.3.1(@babel/core@7.29.7)
+      find-up: 5.0.0
+      lodash: 4.18.1
+      resolve: 1.22.12
+      semver: 7.8.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+
   '@embroider/reverse-exports@0.2.0':
     dependencies:
       mem: 8.1.1
@@ -9991,7 +10014,7 @@ snapshots:
       '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.29.7)
       '@babel/plugin-transform-class-static-block': 7.29.7(@babel/core@7.29.7)
       '@babel/preset-env': 7.29.7(@babel/core@7.29.7)
-      '@embroider/macros': 1.20.4(@babel/core@7.29.7)
+      '@embroider/macros': 1.20.5(@babel/core@7.29.7)
       '@embroider/reverse-exports': 0.2.0
       '@embroider/shared-internals': 2.9.2
       babel-loader: 8.4.1(@babel/core@7.29.7)(webpack@5.107.2(postcss@8.5.15))
