@@ -27,7 +27,7 @@ jobs:
         uses: dependabot/fetch-metadata@v3.1.0
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: ${{contains(steps.metadata.outputs.dependency-names, matrix.safe-dependency) && (steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch') }}
       - name: Enable auto-merge for Dependabot PRs
         if: ${{contains(steps.metadata.outputs.dependency-names, matrix.safe-dependency) && (steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch') }}
