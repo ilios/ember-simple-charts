@@ -231,8 +231,8 @@ importers:
         specifier: ^4.2.0
         version: 4.3.0(@babel/core@7.29.7)
       ember-primitives:
-        specifier: ^0.59.1
-        version: 0.59.1(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@ember/test-waiters@4.1.2)(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.8(@glimmer/component@2.1.1))
+        specifier: ^0.60.0
+        version: 0.60.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@ember/test-waiters@4.1.2)(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.8(@glimmer/component@2.1.1))
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -3102,8 +3102,8 @@ packages:
   decimal.js@10.6.0:
     resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
-  decorator-transforms@2.3.1:
-    resolution: {integrity: sha512-PDOk74Zqqy0946Lx4ckXxbgG6uhPScOICtrxL/pXmfznxchqNee0TaJISClGJQe6FeT8ohGqsOgdjfahm4FwEw==}
+  decorator-transforms@2.3.2:
+    resolution: {integrity: sha512-XcErcjlmCzG5ODgYjt6ZTXwd6S8fPKln/sJmw15ZXkWG2JpoQNwszis+AwF6XSGlOoG7g8MCEO97g+Yw3fk5OQ==}
 
   decorator-transforms@2.4.0:
     resolution: {integrity: sha512-IB+0RqnJpuS7ndH4dVY5dfWTZsrCzN3avWFdjSiET0uT2U24jKywjpVEK97TflnZkZgiSRfmeqc1WfS+1CI23w==}
@@ -3360,8 +3360,8 @@ packages:
     resolution: {integrity: sha512-fedRHUsvq8tIZgOii8jTrfAyeq+la/9H5eAzhNNwEyzo7nDMmqK2SxsyBUGXprd8fOacsPabLlzlucMi/4mUpA==}
     engines: {node: 16.* || >= 18}
 
-  ember-primitives@0.59.1:
-    resolution: {integrity: sha512-4iQeSfl4BCXcvW9MdizBDTNE0hDrJcbhzS6Qf41P8XQ7rl1QUM6/6aNIRlAzLXLaECA4fLt38gm2ZNxRiViNNA==}
+  ember-primitives@0.60.0:
+    resolution: {integrity: sha512-DOiv8mp2G2e6dd7gwIT1QKqZkRbKCrlFh/4wteicf3cN88GYdWwgX/F9iaMFGsJAO0ewTKmcn9XUDyBKATxeYw==}
     hasBin: true
     peerDependencies:
       '@ember/test-helpers': '>= 3.2.0'
@@ -6566,8 +6566,8 @@ packages:
     resolution: {integrity: sha512-K4jVyjnBdgvc86Y6BkaLZEN933SwYOuBFkdmBu9ZfkcAbdVbpITnDmjvZ/aQjRXQrv5EPkTnD1s39GiiqbngCw==}
     engines: {node: '>= 0.4'}
 
-  which-heading-do-i-need@0.2.7:
-    resolution: {integrity: sha512-YWMZUOoxOgq/SEcd0bnDjgTFrJQ8quz31RZ9IRxeyjWYsakrT3F3iOKoEhValp4WZ8Ybt0DqpIrwtL0fEwMe4A==}
+  which-heading-do-i-need@0.4.0:
+    resolution: {integrity: sha512-/PQock7w5PIGURdlJvpwqF59DpM/9m4T/Z3h0GuZ9LalLHIoNlI51AP6XK0b97TKbjWfCHq3ulC03VuqCbPqQg==}
 
   which-typed-array@1.1.22:
     resolution: {integrity: sha512-fvO4ExWMFsqyhG3AiPAObMuY1lxaqgYcxbc49CNdWDDECOJNgQyvsOWVwbZc+qf3rzRtxojBK+CMEv0Ld5CYpw==}
@@ -9855,7 +9855,7 @@ snapshots:
 
   decimal.js@10.6.0: {}
 
-  decorator-transforms@2.3.1(@babel/core@7.29.7):
+  decorator-transforms@2.3.2(@babel/core@7.29.7):
     dependencies:
       '@babel/plugin-syntax-decorators': 7.29.7(@babel/core@7.29.7)
       babel-import-util: 3.0.1
@@ -10451,14 +10451,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-primitives@0.59.1(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@ember/test-waiters@4.1.2)(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.8(@glimmer/component@2.1.1)):
+  ember-primitives@0.60.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@ember/test-waiters@4.1.2)(@glimmer/component@2.1.1)(ember-modifier@4.3.0(@babel/core@7.29.7))(ember-resources@7.0.8(@glimmer/component@2.1.1)):
     dependencies:
       '@babel/runtime': 7.29.7
       '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.10.3
       '@floating-ui/dom': 1.7.6
       '@glimmer/component': 2.1.1
-      decorator-transforms: 2.3.1(@babel/core@7.29.7)
+      decorator-transforms: 2.3.2(@babel/core@7.29.7)
       ember-element-helper: 0.8.8
       ember-modifier: 4.3.0(@babel/core@7.29.7)
       ember-resources: 7.0.8(@glimmer/component@2.1.1)
@@ -10468,7 +10468,7 @@ snapshots:
       tabster: 8.8.0
       tracked-built-ins: 4.1.2(@babel/core@7.29.7)
       tracked-toolbox: 3.0.0(@babel/core@7.29.7)
-      which-heading-do-i-need: 0.2.7
+      which-heading-do-i-need: 0.4.0
     optionalDependencies:
       '@ember/test-helpers': 5.4.3(@babel/core@7.29.7)
     transitivePeerDependencies:
@@ -14270,7 +14270,7 @@ snapshots:
       is-weakmap: 2.0.2
       is-weakset: 2.0.4
 
-  which-heading-do-i-need@0.2.7: {}
+  which-heading-do-i-need@0.4.0: {}
 
   which-typed-array@1.1.22:
     dependencies:
