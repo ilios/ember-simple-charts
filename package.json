@@ -118,5 +118,14 @@
       "./components/simple-chart-tree.js": "./dist/_app_/components/simple-chart-tree.js",
       "./components/simple-chart.js": "./dist/_app_/components/simple-chart.js"
     }
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.10.1"
+    }
   }
 }

@@ -1,0 +1,40 @@
+name: Update pnpm Version
+on:
+  schedule:
+    - cron: '0 23 * * 2' # Weekly on Tuesday afternoons (UTC)
+  workflow_dispatch:
+
+jobs:
+  update-pnpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Update
+        run: pnpm self-update
+      - name: Get new pnpm version
+        run: |
+          PNPM_VERSION="$(pnpm --version)"
+          echo ${PNPM_VERSION}
+          echo "pnpm_version=${PNPM_VERSION}" >> $GITHUB_ENV
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: Update pnpm to v${{ env.pnpm_version }}
+          title: Update pnpm to v${{ env.pnpm_version }}
+          body: |
+            Update pnpm to v${{ env.pnpm_version }} the latest release.
+          branch: update-pnpm-version
+          labels: dependencies
+      - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        run: gh pr merge --merge --auto ${{ steps.cpr.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
