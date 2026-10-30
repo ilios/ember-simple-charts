@@ -42,3 +42,31 @@ h1 {
   width: 25px;
   margin-right: 1em;
 }
+
+.chart {
+  margin: 1em;
+
+  .example {
+    border: 1px solid black;
+  }
+
+  .icon-example {
+    height: 25px;
+    width: 25px;
+  }
+
+  .medium-example {
+    height: 250px;
+    width: 250px;
+  }
+
+  .large-example {
+    height: 500px;
+    width: 500px;
+
+    @media only screen and (width <= 900px) {
+      height: 250px;
+      width: 250px;
+    }
+  }
+}
