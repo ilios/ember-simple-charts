@@ -2,7 +2,6 @@ name: Continuous Integration
 
 permissions:
   contents: read
-
 on:
   push:
     branches:
@@ -16,7 +15,7 @@ concurrency:
 
 jobs:
   lint:
-    name: 'Lints'
+    name: "Lints"
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -33,7 +32,7 @@ jobs:
         run: pnpm lint
 
   test:
-    name: 'Tests'
+    name: "Tests"
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
@@ -49,15 +48,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Run Tests
-        run: pnpm test:ember
+        run: pnpm test
       # For the Try Scenarios
       - id: set-matrix
-        working-directory: ./ember-simple-charts
         run: |
-          echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+           echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+
 
   floating:
-    name: 'Floating Dependencies'
+    name: "Floating Dependencies"
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -76,7 +75,7 @@ jobs:
   try-scenarios:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
-    needs: 'test'
+    needs: "test"
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -90,13 +89,13 @@ jobs:
           node-version: 24
           cache: pnpm
       - name: Apply Scenario
-        working-directory: ./ember-simple-charts
         run: |
-          pnpm dlx @embroider/try apply ${{ matrix.name }}
+           pnpm dlx @embroider/try apply ${{ matrix.name }}
 
       - name: Install Dependencies
         run: pnpm install --no-lockfile
       - name: Run Tests
         run: |
           pnpm test
+
         env: ${{ matrix.env }}
