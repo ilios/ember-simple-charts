@@ -23,4 +23,4 @@ jobs:
       - run: pnpm install --ignore-scripts
       - run: pnpm build
       - name: publish
-        run: pnpm --filter ember-simple-charts publish --no-git-checks --provenance --loglevel verbose
+        run: pnpm publish --no-git-checks --provenance --loglevel verbose
