@@ -46,7 +46,19 @@ Template:
 <SimpleChart @name='donut' @data={{this.donutData}} />
 ```
 
-More examples can be found in this addons dummy application.
+For live examples, run `pnpm --filter ember-simple-charts start` from the
+repository root to open the [demo application](demo-app/).
+
+Chart guides:
+
+- [Donut](docs/donut.md)
+- [Pie](docs/pie.md)
+- [Bar](docs/bar.md)
+- [Horizontal Bar](docs/horz-bar.md)
+- [Cluster](docs/cluster.md)
+- [Pack](docs/pack.md)
+- [Tree](docs/tree.md)
+- [Box](docs/box.md)
 
 ## Contributing
 

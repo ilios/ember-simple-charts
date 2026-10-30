@@ -35,4 +35,13 @@ export class App extends EmberApp {
   };
 }
 
-Router.map(function () {});
+Router.map(function () {
+  this.route('donut');
+  this.route('pie');
+  this.route('bar');
+  this.route('horz-bar');
+  this.route('cluster');
+  this.route('pack');
+  this.route('tree');
+  this.route('box');
+});
