@@ -1,5 +1,5 @@
 import { click, render } from '@ember/test-helpers';
-import { module, test, todo } from 'qunit';
+import { module, test } from 'qunit';
 import SimpleChart from '#src/components/simple-chart';
 import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
@@ -35,10 +35,7 @@ module('Integration | Component | SimpleChart', function (hooks) {
     await click('svg .chart .slice:nth-of-type(1) .slicepath');
   });
 
-  // works in the browser, but not in CI probably because of an
-  // issue with the isDevelopingApp embroider macro
-  todo('click waits for promise', async function (assert) {
-    assert.expect(1);
+  test('click waits for promise', async function (assert) {
     assert.timeout(2000);
     this.set('chartData', ChartData);
     this.set('onClick', async () => {
@@ -47,7 +44,7 @@ module('Integration | Component | SimpleChart', function (hooks) {
           resolve();
         }, 1000),
       );
-      assert.ok(true, 'event fired.');
+      assert.step('Clicked');
       return true;
     });
     await render(
@@ -66,5 +63,6 @@ module('Integration | Component | SimpleChart', function (hooks) {
     const end = Date.now();
     const time = end - start;
     assert.closeTo(time, 1100, 100);
+    assert.verifySteps(['Clicked']);
   });
 });
