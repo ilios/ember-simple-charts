@@ -5,11 +5,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartPie', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(36);
+    assert.expect(37);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const chart = `${svg} .chart`;
@@ -32,6 +33,7 @@ module('Integration | Component | SimpleChartPie', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
 
     assert.dom(svg).hasAttribute('height', '200');
     assert.dom(svg).hasAttribute('width', '200');
@@ -158,7 +160,7 @@ module('Integration | Component | SimpleChartPie', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(51);
+    assert.expect(58);
     this.set('data', [
       {
         label: 'One',
@@ -187,7 +189,7 @@ module('Integration | Component | SimpleChartPie', function (hooks) {
         />
       </template>,
     );
-
+    let count = 1;
     const check = async (height, width, fills) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -202,6 +204,7 @@ module('Integration | Component | SimpleChartPie', function (hooks) {
           .dom(`${sections}:nth-of-type(${i + 1}) path`)
           .hasAttribute('fill', fills[i]);
       }
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(`${sections}:nth-of-type(1) .slicepath`);
       await triggerEvent(`${sections}:nth-of-type(2) .slicepath`, 'mouseenter');
     };

@@ -5,11 +5,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartPack', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(69);
+    assert.expect(70);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const chart = `${svg} .chart`;
@@ -55,6 +56,7 @@ module('Integration | Component | SimpleChartPack', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
     assert.dom(svg).hasAttribute('height', '200');
     assert.dom(svg).hasAttribute('width', '200');
     assert.dom(chart).exists();
@@ -183,7 +185,7 @@ module('Integration | Component | SimpleChartPack', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(28);
+    assert.expect(34);
     this.set('data', {
       label: 'Root',
       value: 100,
@@ -213,7 +215,7 @@ module('Integration | Component | SimpleChartPack', function (hooks) {
         />
       </template>,
     );
-
+    let count = 1;
     const check = async (height, width, fills) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -226,6 +228,7 @@ module('Integration | Component | SimpleChartPack', function (hooks) {
           .dom(`${circles}:nth-of-type(${i + 1})`)
           .hasAttribute('fill', fills[i]);
       }
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(`${circles}:nth-of-type(1)`);
       await triggerEvent(`${circles}:nth-of-type(1)`, 'mouseenter');
     };
