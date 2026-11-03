@@ -6,12 +6,13 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartBox', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(6);
+    assert.expect(7);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const box = `${svg} .box rect`;
@@ -30,6 +31,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
 
     assert.dom(svg).hasAttribute('height', '100%');
     assert.dom(svg).hasAttribute('width', '100%');
@@ -88,7 +90,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
   });
 
   test('matches donut color', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('boxData', {
       allData: ChartData.donut,
       boxData: ChartData.donut[3],
@@ -107,6 +109,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
     await chartsLoaded();
     await waitFor('.simple-chart-donut .slice:nth-of-type(4) path');
     await waitFor('.simple-chart-box rect');
+    await takeComponentScreenshot(assert);
 
     assert
       .dom('.simple-chart-donut .slice:nth-of-type(4) path')
@@ -117,7 +120,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
   });
 
   test('matches pie color', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('boxData', {
       allData: ChartData.pie,
       boxData: ChartData.pie[2],
@@ -136,6 +139,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
     await chartsLoaded();
     await waitFor('.simple-chart-pie .slice:nth-of-type(4) path');
     await waitFor('.simple-chart-box rect');
+    await takeComponentScreenshot(assert);
 
     assert
       .dom('.simple-chart-pie .slice:nth-of-type(3) path')
@@ -146,7 +150,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
   });
 
   test('matches bar color', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('boxData', {
       allData: ChartData.bar,
       boxData: ChartData.bar[2],
@@ -165,6 +169,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
     await chartsLoaded();
     await waitFor('.simple-chart-bar rect');
     await waitFor('.simple-chart-box rect');
+    await takeComponentScreenshot(assert);
 
     assert
       .dom('.simple-chart-bar rect:nth-of-type(3)')
@@ -175,7 +180,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
   });
 
   test('matches horzBar color', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
     this.set('boxData', {
       allData: ChartData.horzBar,
       boxData: ChartData.horzBar[3],
@@ -194,6 +199,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
     await chartsLoaded();
     await waitFor('.simple-chart-horz-bar rect');
     await waitFor('.simple-chart-box rect');
+    await takeComponentScreenshot(assert);
 
     assert
       .dom('.simple-chart-horz-bar rect:nth-of-type(4)')
@@ -204,7 +210,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(45);
+    assert.expect(52);
     const data = [
       {
         label: '100',
@@ -237,7 +243,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
         />
       </template>,
     );
-
+    let count = 1;
     const check = async (height, width, x, y, fill) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -248,6 +254,7 @@ module('Integration | Component | SimpleChartBox', function (hooks) {
       assert.dom(box).hasAttribute('x', x);
       assert.dom(box).hasAttribute('y', y);
       assert.dom(box).hasAttribute('fill', fill);
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(box);
       await triggerEvent(box, 'mouseenter');
     };

@@ -5,11 +5,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartHorzBar', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(32);
+    assert.expect(33);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const shapes = `${svg} .bars rect`;
@@ -43,6 +44,7 @@ module('Integration | Component | SimpleChartHorzBar', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
 
     assert.dom(svg).hasAttribute('height', '200');
     assert.dom(svg).hasAttribute('width', '200');
@@ -140,7 +142,7 @@ module('Integration | Component | SimpleChartHorzBar', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(51);
+    assert.expect(57);
     this.set('data', [
       {
         label: '100',
@@ -169,7 +171,7 @@ module('Integration | Component | SimpleChartHorzBar', function (hooks) {
         />
       </template>,
     );
-
+    let count = 1;
     const check = async (height, width, fills, texts) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -187,6 +189,7 @@ module('Integration | Component | SimpleChartHorzBar', function (hooks) {
       for (let i = 0; i < texts.length; i++) {
         assert.dom(`${text}:nth-of-type(${i + 1})`).includesText(texts[i]);
       }
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(`${boxes}:nth-of-type(1)`);
       await triggerEvent(`${boxes}:nth-of-type(1)`, 'mouseenter');
     };

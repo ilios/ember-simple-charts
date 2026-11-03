@@ -5,11 +5,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartTree', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(3);
+    assert.expect(4);
     this.set('chartData', ChartData);
     const svg = 'svg';
     await render(
@@ -26,6 +27,7 @@ module('Integration | Component | SimpleChartTree', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
     assert.dom(svg).hasAttribute('height', '100%');
     assert.dom(svg).hasAttribute('width', '100%');
     assert.dom(`${svg} g circle:nth-of-type(1) desc`).hasText('Root node.');
@@ -80,7 +82,7 @@ module('Integration | Component | SimpleChartTree', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(40);
+    assert.expect(47);
 
     this.set('data', {
       label: 'Root',
@@ -117,6 +119,7 @@ module('Integration | Component | SimpleChartTree', function (hooks) {
         />
       </template>,
     );
+    let count = 1;
     const check = async (height, width, nodeFills) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -131,6 +134,7 @@ module('Integration | Component | SimpleChartTree', function (hooks) {
           .dom(`${nodes}:nth-of-type(${i + 1})`)
           .hasAttribute('fill', nodeFills[i]);
       }
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(`${nodes}:nth-of-type(1)`);
       await triggerEvent(`${nodes}:nth-of-type(1)`, 'mouseenter');
     };

@@ -5,11 +5,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import chartsLoaded from '../../helpers/charts-loaded.js';
 import ChartData from '../../helpers/chart-data.js';
 import noop from '../../helpers/noop.js';
+import { takeComponentScreenshot } from '../../helpers/take-screenshot.js';
 
 module('Integration | Component | SimpleChartCluster', function (hooks) {
   setupRenderingTest(hooks);
   test('it renders', async function (assert) {
-    assert.expect(48);
+    assert.expect(49);
     this.set('chartData', ChartData);
     const svg = 'svg';
     const chart = `${svg} .chart`;
@@ -56,6 +57,7 @@ module('Integration | Component | SimpleChartCluster', function (hooks) {
       </template>,
     );
     await chartsLoaded();
+    await takeComponentScreenshot(assert);
     assert.dom(svg).hasAttribute('height', '200');
     assert.dom(svg).hasAttribute('width', '200');
     assert.dom(chart).exists();
@@ -159,7 +161,7 @@ module('Integration | Component | SimpleChartCluster', function (hooks) {
   });
 
   test('it responds to changing data', async function (assert) {
-    assert.expect(40);
+    assert.expect(47);
 
     this.set('data', {
       label: 'Root',
@@ -196,7 +198,7 @@ module('Integration | Component | SimpleChartCluster', function (hooks) {
         />
       </template>,
     );
-
+    let count = 1;
     const check = async (height, width, nodeFills) => {
       await chartsLoaded();
       const svg = 'svg';
@@ -211,6 +213,7 @@ module('Integration | Component | SimpleChartCluster', function (hooks) {
           .dom(`${nodes}:nth-of-type(${i + 1})`)
           .hasAttribute('fill', nodeFills[i]);
       }
+      await takeComponentScreenshot(assert, `check-${count++}`);
       await click(`${nodes}:nth-of-type(1)`);
       await triggerEvent(`${nodes}:nth-of-type(1)`, 'mouseenter');
     };

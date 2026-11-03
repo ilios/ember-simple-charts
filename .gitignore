@@ -18,3 +18,6 @@ node_modules/
 
 # potentially containing secrets
 *.local
+
+# screenshots and test config
+build
