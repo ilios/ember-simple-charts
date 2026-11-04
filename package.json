@@ -45,6 +45,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@ember/test-waiters": "^4.1.2",
     "@embroider/addon-shim": "^1.8.9",
     "@popperjs/core": "^2.11.8",
     "d3-ease": "^3.0.1",
@@ -69,7 +70,6 @@
     "@ember/library-tsconfig": "^1.0.0",
     "@ember/string": "^4.0.1",
     "@ember/test-helpers": "^5.2.1",
-    "@ember/test-waiters": "^4.1.1",
     "@embroider/addon-dev": "^8.1.0",
     "@embroider/compat": "^4.1.0",
     "@embroider/core": "^4.1.0",

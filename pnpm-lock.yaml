@@ -166,6 +166,9 @@ importers:
 
   .:
     dependencies:
+      '@ember/test-waiters':
+        specifier: ^4.1.2
+        version: 4.1.2
       '@embroider/addon-shim':
         specifier: ^1.8.9
         version: 1.11.0
@@ -233,9 +236,6 @@ importers:
       '@ember/test-helpers':
         specifier: ^5.2.1
         version: 5.7.0(@babel/core@7.29.7(supports-color@8.1.1))
-      '@ember/test-waiters':
-        specifier: ^4.1.1
-        version: 4.1.2
       '@embroider/addon-dev':
         specifier: ^8.1.0
         version: 8.4.2(rollup@4.66.0)(supports-color@8.1.1)
