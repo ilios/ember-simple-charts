@@ -1,0 +1,15 @@
+.simple-chart {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.simple-chart svg {
+  display: block;
+}
+
+.simple-chart svg text {
+  cursor: default;
+  font-size: 0.8 * 1em;
+  line-height: 1.5;
+}
