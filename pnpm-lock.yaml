@@ -212,8 +212,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(@babel/core@7.29.7(supports-color@8.1.1))
       ember-primitives:
-        specifier: ^0.62.0
-        version: 0.62.0(@babel/core@7.29.7(supports-color@8.1.1))(@ember/test-helpers@5.7.0(@babel/core@7.29.7(supports-color@8.1.1)))(@ember/test-waiters@4.1.2)(@glimmer/component@2.2.1)(ember-modifier@4.3.0(@babel/core@7.29.7(supports-color@8.1.1)))(ember-resources@7.1.0(@glimmer/component@2.2.1))
+        specifier: ^0.63.0
+        version: 0.63.0(@babel/core@7.29.7(supports-color@8.1.1))(@ember/test-helpers@5.7.0(@babel/core@7.29.7(supports-color@8.1.1)))(@ember/test-waiters@4.1.2)(@glimmer/component@2.2.1)(ember-modifier@4.3.0(@babel/core@7.29.7(supports-color@8.1.1)))(ember-resources@7.1.0(@glimmer/component@2.2.1))
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -2426,8 +2426,8 @@ packages:
     resolution: {integrity: sha512-fedRHUsvq8tIZgOii8jTrfAyeq+la/9H5eAzhNNwEyzo7nDMmqK2SxsyBUGXprd8fOacsPabLlzlucMi/4mUpA==}
     engines: {node: 16.* || >= 18}
 
-  ember-primitives@0.62.0:
-    resolution: {integrity: sha512-olo9BdIyXkKleEKjQGq6Ya94iM7+Dr6TtT4+QLFyAzFQtHTENgy5rbEqFnbjw4qQmnibXR2s+jXxSDyPAQczhA==}
+  ember-primitives@0.63.0:
+    resolution: {integrity: sha512-2JTFk2FGYFFiTfDvvM0ma03kOBvm7VIdD1nFE2yLJ5YQg3dZQbTH1NEPmcJ/vI9LFa6/n+b8hq7bM5L7kFNFIA==}
     hasBin: true
     peerDependencies:
       '@ember/test-helpers': '>= 3.2.0'
@@ -7109,7 +7109,7 @@ snapshots:
       '@embroider/addon-shim': 1.11.0
       '@simple-dom/document': 1.4.0
 
-  ember-primitives@0.62.0(@babel/core@7.29.7(supports-color@8.1.1))(@ember/test-helpers@5.7.0(@babel/core@7.29.7(supports-color@8.1.1)))(@ember/test-waiters@4.1.2)(@glimmer/component@2.2.1)(ember-modifier@4.3.0(@babel/core@7.29.7(supports-color@8.1.1)))(ember-resources@7.1.0(@glimmer/component@2.2.1)):
+  ember-primitives@0.63.0(@babel/core@7.29.7(supports-color@8.1.1))(@ember/test-helpers@5.7.0(@babel/core@7.29.7(supports-color@8.1.1)))(@ember/test-waiters@4.1.2)(@glimmer/component@2.2.1)(ember-modifier@4.3.0(@babel/core@7.29.7(supports-color@8.1.1)))(ember-resources@7.1.0(@glimmer/component@2.2.1)):
     dependencies:
       '@babel/runtime': 7.29.10
       '@ember/test-waiters': 4.1.2
