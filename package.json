@@ -60,7 +60,7 @@
     "ember-async-data": "^2.0.1",
     "ember-concurrency": "^5.3.0",
     "ember-modifier": "^4.3.0",
-    "ember-primitives": "^0.63.0"
+    "ember-primitives": "^0.64.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
