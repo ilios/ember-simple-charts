@@ -262,7 +262,7 @@ importers:
         version: 6.1.0(@babel/core@7.29.13(supports-color@8.1.1))(rollup@4.68.3)(supports-color@8.1.1)
       '@zumer/snapdom':
         specifier: ^3.7.0
-        version: 3.7.5
+        version: 3.7.6
       babel-plugin-ember-template-compilation:
         specifier: ^4.0.0
         version: 4.0.1
@@ -1549,8 +1549,8 @@ packages:
     resolution: {integrity: sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==}
     engines: {node: '>=14.6'}
 
-  '@zumer/snapdom@3.7.5':
-    resolution: {integrity: sha512-KXf6tQc286F8ece8ENKwQgZA6mHx0os2iW5GyktXCx6Eu+xf7WJuwJspItuGoOFKydh/ojP92LapmCIiGumHbg==}
+  '@zumer/snapdom@3.7.6':
+    resolution: {integrity: sha512-w1q0HwSM1BF/vT2aF1tvgsYbktosFtfpjGIVrZkI1vUkKL7TLmLfBSIhCNp04c4DLfafHUXusz0UXsJC1bm03g==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -6274,7 +6274,7 @@ snapshots:
 
   '@xmldom/xmldom@0.9.12': {}
 
-  '@zumer/snapdom@3.7.5': {}
+  '@zumer/snapdom@3.7.6': {}
 
   accepts@1.3.8:
     dependencies:
